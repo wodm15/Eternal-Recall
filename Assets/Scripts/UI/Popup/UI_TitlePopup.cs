@@ -25,7 +25,7 @@ public class UI_TitlePopup : UI_Popup
 	{
 		if (base.Init() == false)
 			return false;
-
+		
 		BindText(typeof(Texts));
 		BindButton(typeof(Buttons)); 
 
@@ -49,7 +49,10 @@ public class UI_TitlePopup : UI_Popup
 void OnClickStartButton()
 	{
 		Debug.Log("OnClickStartButton");
-        //ui 추가
+        
+		//TODO
+		Managers.UI.ClosePopupUI(this);
+		Managers.UI.ShowPopupUI<UI_NamePopup>();
 
 	}
 
