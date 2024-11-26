@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class SceneManagerEx
 {
+    public void Init()
+    {
+
+    }
     private Define.Scene _curSceneType = Define.Scene.Unknown;
 
     public Define.Scene CurrentSceneType
@@ -19,8 +23,4 @@ public class SceneManagerEx
 
     public BaseScene CurrentScene { get { return GameObject.Find("Scene").GetComponent<BaseScene>(); } }
 
-    public void Init()
-    {
-
-    }
 }

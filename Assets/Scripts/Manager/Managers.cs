@@ -10,11 +10,15 @@ public class Managers : MonoBehaviour
     // 인스턴스 생성
     private static ResourceManager s_resourceManager = new ResourceManager();
     private static UIManager s_uiManager = new UIManager();
+    private static SoundManager s_soundManager = new SoundManager();
+    private static SceneManagerEx s_sceneManager = new SceneManagerEx();
 
 
     // 프로퍼티 생성
     public static ResourceManager Resource { get { Init(); return s_resourceManager; } }
     public static UIManager UI{ get { Init(); return s_uiManager; }  }
+    public static SoundManager Sound { get { Init(); return s_soundManager; }  }
+    public static SceneManagerEx Scene { get { Init(); return s_sceneManager; } }
 
     private void Start()
     {
@@ -31,6 +35,10 @@ public class Managers : MonoBehaviour
 
             s_instance = Utils.GetOrAddComponent<Managers>(go);
             DontDestroyOnLoad(go);
+
+            s_resourceManager.Init();
+            s_sceneManager.Init();
+            s_soundManager.Init();
         }
     }
 }

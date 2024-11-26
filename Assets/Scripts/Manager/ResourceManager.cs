@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class ResourceManager
 {
+	public void Init()
+    {
+	}
     #region Sprite 리소스 Load
     public Dictionary<string, Sprite> _sprites = new Dictionary<string, Sprite>();
 

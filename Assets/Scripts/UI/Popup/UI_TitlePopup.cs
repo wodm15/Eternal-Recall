@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Define;
 
 public class UI_TitlePopup : UI_Popup
 {
@@ -40,7 +41,8 @@ public class UI_TitlePopup : UI_Popup
 		// GetText((int)Texts.ContinueButtonText).text = Managers.GetText(Define.ContinueButtonText);
 		// GetText((int)Texts.CollectionButtonText).text = Managers.GetText(Define.CollectionButtonText);
 
-		// 사운드 추가하기
+		Managers.Sound.Clear();
+		Managers.Sound.Play(Sound.Effect, "Sound_MainTitle");
 		return true;
 	}
 
