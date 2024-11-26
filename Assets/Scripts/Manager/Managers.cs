@@ -9,10 +9,12 @@ public class Managers : MonoBehaviour
 
     // 인스턴스 생성
     private static ResourceManager s_resourceManager = new ResourceManager();
+    private static UIManager s_uiManager = new UIManager();
 
 
     // 프로퍼티 생성
     public static ResourceManager Resource { get { Init(); return s_resourceManager; } }
+    public static UIManager UI{ get { Init(); return s_uiManager; }  }
 
     private void Start()
     {

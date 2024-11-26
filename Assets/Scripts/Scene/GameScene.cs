@@ -11,7 +11,7 @@ public class GameScene : BaseScene
 
         SceneType = Define.Scene.Game;
         
-		// Managers.UI.ShowPopupUI<UI_TitlePopup>();
+		Managers.UI.ShowPopupUI<UI_TitlePopup>();
 		Debug.Log("Init");
 		return true;
 	}
