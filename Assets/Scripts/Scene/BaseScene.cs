@@ -22,8 +22,7 @@ public class BaseScene : MonoBehaviour
         GameObject go = GameObject.Find("EventSystem");
         if (go == null)
 
-            GameObject.Instantiate(Resources.Load<GameObject>("Prefabs/UI/EventSystem")).name = "@EventSystem";
-            // Managers.Resource.Instantiate("UI/EventSystem").name = "@EventSystem";
+            Managers.Resource.Instantiate("UI/EventSystem").name = "@EventSystem";
 
         return true;
     }

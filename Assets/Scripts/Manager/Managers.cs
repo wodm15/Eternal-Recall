@@ -7,6 +7,13 @@ public class Managers : MonoBehaviour
     public static Managers s_instance = null;
     public static Managers Instance { get { return s_instance; } }
 
+    // 인스턴스 생성
+    private static ResourceManager s_resourceManager = new ResourceManager();
+
+
+    // 프로퍼티 생성
+    public static ResourceManager Resource { get { Init(); return s_resourceManager; } }
+
     private void Start()
     {
         Init();
