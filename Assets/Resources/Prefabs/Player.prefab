@@ -4176,7 +4176,7 @@ GameObject:
   - component: {fileID: 8578299015336357534}
   m_Layer: 0
   m_Name: Eyes
-  m_TagString: Untagged
+  m_TagString: Eye
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4211,7 +4211,7 @@ GameObject:
   - component: {fileID: 7121179821441063810}
   m_Layer: 0
   m_Name: Character
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5022,7 +5022,7 @@ GameObject:
   - component: {fileID: 1837270380733045118}
   m_Layer: 0
   m_Name: Mouth
-  m_TagString: Untagged
+  m_TagString: Mouth
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5268,7 +5268,7 @@ GameObject:
   - component: {fileID: 7116791601934770742}
   m_Layer: 0
   m_Name: Hair
-  m_TagString: Untagged
+  m_TagString: Hair
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5931,7 +5931,7 @@ GameObject:
   - component: {fileID: 3816200139381960126}
   m_Layer: 0
   m_Name: Eyebrow
-  m_TagString: Untagged
+  m_TagString: Eyebrow
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7477,7 +7477,7 @@ GameObject:
   - component: {fileID: 7501850429590259206}
   m_Layer: 0
   m_Name: Emotion
-  m_TagString: Untagged
+  m_TagString: Emotion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

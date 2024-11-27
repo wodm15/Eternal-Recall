@@ -3,7 +3,13 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Hair
+  - Clothes
+  - Eyebrow
+  - Eye
+  - Mouth
+  - Emotion
   layers:
   - Default
   - TransparentFX
