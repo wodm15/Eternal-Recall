@@ -33,13 +33,13 @@ public class UI_TitlePopup : UI_Popup
 		GetButton((int)Buttons.ContinueButton).gameObject.BindEvent(OnClickContinueButton);
 		GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(OnClickCollectionButton);
 
-        GetText((int)Texts.StartButtonText).text = "시작하기";
-        GetText((int)Texts.ContinueButtonText).text = "이어하기";
-        GetText((int)Texts.CollectionButtonText).text = "컬렉션";
+        // GetText((int)Texts.StartButtonText).text = "시작하기";
+        // GetText((int)Texts.ContinueButtonText).text = "이어하기";
+        // GetText((int)Texts.CollectionButtonText).text = "컬렉션";
 
-		// GetText((int)Texts.StartButtonText).text = Managers.GetText(Define.StartButtonText);
-		// GetText((int)Texts.ContinueButtonText).text = Managers.GetText(Define.ContinueButtonText);
-		// GetText((int)Texts.CollectionButtonText).text = Managers.GetText(Define.CollectionButtonText);
+		GetText((int)Texts.StartButtonText).text = Managers.GetText(Define.StartButtonText);
+		GetText((int)Texts.ContinueButtonText).text = Managers.GetText(Define.ContinueButtonText);
+		GetText((int)Texts.CollectionButtonText).text = Managers.GetText(Define.CollectionButtonText);
 
 		Managers.Sound.Clear();
 		Managers.Sound.Play(Sound.Effect, "Sound_MainTitle");
