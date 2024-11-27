@@ -45,7 +45,7 @@ public class UI_NamePopup : UI_Popup
 		_inputField.text = "";
 
         RefreshUI();
-        CharacterResponse();
+        // CharacterResponse();
 
      
         return true;
@@ -57,7 +57,8 @@ public class UI_NamePopup : UI_Popup
         // GetText((int)Texts.HintText).text = Managers.GetText(Define.WriteNickname);
 	}
 
-    //캐릭 랜덤 생성
+    //캐릭 랜덤 생성 
+    //TODO
     public void CharacterResponse()
     {
         Player = GameObject.FindGameObjectWithTag("Player");
