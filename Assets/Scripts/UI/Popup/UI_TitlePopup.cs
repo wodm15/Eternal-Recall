@@ -7,7 +7,7 @@ public class UI_TitlePopup : UI_Popup
 {
 	enum Texts
 	{
-		TouchToStartText,
+		// TouchToStartText,
 		StartButtonText,
 		ContinueButtonText,
 		CollectionButtonText,
@@ -32,10 +32,6 @@ public class UI_TitlePopup : UI_Popup
 		GetButton((int)Buttons.StartButton).gameObject.BindEvent(OnClickStartButton);
 		GetButton((int)Buttons.ContinueButton).gameObject.BindEvent(OnClickContinueButton);
 		GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(OnClickCollectionButton);
-
-        // GetText((int)Texts.StartButtonText).text = "시작하기";
-        // GetText((int)Texts.ContinueButtonText).text = "이어하기";
-        // GetText((int)Texts.CollectionButtonText).text = "컬렉션";
 
 		GetText((int)Texts.StartButtonText).text = Managers.GetText(Define.StartButtonText);
 		GetText((int)Texts.ContinueButtonText).text = Managers.GetText(Define.ContinueButtonText);
