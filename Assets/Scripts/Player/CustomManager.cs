@@ -185,4 +185,5 @@ public class CustomManager : MonoBehaviour {
             bodyTexture[i].SetActive(true);
         }
     }
+
 }

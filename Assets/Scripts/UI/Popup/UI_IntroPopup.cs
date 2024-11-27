@@ -92,7 +92,7 @@ public class UI_IntroPopup : UI_Popup
 		{
 			Managers.UI.ClosePopupUI(this);
             Managers.UI.ShowPopupUI<UI_PlayPopup>();
-            Managers.UI.ShowSceneUI<UI_PlayerScene>();
+            // Managers.UI.ShowSceneUI<UI_PlayerScene>();
 			// _onEndCallback?.Invoke();
 			return;
 		}
