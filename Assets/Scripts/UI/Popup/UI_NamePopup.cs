@@ -6,7 +6,10 @@ using static Define;
 
 public class UI_NamePopup : UI_Popup
 {
+    //플레이어 모습 저장 배열
+    public static int[] playerIndex = new int[6] {0,0,0,0,0,0};
     GameObject Player;
+
     enum GameObjects
 	{
 		InputField
@@ -25,10 +28,13 @@ public class UI_NamePopup : UI_Popup
 	}
 
     TMP_InputField _inputField;
-    
+
 
     public override bool Init()
     {
+        if (base.Init() == false)
+			return false;
+
         BindObject(typeof(GameObjects));
 		BindText(typeof(Texts));
 		BindButton(typeof(Buttons));
@@ -82,13 +88,19 @@ public class UI_NamePopup : UI_Popup
             int mouthLength = mouth.transform.childCount;
             int emotionLength = mouth.transform.childCount;
 
+            playerIndex[0] = Random.Range(0, hairLength);
+            playerIndex[1] = Random.Range(0,clothesLength );
+            playerIndex[2] = Random.Range(0,eyebrowLength);
+            playerIndex[3] = Random.Range(0,eyeLength);
+            playerIndex[4] = Random.Range(0,mouthLength);
+            playerIndex[5] = Random.Range(0,emotionLength);
 
-            _customManager.hair = Random.Range(0, hairLength);
-            _customManager.clothes = Random.Range(0,clothesLength );
-            _customManager.eyebrow = Random.Range(0,eyebrowLength);
-            _customManager.eye = Random.Range(0,eyeLength);
-            _customManager.mouth = Random.Range(0,mouthLength);
-            _customManager.emotion = Random.Range(0,emotionLength);
+            _customManager.hair = playerIndex[0];
+            _customManager.clothes = playerIndex[1];
+            _customManager.eyebrow = playerIndex[2];
+            _customManager.eye = playerIndex[3];
+            _customManager.mouth = playerIndex[4];
+            _customManager.emotion = playerIndex[5];
 
         }
         else
@@ -104,7 +116,10 @@ public class UI_NamePopup : UI_Popup
         Managers.Game.Name = _inputField.text;
 
         Managers.UI.ClosePopupUI(this);
-		Managers.UI.ShowPopupUI<UI_IntroPopup>();
+		// Managers.UI.ShowPopupUI<UI_IntroPopup>();
+        //Temp
+        Managers.UI.ShowPopupUI<UI_PlayPopup>(); //
+        Managers.UI.ShowSceneUI<UI_PlayerScene>(); //
     }
 
 }

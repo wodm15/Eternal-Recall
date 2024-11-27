@@ -91,7 +91,9 @@ public class UI_IntroPopup : UI_Popup
 		if (_selectedIndex == (int)GameObjects.Guide3)
 		{
 			Managers.UI.ClosePopupUI(this);
-			_onEndCallback?.Invoke();
+            Managers.UI.ShowPopupUI<UI_PlayPopup>();
+            Managers.UI.ShowSceneUI<UI_PlayerScene>();
+			// _onEndCallback?.Invoke();
 			return;
 		}
 
