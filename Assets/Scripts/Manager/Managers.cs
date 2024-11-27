@@ -12,6 +12,8 @@ public class Managers : MonoBehaviour
     private static UIManager s_uiManager = new UIManager();
     private static SoundManager s_soundManager = new SoundManager();
     private static SceneManagerEx s_sceneManager = new SceneManagerEx();
+    private static DataManager s_dataManager = new DataManager();
+    private static GameManagerEx s_gameManager = new GameManagerEx();
 
 
     // 프로퍼티 생성
@@ -19,7 +21,16 @@ public class Managers : MonoBehaviour
     public static UIManager UI{ get { Init(); return s_uiManager; }  }
     public static SoundManager Sound { get { Init(); return s_soundManager; }  }
     public static SceneManagerEx Scene { get { Init(); return s_sceneManager; } }
+    public static DataManager Data {get { Init(); return s_dataManager; } }
+    public static GameManagerEx Game { get { Init(); return s_gameManager; } }
 
+    public static string GetText(int id)
+	{
+        if (Managers.Data.Texts.TryGetValue(id, out TextData value) == false)
+            return "";
+
+        return value.kor.Replace("{userName}", Managers.Game.Name);
+	}
     private void Start()
     {
         Init();
@@ -39,6 +50,7 @@ public class Managers : MonoBehaviour
             s_resourceManager.Init();
             s_sceneManager.Init();
             s_soundManager.Init();
+            s_dataManager.Init();
 
             Application.targetFrameRate = 60;
         }

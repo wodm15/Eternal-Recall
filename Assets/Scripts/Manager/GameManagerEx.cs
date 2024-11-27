@@ -23,17 +23,16 @@ public enum CollectionState
 [Serializable]
 public class GameData
     {
+        //캐릭터용 + 패시브 스킬
         public string Name;
         public int Hp;
         public int MaxHp;
-        // public int Mp;
-        // public int MaxMp;
-        public int LuckPercent;
+        public int LuckPercent; // 아이템 획득 확률 증가
+        public int DownSpeed; // 지나가는 스피드 내리기
 
-        public int PassingSpeed;
-        public int LimitTime; //캐릭터 guess 리미트 시간
-        public int MaxLimitTime;
-        public float SpendTime;
+        //스킬
+        public int TheWorld; //3초간 멈추기
+        public int PassTicket; //스테이지 1개 바로 패스
 
         //얻은 스킬
         public Skill[] Skills = new Skill[MAX_SKILL_COUNT];
@@ -73,20 +72,23 @@ public class GameManagerEx
         get { return _gameData.LuckPercent; }
         set { _gameData.LuckPercent = value; }
     }
-    public int PassingSpeed
+    public int DownSpeed
     {
-        get { return _gameData.PassingSpeed;}
-        set { _gameData.PassingSpeed= value; }
+        get { return _gameData.DownSpeed;}
+        set { _gameData.DownSpeed= value; }
     }
-    public int LimitTime
+
+
+    //스킬
+    public int TheWorld
     {
-        get { return _gameData.LimitTime;}
-        set { _gameData.LimitTime = Mathf.Clamp(value, 0, MaxLimitTime);}
+        get { return _gameData.TheWorld;}
+        set { _gameData.TheWorld = value; }
     }
-    public int MaxLimitTime
+    public int PassTicket
     {
-        get { return _gameData.MaxLimitTime;}
-        set { _gameData.MaxLimitTime = value;}
+        get { return _gameData.PassTicket;}
+        set { _gameData.PassTicket=value;}
     }
 
     #endregion
@@ -95,5 +97,19 @@ public class GameManagerEx
 
 
     #endregion
+
+
+    public void Init()
+    {
+        Name = "AAA";
+
+
+        ReApplyCollectionStats(); //컬렉션 스테이터스 추가
+    }
+
+    void ReApplyCollectionStats()
+    {
+
+    }
 }
 

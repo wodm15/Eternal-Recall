@@ -61,4 +61,11 @@ public class Define
 	public const int MAX_SKILL_COUNT = 50;
 	public const int MAX_ENDING_COUNT = 50;
 
+
+	//닉네임 입력
+	public const int WriteNickname = 6500;
+	
+	public const int Intro1 = 20019;
+	public const int Intro2 = 20020;
+	public const int Intro3 = 20021;
 }

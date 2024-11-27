@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using static Define;
 
 public class UI_NamePopup : UI_Popup
 {
@@ -14,7 +15,6 @@ public class UI_NamePopup : UI_Popup
     enum Texts
 	{
 		ConfirmButtonText,
-		NameText,
 		HintText,
 		ValueText
 	}
@@ -29,20 +29,27 @@ public class UI_NamePopup : UI_Popup
 
     public override bool Init()
     {
-        // BindObject(typeof(GameObjects));
-		// BindText(typeof(Texts));
-		// BindButton(typeof(Buttons));
+        BindObject(typeof(GameObjects));
+		BindText(typeof(Texts));
+		BindButton(typeof(Buttons));
 
-		// GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
+		GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
 
-    	// _inputField = GetObject((int)GameObjects.InputField).gameObject.GetComponent<TMP_InputField>();
-		// _inputField.text = "";
+    	_inputField = GetObject((int)GameObjects.InputField).gameObject.GetComponent<TMP_InputField>();
+		_inputField.text = "";
 
+        RefreshUI();
         CharacterResponse();
 
      
         return true;
     }
+
+	void RefreshUI()
+	{
+		GetText((int)Texts.HintText).text = "Write the NickName";
+        // GetText((int)Texts.HintText).text = Managers.GetText(Define.WriteNickname);
+	}
 
     //캐릭 랜덤 생성
     void CharacterResponse()
@@ -90,8 +97,14 @@ public class UI_NamePopup : UI_Popup
 
     void OnClickConfirmButton()
     {
-        //TODO
+        Managers.Sound.Play(Sound.Effect, "Sound_Checkbutton");
         Debug.Log("onClickConfirmButton");
+        Debug.Log($"Input ID {_inputField.text}");
+
+        Managers.Game.Name = _inputField.text;
+
+        Managers.UI.ClosePopupUI(this);
+		Managers.UI.ShowPopupUI<UI_IntroPopup>();
     }
 
 }
