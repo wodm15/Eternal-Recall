@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfShopData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <ShopData ID="1" name="6000" productID="Healing" rewardType="Active" rewardCount="1" icon="ItemIcon/Healing" description="일정 HP를 회복합니다."/>
-  <ShopData ID="2" name="6001" productID="gambleHealing" rewardType="Active" rewardCount="1" icon="ItemIcon/gambleHealing" description="확률 회복합니다."/>
-  <ShopData ID="3" name="6002" productID="GetExpendTime" rewardType="Passive" rewardCount="1" icon="ItemIcon/GetExpendTime" description="추측하는 시간이 늘어납니다."/>
-  <ShopData ID="4" name="6003" productID="GetTheWorld" rewardType="Active" rewardCount="1" icon="ItemIcon/GetTheWorld" description="잠시 시간을 멈춥니다(소모성)"/>
-  <ShopData ID="5" name="6004" productID="FreePass" rewardType="Active" rewardCount="1" icon="ItemIcon/FreePass" description="스테이지 한번을 넘깁니다."/>
-  <ShopData ID="6" name="6005" productID="upLuck" rewardType="Passive" rewardCount="1" icon="ItemIcon/upLuck" description="운을 늘립니다."/>
+  <ShopData ID="1" name="6000" productID="Healing" rewardType="Active" rewardCount="1" icon="Healing" description="일정 HP를 회복합니다."/>
+  <ShopData ID="2" name="6001" productID="gambleHealing" rewardType="Active" rewardCount="1" icon="gambleHealing" description="확률 회복합니다."/>
+  <ShopData ID="3" name="6002" productID="GetExpendTime" rewardType="Passive" rewardCount="1" icon="GetExpendTime" description="추측하는 시간이 늘어납니다."/>
+  <ShopData ID="4" name="6003" productID="GetTheWorld" rewardType="Active" rewardCount="1" icon="GetTheWorld" description="잠시 시간을 멈춥니다(소모성)"/>
+  <ShopData ID="5" name="6004" productID="FreePass" rewardType="Active" rewardCount="1" icon="FreePass" description="스테이지 한번을 넘깁니다."/>
+  <ShopData ID="6" name="6005" productID="upLuck" rewardType="Passive" rewardCount="1" icon="upLuck" description="운을 늘립니다."/>
 </ArrayOfShopData>

@@ -57,7 +57,7 @@ public class UI_NamePopup : UI_Popup
         // GetText((int)Texts.HintText).text = Managers.GetText(Define.WriteNickname);
 	}
 
-    //캐릭 랜덤 생성 
+    //캐릭 랜덤 생성 (아직 안씀)
     //TODO
     public void CharacterResponse()
     {
@@ -120,7 +120,7 @@ public class UI_NamePopup : UI_Popup
 		// Managers.UI.ShowPopupUI<UI_IntroPopup>();
         //Temp
         Managers.UI.ShowPopupUI<UI_PlayPopup>(); //
-        // Managers.UI.ShowSceneUI<UI_PlayerScene>(); //
+        Managers.UI.ShowSceneUI<UI_PlayerScene>(); //
     }
 
 }
