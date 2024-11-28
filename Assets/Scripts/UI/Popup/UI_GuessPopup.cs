@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class UI_GuessPopup : UI_Popup
 {
+    public bool isCorrect = true;
     enum Texts
     {
         ConfirmButtonText,
@@ -26,6 +27,14 @@ public class UI_GuessPopup : UI_Popup
         AnimationMinus,
         AnimtionPlus,
     }
+
+    enum Images
+    {
+        None,
+        Correct,
+        Wrong,
+    }
+    
     GameObject GuessPlayer;
     public override bool Init()
     {
@@ -36,14 +45,21 @@ public class UI_GuessPopup : UI_Popup
         GuessPlayer.transform.position = new Vector3(-2,0,0);
         GuessPlayer.transform.localScale = new Vector3(1,1,1);
 
-        GameObject _customManager = GameObject.FindGameObjectWithTag("CustomManager");
-        CustomManager customManager =_customManager.GetComponent<CustomManager>();
+        GameObject _customManager = GameObject.FindGameObjectWithTag("GuessManager");
+        CustomManager customManager = _customManager.GetComponent<CustomManager>();
         AnimationManager animationManager = _customManager.GetComponent<AnimationManager>();
+        if(_customManager == null || animationManager == null || customManager == null)
+            Debug.LogError("custommanger null");
 
 		BindText(typeof(Texts));
 		BindButton(typeof(Buttons));
+        BindImage(typeof(Images));
 
-        GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
+        //정답일 때
+        GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(() => OnClickConfirmButton(true));
+
+        GetImage((int)Images.Correct).gameObject.SetActive(false);
+        GetImage((int)Images.Wrong).gameObject.SetActive(false);
 
         //추측하는 버튼 바인딩
         #region 추측플레이어 바인딩
@@ -130,19 +146,35 @@ public class UI_GuessPopup : UI_Popup
         return true;
     }
 
-    void OnClickConfirmButton()
+    void OnClickConfirmButton(bool isCorrect)
     {
-        Debug.Log("Guess ClickConfirmButton");
+        if (isCorrect)
+        {
+            Debug.Log("정답: Correct");
+            GetImage((int)Images.Correct).gameObject.SetActive(true);
+        }
+        else
+        {
+            Debug.Log("오답: Wrong");
+            GetImage((int)Images.Wrong).gameObject.SetActive(true);
+        }
+        
+        Invoke("HideResultAndProceed", 2f);
+    }
 
+    void HideResultAndProceed()
+    {
+        // 이미지 비활성화
+        GetImage((int)Images.Correct).gameObject.SetActive(false);
+        GetImage((int)Images.Wrong).gameObject.SetActive(false);
+
+        // 후속 작업 실행
         Managers.UI.ClosePopupUI(this);
-        Managers.Destroy(GuessPlayer);
-        Managers.UI.ShowPopupUI<UI_GetItemPopup>(); //
+        if (GuessPlayer != null)
+        {
+            Managers.Resource.Destroy(GuessPlayer);
+        }
+        Managers.UI.ShowPopupUI<UI_GetItemPopup>();
     }
 
-    void OnClickHairButton()
-    {
-        GameObject hairObject = GameObject.FindGameObjectWithTag("Player");
-        hairObject.GetComponent<CustomManager>().hair = Random.Range(0, 20);
-    }
-    
 }

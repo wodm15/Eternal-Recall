@@ -11,7 +11,6 @@ public class UI_PlayPopup : UI_Popup
     {
         if (base.Init() == false)
 			return false;
-
         Stranger = Managers.Resource.Instantiate("Stranger");
         Stranger.transform.position = new Vector3(-10,2,0);
 

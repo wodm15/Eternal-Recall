@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class UI_PlayerScene : UI_Scene
 {
-    public GameObject StaticPlayer;
+    GameObject StaticPlayer;
 
     public override bool Init()
     {
@@ -12,9 +12,17 @@ public class UI_PlayerScene : UI_Scene
 			return false;
 
         StaticPlayer = Managers.Resource.Instantiate("StaticPlayer");
-        StaticPlayer.transform.position = new Vector3(-4,-4,0);
-        StaticPlayer.transform.localScale = new Vector3(1,1, 1);
+        StaticPlayer.transform.position = new Vector3(-4,-3,0);
+        StaticPlayer.transform.localScale = new Vector3(0.6f,0.6f, 1);
 
+        GameObject _customManager = GameObject.FindGameObjectWithTag("StaticManager");
+        CustomManager customManager = _customManager.GetComponent<CustomManager>();
+        AnimationManager animationManager = _customManager.GetComponent<AnimationManager>();
+
+        customManager.clothes = 10;
+        customManager.numberCheck(1);  
+        animationManager.PlayAni(true);
+        
         return true;
     }
 }
