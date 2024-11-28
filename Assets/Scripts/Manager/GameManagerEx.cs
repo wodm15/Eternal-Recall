@@ -101,7 +101,7 @@ public class GameManagerEx
 
     public void Init()
     {
-        //초기 세팅\
+        //초기 세팅
 		StartData data = Managers.Data.Start;
     	Hp = data.maxHp;
         LuckPercent = data.LuckPercent;

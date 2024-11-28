@@ -15,8 +15,8 @@ public class UI_PlayerScene : UI_Scene
         HPBG, //hp 배경바
     }
     public int _stage = 1;
-
-    GameManagerEx _game;
+    
+    GameManagerEx InitStat;
     GameObject StaticPlayer;
     GameObject _customManager;
     public CustomManager customManager;    
@@ -28,6 +28,12 @@ public class UI_PlayerScene : UI_Scene
     {
         if (base.Init() == false)
 			return false;
+
+        //캐릭터 초기 스탯 가져오기
+        Managers.Game.Init();
+        InitStat = Managers.Game; 
+
+        //TODO
 
         //static 캐릭터
         StaticPlayer = Managers.Resource.Instantiate("StaticPlayer");
@@ -46,8 +52,7 @@ public class UI_PlayerScene : UI_Scene
         BindImage(typeof(Images));
 
         GetText((int)Texts.Stage).text = $"Stage : {(int)_stage}";
-
-
+        
         return true;
     }
 
