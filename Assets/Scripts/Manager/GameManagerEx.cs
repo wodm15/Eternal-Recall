@@ -101,15 +101,26 @@ public class GameManagerEx
 
     public void Init()
     {
-        Name = "AAA";
+        //초기 세팅\
+		StartData data = Managers.Data.Start;
+    	Hp = data.maxHp;
+        LuckPercent = data.LuckPercent;
+        DownSpeed = data.DownSpeed;
+        TheWorld = data.TheWorld;
+        PassTicket = data.PassTicket;
+
+        // LuckPercent;
 
 
-        ReApplyCollectionStats(); //컬렉션 스테이터스 추가
-    }
+        // DownSpeed= data.DownSpeed; // 지나가는 스피드 내리기
 
-    void ReApplyCollectionStats()
-    {
 
+        // TheWorld; //3초간 멈추기
+
+
+        // public int PassTicket; //스테이지 1개 바로 패스
+
+        // ReApplyCollectionStats(); //컬렉션 스테이터스 추가
+    
     }
 }
-

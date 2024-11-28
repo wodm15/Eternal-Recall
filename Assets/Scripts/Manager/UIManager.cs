@@ -143,4 +143,14 @@ public class UIManager
 		CloseAllPopupUI();
 		SceneUI = null;
 	}
+
+	public T GetSceneUI<T>() where T : UI_Scene
+    {
+        if (SceneUI is T sceneUI)
+        {
+            return sceneUI;
+        }
+
+        return null; // UI_Scene이 T 타입이 아니면 null 반환
+    }
 }

@@ -35,7 +35,7 @@ public class UI_CountPopup : UI_Popup
         yield return new WaitForSeconds(0.5f); 
         Managers.UI.ClosePopupUI(this); 
         Managers.UI.ShowPopupUI<UI_PlayPopup>(); 
-        Managers.UI.ShowSceneUI<UI_PlayerScene>(); //
+        // Managers.UI.ShowSceneUI<UI_PlayerScene>(); //
     }
 
     private IEnumerator ShowImage(int imageIndex)

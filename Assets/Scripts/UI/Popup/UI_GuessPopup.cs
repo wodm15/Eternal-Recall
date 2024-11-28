@@ -8,6 +8,7 @@ public class UI_GuessPopup : UI_Popup
     enum Texts
     {
         ConfirmButtonText,
+        Question,
     }
     enum Buttons
     {
@@ -30,7 +31,6 @@ public class UI_GuessPopup : UI_Popup
 
     enum Images
     {
-        None,
         Correct,
         Wrong,
     }
@@ -54,6 +54,8 @@ public class UI_GuessPopup : UI_Popup
 		BindText(typeof(Texts));
 		BindButton(typeof(Buttons));
         BindImage(typeof(Images));
+
+        GetText((int)Texts.Question).text = Managers.GetText(Define.Question1);
 
         //정답일 때
         GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(() => OnClickConfirmButton(true));
