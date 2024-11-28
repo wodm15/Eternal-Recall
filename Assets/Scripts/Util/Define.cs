@@ -37,16 +37,11 @@ public class Define
 		Angry,
 		Sweat,
 	}
-
 	public enum Skill
 	{
 		None,
-		ExpendTime,	//퀴즈 시간 늘리기
-		TheWorld,	//캐릭터 움직임 느리게 하기
-	
 	}
-	
-	public enum Item
+	public enum Shop
 	{
 		None,
 		Healing, // 20퍼 힐링
