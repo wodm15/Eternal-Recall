@@ -10,6 +10,7 @@ TagManager:
   - Eye
   - Mouth
   - Emotion
+  - CustomManager
   layers:
   - Default
   - TransparentFX

@@ -40,34 +40,29 @@ public class UI_GetItemPopup : UI_Popup
         GetButton((int)Buttons.Item2).gameObject.BindEvent(OnClickItem2);
         GetButton((int)Buttons.Item3).gameObject.BindEvent(OnClickItem3);
        
-        for (int i = 0; i < 3; i++) // 0부터 2까지
+       //랜덤 아이템 3개 생성(이미지 + 글자)
+        for (int i = 0; i < 3; i++) 
         {
-            int index = GetRandomIndex(); // 랜덤 인덱스
+            int index = GetRandomIndex(); 
 
-            Buttons buttonEnum = (Buttons)i; // i를 Buttons enum으로 변환
-
+            Buttons buttonEnum = (Buttons)i; 
             switch (buttonEnum)
             {
                 case Buttons.Item1:
-                    GetButton((int)Buttons.Item1).image.sprite = Managers.Resource.Load<Sprite>($"Sprites/{_shopData[index].icon}");
-                    GetText((int)Texts.Text1).text = _shopData[index].description; // 설명을 텍스트로 설정
+                    GetButton((int)Buttons.Item1).image.sprite = Managers.Resource.Load<Sprite>($"{spritePath}/{_shopData[index].icon}");
+                    GetText((int)Texts.Text1).text = _shopData[index].description; 
                     break;
                 case Buttons.Item2:
-                    GetButton((int)Buttons.Item2).image.sprite = Managers.Resource.Load<Sprite>($"Sprites/{_shopData[index].icon}");
-                    GetText((int)Texts.Text2).text = _shopData[index].description; // 설명을 텍스트로 설정
+                    GetButton((int)Buttons.Item2).image.sprite = Managers.Resource.Load<Sprite>($"{spritePath}/{_shopData[index].icon}");
+                    GetText((int)Texts.Text2).text = _shopData[index].description;
                     break;
                 case Buttons.Item3:
-                    GetButton((int)Buttons.Item3).image.sprite = Managers.Resource.Load<Sprite>($"Sprites/{_shopData[index].icon}");
-                    GetText((int)Texts.Text3).text = _shopData[index].description; // 설명을 텍스트로 설정
+                    GetButton((int)Buttons.Item3).image.sprite = Managers.Resource.Load<Sprite>($"{spritePath}/{_shopData[index].icon}");
+                    GetText((int)Texts.Text3).text = _shopData[index].description; 
                     break;
             }
         }
         
-
-        GetButton(1).image.sprite = Managers.Resource.Load<Sprite>("Sprites/ItemIcon/Healing");
-        
-
-
     // Player = Managers.Resource.Instantiate("StaticPlayer");
     // Player.transform.position = new Vector3(-4,-4,0);
     // Player.transform.localScale = new Vector3(1,1, 1);
