@@ -9,7 +9,6 @@ public class UI_NamePopup : UI_Popup
     //플레이어 모습 저장 배열
     public static int[] playerIndex = new int[6] {0,0,0,0,0,0};
     GameObject Player;
-
     enum GameObjects
 	{
 		InputField
@@ -116,11 +115,11 @@ public class UI_NamePopup : UI_Popup
 
         Managers.Game.Name = _inputField.text;
 
-        Managers.UI.ClosePopupUI(this);
 		// Managers.UI.ShowPopupUI<UI_IntroPopup>();
+        Managers.UI.ClosePopupUI(this);
         //Temp
-        Managers.UI.ShowPopupUI<UI_PlayPopup>(); //
-        Managers.UI.ShowSceneUI<UI_PlayerScene>(); //
+        Managers.UI.ShowPopupUI<UI_CountPopup>();
+        Managers.UI.ShowSceneUI<UI_PlayerScene>();
     }
 
 }

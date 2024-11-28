@@ -66,4 +66,9 @@ public class Define
 	public const int Intro1 = 20019;
 	public const int Intro2 = 20020;
 	public const int Intro3 = 20021;
+
+	public const int Question1 = 30000;
+	public const int Question2 = 30001;
+	public const int Question3 = 30002;
+
 }

@@ -11,6 +11,8 @@ TagManager:
   - Mouth
   - Emotion
   - CustomManager
+  - GuessManager
+  - StaticManager
   layers:
   - Default
   - TransparentFX

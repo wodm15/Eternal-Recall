@@ -9,4 +9,12 @@
   <TextData ID="20020" kor="가이드 2 &lt;br&gt; 가이드 2" eng="" />
   <TextData ID="20021" kor="가이드 3&lt;br&gt;가이드3" eng="" />
 
+
+  <TextData ID="30000" kor="어떤 옷을 입고 있었나요?" eng="" />
+  <TextData ID="30001" kor="캐릭터가 어떤 행동을 취했나요?" eng="" />
+  <TextData ID="30002" kor="눈동자 색을 뭘까요?" eng="" />
+  <TextData ID="30003" kor="눈동자 색을 뭘까요?" eng="" />
+  <TextData ID="30004" kor="눈동자 색을 뭘까요?" eng="" />
+  <TextData ID="30005" kor="눈동자 색을 뭘까요?" eng="" />
+
 </ArrayOfTextData>

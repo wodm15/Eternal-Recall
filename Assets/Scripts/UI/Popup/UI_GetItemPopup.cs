@@ -7,6 +7,7 @@ using UnityEngine.UI;
 
 public class UI_GetItemPopup : UI_Popup
 {
+    UI_PlayerScene playerScene;
     private List<ShopData> _shopData = new List<ShopData>();
     public string spritePath = "Sprites/ItemIcon"; 
     enum Buttons
@@ -28,6 +29,8 @@ public class UI_GetItemPopup : UI_Popup
         if (base.Init() == false)
 			return false;
 
+        playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
+
 		foreach (ShopData shopData in Managers.Data.Shops.Values)
 		{
 			_shopData.Add(shopData);
@@ -43,7 +46,7 @@ public class UI_GetItemPopup : UI_Popup
        //랜덤 아이템 3개 생성(이미지 + 글자)
         for (int i = 0; i < 3; i++) 
         {
-            int index = GetRandomIndex(); 
+            int index = Random.Range(0, _shopData.Count);
 
             Buttons buttonEnum = (Buttons)i; 
             switch (buttonEnum)
@@ -74,21 +77,23 @@ public class UI_GetItemPopup : UI_Popup
     {
         Debug.Log("getItem1");
         Managers.UI.ClosePopupUI(this);
+        playerScene.StageUp();
+        // playerScene.animationManager.PlayAni(true);
+        Managers.UI.ShowPopupUI<UI_CountPopup>();
+
     }
     void OnClickItem2()
     {
         Debug.Log("getItem2");
         Managers.UI.ClosePopupUI(this);
+        playerScene.StageUp();
     }
     void OnClickItem3()
     {
         Debug.Log("getItem3");
         Managers.UI.ClosePopupUI(this);
+        playerScene.StageUp();
     }
 
-    private int GetRandomIndex()
-    {
-        return Random.Range(0, _shopData.Count);
-    }
 
 }
