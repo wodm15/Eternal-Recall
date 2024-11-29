@@ -4,12 +4,6 @@ using System.Collections.Generic;
 using System.Xml.Serialization;
 using UnityEngine;
 
-public enum RewardType
-{
-	Passive,
-	Active,
-}
-
 public class ShopData
 {
 	[XmlAttribute]
@@ -20,11 +14,15 @@ public class ShopData
 	public string productID; 
 
 	[XmlAttribute]
-	public int rewardCount;
-	[XmlAttribute]
 	public string icon;
 	[XmlAttribute]
 	public string description;
+
+	[XmlAttribute]
+	public string effectType;  
+
+    [XmlAttribute]
+    public float effectValue; 
 }
 
 [Serializable, XmlRoot("ArrayOfShopData")]

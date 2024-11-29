@@ -971,6 +971,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4431fe7ff96f244d19e971e0e165a3a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerScene: {fileID: 8592832362249550560, guid: ab257300e073f462a9e814105a631e89, type: 3}
+  playPopup: {fileID: 2051935211044567458, guid: 6e3e7a0b16d9249b2be5a259919c30e3, type: 3}
   isCorrect: 1
 --- !u!1 &1703459441310932037
 GameObject:

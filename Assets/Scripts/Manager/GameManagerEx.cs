@@ -13,6 +13,18 @@ public class PlayerState
         public bool goHomeEvent = false;
     }
 
+[Serializable]
+public enum StrangerIndex
+{
+    HairIndex,
+    ClothesIndex,
+    EyebrowIndex,
+    EyeIndex,
+    MouthIndex,
+    EmotionIndex,
+    AnimationIndex,
+}
+
 public enum CollectionState
     {
         None,
@@ -24,10 +36,12 @@ public enum CollectionState
 public class GameData
     {
         //캐릭터용 + 패시브 스킬
+        public int Stage;
         public string Name;
         public int Hp;
         public int MaxHp;
         public int LuckPercent; // 아이템 획득 확률 증가
+        public int ExpendTime;
         public int DownSpeed; // 지나가는 스피드 내리기
 
         //스킬
@@ -49,6 +63,12 @@ public class GameManagerEx
 {
     GameData _gameData = new GameData();
     public GameData SaveData { get { return _gameData; } set { _gameData = value; } }
+    public int Stage
+    {
+        get { return _gameData.Stage;}
+        set { _gameData.Stage = value; }
+    }
+    public int[] StrangerIndex = new int[7];
 
     #region 스탯
     public string Name
@@ -60,6 +80,12 @@ public class GameManagerEx
     {
         get { return _gameData.Hp; }
         set { _gameData.Hp = Mathf.Clamp(value, 0, MaxHp); }
+    }
+
+    public int ExpendTime
+    {
+        get { return _gameData.ExpendTime;}
+        set { _gameData.ExpendTime = value;}
     }
     public int MaxHp
     {
@@ -101,24 +127,17 @@ public class GameManagerEx
 
     public void Init()
     {
-        //초기 세팅\
+        //초기 세팅
 		StartData data = Managers.Data.Start;
+        Stage = data.Stage;
     	Hp = data.maxHp;
         LuckPercent = data.LuckPercent;
         DownSpeed = data.DownSpeed;
         TheWorld = data.TheWorld;
         PassTicket = data.PassTicket;
 
-        // LuckPercent;
-
-
         // DownSpeed= data.DownSpeed; // 지나가는 스피드 내리기
 
-
-        // TheWorld; //3초간 멈추기
-
-
-        // public int PassTicket; //스테이지 1개 바로 패스
 
         // ReApplyCollectionStats(); //컬렉션 스테이터스 추가
     

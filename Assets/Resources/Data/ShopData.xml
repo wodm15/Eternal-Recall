@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfShopData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <ShopData ID="1" name="6000" productID="Healing" rewardType="Active" rewardCount="1" icon="Healing" description="일정 HP를 회복합니다."/>
-  <ShopData ID="2" name="6001" productID="gambleHealing" rewardType="Active" rewardCount="1" icon="gambleHealing" description="확률 회복합니다."/>
-  <ShopData ID="3" name="6002" productID="GetExpendTime" rewardType="Passive" rewardCount="1" icon="GetExpendTime" description="추측하는 시간이 늘어납니다."/>
-  <ShopData ID="4" name="6003" productID="GetTheWorld" rewardType="Active" rewardCount="1" icon="GetTheWorld" description="잠시 시간을 멈춥니다(소모성)"/>
-  <ShopData ID="5" name="6004" productID="FreePass" rewardType="Active" rewardCount="1" icon="FreePass" description="스테이지 한번을 넘깁니다."/>
-  <ShopData ID="6" name="6005" productID="upLuck" rewardType="Passive" rewardCount="1" icon="upLuck" description="운을 늘립니다."/>
+  <ShopData ID="1" name="6001" productID="Healing" icon="Healing" description="HP를 소량 회복합니다." effectType="Health" effectValue="50"/>
+  <ShopData ID="2" name="6002" productID="gambleHealing" icon="gambleHealing" description="확률 회복합니다." effectType="Health" effectValue="50"/>
+  <ShopData ID="3" name="6003" productID="GetExpendTime" icon="GetExpendTime" description="추측할 수 있는 시간이 늘어납니다." effectType="Skill" effectValue="3"/>
+  <ShopData ID="4" name="6004" productID="GetTheWorld" icon="GetTheWorld" description="잠시 시간을 멈춥니다(소모성)" effectType="Skill" effectValue="1"/>
+  <ShopData ID="5" name="6005" productID="upLuck" icon="upLuck" description="운을 늘립니다." effectType="Passive" effectValue="1"/>
+  <ShopData ID="100" name="6100" productID="Healing" icon="Healing" description="HP를 회복합니다." effectType="Health" effectValue="50"/>
+  <ShopData ID="101" name="6101" productID="gambleHealing" icon="gambleHealing" description="확률 회복합니다.2" effectType="Health" effectValue="50"/>
+  <ShopData ID="102" name="6102" productID="GetExpendTime" icon="GetExpendTime" description="추측할 수 있는 시간이 늘어납니다.2" effectType="Skill" effectValue="5"/>
+  <ShopData ID="103" name="6103" productID="GetTheWorld" icon="GetTheWorld" description="잠시 시간을 멈춥니다(소모성)" effectType="Skill" effectValue="2"/>
+  <ShopData ID="104" name="6104" productID="upLuck" icon="upLuck" description="운을 늘립니다.2" effectType="Passive" effectValue="2"/>
+  <ShopData ID="105" name="6105" productID="FreePass" icon="FreePass" description="스테이지 한번을 넘깁니다.2" effectType="Skill" effectValue="1"/>
 </ArrayOfShopData>

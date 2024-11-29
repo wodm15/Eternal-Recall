@@ -13,6 +13,7 @@ TagManager:
   - CustomManager
   - GuessManager
   - StaticManager
+  - StrangerManager
   layers:
   - Default
   - TransparentFX
