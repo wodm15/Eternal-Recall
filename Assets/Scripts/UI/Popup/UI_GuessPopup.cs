@@ -4,6 +4,10 @@ using UnityEngine;
 
 public class UI_GuessPopup : UI_Popup
 {
+    [SerializeField] UI_PlayerScene playerScene;
+    [SerializeField] UI_PlayPopup playPopup;
+
+
     public bool isCorrect = true;
     enum Texts
     {
@@ -40,7 +44,8 @@ public class UI_GuessPopup : UI_Popup
     {
         if (base.Init() == false)
 			return false;
-
+        
+        //GuessPlayer 생성
         GuessPlayer = Managers.Resource.Instantiate("Player");
         GuessPlayer.transform.position = new Vector3(-2,0,0);
         GuessPlayer.transform.localScale = new Vector3(1,1,1);
@@ -48,14 +53,22 @@ public class UI_GuessPopup : UI_Popup
         GameObject _customManager = GameObject.FindGameObjectWithTag("GuessManager");
         CustomManager customManager = _customManager.GetComponent<CustomManager>();
         AnimationManager animationManager = _customManager.GetComponent<AnimationManager>();
-        if(_customManager == null || animationManager == null || customManager == null)
-            Debug.LogError("custommanger null");
+
+        //Guessplayer 질문 빼고 stranger와 같이 꾸미기
+        customManager.hair = Managers.Game.StrangerIndex[0];
+        customManager.clothes = Managers.Game.StrangerIndex[1];
+        customManager.eyebrow = Managers.Game.StrangerIndex[2];
+        customManager.eye = Managers.Game.StrangerIndex[3];
+        customManager.mouth = Managers.Game.StrangerIndex[4];
+        customManager.emotion = Managers.Game.StrangerIndex[5];
+        animationManager.ani = Managers.Game.StrangerIndex[6];
 
 		BindText(typeof(Texts));
 		BindButton(typeof(Buttons));
         BindImage(typeof(Images));
 
-        GetText((int)Texts.Question).text = Managers.GetText(Define.Question1);
+        // Text에 설정
+        GetText((int)Texts.Question).text = Managers.GetText(Define.HairQuestion);
 
         //정답일 때
         GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(() => OnClickConfirmButton(true));
@@ -145,7 +158,11 @@ public class UI_GuessPopup : UI_Popup
         #endregion
 
 
+
+        //추측 플레이어 퀴즈빼고 매칭시켜두기
+
         return true;
+
     }
 
     void OnClickConfirmButton(bool isCorrect)

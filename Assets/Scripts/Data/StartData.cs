@@ -22,6 +22,9 @@ public class StartData
 	[XmlAttribute]
     public int PassTicket; //스테이지 1개 바로 패스
 
+	[XmlAttribute]
+	public int Stage;
+
 
 
 }

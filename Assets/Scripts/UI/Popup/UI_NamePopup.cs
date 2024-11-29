@@ -7,7 +7,7 @@ using static Define;
 public class UI_NamePopup : UI_Popup
 {
     //플레이어 모습 저장 배열
-    public static int[] playerIndex = new int[6] {0,0,0,0,0,0};
+    int[] playerIndex = new int[6] {0,0,0,0,0,0};
     GameObject Player;
     enum GameObjects
 	{

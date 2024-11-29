@@ -67,8 +67,11 @@ public class Define
 	public const int Intro2 = 20020;
 	public const int Intro3 = 20021;
 
-	public const int Question1 = 30000;
-	public const int Question2 = 30001;
-	public const int Question3 = 30002;
+	public const int HairQuestion = 30000;
+	public const int ClothesQuestion= 30001;
+	public const int EyebrowQuestion = 30002;
+	public const int EyeQuestion = 30003;
+	public const int MouthQuestion = 30004;
+	public const int AnimationQuestion = 30005;
 
 }
