@@ -65,6 +65,8 @@ public class UI_PlayerScene : UI_Scene
 
     public void HPUp()
     {
+        if(Managers.Game.Hp < 0)
+            Managers.Game.Hp = 0;
         GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
     }
 

@@ -39,10 +39,10 @@ public class UI_GetItemPopup : UI_Popup
 
 		foreach (ShopData shopData in Managers.Data.Shops.Values)
 		{
-			 if (Managers.Game.Stage < 10 && shopData.ID >= 1 && shopData.ID <= 100)
+			 if (Managers.Game.Stage < 10 && shopData.ID >= 1 && shopData.ID < 100)
                 _shopData.Add(shopData);
             
-            else if (Managers.Game.Stage >= 10 && Managers.Game.Stage < 20 && shopData.ID > 100 && shopData.ID <= 200)
+            else if (Managers.Game.Stage >= 10 && Managers.Game.Stage < 20 && shopData.ID >= 100 && shopData.ID < 200)
                 _shopData.Add(shopData);
 		}
 
@@ -122,10 +122,7 @@ public class UI_GetItemPopup : UI_Popup
         switch (selectedItem.effectType)
         {
             case "Health":
-                
-                Managers.Game.Hp += (int)selectedItem.effectValue;
-                Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100);
-                playerScene.HPUp();
+                UpdateHealth(selectedItem);
                 break;
             case "Skill":
                 UpdateSkill(selectedItem);
@@ -151,6 +148,18 @@ public class UI_GetItemPopup : UI_Popup
         Managers.UI.ShowPopupUI<UI_CountPopup>();
     }
 
+    //체력 업데이트
+    void UpdateHealth(ShopData selectedItem)
+    {
+        if(selectedItem.productID == "Healing")
+            Managers.Game.Hp += (int)selectedItem.effectValue;
+        else if(selectedItem.productID == "gambleHealing")
+            Managers.Game.Hp += Random.Range(0, (int)selectedItem.effectValue);
+
+        Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
+        playerScene.HPUp();
+    }
+
     //스킬 업데이트용
     void UpdateSkill(ShopData selectedItem)
     {
@@ -171,7 +180,7 @@ public class UI_GetItemPopup : UI_Popup
     {
         if(selectedItem.productID == "upLuck")
             Managers.Game.LuckPercent += (int)selectedItem.effectValue;
-        else if(selectedItem.productID == "upDefense")
+        else if(selectedItem.productID == "upDefence")
             Managers.Game.Defence += (int)selectedItem.effectValue;
     }
 

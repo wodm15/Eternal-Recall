@@ -15,6 +15,7 @@ public class DataManager
     public StartData Start { get; private set; }
     public Dictionary<int, TextData> Texts { get; private set; }
     public Dictionary<int, ShopData> Shops { get; private set; }
+    public Dictionary<int, QuizData> Quiz { get; private set; }
 
 
     public void Init()
@@ -22,6 +23,7 @@ public class DataManager
         Start = LoadSingleXml<StartData>("StartData");
         Texts = LoadXml<TextDataLoader, int, TextData>("TextData").MakeDic();
         Shops = LoadXml<ShopDataLoader, int, ShopData>("ShopData").MakeDic();
+        Quiz = LoadXml<QuizDataLoader, int, QuizData>("QuizData").MakeDic();
     }
 
     

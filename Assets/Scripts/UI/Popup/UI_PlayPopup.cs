@@ -39,7 +39,7 @@ public class UI_PlayPopup : UI_Popup
         
         return true;
     }
-    public void Update()
+    public void FixedUpdate()
     {
        if (Stranger != null && _speed > 0.01) 
         {

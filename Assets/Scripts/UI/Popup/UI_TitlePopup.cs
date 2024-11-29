@@ -38,7 +38,7 @@ public class UI_TitlePopup : UI_Popup
 		GetText((int)Texts.CollectionButtonText).text = Managers.GetText(Define.CollectionButtonText);
 
 		Managers.Sound.Clear();
-		Managers.Sound.Play(Sound.Effect, "Sound_MainTitle");
+		Managers.Sound.Play(Sound.Bgm, "Sound_MainTitle");
 		return true;
 	}
 

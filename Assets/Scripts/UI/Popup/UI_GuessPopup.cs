@@ -12,6 +12,9 @@ public class UI_GuessPopup : UI_Popup
 
     public int IncorrectCount;
 
+    // 타이머와 클릭 연동
+    bool IsButtonClick;
+
 
     public bool isCorrect = true;
     enum Texts
@@ -62,6 +65,7 @@ public class UI_GuessPopup : UI_Popup
         RemainTime = Managers.Game.GuessTimer;
         //추측 틀린 개수 (hp 깎기용)
         IncorrectCount = 0;
+        IsButtonClick = false;
   
         //GuessPlayer 생성
         GuessPlayer = Managers.Resource.Instantiate("Player");
@@ -86,9 +90,14 @@ public class UI_GuessPopup : UI_Popup
         BindImage(typeof(Images));
 
         // Text에 설정
-        GetText((int)Texts.Question).text = Managers.GetText(Define.HairQuestion);
         GetText((int)Texts.Timer).text = $"{Managers.Game.GuessTimer}";
-
+        //Text에 질문 설정
+        foreach (QuizData Quiz in Managers.Data.Quiz.Values)
+        {
+            if(Quiz.ID == 600)
+                GetText((int)Texts.Question).text = $"{Quiz.kor}";
+        }
+        
         //정답일 때
         GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(() => OnClickConfirmButton(isCorrect));
 
@@ -101,75 +110,89 @@ public class UI_GuessPopup : UI_Popup
         {
             customManager.hair--; 
             customManager.numberCheck(0);  
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.HairPlus).gameObject.BindEvent(() => 
         {
             customManager.hair++; 
             customManager.numberCheck(0);  
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 
         GetButton((int)Buttons.ClothesMinus).gameObject.BindEvent(() => 
         {
             customManager.clothes--; 
             customManager.numberCheck(1);  
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.ClothesPlus).gameObject.BindEvent(() => 
         {
             customManager.clothes++; 
             customManager.numberCheck(1);  
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 
         GetButton((int)Buttons.EyebrowMinus).gameObject.BindEvent(() => 
         {
             customManager.eyebrow--; 
-            customManager.numberCheck(2);  
+            customManager.numberCheck(2); 
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
         });
         GetButton((int)Buttons.EyebrowPlus).gameObject.BindEvent(() => 
         {
             customManager.eyebrow++; 
             customManager.numberCheck(2);  
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 
         GetButton((int)Buttons.EyeMinus).gameObject.BindEvent(() => 
         {
             customManager.eye--; 
             customManager.numberCheck(3);  
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.EyePlus).gameObject.BindEvent(() => 
         {
             customManager.eye++; 
             customManager.numberCheck(3);  
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 
         GetButton((int)Buttons.MouthMinus).gameObject.BindEvent(() => 
         {
             customManager.mouth--; 
             customManager.numberCheck(4);  
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.MouthPlus).gameObject.BindEvent(() => 
         {
             customManager.mouth++; 
-            customManager.numberCheck(4);  
+            customManager.numberCheck(4); 
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
         });
 
         GetButton((int)Buttons.EmotionMinus).gameObject.BindEvent(() => 
         {
             customManager.emotion--; 
             customManager.numberCheck(5);  
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.EmotionPlus).gameObject.BindEvent(() => 
         {
             customManager.emotion++; 
             customManager.numberCheck(5);  
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 
         GetButton((int)Buttons.AnimationMinus).gameObject.BindEvent(() => 
         {
             animationManager.PlayAni(false);
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.AnimtionPlus).gameObject.BindEvent(() => 
         {
             animationManager.PlayAni(true);
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         
         
@@ -188,14 +211,17 @@ public class UI_GuessPopup : UI_Popup
     {
         //시간이 다 지나면 자동으로 false
         RemainTime -= Time.deltaTime;
+        if (RemainTime < 0)
+            RemainTime = 0;
+            
         GetText((int)Texts.Timer).text = $"{(int)RemainTime}";
-
-        if (RemainTime <= 0)
+        
+        if (RemainTime <= 0 && IsButtonClick == false)
         {
             GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
-            GetImage((int)Images.Wrong).gameObject.SetActive(true);
+            GetImage((int)Images.Wrong).gameObject.SetActive(false);
             
-            Invoke("HideResultAndProceed", 2f);
+            OnClickConfirmButton(isCorrect);
         }
     }
 
@@ -222,18 +248,22 @@ public class UI_GuessPopup : UI_Popup
 
     void OnClickConfirmButton(bool isCorrect)
     {
+        IsButtonClick = true;
+        Managers.Sound.Play(Sound.Effect, "Sound_CheckButton");
         //캐릭 비교
         CompareCharacter();
 
-        if (IncorrectCount == 0)
+        if (IncorrectCount == 0) //정답일 경우
         {
-            Debug.Log("정답: Correct");
+            Managers.Sound.Play(Sound.Effect, "Sound_Correct");
             GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
             GetImage((int)Images.Correct).gameObject.SetActive(true);
         }
-        else
+        else //오답일 경우
         {
             Debug.Log("오답: Wrong");
+            Managers.Sound.Play(Sound.Effect, "Sound_Wrong");
+            Debug.Log($"Defence 값 : {Managers.Game.Defence}");
             Managers.Game.Hp = Managers.Game.Hp - (IncorrectCount * Define.Damage) + Managers.Game.Defence;
             GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
             GetImage((int)Images.Wrong).gameObject.SetActive(true);
@@ -267,6 +297,7 @@ public class UI_GuessPopup : UI_Popup
     //게임오버일 경우
     void GameOver()
     {
+        Managers.Sound.Stop(Sound.Bgm);
         Managers.Sound.Play(Sound.Effect, "Sound_GameOver");
         Managers.UI.ClosePopupUI(this);
         Managers.UI.CloseSceneUI();
