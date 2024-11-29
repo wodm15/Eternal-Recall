@@ -28,6 +28,9 @@ public class StartData
 	[XmlAttribute]
 	public int GuessTimer;
 
+	[XmlAttribute]
+	public int	Defence;
+
 
 
 }

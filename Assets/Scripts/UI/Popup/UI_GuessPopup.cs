@@ -1,13 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Define;
 
 public class UI_GuessPopup : UI_Popup
 {
-    [SerializeField] UI_PlayerScene playerScene;
+    UI_PlayerScene playerScene;
     [SerializeField] UI_PlayPopup playPopup;
     //timer
     public float RemainTime;
+
+    public int IncorrectCount;
 
 
     public bool isCorrect = true;
@@ -43,23 +46,31 @@ public class UI_GuessPopup : UI_Popup
     }
     
     GameObject GuessPlayer;
+    GameObject _customManager;
+    CustomManager customManager;
+    AnimationManager animationManager;
+
+
     public override bool Init()
     {
         if (base.Init() == false)
 			return false;
 
+        playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
+
         //타이머 관리
         RemainTime = Managers.Game.GuessTimer;
+        //추측 틀린 개수 (hp 깎기용)
+        IncorrectCount = 0;
   
-
         //GuessPlayer 생성
         GuessPlayer = Managers.Resource.Instantiate("Player");
         GuessPlayer.transform.position = new Vector3(-2,0,0);
         GuessPlayer.transform.localScale = new Vector3(1,1,1);
 
-        GameObject _customManager = GameObject.FindGameObjectWithTag("GuessManager");
-        CustomManager customManager = _customManager.GetComponent<CustomManager>();
-        AnimationManager animationManager = _customManager.GetComponent<AnimationManager>();
+        _customManager = GameObject.FindGameObjectWithTag("GuessManager");
+        customManager = _customManager.GetComponent<CustomManager>();
+        animationManager = _customManager.GetComponent<AnimationManager>();
 
         //Guessplayer 질문 빼고 stranger와 같이 꾸미기
         customManager.hair = Managers.Game.StrangerIndex[0];
@@ -79,7 +90,7 @@ public class UI_GuessPopup : UI_Popup
         GetText((int)Texts.Timer).text = $"{Managers.Game.GuessTimer}";
 
         //정답일 때
-        GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(() => OnClickConfirmButton(true));
+        GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(() => OnClickConfirmButton(isCorrect));
 
         GetImage((int)Images.Correct).gameObject.SetActive(false);
         GetImage((int)Images.Wrong).gameObject.SetActive(false);
@@ -188,9 +199,33 @@ public class UI_GuessPopup : UI_Popup
         }
     }
 
+    //stranger와 추측 캐릭터 비교
+    void CompareCharacter()
+    {
+        if (customManager.hair != Managers.Game.StrangerIndex[0])
+            IncorrectCount++;
+        if (customManager.clothes != Managers.Game.StrangerIndex[1])
+            IncorrectCount++;
+        if (customManager.eyebrow != Managers.Game.StrangerIndex[2])
+            IncorrectCount++;
+        if (customManager.eye != Managers.Game.StrangerIndex[3])
+            IncorrectCount++;
+        if (customManager.mouth != Managers.Game.StrangerIndex[4])
+            IncorrectCount++;
+        if (customManager.emotion != Managers.Game.StrangerIndex[5])
+            IncorrectCount++;
+        if (animationManager.ani != Managers.Game.StrangerIndex[6])
+            IncorrectCount++;
+
+            Debug.Log($"틀린 개수: {IncorrectCount}");
+    }
+
     void OnClickConfirmButton(bool isCorrect)
     {
-        if (isCorrect)
+        //캐릭 비교
+        CompareCharacter();
+
+        if (IncorrectCount == 0)
         {
             Debug.Log("정답: Correct");
             GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
@@ -199,10 +234,13 @@ public class UI_GuessPopup : UI_Popup
         else
         {
             Debug.Log("오답: Wrong");
+            Managers.Game.Hp = Managers.Game.Hp - (IncorrectCount * Define.Damage) + Managers.Game.Defence;
             GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
             GetImage((int)Images.Wrong).gameObject.SetActive(true);
         }
         
+        playerScene.HPUp();
+
         Invoke("HideResultAndProceed", 2f);
     }
 
@@ -212,12 +250,33 @@ public class UI_GuessPopup : UI_Popup
         GetImage((int)Images.Correct).gameObject.SetActive(false);
         GetImage((int)Images.Wrong).gameObject.SetActive(false);
 
-        // 후속 작업 실행
-        Managers.UI.ClosePopupUI(this);
         if (GuessPlayer != null)
         {
             Managers.Resource.Destroy(GuessPlayer);
         }
+        if(Managers.Game.Hp <0)
+        {
+            GameOver();
+        }
+        else
+        {
+            GameContinue();
+        }
+    }
+
+    //게임오버일 경우
+    void GameOver()
+    {
+        Managers.Sound.Play(Sound.Effect, "Sound_GameOver");
+        Managers.UI.ClosePopupUI(this);
+        Managers.UI.CloseSceneUI();
+        // Managers.UI.ShowPopupUI<UI_GameOverPopup>();
+        Managers.UI.ShowPopupUI<UI_TitlePopup>();
+    }
+    //게임오버가 아닌 경우 
+    void GameContinue()
+    {
+        Managers.UI.ClosePopupUI(this);
         Managers.UI.ShowPopupUI<UI_GetItemPopup>();
     }
 

@@ -56,6 +56,8 @@ public class Define
 	public const int MAX_SKILL_COUNT = 50;
 	public const int MAX_ENDING_COUNT = 50;
 
+	//틀린 1개당 데미지
+	public const int Damage = 10;
 
 	//닉네임 입력
 	public const int WriteNickname = 6500;
@@ -73,5 +75,6 @@ public class Define
 	public const int EyeQuestion = 30003;
 	public const int MouthQuestion = 30004;
 	public const int AnimationQuestion = 30005;
+
 
 }
