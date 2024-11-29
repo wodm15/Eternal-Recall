@@ -41,8 +41,10 @@ public class GameData
         public int Hp;
         public int MaxHp;
         public int LuckPercent; // 아이템 획득 확률 증가
+        public int Defence;
         public int ExpendTime;
         public int DownSpeed; // 지나가는 스피드 내리기
+        public int GuessTimer; //추측 시간
 
         //스킬
         public int TheWorld; //3초간 멈추기
@@ -79,9 +81,13 @@ public class GameManagerEx
     public int Hp
     {
         get { return _gameData.Hp; }
-        set { _gameData.Hp = Mathf.Clamp(value, 0, MaxHp); }
+        set { _gameData.Hp = value; }
     }
-
+    public int Defence
+    {
+        get {return _gameData.Defence;}
+        set { _gameData.Defence = value;}
+    }
     public int ExpendTime
     {
         get { return _gameData.ExpendTime;}
@@ -102,6 +108,11 @@ public class GameManagerEx
     {
         get { return _gameData.DownSpeed;}
         set { _gameData.DownSpeed= value; }
+    }
+    public int GuessTimer
+    {
+        get{ return _gameData.GuessTimer;}
+        set { _gameData.GuessTimer=value;}
     }
 
 
@@ -135,6 +146,8 @@ public class GameManagerEx
         DownSpeed = data.DownSpeed;
         TheWorld = data.TheWorld;
         PassTicket = data.PassTicket;
+        GuessTimer = data.GuessTimer;
+        Defence = data.Defence;
 
         // DownSpeed= data.DownSpeed; // 지나가는 스피드 내리기
 

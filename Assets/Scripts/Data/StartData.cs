@@ -25,6 +25,12 @@ public class StartData
 	[XmlAttribute]
 	public int Stage;
 
+	[XmlAttribute]
+	public int GuessTimer;
+
+	[XmlAttribute]
+	public int	Defence;
+
 
 
 }

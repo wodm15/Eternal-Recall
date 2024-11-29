@@ -153,4 +153,8 @@ public class UIManager
 
         return null; // UI_Scene이 T 타입이 아니면 null 반환
     }
+	public void CloseSceneUI()
+	{
+		Managers.Resource.Destroy(SceneUI.gameObject);
+	}
 }

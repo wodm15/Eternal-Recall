@@ -8,6 +8,7 @@ public class UI_PlayerScene : UI_Scene
     enum Texts
     {
         Stage,
+        HPText,
     }
     enum Images
     {
@@ -51,6 +52,7 @@ public class UI_PlayerScene : UI_Scene
         BindImage(typeof(Images));
 
         GetText((int)Texts.Stage).text = $"Stage : {Managers.Game.Stage}";
+        GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
         
         return true;
     }
@@ -59,6 +61,11 @@ public class UI_PlayerScene : UI_Scene
     {
         Managers.Game.Stage++;
         GetText((int)Texts.Stage).text = $"Stage : {Managers.Game.Stage}";
+    }
+
+    public void HPUp()
+    {
+        GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
     }
 
 }

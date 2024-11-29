@@ -122,7 +122,10 @@ public class UI_GetItemPopup : UI_Popup
         switch (selectedItem.effectType)
         {
             case "Health":
+                
                 Managers.Game.Hp += (int)selectedItem.effectValue;
+                Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100);
+                playerScene.HPUp();
                 break;
             case "Skill":
                 UpdateSkill(selectedItem);
@@ -145,7 +148,6 @@ public class UI_GetItemPopup : UI_Popup
     {
         Managers.UI.ClosePopupUI(this);
         playerScene.StageUp();
-        playerScene.animationManager.ani = Managers.Game.StrangerIndex[6];
         Managers.UI.ShowPopupUI<UI_CountPopup>();
     }
 
@@ -153,7 +155,7 @@ public class UI_GetItemPopup : UI_Popup
     void UpdateSkill(ShopData selectedItem)
     {
         if(selectedItem.productID == "GetExpendTime")
-            Managers.Game.ExpendTime += (int)selectedItem.effectValue;
+            Managers.Game.GuessTimer += (int)selectedItem.effectValue;
         else if(selectedItem.productID == "GetTheWorld")
             {
                 Managers.Game.TheWorld += (int)selectedItem.effectValue;
@@ -169,6 +171,8 @@ public class UI_GetItemPopup : UI_Popup
     {
         if(selectedItem.productID == "upLuck")
             Managers.Game.LuckPercent += (int)selectedItem.effectValue;
+        else if(selectedItem.productID == "upDefense")
+            Managers.Game.Defence += (int)selectedItem.effectValue;
     }
 
 
