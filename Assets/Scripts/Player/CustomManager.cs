@@ -26,7 +26,7 @@ public class CustomManager : MonoBehaviour {
 
    
     // Use this for initialization
-    void Start () {
+    public void Start () {
         ct = calType.DEFAULT;
         callChangeItem();
         for (int i = 0 ; i <= (int)itemEnum.EMOTION; i++)

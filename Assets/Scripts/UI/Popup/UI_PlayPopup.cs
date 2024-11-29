@@ -31,7 +31,7 @@ public class UI_PlayPopup : UI_Popup
 
         BindButton(typeof(Buttons));
         BindText(typeof(Texts));
-
+        // GetButton((int)Buttons.TheWorldButton).image.sprite = Managers.Resource.Load<Sprite>($"{
         GetButton((int)Buttons.TheWorldButton).gameObject.BindEvent(TheWorldEvent);
 
         GetText((int)Texts.TheWorldText).text = "The World :" + Managers.Game.TheWorld.ToString();

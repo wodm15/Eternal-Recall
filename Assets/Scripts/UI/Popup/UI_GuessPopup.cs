@@ -91,12 +91,29 @@ public class UI_GuessPopup : UI_Popup
 
         // Text에 설정
         GetText((int)Texts.Timer).text = $"{Managers.Game.GuessTimer}";
+
+        #region 질문 설정 알고리즘
         //Text에 질문 설정
-        foreach (QuizData Quiz in Managers.Data.Quiz.Values)
-        {
-            if(Quiz.ID == 600)
-                GetText((int)Texts.Question).text = $"{Quiz.kor}";
-        }
+
+        LoadRandomQuiz();
+        // foreach (QuizData Quiz in Managers.Data.Quiz.Values)
+        // {
+        //     if( (Managers.Game.Stage-1) / 10 + 1 == Quiz.Difficulty)
+        //         Quiz += 
+        //     // for(int i=1 ; i<= Quiz.quizType.Length ; i++)
+        //     // {
+        //     //     string isQuiz = Quiz.quizType.Substring(0, 1); // 맨 앞 문자 추출
+        //     //     Quiz.quizType = Quiz.quizType.Substring(1);    // 맨 앞 문자 제거
+
+        //     //     if(isQuiz == "1")
+        //     // }
+
+            
+        //     if(Quiz.ID == 600)
+        //         GetText((int)Texts.Question).text = $"{Quiz.kor}";
+        // }
+
+        #endregion
         
         //정답일 때
         GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(() => OnClickConfirmButton(isCorrect));
@@ -108,13 +125,20 @@ public class UI_GuessPopup : UI_Popup
         #region 추측플레이어 바인딩
         GetButton((int)Buttons.HairMinus).gameObject.BindEvent(() => 
         {
-            customManager.hair--; 
+            if ( customManager.hairM.count.Length >  customManager.hair+1)
+                {
+                    customManager.hair--; 
+                }
+            
             customManager.numberCheck(0);  
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.HairPlus).gameObject.BindEvent(() => 
         {
-            customManager.hair++; 
+            if (customManager.hairM.count.Length > customManager.hair+1)
+                    {
+                        customManager.hair++; 
+                    }
             customManager.numberCheck(0);  
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
@@ -284,7 +308,7 @@ public class UI_GuessPopup : UI_Popup
         {
             Managers.Resource.Destroy(GuessPlayer);
         }
-        if(Managers.Game.Hp <0)
+        if(Managers.Game.Hp <= 0)
         {
             GameOver();
         }
@@ -300,15 +324,38 @@ public class UI_GuessPopup : UI_Popup
         Managers.Sound.Stop(Sound.Bgm);
         Managers.Sound.Play(Sound.Effect, "Sound_GameOver");
         Managers.UI.ClosePopupUI(this);
-        Managers.UI.CloseSceneUI();
-        // Managers.UI.ShowPopupUI<UI_GameOverPopup>();
-        Managers.UI.ShowPopupUI<UI_TitlePopup>();
+        Managers.UI.ShowPopupUI<UI_GameOverPopup>();
     }
     //게임오버가 아닌 경우 
     void GameContinue()
     {
         Managers.UI.ClosePopupUI(this);
         Managers.UI.ShowPopupUI<UI_GetItemPopup>();
+    }
+
+    void LoadRandomQuiz()
+    {
+        List<QuizData> filteredQuizzes = new List<QuizData>();
+
+        foreach (QuizData quiz in Managers.Data.Quiz.Values)
+        {
+            if ((Managers.Game.Stage - 1) / 10 + 1 == quiz.Difficulty)
+            {
+                filteredQuizzes.Add(quiz);
+            }
+        }
+
+        if (filteredQuizzes.Count > 0)
+        {
+            QuizData randomQuiz = filteredQuizzes[Random.Range(0, filteredQuizzes.Count)];
+
+            // 선택된 퀴즈의 질문 텍스트 출력
+            GetText((int)Texts.Question).text = $"{randomQuiz.kor}";
+        }
+        else
+        {
+            Debug.LogWarning("조건에 맞는 퀴즈가 없습니다.");
+        }
     }
 
 }

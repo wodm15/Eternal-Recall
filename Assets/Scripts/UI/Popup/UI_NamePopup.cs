@@ -34,6 +34,10 @@ public class UI_NamePopup : UI_Popup
         if (base.Init() == false)
 			return false;
 
+        Player = Managers.Resource.Instantiate("StaticPlayer");
+        Player.transform.position = Vector3.zero;
+        Player.transform.localScale = new Vector3(1, 1, 1);
+
         BindObject(typeof(GameObjects));
 		BindText(typeof(Texts));
 		BindButton(typeof(Buttons));
@@ -114,10 +118,9 @@ public class UI_NamePopup : UI_Popup
         Debug.Log($"Input ID {_inputField.text}");
 
         Managers.Game.Name = _inputField.text;
-
+        Managers.Resource.Destroy(Player);
 		// Managers.UI.ShowPopupUI<UI_IntroPopup>();
         Managers.UI.ClosePopupUI(this);
-        //Temp
         Managers.UI.ShowPopupUI<UI_CountPopup>();
         Managers.UI.ShowSceneUI<UI_PlayerScene>();
     }

@@ -65,6 +65,7 @@ public class Define
 	public const int StartButtonText = 10000;
 	public const int ContinueButtonText = 10001;
 	public const int CollectionButtonText = 10002;
+	public const int SkillChoseText = 100;
 	public const int Intro1 = 20019;
 	public const int Intro2 = 20020;
 	public const int Intro3 = 20021;
@@ -75,6 +76,7 @@ public class Define
 	public const int EyeQuestion = 30003;
 	public const int MouthQuestion = 30004;
 	public const int AnimationQuestion = 30005;
+
 
 
 }

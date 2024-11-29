@@ -19,7 +19,11 @@ public class UI_GetItemPopup : UI_Popup
     {
         Item1,
         Item2,
-        Item3
+        Item3,
+    }
+    enum Images
+    {
+        EffectImage,
     }
 
     enum Texts
@@ -27,6 +31,8 @@ public class UI_GetItemPopup : UI_Popup
         Text1,
         Text2,
         Text3,
+        ExplainText,
+        EffectText
     }
     
     public override bool Init()
@@ -48,6 +54,9 @@ public class UI_GetItemPopup : UI_Popup
 
         BindButton(typeof(Buttons));
         BindText(typeof(Texts));
+        BindImage(typeof(Images));
+
+        GetText((int)Texts.ExplainText).text = Managers.GetText(Define.SkillChoseText);
         
         GetButton((int)Buttons.Item1).gameObject.BindEvent(OnClickItem1);
         GetButton((int)Buttons.Item2).gameObject.BindEvent(OnClickItem2);
@@ -123,16 +132,35 @@ public class UI_GetItemPopup : UI_Popup
         {
             case "Health":
                 UpdateHealth(selectedItem);
+                // ShowEffectImage();
                 break;
             case "Skill":
                 UpdateSkill(selectedItem);
+                // GetText((int)Texts.EffectText).text = $"스킬 {selectedItem.effectType} {selectedItem.effectValue}얻었습니다. ";
+                // ShowEffectImage();
                 break;
             case "Passive":
                 updatePassive(selectedItem);
+                // GetText((int)Texts.EffectText).text = $"패시브 스킬 {selectedItem.effectType} {selectedItem.effectValue}얻었습니다.";
+                // ShowEffectImage();
                 break;
         }
     }
 
+    // void ShowEffectImage()
+    // {
+    // GetImage((int)Images.EffectImage).gameObject.SetActive(true);
+
+    //     // 3초 후에 EffectImage를 숨기는 Coroutine 호출
+    //     StartCoroutine(HideEffectImageAfterDelay(3f));
+    // }
+
+    // // 3초 후에 EffectImage 숨기기
+    // IEnumerator HideEffectImageAfterDelay(float delay)
+    // {
+    //     yield return new WaitForSeconds(delay);  // 지정된 시간(3초)만큼 기다림
+    //     GetImage((int)Images.EffectImage).gameObject.SetActive(false);
+    // }
     //리스트와 배열 청소하기
     public void ClearShopData()
     {
@@ -143,18 +171,39 @@ public class UI_GetItemPopup : UI_Popup
     //마지막 팝업용
     void onClickEnd()
     {
-        Managers.UI.ClosePopupUI(this);
-        playerScene.StageUp();
-        Managers.UI.ShowPopupUI<UI_CountPopup>();
+        //만약 행운으로 인해 스킬을 한번 더 획득
+        if(Random.Range(1, 101) <= Managers.Game.LuckPercent)
+        {
+            Managers.UI.ClosePopupUI(this);
+            playerScene.StageUp();
+            playerScene.StageUp();
+            Debug.Log("행운 효과로 인해 2배 상승");
+            Managers.UI.ShowPopupUI<UI_CountPopup>();
+        }
+
+        //행운이 있었어도 확률에 안걸리면
+        else
+        {
+            Managers.UI.ClosePopupUI(this);
+            playerScene.StageUp();
+            Managers.UI.ShowPopupUI<UI_CountPopup>();
+        }
     }
 
     //체력 업데이트
     void UpdateHealth(ShopData selectedItem)
     {
         if(selectedItem.productID == "Healing")
+        {
             Managers.Game.Hp += (int)selectedItem.effectValue;
+            // GetText((int)Texts.EffectText).text = $"Healing {(int)selectedItem.effectValue}";
+        }
         else if(selectedItem.productID == "gambleHealing")
-            Managers.Game.Hp += Random.Range(0, (int)selectedItem.effectValue);
+        {
+            int gameble = Random.Range(0, (int)selectedItem.effectValue);
+            Managers.Game.Hp += gameble;
+            // GetText((int)Texts.EffectText).text = $"gambleHealing {gameble}";
+        }
 
         Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
         playerScene.HPUp();
@@ -169,7 +218,10 @@ public class UI_GetItemPopup : UI_Popup
             {
                 Managers.Game.TheWorld += (int)selectedItem.effectValue;
                 Debug.Log($"TheWorld 개수 : {Managers.Game.TheWorld}");
-
+            }
+        else if(selectedItem.productID == "FreePass")
+            {
+                Managers.Game.Stage += 1;
             }
         else
             Debug.Log("NO SKILL FOUND");
