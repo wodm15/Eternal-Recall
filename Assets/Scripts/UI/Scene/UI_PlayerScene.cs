@@ -9,6 +9,7 @@ public class UI_PlayerScene : UI_Scene
     {
         Stage,
         HPText,
+        PlayerInfo,
     }
     enum Images
     {
@@ -46,13 +47,14 @@ public class UI_PlayerScene : UI_Scene
 
         customManager.clothes = 10;
         customManager.numberCheck(1);  
-        animationManager.PlayAni(true);
 
         BindText(typeof(Texts));
         BindImage(typeof(Images));
 
         GetText((int)Texts.Stage).text = $"Stage : {Managers.Game.Stage}";
         GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
+        GetText((int)Texts.PlayerInfo).text = $"Luck : {Managers.Game.LuckPercent}% \nDefence : {Managers.Game.Defence} \nExpendTime: {Managers.Game.ExpendTime} \nGuessTimer: {Managers.Game.GuessTimer}";
+        
         
         return true;
     }
@@ -61,10 +63,14 @@ public class UI_PlayerScene : UI_Scene
     {
         Managers.Game.Stage++;
         GetText((int)Texts.Stage).text = $"Stage : {Managers.Game.Stage}";
+        GetText((int)Texts.PlayerInfo).text = $"Luck : {Managers.Game.LuckPercent}% \nDefence : {Managers.Game.Defence} \nExpendTime: {Managers.Game.ExpendTime} \nGuessTimer: {Managers.Game.GuessTimer}";
     }
 
     public void HPUp()
     {
+        animationManager.ani = 6;
+        if(Managers.Game.Hp < 0)
+            Managers.Game.Hp = 0;
         GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
     }
 

@@ -153,8 +153,18 @@ public class UIManager
 
         return null; // UI_Scene이 T 타입이 아니면 null 반환
     }
-	public void CloseSceneUI()
+	public void ClosePlayerSceneUI()
 	{
-		Managers.Resource.Destroy(SceneUI.gameObject);
+		GameObject playerScene = GameObject.Find("UI_PlayerScene");
+		if (playerScene != null)
+		{
+			Managers.Resource.Destroy(playerScene);
+		}
+
+		GameObject staticPlayer = GameObject.Find("StaticPlayer");
+		if (staticPlayer != null)
+		{
+			Managers.Resource.Destroy(staticPlayer);
+		}
 	}
 }

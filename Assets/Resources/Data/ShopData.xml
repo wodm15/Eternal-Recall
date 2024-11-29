@@ -9,8 +9,8 @@
   <ShopData ID="100" name="6100" productID="Healing" icon="Healing" description="HP를 회복합니다." effectType="Health" effectValue="50"/>
   <ShopData ID="101" name="6101" productID="gambleHealing" icon="gambleHealing" description="확률 회복합니다.2" effectType="Health" effectValue="50"/>
   <ShopData ID="102" name="6102" productID="GetExpendTime" icon="GetExpendTime" description="추측할 수 있는 시간이 늘어납니다. +5초" effectType="Skill" effectValue="5"/>
-  <ShopData ID="103" name="6103" productID="GetTheWorld" icon="GetTheWorld" description="잠시 시간을 멈춥니다 +2 (소모성)" effectType="Skill" effectValue="2"/>
+  <ShopData ID="103" name="6103" productID="GetTheWorld" icon="GetTheWorld" description="잠시 시간을 멈춥니다 2개 획득 (소모성)" effectType="Skill" effectValue="2"/>
   <ShopData ID="104" name="6104" productID="upLuck" icon="upLuck" description="운을 2% 늘립니다." effectType="Passive" effectValue="2"/>
-  <ShopData ID="105" name="6105" productID="FreePass" icon="FreePass" description="스테이지 한번을 넘깁니다." effectType="Skill" effectValue="1"/>
+  <ShopData ID="105" name="6105" productID="FreePass" icon="FreePass" description="스테이지 한턴 넘깁니다." effectType="Skill" effectValue="1"/>
   <ShopData ID="106" name="6106" productID="upDefence" icon="upDefence" description="방어력을 2 늘립니다." effectType="Passive" effectValue="2"/>
 </ArrayOfShopData>

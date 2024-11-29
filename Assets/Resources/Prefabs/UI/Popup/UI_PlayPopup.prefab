@@ -67,8 +67,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 21300000, guid: 37de44bcb59b8174497def1957cc490b, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -358,7 +358,7 @@ MonoBehaviour:
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
-    m_Bits: 4294967295
+    m_Bits: 0
 --- !u!114 &2051935211044567458
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -371,6 +371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dee50abb6b98b41a0ba0b69b8af51c59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerIndex: 000000000000000000000000000000000000000000000000
   UI_PlayeScene: {fileID: 3165543159659987403, guid: ab257300e073f462a9e814105a631e89, type: 3}
   _speed: 5
 --- !u!1 &7734389405628595523
@@ -454,6 +455,6 @@ SpriteRenderer:
   m_Size: {x: 40.96, y: 40.96}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0

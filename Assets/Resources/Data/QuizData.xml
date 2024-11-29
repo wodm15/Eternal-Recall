@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfQuizData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <!-- 난이도 1 - 쉬운 질문 -->
+  <QuizData ID="1" kor="헤어스타일은 어떤 스타일이었나요?" Difficulty="1" quizType="1000000" eng="" />
+  <QuizData ID="2" kor="복장은 어떤 스타일이었나요?" Difficulty="1" quizType="0100000" eng="" />
+  <QuizData ID="3" kor="눈동자 색깔은 어땠나요?" Difficulty="1" quizType="0001000" eng="" />
+  <QuizData ID="4" kor="입모양은 어땠나요?" Difficulty="1" quizType="0000100" eng="" />
+  <QuizData ID="5" kor="기분은 어땠나요?" Difficulty="1" quizType="0000010" eng="" />
+  <QuizData ID="6" kor="포즈는 어떻게 됐나요?" Difficulty="1" quizType="0000001" eng="" />
+  
+  <QuizData ID="7" kor="헤어스타일을 간단히 설명해주세요" Difficulty="1" quizType="1000000" eng="" />
+  <QuizData ID="8" kor="복장을 간단히 묘사해주세요" Difficulty="1" quizType="0100000" eng="" />
+  <QuizData ID="9" kor="눈동자의 특징을 말해주세요" Difficulty="1" quizType="0001000" eng="" />
+  <QuizData ID="10" kor="기분은 좋았나요, 나빴나요?" Difficulty="1" quizType="0000010" eng="" />
+  <QuizData ID="11" kor="무슨 포즈를 취하고 있었나요?" Difficulty="1" quizType="0000001" eng="" />
+
+  <QuizData ID="12" kor="헤어스타일은 어땠나요?" Difficulty="1" quizType="1000000" eng="" />
+  <QuizData ID="13" kor="복장은 어떤 모양이었나요?" Difficulty="1" quizType="0100000" eng="" />
+  <QuizData ID="14" kor="눈동자는 어떤 색이었나요?" Difficulty="1" quizType="0001000" eng="" />
+  <QuizData ID="15" kor="기분이 좋았나요?" Difficulty="1" quizType="0000010" eng="" />
+  <QuizData ID="16" kor="포즈가 어땠나요?" Difficulty="1" quizType="0000001" eng="" />
+
+  <QuizData ID="17" kor="헤어스타일이 어떤지 말해주세요" Difficulty="1" quizType="1000000" eng="" />
+  <QuizData ID="18" kor="복장이 어떻게 됐는지 말해주세요" Difficulty="1" quizType="0100000" eng="" />
+  <QuizData ID="19" kor="눈동자의 색을 알려주세요" Difficulty="1" quizType="0001000" eng="" />
+  <QuizData ID="20" kor="기분은 어땠나요?" Difficulty="1" quizType="0000010" eng="" />
+  <QuizData ID="21" kor="포즈는 무엇을 했나요?" Difficulty="1" quizType="0000001" eng="" />
+
+  <!-- 난이도 2 - 중간 난이도 질문 -->
+  <QuizData ID="100" kor="헤어스타일과 복장은 어땠나요?" Difficulty="2" quizType="1100000" eng="" />
+  <QuizData ID="101" kor="복장과 기분이 어땠나요?" Difficulty="2" quizType="0100010" eng="" />
+  <QuizData ID="102" kor="눈동자와 포즈는 어떻게 되었나요?" Difficulty="2" quizType="0001010" eng="" />
+  <QuizData ID="103" kor="헤어스타일과 눈동자의 특징을 말해주세요" Difficulty="2" quizType="1001000" eng="" />
+  <QuizData ID="104" kor="기분과 포즈는 어떻게 되었나요?" Difficulty="2" quizType="0000011" eng="" />
+  <QuizData ID="105" kor="헤어스타일과 입모양은 어땠나요?" Difficulty="2" quizType="1000100" eng="" />
+  <QuizData ID="106" kor="눈동자와 입모양의 특징을 설명해주세요" Difficulty="2" quizType="0001100" eng="" />
+  <QuizData ID="107" kor="헤어스타일과 복장의 조화를 말해주세요" Difficulty="2" quizType="1100000" eng="" />
+  <QuizData ID="108" kor="기분과 복장에 대해 설명해주세요" Difficulty="2" quizType="0100010" eng="" />
+  <QuizData ID="109" kor="눈동자와 기분은 어떤 느낌이었나요?" Difficulty="2" quizType="0001010" eng="" />
+  <QuizData ID="110" kor="헤어스타일과 기분에 대해 자세히 묘사해주세요" Difficulty="2" quizType="1000010" eng="" />
+  <QuizData ID="111" kor="복장과 포즈는 어떻게 되었나요?" Difficulty="2" quizType="0100001" eng="" />
+  <QuizData ID="112" kor="헤어스타일과 포즈가 어떻게 되었나요?" Difficulty="2" quizType="1000001" eng="" />
+  <QuizData ID="113" kor="기분과 눈동자의 특징을 설명해주세요" Difficulty="2" quizType="0000011" eng="" />
+  <QuizData ID="114" kor="복장과 눈동자 색깔은 어땠나요?" Difficulty="2" quizType="0101000" eng="" />
+
+  <!-- 난이도 3 - 어려운 질문 -->
+  <QuizData ID="200" kor="헤어스타일, 복장, 그리고 눈동자에 대해 설명해주세요" Difficulty="3" quizType="1111000" eng="" />
+  <QuizData ID="201" kor="헤어스타일과 입모양의 세부사항을 묘사해주세요" Difficulty="3" quizType="1000100" eng="" />
+  <QuizData ID="202" kor="눈동자 색상과 기분을 연결지어 설명해주세요" Difficulty="3" quizType="0001011" eng="" />
+  <QuizData ID="203" kor="헤어스타일과 포즈가 어떻게 어울렸는지 설명해주세요" Difficulty="3" quizType="1000001" eng="" />
+  <QuizData ID="204" kor="복장, 기분, 그리고 포즈의 관계를 말해주세요" Difficulty="3" quizType="0100011" eng="" />
+  <QuizData ID="205" kor="헤어스타일과 눈동자 색깔의 연결을 설명해주세요" Difficulty="3" quizType="1001000" eng="" />
+  <QuizData ID="206" kor="입모양과 기분을 묘사해주세요" Difficulty="3" quizType="0000101" eng="" />
+  <QuizData ID="207" kor="헤어스타일과 기분을 결합한 묘사를 해주세요" Difficulty="3" quizType="1000010" eng="" />
+  <QuizData ID="208" kor="복장과 포즈이 어땠나요" Difficulty="3" quizType="0100001" eng="" />
+  <QuizData ID="209" kor="헤어스타일과 눈동자 색깔의 차이를 설명해주세요" Difficulty="3" quizType="1001000" eng="" />
+  <QuizData ID="210" kor="기분과 포즈가 어떻게 조화를 이루었나요?" Difficulty="3" quizType="0000011" eng="" />
+
+  <!-- 난이도 4 - 높은 난이도의 질문 -->
+  <QuizData ID="300" kor="헤어스타일과 복장을 설명해주세요" Difficulty="4" quizType="1100000" eng="" />
+  <QuizData ID="301" kor="헤어스타일과 눈동자의 특징을 묘사해주세요" Difficulty="4" quizType="1001000" eng="" />
+  <QuizData ID="302" kor="헤어스타일과 기분을 설명해주세요" Difficulty="4" quizType="1000010" eng="" />
+  <QuizData ID="303" kor="헤어스타일과 포즈를 묘사해주세요" Difficulty="4" quizType="1000001" eng="" />
+  <QuizData ID="304" kor="복장과 눈동자의 특징을 설명해주세요" Difficulty="4" quizType="0101000" eng="" />
+  <QuizData ID="305" kor="복장과 기분을 묘사해주세요" Difficulty="4" quizType="0100010" eng="" />
+  <QuizData ID="306" kor="복장과 포즈를 설명해주세요" Difficulty="4" quizType="0100001" eng="" />
+  <QuizData ID="307" kor="눈동자와 입모양을 묘사해주세요" Difficulty="4" quizType="0010100" eng="" />
+  <QuizData ID="308" kor="눈동자와 기분을 설명해주세요" Difficulty="4" quizType="0010010" eng="" />
+  <QuizData ID="309" kor="눈동자와 포즈를 묘사해주세요" Difficulty="4" quizType="0010001" eng="" />
+  <QuizData ID="310" kor="기분과 포즈를 설명해주세요" Difficulty="4" quizType="0001010" eng="" />
+
+  <!-- 난이도 5 - 매우 높은 난이도의 질문 -->
+  <QuizData ID="400" kor="헤어스타일과 복장, 기분, 눈동자, 입모양, 포즈를 모두 설명해주세요" Difficulty="5" quizType="1111111" eng="" />
+  <QuizData ID="401" kor="헤어스타일, 눈동자 색깔, 기분과 포즈를 묘사해주세요" Difficulty="5" quizType="1001011" eng="" />
+  <QuizData ID="402" kor="입모양, 기분, 눈동자, 포즈, 복장에 대해 모두 설명해주세요" Difficulty="5" quizType="0001111" eng="" />
+  <QuizData ID="403" kor="헤어스타일, 기분, 입모양, 눈동자의 특징을 묘사해주세요" Difficulty="5" quizType="1000101" eng="" />
+  <QuizData ID="404" kor="복장, 포즈, 눈동자, 기분의 특징을 설명해주세요" Difficulty="5" quizType="0101011" eng="" />
+  <QuizData ID="405" kor="헤어스타일과 복장, 기분과 포즈를 모두 설명해주세요" Difficulty="5" quizType="1100011" eng="" />
+  <QuizData ID="406" kor="눈동자와 입모양, 포즈의 차이를 설명해주세요" Difficulty="5" quizType="0001110" eng="" />
+  <QuizData ID="407" kor="헤어스타일, 복장, 기분, 입모양을 묘사해주세요" Difficulty="5" quizType="1110100" eng="" />
+  <QuizData ID="408" kor="포즈와 기분, 헤어스타일의 관계를 설명해주세요" Difficulty="5" quizType="0000111" eng="" />
+  <QuizData ID="409" kor="입모양과 눈동자, 기분에 대해 설명해주세요" Difficulty="5" quizType="0001011" eng="" />
+  <QuizData ID="410" kor="헤어스타일, 복장, 기분, 눈동자, 포즈의 전체적인 특징을 묘사해주세요" Difficulty="5" quizType="1111110" eng="" />
+
+  <!-- 난이도 6 - 매우 높은 난이도의 질문 -->
+  <QuizData ID="500" kor="헤어스타일, 복장, 기분, 눈동자, 입모양, 포즈의 모든 특징을 상세히 설명해주세요" Difficulty="6" quizType="1111111" eng="" />
+  <QuizData ID="501" kor="헤어스타일, 복장, 기분, 입모양, 눈동자, 포즈를 각각 묘사해주세요" Difficulty="6" quizType="1111100" eng="" />
+  <QuizData ID="502" kor="헤어스타일, 눈동자 색깔, 기분, 포즈, 입모양의 관계를 설명해주세요" Difficulty="6" quizType="1001011" eng="" />
+  <QuizData ID="503" kor="복장과 기분, 입모양, 눈동자, 포즈의 특징을 모두 묘사해주세요" Difficulty="6" quizType="0101111" eng="" />
+  <QuizData ID="504" kor="헤어스타일, 기분, 포즈, 입모양, 눈동자 각각의 특징을 설명해주세요" Difficulty="6" quizType="1000011" eng="" />
+  <QuizData ID="505" kor="헤어스타일과 복장, 기분과 포즈의 관계를 설명해주세요" Difficulty="6" quizType="1101011" eng="" />
+  <QuizData ID="506" kor="복장, 입모양, 기분, 눈동자, 포즈의 특징을 모두 묘사해주세요" Difficulty="6" quizType="0111111" eng="" />
+  <QuizData ID="507" kor="헤어스타일, 입모양, 기분, 눈동자, 포즈를 각각 설명해주세요" Difficulty="6" quizType="1011100" eng="" />
+  <QuizData ID="508" kor="복장, 포즈, 눈동자, 기분, 입모양의 관계를 묘사해주세요" Difficulty="6" quizType="0101110" eng="" />
+  <QuizData ID="509" kor="헤어스타일, 기분, 입모양, 포즈, 눈동자의 특징을 묘사해주세요" Difficulty="6" quizType="1001101" eng="" />
+  <QuizData ID="510" kor="헤어스타일, 기분, 복장, 포즈, 입모양, 눈동자의 관계를 모두 설명해주세요" Difficulty="6" quizType="1111101" eng="" />
+
+  <!-- 난이도 7 - 재미있고 창의적인 묘사 -->
+  <QuizData ID="600" kor="상상해보세요. 한 사람이 멋진 헤어스타일, 세련된 복장, 즐거운 기분, 반짝이는 눈동자, 입꼬리가 살짝 올라간 모습으로 포즈를 취하고 있어요. 이 사람을 어떻게 묘사할 수 있을까요?" Difficulty="7" quizType="1111111" eng="" />
+  <QuizData ID="601" kor="어떤 사람이 마법처럼 변화하는 중이에요. 그 사람이 갖고 있는 헤어스타일, 기분, 눈동자, 입모양, 포즈는 어떻게 바뀔까요? 상상력을 발휘해 설명해 주세요!" Difficulty="7" quizType="1111111" eng="" />
+  <QuizData ID="602" kor="어떤 인물의 완벽한 모습이 있어요. 그 인물의 헤어스타일, 기분, 눈동자, 입모양, 포즈를 묘사하고, 그 인물이 어떻게 자신감을 드러내는지 설명해주세요." Difficulty="7" quizType="1111111" eng="" />
+  <QuizData ID="603" kor="어떤 사람이 거울을 보며 완전히 새로운 모습을 발견했어요. 그 사람의 헤어스타일, 기분, 눈동자, 입모양, 포즈가 어떻게 달라졌는지 상상해보세요." Difficulty="7" quizType="1111111" eng="" />
+  <QuizData ID="604" kor="영화 속 주인공이 된 당신! 헤어스타일, 기분, 눈동자, 입모양, 포즈를 바꿔서 멋진 장면을 만들어 보세요. 이 장면을 어떻게 묘사할 수 있을까요?" Difficulty="7" quizType="1111111" eng="" />
+  <QuizData ID="605" kor="어떤 이가 완벽하게 자신의 스타일을 찾았어요. 그 사람의 헤어스타일, 기분, 눈동자, 입모양, 포즈를 묘사하고, 그 스타일이 어떻게 완성되었는지 설명해 주세요." Difficulty="7" quizType="1111111" eng="" />
+  <QuizData ID="606" kor="당신이 지금 상상하는 가장 멋진 인물은 어떤 모습인가요? 헤어스타일, 기분, 눈동자, 입모양, 포즈를 모두 묘사하고, 그 인물의 매력을 설명해 보세요." Difficulty="7" quizType="1111111" eng="" />
+  <QuizData ID="607" kor="우주에서 온 외계인이 지구에 왔어요. 그 외계인의 헤어스타일, 기분, 눈동자, 입모양, 포즈는 어떻게 되나요? 그 모습이 지구인들에게 어떻게 보일까요?" Difficulty="7" quizType="1111111" eng="" />
+  <QuizData ID="608" kor="가장 멋진 히어로가 되었다고 상상해 보세요. 당신의 헤어스타일, 기분, 눈동자, 입모양, 포즈는 어떤 모습일까요? 이 모습을 설명해 보세요!" Difficulty="7" quizType="1111111" eng="" />
+  <QuizData ID="609" kor="꿈속에서 만난 상상 속 인물. 그 인물의 헤어스타일, 기분, 눈동자, 입모양, 포즈를 묘사하고, 그 인물이 당신에게 어떤 메시지를 전달하는지 설명해 보세요." Difficulty="7" quizType="1111111" eng="" />
+  <QuizData ID="610" kor="슈퍼스타가 된 당신! 이제 어떤 헤어스타일, 기분, 눈동자, 입모양, 포즈로 팬들에게 인사를 할까요? 그 모습을 묘사하고, 당신의 팬들에게 전달되는 메시지를 설명해주세요." Difficulty="7" quizType="1111111" eng="" />
+
+
+</ArrayOfQuizData>
