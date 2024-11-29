@@ -41,6 +41,7 @@ public class GameData
         public int Hp;
         public int MaxHp;
         public int LuckPercent; // 아이템 획득 확률 증가
+        public int ExpendTime;
         public int DownSpeed; // 지나가는 스피드 내리기
 
         //스킬
@@ -79,6 +80,12 @@ public class GameManagerEx
     {
         get { return _gameData.Hp; }
         set { _gameData.Hp = Mathf.Clamp(value, 0, MaxHp); }
+    }
+
+    public int ExpendTime
+    {
+        get { return _gameData.ExpendTime;}
+        set { _gameData.ExpendTime = value;}
     }
     public int MaxHp
     {

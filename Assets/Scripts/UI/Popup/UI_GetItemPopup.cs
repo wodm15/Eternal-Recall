@@ -8,7 +8,12 @@ using UnityEngine.UI;
 public class UI_GetItemPopup : UI_Popup
 {
     UI_PlayerScene playerScene;
+    
+    //임시로 저장할 조건부 shopData 전체 가져오기
     private List<ShopData> _shopData = new List<ShopData>();
+
+    // 선택된 인덱스를 저장할 리스트
+    private List<int> _selectedIndexes = new List<int>(); 
     public string spritePath = "Sprites/ItemIcon"; 
     enum Buttons
     {
@@ -30,10 +35,15 @@ public class UI_GetItemPopup : UI_Popup
 			return false;
 
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
+        
 
 		foreach (ShopData shopData in Managers.Data.Shops.Values)
 		{
-			_shopData.Add(shopData);
+			 if (Managers.Game.Stage < 10 && shopData.ID >= 1 && shopData.ID <= 100)
+                _shopData.Add(shopData);
+            
+            else if (Managers.Game.Stage >= 10 && Managers.Game.Stage < 20 && shopData.ID > 100 && shopData.ID <= 200)
+                _shopData.Add(shopData);
 		}
 
         BindButton(typeof(Buttons));
@@ -46,7 +56,14 @@ public class UI_GetItemPopup : UI_Popup
        //랜덤 아이템 3개 생성(이미지 + 글자)
         for (int i = 0; i < 3; i++) 
         {
-            int index = Random.Range(0, _shopData.Count);
+            int index;
+            //중복 안되게 진열
+            do
+            {
+                index = Random.Range(0, _shopData.Count);
+            } while (_selectedIndexes.Contains(index));
+
+            _selectedIndexes.Add(index); 
 
             Buttons buttonEnum = (Buttons)i; 
             switch (buttonEnum)
@@ -65,34 +82,93 @@ public class UI_GetItemPopup : UI_Popup
                     break;
             }
         }
-        
-    // Player = Managers.Resource.Instantiate("StaticPlayer");
-    // Player.transform.position = new Vector3(-4,-4,0);
-    // Player.transform.localScale = new Vector3(1,1, 1);
 
         return true;
     }
 
     void OnClickItem1()
     {
-        Debug.Log("getItem1");
-        Managers.UI.ClosePopupUI(this);
-        playerScene.StageUp();
-        // playerScene.animationManager.PlayAni(true);
-        Managers.UI.ShowPopupUI<UI_CountPopup>();
+        int index = _selectedIndexes[0];
+        ShopData selectedItem = _shopData[index];
 
+        ApplyItemEffect(selectedItem);  // 아이템 효과 적용
+        ClearShopData(); //랜덤 선택한 리스트 , 배열 초기화
+        onClickEnd(); // 팝업창 이동
     }
     void OnClickItem2()
     {
-        Debug.Log("getItem2");
-        Managers.UI.ClosePopupUI(this);
-        playerScene.StageUp();
+        int index = _selectedIndexes[1];
+        ShopData selectedItem = _shopData[index];
+
+        ApplyItemEffect(selectedItem);
+
+        ClearShopData();
+        onClickEnd();
     }
     void OnClickItem3()
     {
-        Debug.Log("getItem3");
+        int index = _selectedIndexes[2];
+        ShopData selectedItem = _shopData[index];
+
+        ApplyItemEffect(selectedItem);
+
+        ClearShopData();
+        onClickEnd();
+    }
+    
+    //획득아이템 적용하기
+    void ApplyItemEffect(ShopData selectedItem)
+    {
+        switch (selectedItem.effectType)
+        {
+            case "Health":
+                Managers.Game.Hp += (int)selectedItem.effectValue;
+                break;
+            case "Skill":
+                UpdateSkill(selectedItem);
+                break;
+            case "Passive":
+                updatePassive(selectedItem);
+                break;
+        }
+    }
+
+    //리스트와 배열 청소하기
+    public void ClearShopData()
+    {
+        _shopData.Clear();
+        _selectedIndexes.Clear();
+    }
+
+    //마지막 팝업용
+    void onClickEnd()
+    {
         Managers.UI.ClosePopupUI(this);
         playerScene.StageUp();
+        playerScene.animationManager.ani = Managers.Game.StrangerIndex[6];
+        Managers.UI.ShowPopupUI<UI_CountPopup>();
+    }
+
+    //스킬 업데이트용
+    void UpdateSkill(ShopData selectedItem)
+    {
+        if(selectedItem.productID == "GetExpendTime")
+            Managers.Game.ExpendTime += (int)selectedItem.effectValue;
+        else if(selectedItem.productID == "GetTheWorld")
+            {
+                Managers.Game.TheWorld += (int)selectedItem.effectValue;
+                Debug.Log($"TheWorld 개수 : {Managers.Game.TheWorld}");
+
+            }
+        else
+            Debug.Log("NO SKILL FOUND");
+    }
+
+    //패시브 업데이트용
+    void updatePassive(ShopData selectedItem)
+    {
+        if(selectedItem.productID == "upLuck")
+            Managers.Game.LuckPercent += (int)selectedItem.effectValue;
     }
 
 
