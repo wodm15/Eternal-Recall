@@ -153,7 +153,7 @@ public class UI_GetItemPopup : UI_Popup
     void UpdateSkill(ShopData selectedItem)
     {
         if(selectedItem.productID == "GetExpendTime")
-            Managers.Game.ExpendTime += (int)selectedItem.effectValue;
+            Managers.Game.GuessTimer += (int)selectedItem.effectValue;
         else if(selectedItem.productID == "GetTheWorld")
             {
                 Managers.Game.TheWorld += (int)selectedItem.effectValue;

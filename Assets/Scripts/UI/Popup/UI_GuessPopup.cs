@@ -6,6 +6,8 @@ public class UI_GuessPopup : UI_Popup
 {
     [SerializeField] UI_PlayerScene playerScene;
     [SerializeField] UI_PlayPopup playPopup;
+    //timer
+    public float RemainTime;
 
 
     public bool isCorrect = true;
@@ -13,6 +15,7 @@ public class UI_GuessPopup : UI_Popup
     {
         ConfirmButtonText,
         Question,
+        Timer,
     }
     enum Buttons
     {
@@ -44,7 +47,11 @@ public class UI_GuessPopup : UI_Popup
     {
         if (base.Init() == false)
 			return false;
-        
+
+        //타이머 관리
+        RemainTime = Managers.Game.GuessTimer;
+  
+
         //GuessPlayer 생성
         GuessPlayer = Managers.Resource.Instantiate("Player");
         GuessPlayer.transform.position = new Vector3(-2,0,0);
@@ -69,6 +76,7 @@ public class UI_GuessPopup : UI_Popup
 
         // Text에 설정
         GetText((int)Texts.Question).text = Managers.GetText(Define.HairQuestion);
+        GetText((int)Texts.Timer).text = $"{Managers.Game.GuessTimer}";
 
         //정답일 때
         GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(() => OnClickConfirmButton(true));
@@ -159,10 +167,25 @@ public class UI_GuessPopup : UI_Popup
 
 
 
-        //추측 플레이어 퀴즈빼고 매칭시켜두기
+        //추측 플레이어 퀴즈빼고 매칭시켜두기 TODO
 
         return true;
 
+    }
+
+    void Update()
+    {
+        //시간이 다 지나면 자동으로 false
+        RemainTime -= Time.deltaTime;
+        GetText((int)Texts.Timer).text = $"{(int)RemainTime}";
+
+        if (RemainTime <= 0)
+        {
+            GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
+            GetImage((int)Images.Wrong).gameObject.SetActive(true);
+            
+            Invoke("HideResultAndProceed", 2f);
+        }
     }
 
     void OnClickConfirmButton(bool isCorrect)
@@ -170,11 +193,13 @@ public class UI_GuessPopup : UI_Popup
         if (isCorrect)
         {
             Debug.Log("정답: Correct");
+            GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
             GetImage((int)Images.Correct).gameObject.SetActive(true);
         }
         else
         {
             Debug.Log("오답: Wrong");
+            GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
             GetImage((int)Images.Wrong).gameObject.SetActive(true);
         }
         

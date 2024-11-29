@@ -43,6 +43,7 @@ public class GameData
         public int LuckPercent; // 아이템 획득 확률 증가
         public int ExpendTime;
         public int DownSpeed; // 지나가는 스피드 내리기
+        public int GuessTimer; //추측 시간
 
         //스킬
         public int TheWorld; //3초간 멈추기
@@ -103,6 +104,11 @@ public class GameManagerEx
         get { return _gameData.DownSpeed;}
         set { _gameData.DownSpeed= value; }
     }
+    public int GuessTimer
+    {
+        get{ return _gameData.GuessTimer;}
+        set { _gameData.GuessTimer=value;}
+    }
 
 
     //스킬
@@ -135,6 +141,7 @@ public class GameManagerEx
         DownSpeed = data.DownSpeed;
         TheWorld = data.TheWorld;
         PassTicket = data.PassTicket;
+        GuessTimer = data.GuessTimer;
 
         // DownSpeed= data.DownSpeed; // 지나가는 스피드 내리기
 
