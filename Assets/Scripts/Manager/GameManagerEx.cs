@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+using System.Diagnostics;
 using static Define;
+using UnityEngine;
+
 
 
 [Serializable]
@@ -58,6 +60,9 @@ public class GameData
 
         // 클리어 한 엔딩
 	    public CollectionState[] Endings = new CollectionState[MAX_ENDING_COUNT];
+
+        //그 전 질문
+        public QuizData quizData = new QuizData();
 
     }
 
@@ -130,6 +135,12 @@ public class GameManagerEx
 
     #endregion
 
+    public QuizData quizData
+    {
+        get { return _gameData.quizData; }
+        set { _gameData.quizData = value; }
+    }
+
     #region 컬렉션 & 프로젝트
 
 
@@ -155,4 +166,32 @@ public class GameManagerEx
         // ReApplyCollectionStats(); //컬렉션 스테이터스 추가
     
     }
+
+    //랜덤 퀴즈 생성
+    public QuizData LoadRandomQuiz()
+    {
+        QuizData randomQuiz = null;
+        List<QuizData> filteredQuizzes = new List<QuizData>();
+
+        foreach (QuizData quiz in Managers.Data.Quiz.Values)
+        {
+            if ((Stage - 1) / 10 + 1 == quiz.Difficulty)
+            {
+                filteredQuizzes.Add(quiz);
+            }
+        }
+
+        if (filteredQuizzes.Count > 0)
+        {
+            randomQuiz = filteredQuizzes[UnityEngine.Random.Range(0, filteredQuizzes.Count)];
+
+        }
+        else
+        {
+            UnityEngine.Debug.LogWarning("조건에 맞는 퀴즈가 없습니다.");
+        }
+
+        return randomQuiz;
+    }
+
 }

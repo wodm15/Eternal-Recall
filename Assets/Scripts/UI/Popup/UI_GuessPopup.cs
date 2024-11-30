@@ -6,7 +6,7 @@ using static Define;
 public class UI_GuessPopup : UI_Popup
 {
     UI_PlayerScene playerScene;
-    [SerializeField] UI_PlayPopup playPopup;
+    [SerializeField] UI_QuestionPopup QuestionPopup;
     //timer
     public float RemainTime;
 
@@ -76,15 +76,6 @@ public class UI_GuessPopup : UI_Popup
         customManager = _customManager.GetComponent<CustomManager>();
         animationManager = _customManager.GetComponent<AnimationManager>();
 
-        //Guessplayer 질문 빼고 stranger와 같이 꾸미기
-        customManager.hair = Managers.Game.StrangerIndex[0];
-        customManager.clothes = Managers.Game.StrangerIndex[1];
-        customManager.eyebrow = Managers.Game.StrangerIndex[2];
-        customManager.eye = Managers.Game.StrangerIndex[3];
-        customManager.mouth = Managers.Game.StrangerIndex[4];
-        customManager.emotion = Managers.Game.StrangerIndex[5];
-        animationManager.ani = Managers.Game.StrangerIndex[6];
-
 		BindText(typeof(Texts));
 		BindButton(typeof(Buttons));
         BindImage(typeof(Images));
@@ -96,6 +87,7 @@ public class UI_GuessPopup : UI_Popup
         //Text에 질문 설정
 
         LoadRandomQuiz();
+
         // foreach (QuizData Quiz in Managers.Data.Quiz.Values)
         // {
         //     if( (Managers.Game.Stage-1) / 10 + 1 == Quiz.Difficulty)
@@ -125,7 +117,7 @@ public class UI_GuessPopup : UI_Popup
         #region 추측플레이어 바인딩
         GetButton((int)Buttons.HairMinus).gameObject.BindEvent(() => 
         {
-            if ( customManager.hairM.count.Length >  customManager.hair+1)
+            if ( 0 < customManager.hair )
                 {
                     customManager.hair--; 
                 }
@@ -135,7 +127,7 @@ public class UI_GuessPopup : UI_Popup
         });
         GetButton((int)Buttons.HairPlus).gameObject.BindEvent(() => 
         {
-            if (customManager.hairM.count.Length > customManager.hair+1)
+            if (customManager.hairM.count.Length > customManager.hair)
                     {
                         customManager.hair++; 
                     }
@@ -145,65 +137,99 @@ public class UI_GuessPopup : UI_Popup
 
         GetButton((int)Buttons.ClothesMinus).gameObject.BindEvent(() => 
         {
-            customManager.clothes--; 
+            if ( 0 < customManager.clothes )
+                {
+                    customManager.clothes--; 
+                }
             customManager.numberCheck(1);  
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.ClothesPlus).gameObject.BindEvent(() => 
         {
-            customManager.clothes++; 
+            if (customManager.clothesM.count.Length > customManager.clothes)
+                    {
+                        customManager.clothes++;
+                    }
+
             customManager.numberCheck(1);  
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 
         GetButton((int)Buttons.EyebrowMinus).gameObject.BindEvent(() => 
         {
-            customManager.eyebrow--; 
+            if ( 0 < customManager.eyebrow )
+                {
+                    customManager.eyebrow--; 
+                }
+            
             customManager.numberCheck(2); 
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
         });
         GetButton((int)Buttons.EyebrowPlus).gameObject.BindEvent(() => 
         {
-            customManager.eyebrow++; 
+            if (customManager.eyebrowM.count.Length > customManager.eyebrow )
+                    {
+                        customManager.eyebrow++; 
+                    }
             customManager.numberCheck(2);  
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 
         GetButton((int)Buttons.EyeMinus).gameObject.BindEvent(() => 
         {
-            customManager.eye--; 
+            if ( 0 < customManager.eye )
+                {
+                    customManager.eye--; 
+                }
             customManager.numberCheck(3);  
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.EyePlus).gameObject.BindEvent(() => 
         {
-            customManager.eye++; 
+            if (customManager.eyeM.count.Length > customManager.eye )
+                    {
+                        customManager.eye++; 
+                    }
+
             customManager.numberCheck(3);  
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 
         GetButton((int)Buttons.MouthMinus).gameObject.BindEvent(() => 
         {
-            customManager.mouth--; 
+            if ( 0 < customManager.mouth )
+                {
+                    customManager.mouth--; 
+                }
             customManager.numberCheck(4);  
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.MouthPlus).gameObject.BindEvent(() => 
         {
-            customManager.mouth++; 
+            if (customManager.mouthM.count.Length > customManager.mouth )
+                    {
+                        customManager.mouth++;
+                    } 
             customManager.numberCheck(4); 
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
         });
 
         GetButton((int)Buttons.EmotionMinus).gameObject.BindEvent(() => 
         {
-            customManager.emotion--; 
+            if ( 0 < customManager.emotion )
+                {
+                    customManager.emotion--; 
+                }
+
             customManager.numberCheck(5);  
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.EmotionPlus).gameObject.BindEvent(() => 
         {
-            customManager.emotion++; 
+            if (customManager.emotionM.count.Length > customManager.emotion )
+                    {
+                        customManager.emotion++; 
+                    } 
             customManager.numberCheck(5);  
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
@@ -225,7 +251,6 @@ public class UI_GuessPopup : UI_Popup
 
 
 
-        //추측 플레이어 퀴즈빼고 매칭시켜두기 TODO
 
         return true;
 
@@ -280,17 +305,25 @@ public class UI_GuessPopup : UI_Popup
         if (IncorrectCount == 0) //정답일 경우
         {
             Managers.Sound.Play(Sound.Effect, "Sound_Correct");
+
             GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
             GetImage((int)Images.Correct).gameObject.SetActive(true);
+
+            playerScene.StaticPlayerEx("Correct"); //TODO
+
         }
         else //오답일 경우
         {
             Debug.Log("오답: Wrong");
             Managers.Sound.Play(Sound.Effect, "Sound_Wrong");
-            Debug.Log($"Defence 값 : {Managers.Game.Defence}");
+
+            //데미지 계산
             Managers.Game.Hp = Managers.Game.Hp - (IncorrectCount * Define.Damage) + Managers.Game.Defence;
+
             GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
             GetImage((int)Images.Wrong).gameObject.SetActive(true);
+
+            playerScene.StaticPlayerEx("Wrong"); //TODO
         }
         
         playerScene.HPUp();
@@ -335,27 +368,90 @@ public class UI_GuessPopup : UI_Popup
 
     void LoadRandomQuiz()
     {
-        List<QuizData> filteredQuizzes = new List<QuizData>();
+        QuizData randomQuiz = Managers.Game.quizData;
+        if(randomQuiz == null)
+            Debug.Log("null임");
+        Debug.Log(randomQuiz.kor);
+        QuizFilterButton(randomQuiz.quizType);
 
-        foreach (QuizData quiz in Managers.Data.Quiz.Values)
+        // 선택된 퀴즈의 질문 텍스트 출력
+        GetText((int)Texts.Question).text = $"{randomQuiz.kor}";
+    }
+
+    public void QuizFilterButton(string QuizType)
+    {
+        string[] buttonNames = {
+            "HairButton",
+            "ClothesButton",
+            "EyebrowButton",
+            "EyeButton",
+            "MouthButton",
+            "EmotionButton",
+            "AnimationButton"
+        };
+
+        List<GameObject> activeButtons = new List<GameObject>();
+        RectTransform parentRect = GetComponent<RectTransform>(); // 부모 컨테이너의 RectTransform 가져오기
+
+        // 모든 버튼에 대해 QuizType을 확인하고 활성화 또는 비활성화
+        for (int i = 0; i < QuizType.Length && i < buttonNames.Length; i++)
         {
-            if ((Managers.Game.Stage - 1) / 10 + 1 == quiz.Difficulty)
+            string currentButton = buttonNames[i];
+            GameObject button = Utils.FindChild(gameObject, currentButton, true);
+
+            if (QuizType[i] == '1') // QuizType의 값이 '1'이면 버튼을 활성화
             {
-                filteredQuizzes.Add(quiz);
+                button.SetActive(true);
+                activeButtons.Add(button); // 활성화된 버튼 리스트에 추가
+            }
+            else // QuizType의 값이 '0'이면 버튼 비활성화
+            {
+                button.SetActive(false);
+
+                // i 값에 따라 customManager의 속성 설정
+                if (i == 0)
+                {
+                    customManager.hair = Managers.Game.StrangerIndex[0];
+                }
+                else if (i == 1)
+                {
+                    customManager.clothes = Managers.Game.StrangerIndex[1];
+                }
+                else if (i == 2)
+                {
+                    customManager.eyebrow = Managers.Game.StrangerIndex[2];
+                }
+                else if (i == 3)
+                {
+                    customManager.eye = Managers.Game.StrangerIndex[3];
+                }
+                else if (i == 4)
+                {
+                    customManager.mouth = Managers.Game.StrangerIndex[4];
+                }
+                else if (i == 5)
+                {
+                    customManager.emotion = Managers.Game.StrangerIndex[5];
+                }
+                else if (i == 6)
+                {
+                    animationManager.ani = Managers.Game.StrangerIndex[6];
+                }
             }
         }
 
-        if (filteredQuizzes.Count > 0)
-        {
-            QuizData randomQuiz = filteredQuizzes[Random.Range(0, filteredQuizzes.Count)];
+        // 활성화된 버튼들을 위로 정렬
+        float spacing = 50f; // 버튼 간 간격 (조정 가능)
+        float yOffset = 0f;
 
-            // 선택된 퀴즈의 질문 텍스트 출력
-            GetText((int)Texts.Question).text = $"{randomQuiz.kor}";
-        }
-        else
+        foreach (GameObject button in activeButtons)
         {
-            Debug.LogWarning("조건에 맞는 퀴즈가 없습니다.");
+            RectTransform buttonRect = button.GetComponent<RectTransform>();
+            buttonRect.anchoredPosition = new Vector2(buttonRect.anchoredPosition.x, -yOffset);
+            yOffset += spacing; // 다음 버튼의 Y 위치 증가
         }
     }
+
+
 
 }

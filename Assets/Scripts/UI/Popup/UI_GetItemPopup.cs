@@ -23,7 +23,6 @@ public class UI_GetItemPopup : UI_Popup
     }
     enum Images
     {
-        EffectImage,
     }
 
     enum Texts
@@ -32,7 +31,6 @@ public class UI_GetItemPopup : UI_Popup
         Text2,
         Text3,
         ExplainText,
-        EffectText
     }
     
     public override bool Init()
@@ -102,7 +100,7 @@ public class UI_GetItemPopup : UI_Popup
 
         ApplyItemEffect(selectedItem);  // 아이템 효과 적용
         ClearShopData(); //랜덤 선택한 리스트 , 배열 초기화
-        onClickEnd(); // 팝업창 이동
+        onClickEnd(selectedItem); // 팝업창 이동
     }
     void OnClickItem2()
     {
@@ -112,7 +110,7 @@ public class UI_GetItemPopup : UI_Popup
         ApplyItemEffect(selectedItem);
 
         ClearShopData();
-        onClickEnd();
+        onClickEnd(selectedItem);
     }
     void OnClickItem3()
     {
@@ -122,7 +120,7 @@ public class UI_GetItemPopup : UI_Popup
         ApplyItemEffect(selectedItem);
 
         ClearShopData();
-        onClickEnd();
+        onClickEnd(selectedItem);
     }
     
     //획득아이템 적용하기
@@ -132,35 +130,19 @@ public class UI_GetItemPopup : UI_Popup
         {
             case "Health":
                 UpdateHealth(selectedItem);
-                // ShowEffectImage();
+
                 break;
             case "Skill":
                 UpdateSkill(selectedItem);
-                // GetText((int)Texts.EffectText).text = $"스킬 {selectedItem.effectType} {selectedItem.effectValue}얻었습니다. ";
-                // ShowEffectImage();
+
                 break;
             case "Passive":
                 updatePassive(selectedItem);
-                // GetText((int)Texts.EffectText).text = $"패시브 스킬 {selectedItem.effectType} {selectedItem.effectValue}얻었습니다.";
-                // ShowEffectImage();
+
                 break;
         }
     }
 
-    // void ShowEffectImage()
-    // {
-    // GetImage((int)Images.EffectImage).gameObject.SetActive(true);
-
-    //     // 3초 후에 EffectImage를 숨기는 Coroutine 호출
-    //     StartCoroutine(HideEffectImageAfterDelay(3f));
-    // }
-
-    // // 3초 후에 EffectImage 숨기기
-    // IEnumerator HideEffectImageAfterDelay(float delay)
-    // {
-    //     yield return new WaitForSeconds(delay);  // 지정된 시간(3초)만큼 기다림
-    //     GetImage((int)Images.EffectImage).gameObject.SetActive(false);
-    // }
     //리스트와 배열 청소하기
     public void ClearShopData()
     {
@@ -169,15 +151,15 @@ public class UI_GetItemPopup : UI_Popup
     }
 
     //마지막 팝업용
-    void onClickEnd()
+    void onClickEnd(ShopData selectedItem = null)
     {
         //만약 행운으로 인해 스킬을 한번 더 획득
         if(Random.Range(1, 101) <= Managers.Game.LuckPercent)
         {
             Managers.UI.ClosePopupUI(this);
             playerScene.StageUp();
-            playerScene.StageUp();
             Debug.Log("행운 효과로 인해 2배 상승");
+            ApplyItemEffect(selectedItem);
             Managers.UI.ShowPopupUI<UI_CountPopup>();
         }
 
@@ -191,7 +173,7 @@ public class UI_GetItemPopup : UI_Popup
     }
 
     //체력 업데이트
-    void UpdateHealth(ShopData selectedItem)
+    ShopData UpdateHealth(ShopData selectedItem)
     {
         if(selectedItem.productID == "Healing")
         {
@@ -207,10 +189,11 @@ public class UI_GetItemPopup : UI_Popup
 
         Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
         playerScene.HPUp();
+        return selectedItem;
     }
 
     //스킬 업데이트용
-    void UpdateSkill(ShopData selectedItem)
+    ShopData UpdateSkill(ShopData selectedItem)
     {
         if(selectedItem.productID == "GetExpendTime")
             Managers.Game.GuessTimer += (int)selectedItem.effectValue;
@@ -225,16 +208,19 @@ public class UI_GetItemPopup : UI_Popup
             }
         else
             Debug.Log("NO SKILL FOUND");
+        
+        return selectedItem;
     }
 
     //패시브 업데이트용
-    void updatePassive(ShopData selectedItem)
+    ShopData updatePassive(ShopData selectedItem)
     {
         if(selectedItem.productID == "upLuck")
             Managers.Game.LuckPercent += (int)selectedItem.effectValue;
         else if(selectedItem.productID == "upDefence")
             Managers.Game.Defence += (int)selectedItem.effectValue;
-    }
 
+        return selectedItem;
+    }
 
 }
