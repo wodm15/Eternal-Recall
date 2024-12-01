@@ -47,15 +47,17 @@ public class UI_GetItemPopup : UI_Popup
 
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
         
+        // shopData 스테이지별 픽업
+        int stageRangeStart = (Managers.Game.Stage / 10) * 100;  //Stage 10이면 100, Stage 20이면 200, ...
+        int stageRangeEnd = stageRangeStart + 100;
 
-		foreach (ShopData shopData in Managers.Data.Shops.Values)
-		{
-			 if (Managers.Game.Stage < 10 && shopData.ID >= 1 && shopData.ID < 100)
+        foreach (ShopData shopData in Managers.Data.Shops.Values)
+        {
+            if (shopData.ID >= stageRangeStart && shopData.ID < stageRangeEnd)
+            {
                 _shopData.Add(shopData);
-            
-            else if (Managers.Game.Stage >= 10 && Managers.Game.Stage < 20 && shopData.ID >= 100 && shopData.ID < 200)
-                _shopData.Add(shopData);
-		}
+            }
+        }
 
         BindButton(typeof(Buttons));
         BindText(typeof(Texts));
@@ -160,7 +162,7 @@ public class UI_GetItemPopup : UI_Popup
     //마지막 팝업용
     void onClickEnd(ShopData selectedItem = null)
     {
-
+        Managers.Game.SaveGame();
         //stranger 캐릭터와 Player 삭제
         GameObject PassingPlayer = GameObject.Find("Stranger");
         if (PassingPlayer != null)
@@ -225,10 +227,11 @@ public class UI_GetItemPopup : UI_Popup
             }
         else if(selectedItem.productID == "FreePass")
             {
-                //HP를 6 회복, 운을 1% 올리고 스테이지 한턴 넘깁니다.
+                Debug.Log($"TheWorld 개수 : {(int)selectedItem.effectValues[0]} {(int)selectedItem.effectValues[1]} {(int)selectedItem.effectValues[2]}");
+                //HP, 운, 스테이지 순서
                 Managers.Game.Hp += (int)selectedItem.effectValues[0];
                 Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
-                Managers.Game.LuckPercent += (int)selectedItem.effectValues[0];
+                Managers.Game.LuckPercent += (int)selectedItem.effectValues[1];
                 Managers.Game.Stage += 1;
             }
         else

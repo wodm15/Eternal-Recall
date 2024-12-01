@@ -15,15 +15,52 @@
   <ShopData ID="102" name="6102" productID="GetExpendTime" icon="GetExpendTime" description="추측할 수 있는 시간이 늘어납니다. +5초" effectType="Skill" effectValue="5"/>
   <ShopData ID="103" name="6103" productID="GetTheWorld" icon="GetTheWorld" description="잠시 시간을 멈춥니다 2개 획득 (소모성)" effectType="Skill" effectValue="2"/>
   <ShopData ID="104" name="6104" productID="upLuck" icon="upLuck" description="운을 2% 늘립니다." effectType="Passive" effectValue="2"/>
-  <ShopData ID="105" name="6105" productID="FreePass" icon="FreePass" description="스테이지 한턴 넘깁니다." effectType="Skill" effectValue="1"/>
+  <ShopData ID="105" name="6105" productID="FreePass" icon="FreePass" description="HP를 3 회복, 운을 1% 올리고 스테이지 한턴 넘깁니다." effectType="Skill" effectValue="{3,1,1}"/>
   <ShopData ID="106" name="6106" productID="upDefence" icon="upDefence" description="방어력을 2 늘립니다." effectType="Passive" effectValue="2"/>
 
   <!-- 난이도 3 SHOP -->
   <ShopData ID="200" name="6200" productID="Healing" icon="Healing" description="HP를 12 회복합니다." effectType="Health" effectValue="12"/>
-  <ShopData ID="201" name="6201" productID="gambleHealing" icon="gambleHealing" description="HP를 1~24 확률 회복합니다.2" effectType="Health" effectValue="24"/>
+  <ShopData ID="201" name="6201" productID="gambleHealing" icon="gambleHealing" description="HP를 1~24 확률 회복합니다." effectType="Health" effectValue="24"/>
   <ShopData ID="202" name="6202" productID="GetExpendTime" icon="GetExpendTime" description="추측할 수 있는 시간이 늘어납니다. +7초" effectType="Skill" effectValue="7"/>
   <ShopData ID="203" name="6203" productID="GetTheWorld" icon="GetTheWorld" description="잠시 시간을 멈춥니다 3개 획득 (소모성)" effectType="Skill" effectValue="3"/>
   <ShopData ID="204" name="6204" productID="upLuck" icon="upLuck" description="운을 3% 늘립니다." effectType="Passive" effectValue="3"/>
-  <ShopData ID="205" name="6205" productID="FreePass" icon="FreePass" description="HP를 6 회복, 운을 1% 올리고 스테이지 한턴 넘깁니다." effectType="Skill" effectValue="{1,2,3}"/>
+  <ShopData ID="205" name="6205" productID="FreePass" icon="FreePass" description="HP를 6 회복, 운을 2% 올리고 스테이지 한턴 넘깁니다." effectType="Skill" effectValue="{6,2,1}"/>
   <ShopData ID="206" name="6206" productID="upDefence" icon="upDefence" description="방어력을 3 늘립니다." effectType="Passive" effectValue="3"/>
+
+  <!-- 난이도 4 SHOP -->
+  <ShopData ID="300" name="6300" productID="Healing" icon="Healing" description="HP를 18 회복합니다." effectType="Health" effectValue="18"/>
+  <ShopData ID="301" name="6301" productID="gambleHealing" icon="gambleHealing" description="HP를 1~36 확률 회복합니다." effectType="Health" effectValue="36"/>
+  <ShopData ID="302" name="6302" productID="GetExpendTime" icon="GetExpendTime" description="추측할 수 있는 시간이 늘어납니다. +9초" effectType="Skill" effectValue="9"/>
+  <ShopData ID="303" name="6303" productID="GetTheWorld" icon="GetTheWorld" description="잠시 시간을 멈춥니다 4개 획득 (소모성)" effectType="Skill" effectValue="4"/>
+  <ShopData ID="304" name="6304" productID="upLuck" icon="upLuck" description="운을 4% 늘립니다." effectType="Passive" effectValue="4"/>
+  <ShopData ID="305" name="6305" productID="FreePass" icon="FreePass" description="스테이지 한턴 넘깁니다." effectType="Skill" effectValue="1"/>
+  <ShopData ID="306" name="6306" productID="upDefence" icon="upDefence" description="방어력을 4 늘립니다." effectType="Passive" effectValue="4"/>
+  
+  <!-- 난이도 5 SHOP -->
+  <ShopData ID="400" name="6400" productID="Healing" icon="Healing" description="HP를 24 회복합니다." effectType="Health" effectValue="24"/>
+  <ShopData ID="401" name="6401" productID="gambleHealing" icon="gambleHealing" description="HP를 1~48 확률 회복합니다." effectType="Health" effectValue="48"/>
+  <ShopData ID="402" name="6402" productID="GetExpendTime" icon="GetExpendTime" description="추측할 수 있는 시간이 늘어납니다. +12초" effectType="Skill" effectValue="12"/>
+  <ShopData ID="403" name="6403" productID="GetTheWorld" icon="GetTheWorld" description="잠시 시간을 멈춥니다 5개 획득 (소모성)" effectType="Skill" effectValue="5"/>
+  <ShopData ID="404" name="6404" productID="upLuck" icon="upLuck" description="운을 5% 늘립니다." effectType="Passive" effectValue="5"/>
+  <ShopData ID="405" name="6405" productID="FreePass" icon="FreePass" description="스테이지 한턴 넘깁니다." effectType="Skill" effectValue="1"/>
+  <ShopData ID="406" name="6406" productID="upDefence" icon="upDefence" description="방어력을 5 늘립니다." effectType="Passive" effectValue="5"/>
+
+  <!-- 난이도 6 SHOP -->
+  <ShopData ID="500" name="6500" productID="Healing" icon="Healing" description="HP를 30 회복합니다." effectType="Health" effectValue="30"/>
+  <ShopData ID="501" name="6501" productID="gambleHealing" icon="gambleHealing" description="HP를 1~60 확률 회복합니다." effectType="Health" effectValue="60"/>
+  <ShopData ID="502" name="6502" productID="GetExpendTime" icon="GetExpendTime" description="추측할 수 있는 시간이 늘어납니다. +15초" effectType="Skill" effectValue="15"/>
+  <ShopData ID="503" name="6503" productID="GetTheWorld" icon="GetTheWorld" description="잠시 시간을 멈춥니다 6개 획득 (소모성)" effectType="Skill" effectValue="6"/>
+  <ShopData ID="504" name="6504" productID="upLuck" icon="upLuck" description="운을 6% 늘립니다." effectType="Passive" effectValue="6"/>
+  <ShopData ID="505" name="6505" productID="FreePass" icon="FreePass" description="스테이지 한턴 넘깁니다." effectType="Skill" effectValue="1"/>
+  <ShopData ID="506" name="6506" productID="upDefence" icon="upDefence" description="방어력을 6 늘립니다." effectType="Passive" effectValue="6"/>
+
+  <!-- 난이도 7 SHOP -->
+  <ShopData ID="600" name="6600" productID="Healing" icon="Healing" description="HP를 36 회복합니다." effectType="Health" effectValue="36"/>
+  <ShopData ID="601" name="6601" productID="gambleHealing" icon="gambleHealing" description="HP를 1~72 확률 회복합니다." effectType="Health" effectValue="72"/>
+  <ShopData ID="602" name="6602" productID="GetExpendTime" icon="GetExpendTime" description="추측할 수 있는 시간이 늘어납니다. +18초" effectType="Skill" effectValue="18"/>
+  <ShopData ID="603" name="6603" productID="GetTheWorld" icon="GetTheWorld" description="잠시 시간을 멈춥니다 7개 획득 (소모성)" effectType="Skill" effectValue="7"/>
+  <ShopData ID="604" name="6604" productID="upLuck" icon="upLuck" description="운을 7% 늘립니다." effectType="Passive" effectValue="7"/>
+  <ShopData ID="605" name="6605" productID="FreePass" icon="FreePass" description="스테이지 한턴 넘깁니다." effectType="Skill" effectValue="1"/>
+  <ShopData ID="606" name="6606" productID="upDefence" icon="upDefence" description="방어력을 7 늘립니다." effectType="Passive" effectValue="7"/>
+
 </ArrayOfShopData>

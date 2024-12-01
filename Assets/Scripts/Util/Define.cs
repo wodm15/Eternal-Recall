@@ -60,7 +60,7 @@ public class Define
 	public const int Damage = 10;
 
 	//닉네임 입력
-	public const int WriteNickname = 6500;
+	public const int WriteNickname = 6500;	
 	
 	public const int StartButtonText = 10000;
 	public const int ContinueButtonText = 10001;
@@ -69,6 +69,7 @@ public class Define
 	public const int Intro1 = 20019;
 	public const int Intro2 = 20020;
 	public const int Intro3 = 20021;
+	public const int DataResetConfirm = 20022;
 
 	public const int HairQuestion = 30000;
 	public const int ClothesQuestion= 30001;
@@ -77,6 +78,8 @@ public class Define
 	public const int MouthQuestion = 30004;
 	public const int AnimationQuestion = 30005;
 
+	public const int GameEndText = 50000;
+	public const int GoToTitleText = 50001;
 
 
 }

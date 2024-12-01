@@ -323,9 +323,6 @@ public class UI_GuessPopup : UI_Popup
             GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
             GetImage((int)Images.Wrong).gameObject.SetActive(true);
             
-            // if(tmp)
-            //     tmp.transform.position = new Vector3(0, 0, 0);
-            //     tmp.transform.localScale = new Vector3(0.005f, 0.005f, 0);
             
             playerScene.StaticPlayerEx("Wrong"); //TODO
         }
@@ -358,14 +355,16 @@ public class UI_GuessPopup : UI_Popup
     //게임오버일 경우
     void GameOver()
     {
+        Managers.Game.SaveGame();
         Managers.Sound.Stop(Sound.Bgm);
-        Managers.Sound.Play(Sound.Effect, "Sound_GameOver");
         Managers.UI.ClosePopupUI(this);
         Managers.UI.ShowPopupUI<UI_GameOverPopup>();
+        
     }
     //게임오버가 아닌 경우 
     void GameContinue()
     {
+        Managers.Game.SaveGame();
         Managers.UI.ClosePopupUI(this);
         Managers.UI.ShowPopupUI<UI_GetItemPopup>();
     }
@@ -395,7 +394,7 @@ public class UI_GuessPopup : UI_Popup
         };
 
         List<GameObject> activeButtons = new List<GameObject>();
-        RectTransform parentRect = GetComponent<RectTransform>(); // 부모 컨테이너의 RectTransform 가져오기
+        // RectTransform parentRect = GetComponent<RectTransform>(); // 부모 컨테이너의 RectTransform 가져오기
 
         // 모든 버튼에 대해 QuizType을 확인하고 활성화 또는 비활성화
         for (int i = 0; i < QuizType.Length && i < buttonNames.Length; i++)

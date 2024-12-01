@@ -39,29 +39,64 @@ public class UI_TitlePopup : UI_Popup
 
 		Managers.Sound.Clear();
 		Managers.Sound.Play(Sound.Bgm, "Sound_MainTitle");
+
+		// GameObject SoundRoot = GameObject.Find("@SoundRoot");
+		// if(SoundRoot)
+		// 	SoundRoot.SetActive(false);
+
 		return true;
 	}
 
 void OnClickStartButton()
 	{
 		Debug.Log("OnClickStartButton");
-        
-		//TODO
-		Managers.UI.ClosePopupUI(this);
-		Managers.UI.ShowPopupUI<UI_NamePopup>();
 
+		if (Managers.Game.HasSavedData())
+		{
+			Managers.Game.Init();
+			Managers.Game.LoadGame();
+
+			Managers.UI.ClosePopupUI(this);
+			Managers.UI.ShowPopupUI<UI_ConfirmPopup>();
+		}
+		else
+		{
+			Managers.Game.Init();
+
+			Managers.UI.ClosePopupUI(this);
+			Managers.UI.ShowPopupUI<UI_NamePopup>();
+		}	
+		//TODO
+
+
+	// }
 	}
 
 	void OnClickContinueButton()
 	{
 		Debug.Log("OnClickContinueButton");
-        //ui 추가
+		// Managers.Sound.Play(Sound.Effect, ("Sound_"));
+		Managers.Game.Init();
+		if(!Managers.Game.LoadGame())
+			{
+
+			}
+		else
+		{
+			Managers.UI.ClosePopupUI(this);
+			Managers.UI.ShowSceneUI<UI_PlayerScene>();
+			Managers.UI.ShowPopupUI<UI_CountPopup>();
+		}
 
 	}
 
 	void OnClickCollectionButton()
 	{
+		Managers.Sound.Play(Sound.Effect, ("Sound_"));
+		Managers.Game.Init();
+		Managers.Game.LoadGame();
+
 		Debug.Log("OnClickCollectionButton");
-        //ui 추가
+		// Managers.UI.ShowPopupUI<UI_CollectionPopup>();
 	}
 }
