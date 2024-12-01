@@ -1,9 +1,8 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics;
 using static Define;
 using UnityEngine;
+using System.IO;
 
 
 
@@ -147,25 +146,22 @@ public class GameManagerEx
     #endregion
 
 
-    public void Init()
-    {
-        //초기 세팅
-		StartData data = Managers.Data.Start;
-        Stage = data.Stage;
-    	Hp = data.maxHp;
-        LuckPercent = data.LuckPercent;
-        DownSpeed = data.DownSpeed;
-        TheWorld = data.TheWorld;
-        PassTicket = data.PassTicket;
-        GuessTimer = data.GuessTimer;
-        Defence = data.Defence;
+public void Init()
+{
+    // 초기 세팅
+    StartData data = Managers.Data.Start;
 
-        // DownSpeed= data.DownSpeed; // 지나가는 스피드 내리기
+    Stage = data.Stage;
+    Hp = data.maxHp;
+    LuckPercent = data.LuckPercent;
+    DownSpeed = data.DownSpeed;
+    TheWorld = data.TheWorld;
+    PassTicket = data.PassTicket;
+    GuessTimer = data.GuessTimer;
+    Defence = data.Defence;
+ 
+}
 
-
-        // ReApplyCollectionStats(); //컬렉션 스테이터스 추가
-    
-    }
 
     //랜덤 퀴즈 생성
     public QuizData LoadRandomQuiz()
@@ -194,4 +190,37 @@ public class GameManagerEx
         return randomQuiz;
     }
 
+
+    #region Save & Load	
+	public string _path = Application.persistentDataPath + "/SaveData.json";
+
+	public void SaveGame()
+	{
+		string jsonStr = JsonUtility.ToJson(Managers.Game.SaveData);
+		File.WriteAllText(_path, jsonStr);
+		Debug.Log($"Save Game Completed : {_path}");
+	}
+
+	public bool LoadGame()
+	{
+		if (File.Exists(_path) == false)
+			return false;
+
+		string fileStr = File.ReadAllText(_path);
+		GameData data = JsonUtility.FromJson<GameData>(fileStr);
+		if (data != null)
+		{
+			Managers.Game.SaveData = data;
+		}
+
+		Debug.Log($"Save Game Loaded : {_path}");
+		return true;
+	}
+
+    public bool HasSavedData()
+    {
+        return File.Exists(Application.persistentDataPath + "/SaveData.json");
+    }
+    
+	#endregion
 }

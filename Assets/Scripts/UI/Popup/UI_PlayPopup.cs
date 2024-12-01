@@ -45,7 +45,7 @@ public class UI_PlayPopup : UI_Popup
        if (Stranger != null && _speed > 0.01) 
         {
             Stranger.transform.position += new Vector3(_speed * Time.deltaTime, 0, 0);
-            if(Stranger.transform.position.x >= 10)
+            if(Stranger.transform.position.x >= 13)
             {
                 Debug.Log("stranger Passed");
                 Managers.Sound.Play(Sound.Effect, "Sound_Question");

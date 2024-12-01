@@ -24,6 +24,14 @@ public class UI_GameOverPopup : UI_Popup
 		BindButton(typeof(Buttons));
         // BindImage(typeof(Images));
         
+        GameObject guessPlayer = GameObject.Find("Player");
+        if(guessPlayer != null)
+            Managers.Resource.Destroy(guessPlayer);
+        GameObject Stranger = GameObject.Find("Stranger");
+        if(guessPlayer != null)
+            Managers.Resource.Destroy(Stranger);
+
+        // Managers.UI.ClosePlayerSceneUI();
         Managers.Sound.Clear();
         Managers.Sound.Play(Sound.Effect, "Sound_Gameover");
 
@@ -36,10 +44,11 @@ public class UI_GameOverPopup : UI_Popup
 
     void OnClickConfirmButton()
     {
-        Managers.Sound.Clear();
-        Managers.UI.ClosePopupUI(this);  
-        Managers.UI.ClosePlayerSceneUI();
-        Managers.UI.ShowPopupUI<UI_TitlePopup>();  
+        //TODO
+        // Managers.UI.ClosePopupUI(this);
+        // //TODO 게임 데이터 저장
+        // Managers.UI.ClosePlayerSceneUI();
+        // Managers.UI.ShowPopupUI<UI_TitlePopup>();  
         
     }
 }

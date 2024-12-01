@@ -17,7 +17,6 @@ public class UI_PlayerScene : UI_Scene
         HPBG, //hp 배경바
     }
     
-    GameManagerEx InitStat;
     UI_PlayPopup uI_PlayPopup;
     GameObject StaticPlayer;
     GameObject Character;
@@ -32,9 +31,7 @@ public class UI_PlayerScene : UI_Scene
         if (base.Init() == false)
 			return false;
 
-        //캐릭터 초기 스탯 가져오기
-        Managers.Game.Init();
-        InitStat = Managers.Game; 
+
         //TODO
 
         //static 캐릭터
@@ -46,15 +43,12 @@ public class UI_PlayerScene : UI_Scene
         customManager = _customManager.GetComponent<CustomManager>();
         animationManager = _customManager.GetComponent<AnimationManager>();
 
-        customManager.clothes = 10;
-        customManager.numberCheck(1);  
-
         BindText(typeof(Texts));
         BindImage(typeof(Images));
 
         GetText((int)Texts.Stage).text = $"Stage : {Managers.Game.Stage}";
         GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
-        GetText((int)Texts.PlayerInfo).text = $"Luck : {Managers.Game.LuckPercent}% \nDefence : {Managers.Game.Defence} \nExpendTime: {Managers.Game.ExpendTime} \nGuessTimer: {Managers.Game.GuessTimer}";
+        GetText((int)Texts.PlayerInfo).text = $"name : {Managers.Game.Name} \nLuck : {Managers.Game.LuckPercent}% \nDefence : {Managers.Game.Defence} \nExpendTime: {Managers.Game.ExpendTime} \nGuessTimer: {Managers.Game.GuessTimer}";
         
         
         return true;
@@ -63,8 +57,17 @@ public class UI_PlayerScene : UI_Scene
     public void StageUp()
     {
         Managers.Game.Stage++;
+        
+        //스테이지 70층이면 clear 검증
+        if(Managers.Game.Stage >= 70)
+        {
+            Managers.UI.CloseAllPopupUI();
+            Managers.Sound.Clear();
+            Managers.UI.ShowPopupUI<UI_GameEndPopup>();
+        }
+
         GetText((int)Texts.Stage).text = $"Stage : {Managers.Game.Stage}";
-        GetText((int)Texts.PlayerInfo).text = $"Luck : {Managers.Game.LuckPercent}% \nDefence : {Managers.Game.Defence} \nExpendTime: {Managers.Game.ExpendTime} \nGuessTimer: {Managers.Game.GuessTimer}";
+        GetText((int)Texts.PlayerInfo).text = $"name : {Managers.Game.Name} \nLuck : {Managers.Game.LuckPercent}% \nDefence : {Managers.Game.Defence} \nExpendTime: {Managers.Game.ExpendTime} \nGuessTimer: {Managers.Game.GuessTimer}";
     }
 
     public void HPUp()
@@ -83,8 +86,7 @@ public class UI_PlayerScene : UI_Scene
 
         if(express == "Wrong")
         {
-            customManager.hair++; 
-            customManager.numberCheck(0);  
+            customManager.numberCheck(5);  
         }
         else if(express == "Correct")
         {

@@ -9,6 +9,8 @@ public class StartData
 	[XmlAttribute]
 	public int ID;
 	[XmlAttribute]
+	public int Hp;
+	[XmlAttribute]
 	public int maxHp;
 	[XmlAttribute]
 	public int LuckPercent;
