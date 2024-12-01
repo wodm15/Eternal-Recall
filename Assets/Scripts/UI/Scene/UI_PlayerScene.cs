@@ -20,6 +20,7 @@ public class UI_PlayerScene : UI_Scene
     GameManagerEx InitStat;
     UI_PlayPopup uI_PlayPopup;
     GameObject StaticPlayer;
+    GameObject Character;
     GameObject _customManager;
     public CustomManager customManager;    
     public AnimationManager animationManager;
@@ -74,4 +75,27 @@ public class UI_PlayerScene : UI_Scene
         GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
     }
 
+    //캐릭터 감정 표현 TODO
+    public void StaticPlayerEx(string express)
+    {
+        // Character = Utils.FindChild(gameObject, "Character");
+        // Animator _anim = Character.GetComponent<Animator>();
+
+        if(express == "Wrong")
+        {
+            customManager.hair++; 
+            customManager.numberCheck(0);  
+        }
+        else if(express == "Correct")
+        {
+             customManager.emotion++; 
+            customManager.numberCheck(5);  
+        }
+        else
+        {
+            Debug.LogError("StaticPlayerEX Worng");
+        }
+
+
+    }
 }
