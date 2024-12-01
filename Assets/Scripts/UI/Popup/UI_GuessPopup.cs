@@ -322,7 +322,11 @@ public class UI_GuessPopup : UI_Popup
 
             GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
             GetImage((int)Images.Wrong).gameObject.SetActive(true);
-
+            
+            // if(tmp)
+            //     tmp.transform.position = new Vector3(0, 0, 0);
+            //     tmp.transform.localScale = new Vector3(0.005f, 0.005f, 0);
+            
             playerScene.StaticPlayerEx("Wrong"); //TODO
         }
         
@@ -337,10 +341,10 @@ public class UI_GuessPopup : UI_Popup
         GetImage((int)Images.Correct).gameObject.SetActive(false);
         GetImage((int)Images.Wrong).gameObject.SetActive(false);
 
-        if (GuessPlayer != null)
-        {
-            Managers.Resource.Destroy(GuessPlayer);
-        }
+        // if (GuessPlayer != null)
+        // {
+        //     Managers.Resource.Destroy(GuessPlayer);
+        // }
         if(Managers.Game.Hp <= 0)
         {
             GameOver();

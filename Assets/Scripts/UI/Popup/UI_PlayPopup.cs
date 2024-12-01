@@ -52,7 +52,7 @@ public class UI_PlayPopup : UI_Popup
                 Managers.UI.ClosePopupUI(this);
                 Managers.UI.ShowPopupUI<UI_GuessPopup>();
 
-                Managers.Resource.Destroy(Stranger);
+                // Managers.Resource.Destroy(Stranger);
         }
         }
     }

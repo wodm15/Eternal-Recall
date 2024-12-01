@@ -21,7 +21,7 @@ public class UI_QuestionPopup : UI_Popup
 
         Stranger = Managers.Resource.Instantiate("Stranger");
         RandomStranger();
-        Stranger.transform.position = new Vector3(-10,2,0);
+        Stranger.transform.position = new Vector3(-11,2,0);
 
         Managers.Game.quizData = Managers.Game.LoadRandomQuiz();
         GetText((int)Texts.Question).text = $"{Managers.Game.quizData.kor}";
@@ -52,21 +52,6 @@ public class UI_QuestionPopup : UI_Popup
             //애니메이션 랜덤 변경
             AnimationManager animationManager = customManager.GetComponent<AnimationManager>();
             animationManager.ani = Random.Range(0, animationManager.aniName.Length);
-                    
-            // GameObject hair = GameObject.FindGameObjectWithTag("Hair");
-            // GameObject clothes = GameObject.FindGameObjectWithTag("Clothes");
-            // GameObject eyebrow = GameObject.FindGameObjectWithTag("Eyebrow");
-            // GameObject eye = GameObject.FindGameObjectWithTag("Eye");
-            // GameObject mouth = GameObject.FindGameObjectWithTag("Mouth");
-            // GameObject emotion = GameObject.FindGameObjectWithTag("Emotion");
-            
-            // int hairLength = hair.transform.childCount;
-            // // int clothesLength = clothes.transform.childCount;
-            // int clothesLength = 19;
-            // int eyebrowLength = eyebrow.transform.childCount;
-            // int eyeLength = eye.transform.childCount;
-            // int mouthLength = mouth.transform.childCount;
-            // int emotionLength = 5;
 
             Managers.Game.StrangerIndex[0] = Random.Range(0, 20);
             Managers.Game.StrangerIndex[1] = Random.Range(0, 20);

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
@@ -37,6 +36,14 @@ public class UI_GetItemPopup : UI_Popup
     {
         if (base.Init() == false)
 			return false;
+
+        //추측 플레이어 아직 남아있을 경우 검증
+        GameObject PassingPlayer = GameObject.Find("Stranger");
+        PassingPlayer.transform.position = new Vector3(4, -3, 0);
+
+        GameObject GuessPlayer = GameObject.Find("Player");
+        GuessPlayer.transform.position = new Vector3(0,-3, 0);
+        GuessPlayer.transform.localScale = new Vector3(0.7f,0.7f, 1);
 
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
         
@@ -153,6 +160,20 @@ public class UI_GetItemPopup : UI_Popup
     //마지막 팝업용
     void onClickEnd(ShopData selectedItem = null)
     {
+
+        //stranger 캐릭터와 Player 삭제
+        GameObject PassingPlayer = GameObject.Find("Stranger");
+        if (PassingPlayer != null)
+        {
+            Managers.Resource.Destroy(PassingPlayer);
+        }
+        GameObject guessPlayer = GameObject.Find("Player");
+        if (guessPlayer != null)
+        {
+            Managers.Resource.Destroy(guessPlayer);
+        }
+
+
         //만약 행운으로 인해 스킬을 한번 더 획득
         if(Random.Range(1, 101) <= Managers.Game.LuckPercent)
         {
@@ -177,17 +198,17 @@ public class UI_GetItemPopup : UI_Popup
     {
         if(selectedItem.productID == "Healing")
         {
-            Managers.Game.Hp += (int)selectedItem.effectValue;
-            // GetText((int)Texts.EffectText).text = $"Healing {(int)selectedItem.effectValue}";
+            Managers.Game.Hp += (int)selectedItem.effectValues[0];
+            Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
+
         }
         else if(selectedItem.productID == "gambleHealing")
         {
-            int gameble = Random.Range(0, (int)selectedItem.effectValue);
+            int gameble = Random.Range(0, (int)selectedItem.effectValues[0]);
             Managers.Game.Hp += gameble;
-            // GetText((int)Texts.EffectText).text = $"gambleHealing {gameble}";
+            Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
         }
 
-        Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
         playerScene.HPUp();
         return selectedItem;
     }
@@ -196,14 +217,18 @@ public class UI_GetItemPopup : UI_Popup
     ShopData UpdateSkill(ShopData selectedItem)
     {
         if(selectedItem.productID == "GetExpendTime")
-            Managers.Game.GuessTimer += (int)selectedItem.effectValue;
+            Managers.Game.GuessTimer += (int)selectedItem.effectValues[0];
         else if(selectedItem.productID == "GetTheWorld")
             {
-                Managers.Game.TheWorld += (int)selectedItem.effectValue;
+                Managers.Game.TheWorld += (int)selectedItem.effectValues[0];
                 Debug.Log($"TheWorld 개수 : {Managers.Game.TheWorld}");
             }
         else if(selectedItem.productID == "FreePass")
             {
+                //HP를 6 회복, 운을 1% 올리고 스테이지 한턴 넘깁니다.
+                Managers.Game.Hp += (int)selectedItem.effectValues[0];
+                Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
+                Managers.Game.LuckPercent += (int)selectedItem.effectValues[0];
                 Managers.Game.Stage += 1;
             }
         else
@@ -216,9 +241,9 @@ public class UI_GetItemPopup : UI_Popup
     ShopData updatePassive(ShopData selectedItem)
     {
         if(selectedItem.productID == "upLuck")
-            Managers.Game.LuckPercent += (int)selectedItem.effectValue;
+            Managers.Game.LuckPercent += (int)selectedItem.effectValues[0];
         else if(selectedItem.productID == "upDefence")
-            Managers.Game.Defence += (int)selectedItem.effectValue;
+            Managers.Game.Defence += (int)selectedItem.effectValues[0];
 
         return selectedItem;
     }
