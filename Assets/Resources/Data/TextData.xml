@@ -15,7 +15,13 @@
 
 <!-- 게임 종료 TEXT-->
   <TextData ID="50000" kor= "축하합니다" eng="" />
-  <TextData ID="50001" kor= "타이틀로 돌아가기" eng="" />
+  <TextData ID="50001" kor= "GoToTitle" eng="" />
+  <TextData ID="50002" kor= "OLLECTION" eng="" />
+  <TextData ID="50003" kor= "ARCHIVEMENTS" eng="" />
+  <TextData ID="50004" kor= "ENDING" eng="" />
+  <TextData ID="50005" kor= "50% 확률로 데미지 피하기" eng="" />
+  <TextData ID="50006" kor= "회피 성공!" eng="" />
+  <TextData ID="50007" kor= "회피 실패" eng="" />
 
 
 </ArrayOfTextData>
