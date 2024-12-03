@@ -36,6 +36,7 @@ public class UI_GuessPopup : UI_Popup
         MouthText,
         EmotionText,
         AnimationText,
+        TestText,
     }
     enum Buttons
     {
@@ -112,7 +113,6 @@ public class UI_GuessPopup : UI_Popup
         GetButton((int)Buttons.AvoidButton).gameObject.SetActive(false);
         GetText((int)Texts.Avoid).gameObject.SetActive(false);
         
-
 
         #region 질문 설정 알고리즘
         //Text에 질문 설정
@@ -192,7 +192,7 @@ public class UI_GuessPopup : UI_Popup
                 }
             
             customManager.numberCheck(0);  
-            GetText((int)Texts.HairText).text = $"{customManager.hair+1} / {customManager.hairM.count.Length -1}";
+            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {customManager.hairM.count.Length}";
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         
         });
@@ -207,6 +207,7 @@ public class UI_GuessPopup : UI_Popup
                     customManager.hair++; 
                 }
             customManager.numberCheck(0);  
+            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {customManager.hairM.count.Length}";
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 
@@ -221,6 +222,7 @@ public class UI_GuessPopup : UI_Popup
                     customManager.clothes--; 
                 }
             customManager.numberCheck(1);  
+            GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {customManager.clothesM.count.Length}";
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.ClothesPlus).gameObject.BindEvent(() => 
@@ -233,7 +235,7 @@ public class UI_GuessPopup : UI_Popup
                 {
                     customManager.clothes++; 
                 }
-
+            GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {customManager.clothesM.count.Length}";
             customManager.numberCheck(1);  
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
@@ -248,8 +250,9 @@ public class UI_GuessPopup : UI_Popup
                 {
                     customManager.eyebrow--; 
                 }
-            
+                
             customManager.numberCheck(2); 
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {customManager.eyebrowM.count.Length}";
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
         });
         GetButton((int)Buttons.EyebrowPlus).gameObject.BindEvent(() => 
@@ -263,6 +266,7 @@ public class UI_GuessPopup : UI_Popup
                     customManager.eyebrow++; 
                 }
             customManager.numberCheck(2);  
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {customManager.eyebrowM.count.Length}";
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 
@@ -277,6 +281,7 @@ public class UI_GuessPopup : UI_Popup
                     customManager.eye--; 
                 }
             customManager.numberCheck(3);  
+            GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {customManager.eyeM.count.Length}";
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.EyePlus).gameObject.BindEvent(() => 
@@ -291,6 +296,7 @@ public class UI_GuessPopup : UI_Popup
                 }
 
             customManager.numberCheck(3);  
+            GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {customManager.eyeM.count.Length}";
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 
@@ -305,6 +311,7 @@ public class UI_GuessPopup : UI_Popup
                     customManager.mouth--; 
                 }
             customManager.numberCheck(4);  
+            GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {customManager.mouthM.count.Length}";
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.MouthPlus).gameObject.BindEvent(() => 
@@ -318,6 +325,7 @@ public class UI_GuessPopup : UI_Popup
                     customManager.mouth++; 
                 }
             customManager.numberCheck(4); 
+            GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {customManager.mouthM.count.Length}";
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
         });
 
@@ -332,7 +340,8 @@ public class UI_GuessPopup : UI_Popup
                     customManager.emotion--; 
                 }
 
-            customManager.numberCheck(5);  
+            customManager.numberCheck(5); 
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {customManager.emotionM.count.Length}"; 
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.EmotionPlus).gameObject.BindEvent(() => 
@@ -346,6 +355,7 @@ public class UI_GuessPopup : UI_Popup
                     customManager.emotion++; 
                 }
             customManager.numberCheck(5);  
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {customManager.emotionM.count.Length}"; 
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 
@@ -358,6 +368,8 @@ public class UI_GuessPopup : UI_Popup
             }
             else
                 animationManager.PlayAni(false);
+
+            GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 11"; 
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.AnimationPlus).gameObject.BindEvent(() => 
@@ -369,6 +381,8 @@ public class UI_GuessPopup : UI_Popup
             }
             else
                 animationManager.PlayAni(true);
+
+            GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 11"; 
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         
@@ -436,7 +450,7 @@ public class UI_GuessPopup : UI_Popup
             GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
             GetImage((int)Images.Correct).gameObject.SetActive(true);
 
-            playerScene.StaticPlayerEx("Correct"); //TODO
+            // playerScene.StaticPlayerEx("Correct"); //TODO
 
             Invoke("HideResultAndProceed", 2f);
         }

@@ -3,11 +3,11 @@
   <!-- 난이도 1 - 쉬운 질문 -->
   <!--헤어 복장 눈썹 눈동자 입모양 기분(감정) 포즈 -->
   <!-- 1   1   1   1    1    1       1 -->
-  <!-- <QuizData ID="1" kor="헤어스타일을 확인해주세요" Difficulty="1" quizType="1000000" eng="" />
+  <QuizData ID="1" kor="헤어스타일을 확인해주세요" Difficulty="1" quizType="1000000" eng="" />
   <QuizData ID="2" kor="복장을 확인해주세요" Difficulty="1" quizType="0100000" eng="" />
   <QuizData ID="3" kor="눈에 집중해주세요" Difficulty="1" quizType="0001000" eng="" />
   <QuizData ID="4" kor="입모양을 자세히 봐주세요" Difficulty="1" quizType="0000100" eng="" />
-  <QuizData ID="5" kor="감정을 확인해주세요" Difficulty="1" quizType="0000010" eng="" /> -->
+  <QuizData ID="5" kor="감정을 확인해주세요" Difficulty="1" quizType="0000010" eng="" />
   <QuizData ID="6" kor="포즈에 집중해주세요" Difficulty="1" quizType="0000001" eng="" />
 
   <!-- 난이도 2 - 중간 난이도 질문 -->

@@ -33,9 +33,9 @@ public class UI_TitlePopup : UI_Popup
 		GetButton((int)Buttons.ContinueButton).gameObject.BindEvent(OnClickContinueButton);
 		GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(() =>
 		{
-			// int a = Random.Range(0,50);
-			// if(a < 50)
-			// 	Managers.Game.ADSHOW();
+			int a = Random.Range(0,50);
+			if(a < 50)
+				Managers.Game.ADSHOW();
 			OnClickCollectionButton();
 		});
 		// GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(OnClickCollectionButton);
@@ -44,8 +44,12 @@ public class UI_TitlePopup : UI_Popup
 		GetText((int)Texts.CollectionButtonText).text = Managers.GetText(Define.CollectionButtonText);
 
 		Managers.Sound.Clear();
-		Managers.Sound.Play(Sound.Bgm, "Sound_MainTitle");
 
+		int music = Random.Range(0,100);
+		if( music < 50)
+			Managers.Sound.Play(Sound.Bgm, "Sound_MainTitle");
+		else
+			Managers.Sound.Play(Sound.Bgm, "Sound_MainPlayBGM");
 		return true;
 	}
 
