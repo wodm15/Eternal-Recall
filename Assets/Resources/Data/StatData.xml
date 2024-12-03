@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ArrayOfStatData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <StatData ID="1" type="PlusHp" nameID="6001" icon="C_PlusHp" description="HP를 3 회복합니다." effectType="Health" effectValue="1" />
+  <StatData ID="2" type="HintKey" nameID="6011" icon="C_HintKey" description="HP를 3 회복합니다." effectType="Skill" effectValue="3" />
+
+</ArrayOfStatData>
