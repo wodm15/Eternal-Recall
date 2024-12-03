@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfTextData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <TextData ID="1" kor="NoName" eng="NoName" />
+  <TextData ID="6500" kor="닉네임을 입력하세요" eng="" />
+  <TextData ID="6501" kor="확인" eng="" />
+  <TextData ID="6502" kor="메뉴로 돌아가기" eng="" />
+
   <TextData ID="10000" kor="시작하기" eng="" />
   <TextData ID="10001" kor="계속하기" eng="" />
   <TextData ID="10002" kor="컬렉션" eng="" />
@@ -15,7 +19,13 @@
 
 <!-- 게임 종료 TEXT-->
   <TextData ID="50000" kor= "축하합니다" eng="" />
-  <TextData ID="50001" kor= "타이틀로 돌아가기" eng="" />
+  <TextData ID="50001" kor= "GoToTitle" eng="" />
+  <TextData ID="50002" kor= "OLLECTION" eng="" />
+  <TextData ID="50003" kor= "ARCHIVEMENTS" eng="" />
+  <TextData ID="50004" kor= "ENDING" eng="" />
+  <TextData ID="50005" kor= "50% 확률로 데미지 피하기" eng="" />
+  <TextData ID="50006" kor= "회피 성공!" eng="" />
+  <TextData ID="50007" kor= "회피 실패" eng="" />
 
 
 </ArrayOfTextData>
