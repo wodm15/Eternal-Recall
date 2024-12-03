@@ -26,49 +26,42 @@ public class ItemManager : MonoBehaviour {
 	
 	}
 
-public void changeItem(int num)
-{
-    for (int i = 0; i < count.Length; i++)
+    public void changeItem(int num)
     {
-        if (i == num)
+
+
+
+        for(int i = 0; i<count.Length; i++)
         {
-            if (count[i]?.obj != null)
+           
+            if(i == num)
             {
                 for (int y = 0; y < count[i].obj.Length; y++)
                 {
-                    if (count[i].obj[y] != null)
-                    {
-                        count[i].obj[y].SetActive(true);
-                    }
+                    count[i].obj[y].SetActive(true);
+                    
                 }
-            }
 
-            if (clothesFlag && count[i]?.hideObj != null)
-            {
-                for (int y = 0; y < count[i].hideObj.Length; y++)
+                if (clothesFlag)
                 {
-                    if (count[i].hideObj[y] != null)
+                    for (int y = 0; y < count[i].hideObj.Length; y++)
                     {
                         count[i].hideObj[y].SetActive(false);
+
                     }
                 }
+               
             }
-        }
-        else
-        {
-            if (count[i]?.obj != null)
+            else
             {
                 for (int y = 0; y < count[i].obj.Length; y++)
                 {
-                    if (count[i].obj[y] != null)
-                    {
-                        count[i].obj[y].SetActive(false);
-                    }
+                    count[i].obj[y].SetActive(false);
                 }
+
             }
         }
     }
-}
 
   
 }

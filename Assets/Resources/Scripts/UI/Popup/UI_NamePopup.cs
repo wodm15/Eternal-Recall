@@ -42,12 +42,13 @@ public class UI_NamePopup : UI_Popup
 		BindText(typeof(Texts));
 		BindButton(typeof(Buttons));
 
+        GetText((int)Texts.ConfirmButtonText).text = Managers.GetText(Define.NicknameConfirm);
 		GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
-
+        
+        RefreshUI();
     	_inputField = GetObject((int)GameObjects.InputField).gameObject.GetComponent<TMP_InputField>();
 		_inputField.text = "";
 
-        RefreshUI();
         // CharacterResponse();
 
      
@@ -56,8 +57,9 @@ public class UI_NamePopup : UI_Popup
 
 	void RefreshUI()
 	{
-		GetText((int)Texts.HintText).text = "Write the NickName";
-        // GetText((int)Texts.HintText).text = Managers.GetText(Define.WriteNickname);
+		GetText((int)Texts.HintText).text = Managers.GetText(Define.WriteNickname);
+        GetText((int)Texts.ConfirmButtonText).text = Managers.GetText(Define.NicknameConfirm);
+		GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
 	}
 
     //캐릭 랜덤 생성 (아직 안씀)

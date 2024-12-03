@@ -61,6 +61,8 @@ public class Define
 
 	//닉네임 입력
 	public const int WriteNickname = 6500;	
+	public const int NicknameConfirm = 6501;
+	public const int GOBACKText = 6502;
 	
 	public const int StartButtonText = 10000;
 	public const int ContinueButtonText = 10001;

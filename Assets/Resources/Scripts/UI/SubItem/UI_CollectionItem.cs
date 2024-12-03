@@ -53,8 +53,9 @@ public class UI_CollectionItem : UI_Base
 
 	public void SetCollectionInfo(int collectionId)
 	{
-		if (collectionId > 0)
+		if (collectionId >= 0)
 			_collectionId = collectionId;
+
 	}
 
 	public void SetGalleryInfo(int galleryId)
@@ -97,7 +98,7 @@ public class UI_CollectionItem : UI_Base
 
 		Managers.Data.Collections.TryGetValue(_collectionId, out CollectionData data);
 
-		GetText((int)Texts.CollectionName).text = Managers.GetText(data.nameID);
+		GetText((int)Texts.CollectionName).text =  $"{data.description}";
 		GetText((int)Texts.LikeabilityText).text = $"+{data.difHp}";
 		GetText((int)Texts.WorkAbilityText).text = $"+{data.difHintKey}";
 		GetText((int)Texts.LuckText).text = $"+{data.difStage}";

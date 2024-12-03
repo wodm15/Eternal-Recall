@@ -31,8 +31,14 @@ public class UI_TitlePopup : UI_Popup
 
 		GetButton((int)Buttons.StartButton).gameObject.BindEvent(OnClickStartButton);
 		GetButton((int)Buttons.ContinueButton).gameObject.BindEvent(OnClickContinueButton);
-		GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(OnClickCollectionButton);
-
+		GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(() =>
+		{
+			// int a = Random.Range(0,50);
+			// if(a < 50)
+			// 	Managers.Game.ADSHOW();
+			OnClickCollectionButton();
+		});
+		// GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(OnClickCollectionButton);
 		GetText((int)Texts.StartButtonText).text = Managers.GetText(Define.StartButtonText);
 		GetText((int)Texts.ContinueButtonText).text = Managers.GetText(Define.ContinueButtonText);
 		GetText((int)Texts.CollectionButtonText).text = Managers.GetText(Define.CollectionButtonText);

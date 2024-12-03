@@ -12,6 +12,7 @@ public class UI_PlayerScene : UI_Scene
         HPText,
         PlayerInfo,
         CollectionSuccessText,
+        // GoBackText,
     }
     enum Images
     {
@@ -19,12 +20,16 @@ public class UI_PlayerScene : UI_Scene
         HPBG, //hp 배경바
     }
     
+    // enum Buttons
+    // {
+    //     GOBACKButton,
+    // }
     UI_PlayPopup uI_PlayPopup;
     GameObject StaticPlayer;
     GameObject Character;
     GameObject _customManager;
     public CustomManager customManager;    
-    public AnimationManager animationManager;
+    protected AnimationManager animationManager;
 
     // public static event Action OnPlayAnimationEvent;
 
@@ -47,14 +52,23 @@ public class UI_PlayerScene : UI_Scene
 
         BindText(typeof(Texts));
         BindImage(typeof(Images));
+        // BindButton(typeof(Buttons));
 
         GetText((int)Texts.Stage).text = $"Stage : {Managers.Game.Stage}";
         GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
+        // GetText((int)Texts.GoBackText).text = Managers.GetText(Define.GOBACKText);
+
+        // GetButton((int)Buttons.GOBACKButton).gameObject.BindEvent(()=> 
+        // {
+        //     Managers.Game.ClearGame();
+        //     // Managers.UI.ClosePlayerSceneUI();
+        // });
+        //상태창
         GetText((int)Texts.PlayerInfo).text = $"name : {Managers.Game.Name} \nLuck : {Managers.Game.LuckPercent}% \nDefence : {Managers.Game.Defence} \n Avoid: {Managers.Game.Avoid} \nGuessTimer: {Managers.Game.GuessTimer} \nHintKey {Managers.Game.HintKey}";
-        // GetText((int)Texts.CollectionSuccessText).gameObject.SetActive(false);
         
         return true;
     }
+
 
     public void StageUp()
     {
@@ -74,7 +88,6 @@ public class UI_PlayerScene : UI_Scene
 
     public void HPUp()
     {
-        animationManager.ani = 6;
         if(Managers.Game.Hp < 0)
             Managers.Game.Hp = 0;
         GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
@@ -83,8 +96,9 @@ public class UI_PlayerScene : UI_Scene
     //캐릭터 감정 표현 TODO
     public void StaticPlayerEx(string express)
     {
-        // Character = Utils.FindChild(gameObject, "Character");
-        // Animator _anim = Character.GetComponent<Animator>();
+        // _customManager = GameObject.FindGameObjectWithTag("StaticManager");
+        // customManager = _customManager.GetComponent<CustomManager>();
+        // animationManager.PlayAni(false);
 
         if(express == "Wrong")
         {

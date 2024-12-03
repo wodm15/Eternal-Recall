@@ -26,7 +26,7 @@ public class CustomManager : MonoBehaviour {
 
    
     // Use this for initialization
-    public void Start () {
+    void Start () {
         ct = calType.DEFAULT;
         callChangeItem();
         for (int i = 0 ; i <= (int)itemEnum.EMOTION; i++)
@@ -185,5 +185,4 @@ public class CustomManager : MonoBehaviour {
             bodyTexture[i].SetActive(true);
         }
     }
-
 }

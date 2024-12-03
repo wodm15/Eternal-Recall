@@ -14,6 +14,7 @@ public class Managers : MonoBehaviour
     private static SceneManagerEx s_sceneManager = new SceneManagerEx();
     private static DataManager s_dataManager = new DataManager();
     private static GameManagerEx s_gameManager = new GameManagerEx();
+    private static AdsManager s_adsManager = new AdsManager();
 
 
     // 프로퍼티 생성
@@ -23,6 +24,7 @@ public class Managers : MonoBehaviour
     public static SceneManagerEx Scene { get { Init(); return s_sceneManager; } }
     public static DataManager Data {get { Init(); return s_dataManager; } }
     public static GameManagerEx Game { get { Init(); return s_gameManager; } }
+    public static AdsManager Ads { get { Init(); return s_adsManager; } }
 
     public static string GetText(int id)
 	{

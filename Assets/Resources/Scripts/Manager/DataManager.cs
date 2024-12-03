@@ -22,11 +22,6 @@ public class DataManager
 
     //컬렉션
     public Dictionary<int, CollectionData> Collections { get; private set; }
-	public List<CollectionData> StatCollections { get; private set; }
-	public List<CollectionData> WealthCollections { get; private set; }
-	public List<CollectionData> LevelCollections { get; private set; }
-	public List<CollectionData> ProjectCollections { get; private set; }
-	public List<CollectionData> BattleCollections { get; private set; }
 
     public void Init()
     {
@@ -38,14 +33,8 @@ public class DataManager
         Endings = LoadXml<EndingDataLoader, int, EndingData>("EndingData").MakeDic();
 
 		// Collection
-		var collectionLoader = LoadXml<CollectionDataLoader, int, CollectionData>("CollectionData");
-		StatCollections = collectionLoader._collectionData.Where(c => c.type == CollectionType.Stat).ToList();
-		WealthCollections = collectionLoader._collectionData.Where(c => c.type == CollectionType.Wealth).ToList();
-		LevelCollections = collectionLoader._collectionData.Where(c => c.type == CollectionType.Level).ToList();
-		ProjectCollections = collectionLoader._collectionData.Where(c => c.type == CollectionType.Project).ToList();
-		BattleCollections = collectionLoader._collectionData.Where(c => c.type == CollectionType.Battle).ToList();
-
-        Collections = collectionLoader.MakeDic();
+		Collections = LoadXml<CollectionDataLoader, int, CollectionData>("CollectionData").MakeDic();
+		
         
     }
 

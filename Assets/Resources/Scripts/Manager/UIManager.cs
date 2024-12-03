@@ -167,4 +167,5 @@ public class UIManager
 			Managers.Resource.Destroy(staticPlayer);
 		}
 	}
+
 }

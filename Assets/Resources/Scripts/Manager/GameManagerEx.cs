@@ -57,6 +57,7 @@ public class GameData
         public Skill[] Skills = new Skill[MAX_SKILL_COUNT];
         
         //컬렉션 
+        public CollectionData CollectionData = new CollectionData();
         public CollectionState[] Collections = new CollectionState[MAX_COLLECTION_COUNT];
 
         // 클리어 한 엔딩
@@ -156,6 +157,11 @@ public class GameManagerEx
 
     #region 컬렉션 & 프로젝트
 
+    public CollectionData CollectionData
+    {
+        get { return _gameData.CollectionData; }
+        set { _gameData.CollectionData = value; }
+    }
     public CollectionState[] Collections { get { return _gameData.Collections; } }
     public CollectionState[] Endings { get { return _gameData.Endings; } }
     public Action<CollectionData> OnNewCollection;
@@ -165,7 +171,7 @@ public class GameManagerEx
     //실시간으로 적용(안씀)
     public void RefreshStatCollections()
         {
-            foreach (CollectionData data in Managers.Data.StatCollections)
+            foreach (CollectionData data in Managers.Data.Collections.Values)
             {
                 if (Collections[data.ID - 1] != CollectionState.None)
                     continue;
@@ -299,6 +305,33 @@ public void Init()
     
 	#endregion
 
+    //게임 클리어
+    public void ClearGame()
+    {
+        GameObject player = GameObject.Find("Player");
+        GameObject Stranger = GameObject.Find("Stranger");
+        GameObject StaticPlayer = GameObject.Find("StaticPlayer");
+
+        if(player != null)
+            Managers.Resource.Destroy(player);
+        if(Stranger != null)
+            Managers.Resource.Destroy(Stranger);
+        if(StaticPlayer != null)
+            Managers.Resource.Destroy(StaticPlayer);
+        
+        Managers.Game.SaveGame();
+        Managers.UI.CloseAllPopupUI();
+
+
+        // Managers.UI.ClosePlayerSceneUI();
+        // Managers.UI.ShowPopupUI<UI_TitlePopup>();
+    }
+
+    public void ADSHOW()
+    {
+        Managers.Ads.Init();
+		Managers.Ads.ShowInterstitialAd();
+    }
 
     
 }

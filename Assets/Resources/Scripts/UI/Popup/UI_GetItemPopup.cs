@@ -239,6 +239,8 @@ public class UI_GetItemPopup : UI_Popup
                 Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
                 Managers.Game.LuckPercent += (int)selectedItem.effectValues[1];
                 Managers.Game.Stage += 1;
+
+                playerScene.HPUp();
             }
         else if(selectedItem.productID == "HintKey")
             {

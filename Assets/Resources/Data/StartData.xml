@@ -1,2 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<StartData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="0" Hp = "100" maxHp="100" LuckPercent="0" ExpendTime= "0" DownSpeed="0" TheWorld="3" PassTicket="3" Stage="1" GuessTimer="15" Defence = "0" HintKey = "0" Avoid = "10" />
+<StartData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ID="0" Hp = "100" maxHp="100" LuckPercent="0" ExpendTime= "0" DownSpeed="0" TheWorld="3" PassTicket="3" Stage="0" GuessTimer="101" Defence = "0" HintKey = "1" Avoid = "20" />
