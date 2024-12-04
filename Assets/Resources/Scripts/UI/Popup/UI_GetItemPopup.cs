@@ -38,7 +38,6 @@ public class UI_GetItemPopup : UI_Popup
         if (base.Init() == false)
 			return false;
 
-
         //추측 플레이어 아직 남아있을 경우 검증
         GameObject PassingPlayer = GameObject.Find("Stranger");
         PassingPlayer.transform.position = new Vector3(4, -3, 0);
@@ -180,6 +179,9 @@ public class UI_GetItemPopup : UI_Popup
     //마지막 팝업용
     void onClickEnd(ShopData _selectedItem)
     {
+        //주인공 표정 초기화
+        playerScene.StaticPlayerEx("Initial");
+        
         Managers.Game.SaveGame();
         //stranger 캐릭터와 Player 삭제
         GameObject PassingPlayer = GameObject.Find("Stranger");

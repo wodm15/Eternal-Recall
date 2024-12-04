@@ -12,7 +12,7 @@ public class UI_PlayerScene : UI_Scene
         HPText,
         PlayerInfo,
         CollectionSuccessText,
-        // GoBackText,
+        GoTitleText
     }
     enum Images
     {
@@ -20,18 +20,16 @@ public class UI_PlayerScene : UI_Scene
         HPBG, //hp 배경바
     }
     
-    // enum Buttons
-    // {
-    //     GOBACKButton,
-    // }
+    enum Buttons
+    {
+        GoTitle
+    }
     UI_PlayPopup uI_PlayPopup;
     GameObject StaticPlayer;
     GameObject Character;
     GameObject _customManager;
     public CustomManager customManager;    
     protected AnimationManager animationManager;
-
-    // public static event Action OnPlayAnimationEvent;
 
     public override bool Init()
     {
@@ -52,20 +50,17 @@ public class UI_PlayerScene : UI_Scene
 
         BindText(typeof(Texts));
         BindImage(typeof(Images));
-        // BindButton(typeof(Buttons));
+        BindButton(typeof(Buttons));
 
         GetText((int)Texts.Stage).text = $"Stage : {Managers.Game.Stage}";
         GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
-        // GetText((int)Texts.GoBackText).text = Managers.GetText(Define.GOBACKText);
-
-        // GetButton((int)Buttons.GOBACKButton).gameObject.BindEvent(()=> 
-        // {
-        //     Managers.Game.ClearGame();
-        //     // Managers.UI.ClosePlayerSceneUI();
-        // });
+        GetText((int)Texts.GoTitleText).text = Managers.GetText(Define.GOBACKText);
         //상태창
         GetText((int)Texts.PlayerInfo).text = $"name : {Managers.Game.Name} \nLuck : {Managers.Game.LuckPercent}% \nDefence : {Managers.Game.Defence} \n Avoid: {Managers.Game.Avoid} \nGuessTimer: {Managers.Game.GuessTimer} \nHintKey {Managers.Game.HintKey}";
         
+
+        GetButton((int)Buttons.GoTitle).gameObject.BindEvent(ClearGame);
+
         return true;
     }
 
@@ -82,6 +77,11 @@ public class UI_PlayerScene : UI_Scene
             Managers.UI.ShowPopupUI<UI_GameEndPopup>();
         }
 
+        RefreshUI();
+    }
+
+    public void RefreshUI()
+    {
         GetText((int)Texts.Stage).text = $"Stage : {Managers.Game.Stage}";
         GetText((int)Texts.PlayerInfo).text = $"name : {Managers.Game.Name} \nLuck : {Managers.Game.LuckPercent}% \nDefence : {Managers.Game.Defence} \nAvoid: {Managers.Game.Avoid} \nGuessTimer: {Managers.Game.GuessTimer} \nHintKey {Managers.Game.HintKey}";
     }
@@ -96,25 +96,43 @@ public class UI_PlayerScene : UI_Scene
     //캐릭터 감정 표현 TODO
     public void StaticPlayerEx(string express)
     {
-        // _customManager = GameObject.FindGameObjectWithTag("StaticManager");
-        // customManager = _customManager.GetComponent<CustomManager>();
-        // animationManager.PlayAni(false);
+        GameObject t = GameObject.FindGameObjectWithTag("StaticManager");
+        customManager = t.GetComponent<CustomManager>();
 
-        if(express == "Wrong")
+        if(express == "Initial")
         {
-            customManager.hair = Managers.Game.StrangerIndex[0];
-            customManager.hairM.changeItem(Managers.Game.StrangerIndex[0]);
- 
-            Debug.Log("StaticPlayerEx");
+            customManager.emotion = 0;
+            customManager.mouth = 0;
+            customManager.numberCheck(4); 
+            customManager.numberCheck(5); 
+            Debug.Log("StaticPlayerExInitial");
         }
+
         else if(express == "Correct")
         {
-            customManager.emotionM.changeItem(3);
+            customManager.emotion = 0;
+            customManager.mouth = 15;
+            customManager.numberCheck(4); 
+            customManager.numberCheck(5); 
+            Debug.Log("StaticPlayerExCorrect");
         }
-        else
+        else if(express == "Wrong")
         {
-            Debug.LogError("StaticPlayerEX Worng");
+            Debug.Log("StaticPlayerExWrong");
+            customManager.emotion =4;
+            customManager.mouth = 20;
+            customManager.numberCheck(4); 
+            customManager.numberCheck(5); 
         }
+
+        else if(express == "ChangeClothes")
+        {
+            customManager.clothes = 0;
+            customManager.numberCheck(0); 
+        }
+
+            // customManager.hair = Managers.Game.StrangerIndex[0];
+            // customManager.hairM.changeItem(Managers.Game.StrangerIndex[0]);
 
 
     }
@@ -126,6 +144,8 @@ public class UI_PlayerScene : UI_Scene
         Managers.Sound.Play(Sound.Effect, "Sound_Archive");
 		// GetImage((int)Images.CollectionSuccess).gameObject.SetActive(true);
 		GetText((int)Texts.CollectionSuccessText).text = $"이걸 해냈다고?! 업적 달성! {data.description}";
+
+        Managers.Game.SaveGame();
 
 		if (_coHideCollection != null)
 			StopCoroutine(_coHideCollection);
@@ -139,4 +159,12 @@ public class UI_PlayerScene : UI_Scene
         GetText((int)Texts.CollectionSuccessText).gameObject.SetActive(false);
 		// GetImage((int)Images.CollectionSuccess).gameObject.SetActive(false);
 	}
+
+    public void ClearGame()
+    {
+        Managers.Game.SaveGame();
+        Managers.UI.CloseAllPopupUI();
+        Managers.UI.ShowPopupUI<UI_TitlePopup>();  
+        Managers.UI.ClosePlayerSceneUI();
+    }
 }

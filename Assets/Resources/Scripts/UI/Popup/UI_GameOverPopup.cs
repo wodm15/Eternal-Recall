@@ -44,11 +44,11 @@ public class UI_GameOverPopup : UI_Popup
 
     void OnClickConfirmButton()
     {
-        //TODO
-        // Managers.UI.ClosePopupUI(this);
-        // //TODO 게임 데이터 저장
-        // Managers.UI.ClosePlayerSceneUI();
-        // Managers.UI.ShowPopupUI<UI_TitlePopup>();  
+        Managers.Game.SaveGame();
+        Managers.UI.ClosePopupUI(this);
+        Managers.UI.ShowPopupUI<UI_TitlePopup>();  
+        Managers.UI.ClosePlayerSceneUI();
         
     }
+
 }
