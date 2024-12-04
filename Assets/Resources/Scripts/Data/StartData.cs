@@ -6,8 +6,11 @@ using UnityEngine;
 
 public class StartData
 {
+
 	[XmlAttribute]
 	public int ID;
+	[XmlAttribute]
+	public string Difficulty;
 	[XmlAttribute]
 	public int Hp;
 	[XmlAttribute]
@@ -38,7 +41,6 @@ public class StartData
 
 	[XmlAttribute]
 	public int	Avoid;
-
 
 
 }

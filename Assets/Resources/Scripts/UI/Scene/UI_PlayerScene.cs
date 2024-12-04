@@ -52,11 +52,11 @@ public class UI_PlayerScene : UI_Scene
         BindImage(typeof(Images));
         BindButton(typeof(Buttons));
 
-        GetText((int)Texts.Stage).text = $"Stage : {Managers.Game.Stage}";
+        GetText((int)Texts.Stage).text = $"{Managers.Game.Stage} 단계";
         GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
         GetText((int)Texts.GoTitleText).text = Managers.GetText(Define.GOBACKText);
         //상태창
-        GetText((int)Texts.PlayerInfo).text = $"name : {Managers.Game.Name} \nLuck : {Managers.Game.LuckPercent}% \nDefence : {Managers.Game.Defence} \n Avoid: {Managers.Game.Avoid} \nGuessTimer: {Managers.Game.GuessTimer} \nHintKey {Managers.Game.HintKey}";
+        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n운: {Managers.Game.LuckPercent}% \n회피력: {Managers.Game.Avoid}% \n추측 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
         
 
         GetButton((int)Buttons.GoTitle).gameObject.BindEvent(ClearGame);
@@ -82,8 +82,8 @@ public class UI_PlayerScene : UI_Scene
 
     public void RefreshUI()
     {
-        GetText((int)Texts.Stage).text = $"Stage : {Managers.Game.Stage}";
-        GetText((int)Texts.PlayerInfo).text = $"name : {Managers.Game.Name} \nLuck : {Managers.Game.LuckPercent}% \nDefence : {Managers.Game.Defence} \nAvoid: {Managers.Game.Avoid} \nGuessTimer: {Managers.Game.GuessTimer} \nHintKey {Managers.Game.HintKey}";
+        GetText((int)Texts.Stage).text = $"{Managers.Game.Stage}단계";
+        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n운: {Managers.Game.LuckPercent}% \n회피력: {Managers.Game.Avoid}% \n추측 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
     }
 
     public void HPUp()
@@ -101,8 +101,12 @@ public class UI_PlayerScene : UI_Scene
 
         if(express == "Initial")
         {
+            customManager.eyebrow = 0;
+            customManager.eye = 2;
             customManager.emotion = 0;
             customManager.mouth = 0;
+            customManager.numberCheck(2);
+            customManager.numberCheck(3);  
             customManager.numberCheck(4); 
             customManager.numberCheck(5); 
             Debug.Log("StaticPlayerExInitial");
@@ -123,6 +127,20 @@ public class UI_PlayerScene : UI_Scene
             customManager.mouth = 20;
             customManager.numberCheck(4); 
             customManager.numberCheck(5); 
+        }
+        else if(express == "AvoidFail")
+        {
+            customManager.mouth = 19;
+            customManager.emotion =1;
+            customManager.numberCheck(4);
+            customManager.numberCheck(5); 
+        }
+        else if(express == "AvoidSucess")
+        {
+            customManager.eye = 14;
+            customManager.mouth =16;
+            customManager.numberCheck(3);
+            customManager.numberCheck(4); 
         }
 
         else if(express == "GameOver")

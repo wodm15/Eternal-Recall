@@ -23,6 +23,7 @@ public class UI_GuessPopup : UI_Popup
     bool IsButtonClick;
     
     GameObject Stranger;
+    GameObject Button;
     private bool _isMoving = false; // 이동 상태 플래그
 
 
@@ -144,7 +145,8 @@ public class UI_GuessPopup : UI_Popup
 
         GetImage((int)Images.Correct).gameObject.SetActive(false);
         GetImage((int)Images.Wrong).gameObject.SetActive(false);
-    
+
+        
         CheckHintZero();
         
 
@@ -405,7 +407,6 @@ public class UI_GuessPopup : UI_Popup
 
 
 
-
         return true;
 
     }
@@ -461,6 +462,8 @@ public class UI_GuessPopup : UI_Popup
 
     void OnClickConfirmButton(bool isCorrect)
     {
+        CloseAllButton();
+
         IsButtonClick = true;
         Managers.Sound.Play(Sound.Effect, "Sound_CheckButton");
         //캐릭 비교
@@ -479,13 +482,13 @@ public class UI_GuessPopup : UI_Popup
         }
         else // 오답일 경우
         {
-            playerScene.StaticPlayerEx("Wrong"); //TODO
             Debug.Log("오답: Wrong");
             Managers.Sound.Play(Sound.Effect, "Sound_Wrong");
             isAvoid = false;
-            // 회피 되는지 확인 M
+            // 회피 되는지 확인 
             if (Random.Range(0, 100) < Managers.Game.Avoid)
             {
+
                 GetButton((int)Buttons.AvoidButton).gameObject.SetActive(true);
                 GetButton((int)Buttons.TheWorldButton).gameObject.SetActive(false);
 
@@ -495,6 +498,7 @@ public class UI_GuessPopup : UI_Popup
                     {
                         Debug.Log("회피 성공!");
                         isAvoid = true;
+                        playerScene.StaticPlayerEx("AvoidSucess"); 
                         // 회피 성공 처리 (TODO 회피 애니메이션 등)
                         Managers.Sound.Play(Sound.Effect, "Sound_Avoid"); 
 
@@ -504,6 +508,7 @@ public class UI_GuessPopup : UI_Popup
                     else
                     {
                         Debug.Log("회피 실패!");
+                        playerScene.StaticPlayerEx("AvoidFail"); 
                         isAvoid = false;
                         // 데미지 계산
 
@@ -522,6 +527,7 @@ public class UI_GuessPopup : UI_Popup
         else
         {
             DamageCalculate();
+            playerScene.StaticPlayerEx("Wrong"); 
             Invoke("HideResultAndProceed", 2f);
         }
         
@@ -558,6 +564,19 @@ public class UI_GuessPopup : UI_Popup
         {
             GameContinue();
         }
+    }
+    //confirm 버튼 클릭시 모든 버튼 비활성화
+    void CloseAllButton()
+    {
+        GameObject Button= GameObject.Find("Button");
+        GameObject ConfirmButton= GameObject.Find("ConfirmButton");
+        GameObject TheWorldButton= GameObject.Find("TheWorldButton");
+        if(Button != null)
+            Button.gameObject.SetActive(false);
+        if(ConfirmButton != null)
+            ConfirmButton.gameObject.SetActive(false);
+        if(TheWorldButton != null)
+            TheWorldButton.gameObject.SetActive(false);
     }
 
     //게임오버일 경우
@@ -758,6 +777,7 @@ public class UI_GuessPopup : UI_Popup
         }
     }
 
+    //리마인드 스킬
     public void OnClickTheWorld()
     {
         _isMoving = true;
@@ -766,16 +786,19 @@ public class UI_GuessPopup : UI_Popup
     }
 
     private void FixedUpdate()
+    {
+        if (_isMoving)
         {
-            if (_isMoving)
-            {
-                Stranger.transform.position -= new Vector3(5 * Time.deltaTime, 0, 0);
-                
-                if (Stranger.transform.position.x < -13f) 
-                {
-                    _isMoving = false; // 이동 멈춤
-                }
-            }
+            Stranger.transform.position = new Vector3(-7, 2.2f, 0); // 특정 위치로 이동
+            _isMoving = false; // 위치 설정 후 바로 이동 멈춤
+            StartCoroutine(HideStrangerAfterDelay(2f)); // 2초 후 사라지게 하기
         }
+    }
+
+    private IEnumerator HideStrangerAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay); // 지정된 시간 동안 대기
+        Stranger.transform.position = new Vector3(-12, 2.2f, 0);
+    }
 
 }

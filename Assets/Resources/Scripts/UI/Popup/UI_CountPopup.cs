@@ -87,7 +87,16 @@ public void SetAmountText(ShopData _selectedItem)
  private IEnumerator StartCountDown()
     {
         if(Managers.Game.Stage != 0)
+        {
+            yield return new WaitForSeconds(2);
+            GetText((int)Texts.AmountText).gameObject.SetActive(false);
             yield return ShowText((int)Texts.PreviousStage);
+        }
+        else
+        {
+            yield return ShowText((int)Texts.PreviousStage);
+        }
+            
 
         GetText((int)Texts.AmountText).gameObject.SetActive(false);
 

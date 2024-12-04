@@ -36,6 +36,7 @@ public enum CollectionState
 [Serializable]
 public class GameData
     {
+        public string Difficulty;
         //캐릭터용 + 패시브 스킬
         public int Stage;
         public string Name;
@@ -73,6 +74,12 @@ public class GameManagerEx
 {
     GameData _gameData = new GameData();
     public GameData SaveData { get { return _gameData; } set { _gameData = value; } }
+
+    public string Difficulty
+    {
+        get { return _gameData.Difficulty;}
+        set { _gameData.Difficulty = value; }
+    }
     public int Stage
     {
         get { return _gameData.Stage;}
@@ -228,6 +235,7 @@ public void Init()
     // 초기 세팅
     StartData data = Managers.Data.Start;
 
+    Difficulty = data.Difficulty;
     Stage = data.Stage;
     Hp = data.maxHp;
     LuckPercent = data.LuckPercent;
@@ -253,7 +261,12 @@ public void Init()
 
         foreach (QuizData quiz in Managers.Data.Quiz.Values)
         {
-            if ((Stage - 1) / 10 + 1 == quiz.Difficulty)
+            if((Stage ) >= 4 && 2 == quiz.Difficulty)
+            {
+                filteredQuizzes.Add(quiz);
+            }
+
+            else if ( Stage / 10 + 1 == quiz.Difficulty)
             {
                 filteredQuizzes.Add(quiz);
             }
@@ -325,6 +338,8 @@ public void Init()
 			Managers.Resource.Destroy(Player);
 		}
 	}
+
+    //광고
     public void ADSHOW()
     {
         Managers.Ads.Init();
