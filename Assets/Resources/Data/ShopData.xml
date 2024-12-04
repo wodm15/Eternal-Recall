@@ -67,4 +67,6 @@
   <ShopData ID="605" name="6605" productID="FreePass" icon="FreePass" description="HP를 10 회복, 운을 8% 올리고 스테이지 한턴 넘깁니다." effectType="Skill" effectValue="{10,8,1}"/>
   <ShopData ID="607" name="6607" productID="HintKey" icon="HintKey" description="힌트 2개를 획득합니다 " effectType="Skill" effectValue="2"/>
   <ShopData ID="608" name="6608" productID="upAvoid" icon="upAvoid" description="회피율을 5% 늘립니다. " effectType="Passive" effectValue="5"/>
+
+  
 </ArrayOfShopData>

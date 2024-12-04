@@ -169,25 +169,8 @@ public class UIManager
 			// UI_PlayerScene 삭제
 			Managers.Resource.Destroy(playerScene);
 		}
-		CharacterDelete();
+		Managers.Game.CharacterDelete();
 	}
 
-	public void CharacterDelete()
-    {
-		GameObject staticPlayer = GameObject.Find("StaticPlayer");
-		if (staticPlayer != null)
-		{
-			Managers.Resource.Destroy(staticPlayer);
-		}
-		GameObject Stranger = GameObject.Find("Stranger");
-		if (Stranger != null)
-		{
-			Managers.Resource.Destroy(Stranger);
-		}
-		GameObject Player = GameObject.Find("Player");
-		if (Player != null)
-		{
-			Managers.Resource.Destroy(Player);
-		}
-	}
+
 }

@@ -306,28 +306,25 @@ public void Init()
     
 	#endregion
 
-    //게임 클리어
-    public void ClearGame()
+    //캐릭터 있을 경우 삭제 함수
+	public void CharacterDelete()
     {
-        GameObject player = GameObject.Find("Player");
-        GameObject Stranger = GameObject.Find("Stranger");
-        GameObject StaticPlayer = GameObject.Find("StaticPlayer");
-
-        if(player != null)
-            Managers.Resource.Destroy(player);
-        if(Stranger != null)
-            Managers.Resource.Destroy(Stranger);
-        if(StaticPlayer != null)
-            Managers.Resource.Destroy(StaticPlayer);
-        
-        Managers.Game.SaveGame();
-        Managers.UI.CloseAllPopupUI();
-
-
-        // Managers.UI.ClosePlayerSceneUI();
-        // Managers.UI.ShowPopupUI<UI_TitlePopup>();
-    }
-
+		GameObject staticPlayer = GameObject.Find("StaticPlayer");
+		if (staticPlayer != null)
+		{
+			Managers.Resource.Destroy(staticPlayer);
+		}
+		GameObject Stranger = GameObject.Find("Stranger");
+		if (Stranger != null)
+		{
+			Managers.Resource.Destroy(Stranger);
+		}
+		GameObject Player = GameObject.Find("Player");
+		if (Player != null)
+		{
+			Managers.Resource.Destroy(Player);
+		}
+	}
     public void ADSHOW()
     {
         Managers.Ads.Init();

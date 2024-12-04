@@ -55,11 +55,20 @@ public class UI_ConfirmPopup : UI_Popup
 
 	void OnClickNoButton()
 	{
-		Managers.UI.ClosePopupUI(this);
-		Managers.Game.Init();
-		Managers.Game.LoadGame();
-		Managers.UI.ShowPopupUI<UI_CountPopup>();
-		Managers.UI.ShowSceneUI<UI_PlayerScene>();
+		if(Managers.Game.Hp > 0)
+		{
+			Managers.UI.ClosePopupUI(this);
+			Managers.Game.Init();
+			Managers.Game.LoadGame();
+			Managers.UI.ShowPopupUI<UI_CountPopup>();
+			Managers.UI.ShowSceneUI<UI_PlayerScene>();
+		}
+		else
+		{
+			
+		}
+
+
 	}
 
 

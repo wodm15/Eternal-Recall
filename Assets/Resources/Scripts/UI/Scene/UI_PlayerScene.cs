@@ -125,6 +125,14 @@ public class UI_PlayerScene : UI_Scene
             customManager.numberCheck(5); 
         }
 
+        else if(express == "GameOver")
+        {
+            customManager.eye = 17;
+            customManager.mouth = 19;
+            customManager.numberCheck(3);
+            customManager.numberCheck(4);
+        }
+
         else if(express == "ChangeClothes")
         {
             customManager.clothes = 0;

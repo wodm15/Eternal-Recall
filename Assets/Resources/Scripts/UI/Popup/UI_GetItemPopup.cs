@@ -8,6 +8,9 @@ public class UI_GetItemPopup : UI_Popup
 {
     UI_PlayerScene playerScene;
     
+    //GuessPopup 변수들
+    private int incorrectCount;
+    private bool isAvoid;
     //임시로 저장할 조건부 shopData 전체 가져오기
     private List<ShopData> _shopData = new List<ShopData>();
 
@@ -17,12 +20,15 @@ public class UI_GetItemPopup : UI_Popup
     
     enum Buttons
     {
-        Item1,
-        Item2,
-        Item3,
+        Item1BG,
+        Item2BG,
+        Item3BG,
     }
     enum Images
     {
+        Item1,
+        Item2,
+        Item3,
     }
 
     enum Texts
@@ -31,12 +37,25 @@ public class UI_GetItemPopup : UI_Popup
         Text2,
         Text3,
         ExplainText,
+        WrongCount,
     }
     
     public override bool Init()
     {
         if (base.Init() == false)
 			return false;
+
+        GameObject guessPopup = GameObject.Find("UI_GuessPopup");
+        if (guessPopup != null)
+        {
+            UI_GuessPopup uiGuessPopup = guessPopup.GetComponent<UI_GuessPopup>();
+            if (uiGuessPopup != null)
+            {
+                incorrectCount = uiGuessPopup.IncorrectCount;
+                isAvoid = uiGuessPopup.isAvoid;
+                Debug.Log($"incorrectCount and  isAvoid{incorrectCount} {isAvoid}");
+            }
+        }
 
         //추측 플레이어 아직 남아있을 경우 검증
         GameObject PassingPlayer = GameObject.Find("Stranger");
@@ -65,10 +84,19 @@ public class UI_GetItemPopup : UI_Popup
         BindImage(typeof(Images));
 
         GetText((int)Texts.ExplainText).text = Managers.GetText(Define.SkillChoseText);
+        GetText((int)Texts.WrongCount).gameObject.SetActive(true);
 
-        GetButton((int)Buttons.Item1).gameObject.BindEvent(OnClickItem1);
-        GetButton((int)Buttons.Item2).gameObject.BindEvent(OnClickItem2);
-        GetButton((int)Buttons.Item3).gameObject.BindEvent(OnClickItem3);
+        GetButton((int)Buttons.Item1BG).gameObject.BindEvent(OnClickItem1);
+        GetButton((int)Buttons.Item2BG).gameObject.BindEvent(OnClickItem2);
+        GetButton((int)Buttons.Item3BG).gameObject.BindEvent(OnClickItem3);
+        
+        //맞았을 경우
+        if(incorrectCount == 0)
+            GetText((int)Texts.WrongCount).text = Managers.GetText(Define.CorrectText);
+        else if(incorrectCount!=0 && isAvoid == false)
+            GetText((int)Texts.WrongCount).text =$"틀린 개수: {incorrectCount} 데미지: -{incorrectCount * 10}";
+        else if(incorrectCount!=0 && isAvoid == true)
+            GetText((int)Texts.WrongCount).text =$"틀린 개수: {incorrectCount} 회피하였습니다";
        
        //랜덤 아이템 3개 생성(이미지 + 글자)
         for (int i = 0; i < 3; i++) 
@@ -82,19 +110,19 @@ public class UI_GetItemPopup : UI_Popup
 
             _selectedIndexes.Add(index); 
 
-            Buttons buttonEnum = (Buttons)i; 
+            Images buttonEnum = (Images)i; 
             switch (buttonEnum)
             {
-                case Buttons.Item1:
-                    GetButton((int)Buttons.Item1).image.sprite = Managers.Resource.Load<Sprite>($"{spritePath}/{_shopData[index].icon}");
+                case Images.Item1:
+                    GetImage((int)Images.Item1).sprite = Managers.Resource.Load<Sprite>($"{spritePath}/{_shopData[index].icon}");
                     GetText((int)Texts.Text1).text = _shopData[index].description; 
                     break;
-                case Buttons.Item2:
-                    GetButton((int)Buttons.Item2).image.sprite = Managers.Resource.Load<Sprite>($"{spritePath}/{_shopData[index].icon}");
+                case Images.Item2:
+                    GetImage((int)Images.Item2).sprite = Managers.Resource.Load<Sprite>($"{spritePath}/{_shopData[index].icon}");
                     GetText((int)Texts.Text2).text = _shopData[index].description;
                     break;
-                case Buttons.Item3:
-                    GetButton((int)Buttons.Item3).image.sprite = Managers.Resource.Load<Sprite>($"{spritePath}/{_shopData[index].icon}");
+                case Images.Item3:
+                    GetImage((int)Images.Item3).sprite = Managers.Resource.Load<Sprite>($"{spritePath}/{_shopData[index].icon}");
                     GetText((int)Texts.Text3).text = _shopData[index].description; 
                     break;
             }
@@ -200,7 +228,9 @@ public class UI_GetItemPopup : UI_Popup
         playerScene.StageUp();
         UI_CountPopup countPopup = Managers.UI.ShowPopupUI<UI_CountPopup>();
         int selectedIndex = _selectedIndexes[0]; // 첫 번째 아이템 선택
-        countPopup.SetAmountText(_selectedItem.description); // AmountText에 아이템 설명 전달
+        //효과가 3개까지 일 수 있음.
+        countPopup.SetAmountText(_selectedItem);
+
     }
 
     //체력 업데이트

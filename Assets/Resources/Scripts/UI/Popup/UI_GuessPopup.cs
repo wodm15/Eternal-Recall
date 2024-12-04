@@ -10,8 +10,14 @@ public class UI_GuessPopup : UI_Popup
     [SerializeField] UI_QuestionPopup QuestionPopup;
     //timer
     public float RemainTime;
+    public bool isAvoid;
 
-    public int IncorrectCount;
+    private int _incorrectCount = 0;
+    public int IncorrectCount
+    {
+        get { return _incorrectCount; }
+        set { _incorrectCount = value; }
+    }
 
     // 타이머와 클릭 연동
     bool IsButtonClick;
@@ -111,8 +117,16 @@ public class UI_GuessPopup : UI_Popup
         GetText((int)Texts.AvoidButtonText).text = Managers.GetText(Define.AvoidButtonText);
         GetButton((int)Buttons.AvoidButton).gameObject.SetActive(false);
         GetText((int)Texts.Avoid).gameObject.SetActive(false);
-        
 
+        //초반 Guess 어딘지 확인
+        GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {customManager.hairM.count.Length}"; 
+        GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {customManager.clothesM.count.Length}"; 
+        GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {customManager.eyebrowM.count.Length}"; 
+        GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {customManager.eyeM.count.Length}"; 
+        GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {customManager.mouthM.count.Length}"; 
+        GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {customManager.emotionM.count.Length}"; 
+        GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {customManager.hairM.count.Length}"; 
+        GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 11"; 
         #region 질문 설정 알고리즘
         //Text에 질문 설정
         LoadRandomQuiz();
@@ -405,6 +419,16 @@ public class UI_GuessPopup : UI_Popup
             
         GetText((int)Texts.Timer).text = $"{(int)RemainTime}";
         
+        //3초 이내는 빨간색
+        if (RemainTime <= 4)
+        {
+            GetText((int)Texts.Timer).color = Color.red;  
+        }
+        else
+        {
+            GetText((int)Texts.Timer).color = Color.black;  
+        }
+
         if (RemainTime <= 0 && IsButtonClick == false)
         {
             GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
@@ -458,7 +482,7 @@ public class UI_GuessPopup : UI_Popup
             playerScene.StaticPlayerEx("Wrong"); //TODO
             Debug.Log("오답: Wrong");
             Managers.Sound.Play(Sound.Effect, "Sound_Wrong");
-
+            isAvoid = false;
             // 회피 되는지 확인 M
             if (Random.Range(0, 100) < Managers.Game.Avoid)
             {
@@ -470,6 +494,7 @@ public class UI_GuessPopup : UI_Popup
                     if (Random.Range(1, 3) == 1)
                     {
                         Debug.Log("회피 성공!");
+                        isAvoid = true;
                         // 회피 성공 처리 (TODO 회피 애니메이션 등)
                         Managers.Sound.Play(Sound.Effect, "Sound_Avoid"); 
 
@@ -479,6 +504,7 @@ public class UI_GuessPopup : UI_Popup
                     else
                     {
                         Debug.Log("회피 실패!");
+                        isAvoid = false;
                         // 데미지 계산
 
                         DamageCalculate();
