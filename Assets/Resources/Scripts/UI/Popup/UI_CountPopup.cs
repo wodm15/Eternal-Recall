@@ -7,6 +7,10 @@ using static Define;
 public class UI_CountPopup : UI_Popup
 {
     private string _description;
+    private string _productId;
+    private float _effectValue1;
+    private float _effectValue2;
+    private float _effectValue3;
     enum Images
     {
         CountDown1,
@@ -42,7 +46,18 @@ public class UI_CountPopup : UI_Popup
         if(_description !=null)
         {
             GetText((int)Texts.AmountText).gameObject.SetActive(true);
-            GetText((int)Texts.AmountText).text = $"{_description}";
+            string amountText = $"{_description} \n+{_effectValue1}";
+
+            if (_effectValue2 != 0)  // effectValue2가 null이 아닌지 확인
+            {
+                amountText += $" : +{_effectValue2}";
+            }
+            if(_effectValue3 !=0)
+            {
+                amountText += $" : +{_effectValue3}";
+            }
+
+            GetText((int)Texts.AmountText).text = amountText;  
         }
         
 
@@ -51,10 +66,23 @@ public class UI_CountPopup : UI_Popup
         return true;
     }
         // AmountText 값을 설정하는 메서드
-    public void SetAmountText(string description)
+public void SetAmountText(ShopData _selectedItem)
+{
+    _description = _selectedItem.description;
+    _productId = _selectedItem.productID;
+    _effectValue1 = _selectedItem.effectValues[0];
+
+    if (_selectedItem.effectValues.Count > 1 )
     {
-        _description = description;
+        _effectValue2 = _selectedItem.effectValues[1];
     }
+    if (_selectedItem.effectValues.Count > 2 )
+    {
+        _effectValue3 = _selectedItem.effectValues[2];
+    }
+
+}
+
 
  private IEnumerator StartCountDown()
     {

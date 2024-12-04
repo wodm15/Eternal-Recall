@@ -84,7 +84,7 @@ void OnClickStartButton()
 			{
 
 			}
-		else
+		else if(Managers.Game.LoadGame() && Managers.Game.Hp > 0)
 		{
 			Managers.UI.ClosePopupUI(this);
 			Managers.UI.ShowSceneUI<UI_PlayerScene>();

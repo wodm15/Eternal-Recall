@@ -63,7 +63,10 @@ public class Define
 	public const int WriteNickname = 6500;	
 	public const int NicknameConfirm = 6501;
 	public const int GOBACKText = 6502;
-	
+
+	public const int CorrectText = 6503;
+	public const int WrongText = 6504;
+	public const int WrongButAvoid = 6505;
 	public const int StartButtonText = 10000;
 	public const int ContinueButtonText = 10001;
 	public const int CollectionButtonText = 10002;
