@@ -171,6 +171,7 @@ public class GameManagerEx
     //실시간으로 적용(안씀)
     public void RefreshStatCollections()
         {
+            
             foreach (CollectionData data in Managers.Data.Collections.Values)
             {
                 if (Collections[data.ID - 1] != CollectionState.None)
@@ -240,7 +241,7 @@ public void Init()
     
 
     // 컬렉션 수치 적용
-	ReApplyCollectionStats();
+	// ReApplyCollectionStats();
 }
 
 

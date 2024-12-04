@@ -33,10 +33,9 @@ public class UI_GameEndPopup : UI_Popup
 
     void OnClickConfirmButton()
     {
-        //TODO 게임데이터 저장
-        Managers.Sound.Clear();
-        Managers.UI.ClosePopupUI(this);  
-        Managers.UI.ClosePlayerSceneUI();
+        Managers.Game.SaveGame();
+        Managers.UI.ClosePopupUI(this);
         Managers.UI.ShowPopupUI<UI_TitlePopup>();  
+        Managers.UI.ClosePlayerSceneUI();
     }
 }

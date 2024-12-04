@@ -36,7 +36,6 @@ public class UI_GuessPopup : UI_Popup
         MouthText,
         EmotionText,
         AnimationText,
-        TestText,
     }
     enum Buttons
     {
@@ -450,12 +449,13 @@ public class UI_GuessPopup : UI_Popup
             GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
             GetImage((int)Images.Correct).gameObject.SetActive(true);
 
-            // playerScene.StaticPlayerEx("Correct"); //TODO
+            playerScene.StaticPlayerEx("Correct"); //TODO
 
             Invoke("HideResultAndProceed", 2f);
         }
         else // 오답일 경우
         {
+            playerScene.StaticPlayerEx("Wrong"); //TODO
             Debug.Log("오답: Wrong");
             Managers.Sound.Play(Sound.Effect, "Sound_Wrong");
 
@@ -640,7 +640,8 @@ public class UI_GuessPopup : UI_Popup
     //힌트 한개 제거까지 
     public void UseHintKey(string hintKeyName)
     {
-        Managers.Game.HintKey--;
+        Managers.Game.HintKey = Managers.Game.HintKey - 1;
+        playerScene.RefreshUI();
 
         switch (hintKeyName)
         {

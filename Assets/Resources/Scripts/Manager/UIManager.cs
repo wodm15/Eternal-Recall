@@ -158,14 +158,36 @@ public class UIManager
 		GameObject playerScene = GameObject.Find("UI_PlayerScene");
 		if (playerScene != null)
 		{
+			// popup을 상위 계층으로 이동
+			Transform popup1 = playerScene.transform.Find("UI_TitlePopup");
+			if (popup1 != null)
+			{
+				popup1.SetParent(playerScene.transform.parent);
+			}
+
+
+			// UI_PlayerScene 삭제
 			Managers.Resource.Destroy(playerScene);
 		}
+		CharacterDelete();
+	}
 
+	public void CharacterDelete()
+    {
 		GameObject staticPlayer = GameObject.Find("StaticPlayer");
 		if (staticPlayer != null)
 		{
 			Managers.Resource.Destroy(staticPlayer);
 		}
+		GameObject Stranger = GameObject.Find("Stranger");
+		if (Stranger != null)
+		{
+			Managers.Resource.Destroy(Stranger);
+		}
+		GameObject Player = GameObject.Find("Player");
+		if (Player != null)
+		{
+			Managers.Resource.Destroy(Player);
+		}
 	}
-
 }
