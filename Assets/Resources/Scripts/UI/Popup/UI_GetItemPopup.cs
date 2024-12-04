@@ -44,6 +44,7 @@ public class UI_GetItemPopup : UI_Popup
     {
         if (base.Init() == false)
 			return false;
+        playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
 
         GameObject guessPopup = GameObject.Find("UI_GuessPopup");
         if (guessPopup != null)
@@ -59,13 +60,13 @@ public class UI_GetItemPopup : UI_Popup
 
         //추측 플레이어 아직 남아있을 경우 검증
         GameObject PassingPlayer = GameObject.Find("Stranger");
+
         PassingPlayer.transform.position = new Vector3(4, -3, 0);
 
         GameObject GuessPlayer = GameObject.Find("Player");
         GuessPlayer.transform.position = new Vector3(0,-3, 0);
         GuessPlayer.transform.localScale = new Vector3(0.7f,0.7f, 1);
 
-        playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
         
         // shopData 스테이지별 픽업
         int stageRangeStart = (Managers.Game.Stage / 10) * 100;  //Stage 10이면 100, Stage 20이면 200, ...
@@ -127,6 +128,10 @@ public class UI_GetItemPopup : UI_Popup
                     break;
             }
         }
+
+
+        //주인공 표정 초기화
+        playerScene.StaticPlayerEx("Initial");
 
         return true;
     }
@@ -207,8 +212,6 @@ public class UI_GetItemPopup : UI_Popup
     //마지막 팝업용
     void onClickEnd(ShopData _selectedItem)
     {
-        //주인공 표정 초기화
-        playerScene.StaticPlayerEx("Initial");
         
         Managers.Game.SaveGame();
         //stranger 캐릭터와 Player 삭제
@@ -246,7 +249,8 @@ public class UI_GetItemPopup : UI_Popup
         {
             int gameble = Random.Range(1, (int)selectedItem.effectValues[0]+1);
             Managers.Game.Hp += gameble;
-            Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
+            selectedItem.effectValues[0]= gameble; // countDown에 넘기기
+            Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); 
         }
 
         playerScene.HPUp();

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static Define;
 
 public class UI_GameOverPopup : UI_Popup
@@ -24,6 +25,13 @@ public class UI_GameOverPopup : UI_Popup
 		BindText(typeof(Texts));
 		BindButton(typeof(Buttons));
         // BindImage(typeof(Images));
+
+        playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
+        // GameObject button = playerScene.transform.Find("Button").gameObject;
+        // if(button == null)
+        //     Debug.Log("PlayerScnene Button not found");
+        
+        // button.SetActive(false);
         
         GameObject guessPlayer = GameObject.Find("Player");
         if(guessPlayer != null)

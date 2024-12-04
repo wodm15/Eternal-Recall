@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 using static Define;
 
 public class UI_NamePopup : UI_Popup
@@ -9,6 +10,9 @@ public class UI_NamePopup : UI_Popup
     //플레이어 모습 저장 배열
     int[] playerIndex = new int[6] {0,0,0,0,0,0};
     GameObject Player;
+    [SerializeField] Toggle Normal;
+    [SerializeField] Toggle Hard;
+    [SerializeField] Toggle UnLimited;
     enum GameObjects
 	{
 		InputField
@@ -27,6 +31,7 @@ public class UI_NamePopup : UI_Popup
 	}
 
     TMP_InputField _inputField;
+    [SerializeField] ToggleGroup toggleGroup; 
 
 
     public override bool Init()
@@ -45,15 +50,27 @@ public class UI_NamePopup : UI_Popup
         GetText((int)Texts.ConfirmButtonText).text = Managers.GetText(Define.NicknameConfirm);
 		GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
         
+
+        Normal.group = toggleGroup;
+        Hard.group = toggleGroup;
+        UnLimited.group = toggleGroup;
+
+        Normal.isOn = true;
+
         RefreshUI();
     	_inputField = GetObject((int)GameObjects.InputField).gameObject.GetComponent<TMP_InputField>();
 		_inputField.text = "";
 
         // CharacterResponse();
 
-     
         return true;
     }
+
+    private void SetToggleGroup()
+    {
+
+    }
+
 
 	void RefreshUI()
 	{
