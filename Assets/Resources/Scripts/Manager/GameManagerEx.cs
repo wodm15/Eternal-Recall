@@ -8,11 +8,11 @@ using System.Linq;
 
 
 [Serializable]
-public class PlayerState
+public enum DifficultyLevel
     {
-        public Emotion state = Emotion.None;
-        public bool dialogueEvent = false;
-        public bool goHomeEvent = false;
+        Normal,
+        Hard,
+        Unlimited,
     }
 
 [Serializable]
@@ -160,7 +160,7 @@ public class GameManagerEx
     public int HintKey
     {
         get {return _gameData.HintKey;}
-        set { _gameData.HintKey=value; }
+        set { _gameData.HintKey=value; RefreshStatCollections();}
     }
 
     //코디
@@ -200,31 +200,25 @@ public class GameManagerEx
     //실시간으로 적용
     public void RefreshStatCollections()
         {
-            
             foreach (CollectionData data in Managers.Data.Collections.Values)
             {
+                if (coordCollections[data.ID - 1] != CollectionState.None)
+				continue;
 
-                if (data.reqHp > Hp)
+                if (data.reqHp >= Hp)
                     continue;
-                if (data.reqLuckPercent > LuckPercent)
+                if (data.reqLuckPercent >= LuckPercent)
                     continue;
-                if(data.reqStage > Stage)
+                if(data.reqStage >= Stage)
                     continue;
-                if (data.reqPassTicket > PassTicket)
-                    continue;
-                if(data.reqHintKey > HintKey)
+                if(data.reqHintKey >= HintKey)
                     continue;
 
 
                 //옷얻는거 기록
                 coordCollections[data.ID - 1] = CollectionState.Done;
                 //옷 변경(TODO)
-                Managers.Game.StatDataState[10] = global::StatDataState.Done;
-                // //TODO MAXHP
-                // MaxHp += data.difHp;
-                // LuckPercent += data.difLuckPercent;
-                // Stage += data.difStage;
-                // PassTicket += data.difPassTicket;
+                // Managers.Game.StatDataState[10] = global::StatDataState.Done;
 
                 OnNewCollection?.Invoke(data);
             }

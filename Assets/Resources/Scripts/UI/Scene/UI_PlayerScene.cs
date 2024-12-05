@@ -65,7 +65,6 @@ public class UI_PlayerScene : UI_Scene
         //상태창
         GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n운: {Managers.Game.LuckPercent}% \n회피력: {Managers.Game.Avoid}% \n추측 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
         
-        GetImage((int)Images.CollectionSuccessImage).sprite = Managers.Resource.Load<Sprite>($"/{_collectionData[0].iconPath}");
 
         GetButton((int)Buttons.GoTitle).gameObject.BindEvent(ClearGame);
 
@@ -179,6 +178,8 @@ public class UI_PlayerScene : UI_Scene
 		// GetImage((int)Images.CollectionSuccess).gameObject.SetActive(true);
 		GetText((int)Texts.CollectionSuccessText).text = $"업적 달성! {data.description}";
 
+        GetImage((int)Images.CollectionSuccessImage).sprite = Managers.Resource.Load<Sprite>(data.iconPath);
+
         Managers.Game.SaveGame();
 
 		if (_coHideCollection != null)
@@ -197,6 +198,7 @@ public class UI_PlayerScene : UI_Scene
     public void ClearGame()
     {
         Managers.Game.SaveGame();
+        Managers.Game.CharacterDelete();
         Managers.UI.CloseAllPopupUI();
         Managers.UI.ShowPopupUI<UI_TitlePopup>();  
         Managers.UI.ClosePlayerSceneUI();

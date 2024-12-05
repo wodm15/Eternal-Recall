@@ -72,6 +72,7 @@ void OnClickStartButton()
 		}
 		else
 		{
+			Managers.Game.CharacterDelete();
 			Managers.Game.Init();
 
 			Managers.UI.ClosePopupUI(this);
@@ -83,7 +84,7 @@ void OnClickStartButton()
 	void OnClickContinueButton()
 	{
 		Debug.Log("OnClickContinueButton");
-		// Managers.Sound.Play(Sound.Effect, ("Sound_"));
+		Managers.Game.CharacterDelete();
 		Managers.Game.Init();
 		if(!Managers.Game.LoadGame())
 			{

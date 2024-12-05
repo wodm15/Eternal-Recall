@@ -45,6 +45,7 @@ public class UI_ConfirmPopup : UI_Popup
 
 	void OnClickYesButton()
 	{	
+		Managers.Game.CharacterDelete();
 		Managers.Game.Init();
 		Managers.Game.SaveGame();
 		Managers.UI.ClosePopupUI(this);
@@ -57,6 +58,7 @@ public class UI_ConfirmPopup : UI_Popup
 	{
 		if(Managers.Game.Hp > 0)
 		{
+			Managers.Game.CharacterDelete();
 			Managers.UI.ClosePopupUI(this);
 			Managers.Game.Init();
 			Managers.Game.LoadGame();

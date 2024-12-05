@@ -51,13 +51,13 @@ public class UI_NamePopup : UI_Popup
         if (base.Init() == false)
 			return false;
 
-        // Player = Managers.Resource.Instantiate("StaticPlayer");
+        Player = Managers.Resource.Instantiate("StaticPlayer");
 
         GameObject player = GameObject.FindGameObjectWithTag("StaticManager");
         customManager = player.GetComponent<CustomManager>();
         animationManager = player.GetComponent<AnimationManager>();
-        // Player.transform.position = Vector3.zero;
-        // Player.transform.localScale = new Vector3(1, 1, 1);
+        Player.transform.position = Vector3.zero;
+        Player.transform.localScale = new Vector3(1, 1, 1);
 
 
         BindObject(typeof(GameObjects));
@@ -72,33 +72,34 @@ public class UI_NamePopup : UI_Popup
         RefreshClothesText();
 
         //가지고 있는 옷만 필터링해서 버튼 클릭시 이동
-int maxClothesIndex = customManager.clothesM.count.Length - 1;
+        int maxClothesIndex = customManager.clothesM.count.Length - 1;
 
-GetButton((int)Buttons.ClothesMinus).gameObject.BindEvent(() =>
-{
-    // 현재 customManager.clothes - 1이 Done 상태라면 바로 이동
-    if (customManager.clothes > 0 && Managers.Game.StatDataState[customManager.clothes - 1] == StatDataState.Done)
-    {
-        // Done 상태라면 customManager.clothes 값을 감소시켜 진행
-        customManager.clothes--;  // 현재 값을 감소시킴
-        customManager.numberCheck(1);  // 추가된 로직 실행
-    }
-    else
-    {
-        // Done 상태의 가장 가까운 항목으로 이동
-        for (int i = customManager.clothes - 1; i >= 0; i--)
+        GetButton((int)Buttons.ClothesMinus).gameObject.BindEvent(() =>
         {
-            if (Managers.Game.StatDataState[i] == StatDataState.Done)
+            // 현재 customManager.clothes - 1이 Done 상태라면 바로 이동
+            if (customManager.clothes > 0 && Managers.Game.StatDataState[customManager.clothes - 1] == StatDataState.Done)
             {
-                customManager.clothes = i;  // Done 상태의 항목으로 이동
-                break;
-            }
-        }
-    }
 
-    RefreshClothesText();
-    Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
-});
+                customManager.clothes--;  
+                customManager.numberCheck(1);  
+            }
+            else
+            {
+                // Done 상태의 가장 가까운 항목으로 이동
+                for (int i = customManager.clothes - 1; i >= 0; i--)
+                {
+                    if (Managers.Game.StatDataState[i] == StatDataState.Done)
+                    {
+                        customManager.clothes = i;  
+                        customManager.numberCheck(1);  
+                        break;
+                    }
+                }
+            }
+
+            RefreshClothesText();
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
 
 
 
@@ -230,7 +231,7 @@ GetButton((int)Buttons.ClothesMinus).gameObject.BindEvent(() =>
 
     void OnClickConfirmButton()
     {
-        Managers.Game.CharacterDelete();
+        // Managers.Game.CharacterDelete();
 
         Managers.Sound.Play(Sound.Effect, "Sound_Checkbutton");
         Debug.Log("onClickConfirmButton");
