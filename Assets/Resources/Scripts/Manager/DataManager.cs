@@ -72,5 +72,20 @@ public class DataManager
         }
         return "null";
     }
+    //옷 효과 가져오기
+    public string GetStatDesById(int id)
+    {
+        foreach (KeyValuePair<int, StatData> entry in Managers.Data.Stat)
+        {
+            int key = entry.Key; // key는 StatData의 ID
+            StatData data = entry.Value; // value는 StatData 객체
+
+            // Debug.Log($"ID: {data.ID}, Name: {data.Name}, Effect: {data.EffectValue}");
+            if(data.ID == id)
+                return data.Description;
+
+        }
+        return "null";
+    }
     
 }

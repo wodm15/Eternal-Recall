@@ -69,25 +69,19 @@ public class UI_NamePopup : UI_Popup
         
         #region 코디 (현재는 옷만)
 
-        GetText((int)Texts.ClothesEffectText).text = "옷 효과입니다.";
+        RefreshClothesText();
+
+        //가지고 있는 옷만 필터링해서 버튼 클릭시 이동
+int maxClothesIndex = customManager.clothesM.count.Length - 1;
 
 GetButton((int)Buttons.ClothesMinus).gameObject.BindEvent(() =>
-{   
+{
     // 현재 customManager.clothes - 1이 Done 상태라면 바로 이동
-    if (Managers.Game.StatDataState[customManager.clothes - 1] == StatDataState.Done)
+    if (customManager.clothes > 0 && Managers.Game.StatDataState[customManager.clothes - 1] == StatDataState.Done)
     {
         // Done 상태라면 customManager.clothes 값을 감소시켜 진행
-        if (0 < customManager.clothes)
-        {
-            customManager.clothes--;  // 현재 값을 감소시킴
-        }
-
+        customManager.clothes--;  // 현재 값을 감소시킴
         customManager.numberCheck(1);  // 추가된 로직 실행
-    
-        string statDataName = Managers.Data.GetStatNameById(customManager.clothes); 
-        GetText((int)Texts.ClothesText).text = $"{statDataName}";
-        // }
-        Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
     }
     else
     {
@@ -100,50 +94,47 @@ GetButton((int)Buttons.ClothesMinus).gameObject.BindEvent(() =>
                 break;
             }
         }
-
-        customManager.numberCheck(1);  
-        string statDataName = Managers.Data.GetStatNameById(customManager.clothes); 
-        GetText((int)Texts.ClothesText).text = $"{statDataName}";
-
-        Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
     }
+
+    RefreshClothesText();
+    Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
 });
 
 
-GetButton((int)Buttons.ClothesPlus).gameObject.BindEvent(() =>
-{
-    // Done 상태의 항목만 처리
-    if (Managers.Game.StatDataState[customManager.clothes + 1] == StatDataState.Done)
-    {
-        if (customManager.clothesM.count.Length > customManager.clothes)
-        {
-            customManager.clothes++;  // customManager.clothes 값을 증가시킴
-        }
 
-        customManager.numberCheck(1);  // 추가된 로직 실행
-        string statDataName = Managers.Data.GetStatNameById(customManager.clothes); 
-        GetText((int)Texts.ClothesText).text = $"{statDataName}";
-        Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
-    }
-    else
-    {
-        // Done 상태의 가장 가까운 항목으로 이동
-        for (int i = customManager.clothes + 1; i < customManager.clothesM.count.Length -1 ; i++)
+        GetButton((int)Buttons.ClothesPlus).gameObject.BindEvent(() =>
         {
-            if (Managers.Game.StatDataState[i] == StatDataState.Done)
+            // Done 상태의 항목만 처리
+            if (Managers.Game.StatDataState[customManager.clothes + 1] == StatDataState.Done)
             {
-                customManager.clothes = i;  // Done 상태의 항목으로 이동
-                break;
+                if (customManager.clothesM.count.Length > customManager.clothes)
+                {
+                    customManager.clothes++;  // customManager.clothes 값을 증가시킴
+                }
+
+                customManager.numberCheck(1);  // 추가된 로직 실행
+                RefreshClothesText();
+                Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
             }
-        }
+            else
+            {
+                // // Done 상태의 가장 가까운 항목으로 이동
+                // int startIndex = customManager.clothes + 1 < customManager.clothesM.count.Length -1 ? customManager.clothes + 1 : customManager.clothes;
 
-        customManager.numberCheck(1); 
-        string statDataName = Managers.Data.GetStatNameById(customManager.clothes); 
-        GetText((int)Texts.ClothesText).text = $"{statDataName}";
-        Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
-    }
-});
+                for (int i = customManager.clothes + 1; i < customManager.clothesM.count.Length ; i++)
+                {
+                    if (Managers.Game.StatDataState[i] == StatDataState.Done)
+                    {
+                        customManager.clothes = i;  // Done 상태의 항목으로 이동
+                        break;
+                    }
+                }
 
+                customManager.numberCheck(1); 
+                RefreshClothesText();
+                Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+            }
+        });
 
 
         #endregion
@@ -162,6 +153,15 @@ GetButton((int)Buttons.ClothesPlus).gameObject.BindEvent(() =>
             Debug.Log("101옷 있음");
 
         return true;
+    }
+
+    //옷 텍스트 가져오기
+    public void RefreshClothesText()
+    {
+        string statDataName = Managers.Data.GetStatNameById(customManager.clothes); 
+        GetText((int)Texts.ClothesText).text = $"{statDataName}";
+        string statDataDes = Managers.Data.GetStatDesById(customManager.clothes); 
+        GetText((int)Texts.ClothesEffectText).text = $"{statDataDes}";
     }
 
     private void SetToggleGroup()

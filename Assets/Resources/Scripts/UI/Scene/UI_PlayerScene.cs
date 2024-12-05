@@ -6,6 +6,7 @@ using static Define;
 
 public class UI_PlayerScene : UI_Scene
 {
+    private List<CollectionData> _collectionData = new List<CollectionData>();
     enum Texts
     {
         Stage,
@@ -18,6 +19,7 @@ public class UI_PlayerScene : UI_Scene
     {
         HP,
         HPBG, //hp 배경바
+        CollectionSuccessImage,
     }
     
     enum Buttons
@@ -28,7 +30,7 @@ public class UI_PlayerScene : UI_Scene
     GameObject StaticPlayer;
     GameObject Character;
     GameObject _customManager;
-    public CustomManager customManager;    
+    CustomManager customManager;    
     protected AnimationManager animationManager;
 
     public override bool Init()
@@ -38,6 +40,11 @@ public class UI_PlayerScene : UI_Scene
 
         Managers.Game.OnNewCollection = OnNewCollection;
         //TODO
+
+        foreach (CollectionData collectionData in Managers.Data.Collections.Values)
+        {
+            _collectionData.Add(collectionData);
+        }
 
         //static 캐릭터
         StaticPlayer = Managers.Resource.Instantiate("StaticPlayer");
@@ -58,6 +65,7 @@ public class UI_PlayerScene : UI_Scene
         //상태창
         GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n운: {Managers.Game.LuckPercent}% \n회피력: {Managers.Game.Avoid}% \n추측 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
         
+        GetImage((int)Images.CollectionSuccessImage).sprite = Managers.Resource.Load<Sprite>($"/{_collectionData[0].iconPath}");
 
         GetButton((int)Buttons.GoTitle).gameObject.BindEvent(ClearGame);
 
@@ -163,13 +171,13 @@ public class UI_PlayerScene : UI_Scene
 
     }
 
-        //업적 달성 시 collection
+    //업적 달성 시 collection
 	void OnNewCollection(CollectionData data)
 	{
         GetText((int)Texts.CollectionSuccessText).gameObject.SetActive(true);
         Managers.Sound.Play(Sound.Effect, "Sound_Archive");
 		// GetImage((int)Images.CollectionSuccess).gameObject.SetActive(true);
-		GetText((int)Texts.CollectionSuccessText).text = $"이걸 해냈다고?! 업적 달성! {data.description}";
+		GetText((int)Texts.CollectionSuccessText).text = $"업적 달성! {data.description}";
 
         Managers.Game.SaveGame();
 
