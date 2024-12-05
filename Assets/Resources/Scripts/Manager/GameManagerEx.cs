@@ -33,10 +33,17 @@ public enum CollectionState
         Done
     }
 
+
+public enum StatDataState
+    {
+        None,
+        Done
+    }
+
 [Serializable]
 public class GameData
     {
-        public string Difficulty;
+        public string DifficultyLevel;
         //캐릭터용 + 패시브 스킬
         public int Stage;
         public string Name;
@@ -53,13 +60,15 @@ public class GameData
         public int TheWorld; //3초간 멈추기
         public int PassTicket; //스테이지 1개 바로 패스
         public int HintKey;
-
-        //얻은 스킬
-        public Skill[] Skills = new Skill[MAX_SKILL_COUNT];
         
         //컬렉션 
         public CollectionData CollectionData = new CollectionData();
         public CollectionState[] Collections = new CollectionState[MAX_COLLECTION_COUNT];
+        
+        //코디
+        public int ClothesIndex;
+        public StatData StatData = new StatData();
+        public StatDataState[] StatDataState = new StatDataState[MAX_STAT_COUNT];
 
         // 클리어 한 엔딩
 	    public CollectionState[] Endings = new CollectionState[MAX_ENDING_COUNT];
@@ -75,15 +84,15 @@ public class GameManagerEx
     GameData _gameData = new GameData();
     public GameData SaveData { get { return _gameData; } set { _gameData = value; } }
 
-    public string Difficulty
+    public string DifficultyLevel
     {
-        get { return _gameData.Difficulty;}
-        set { _gameData.Difficulty = value; }
+        get { return _gameData.DifficultyLevel;}
+        set { _gameData.DifficultyLevel = value; }
     }
     public int Stage
     {
         get { return _gameData.Stage;}
-        set { _gameData.Stage = value; RefreshStatCollections();}
+        set { _gameData.Stage = value; }
     }
     public int[] StrangerIndex = new int[7];
 
@@ -96,7 +105,7 @@ public class GameManagerEx
     public int Hp
     {
         get { return _gameData.Hp; }
-        set { _gameData.Hp = value; RefreshStatCollections();}
+        set { _gameData.Hp = value;}
     }
     public int Defence
     {
@@ -117,7 +126,7 @@ public class GameManagerEx
     public int LuckPercent
     {
         get { return _gameData.LuckPercent; }
-        set { _gameData.LuckPercent = value; RefreshStatCollections();}
+        set { _gameData.LuckPercent = value; }
     }
     public int DownSpeed
     {
@@ -146,12 +155,19 @@ public class GameManagerEx
     public int PassTicket
     {
         get { return _gameData.PassTicket;}
-        set { _gameData.PassTicket=value; RefreshStatCollections();}
+        set { _gameData.PassTicket=value; }
     }
     public int HintKey
     {
         get {return _gameData.HintKey;}
-        set { _gameData.HintKey=value; RefreshStatCollections();}
+        set { _gameData.HintKey=value; }
+    }
+
+    //코디
+    public int ClothesIndex
+    {
+        get { return _gameData.ClothesIndex;}
+        set { _gameData.ClothesIndex=value; }
     }
 
     #endregion
@@ -160,6 +176,12 @@ public class GameManagerEx
     {
         get { return _gameData.quizData; }
         set { _gameData.quizData = value; }
+    }
+
+    public StatDataState[] StatDataState
+    {
+        get { return _gameData.StatDataState; }
+        set { _gameData.StatDataState = value; }
     }
 
     #region 컬렉션 & 프로젝트
@@ -173,6 +195,11 @@ public class GameManagerEx
     public CollectionState[] Endings { get { return _gameData.Endings; } }
     public Action<CollectionData> OnNewCollection;
 
+    public StatData StatData 
+    {
+         get { return _gameData.StatData; }
+         set { _gameData.StatData = value; }
+    }
 
 
     //실시간으로 적용(안씀)
@@ -235,7 +262,7 @@ public void Init()
     // 초기 세팅
     StartData data = Managers.Data.Start;
 
-    Difficulty = data.Difficulty;
+    DifficultyLevel = data.DifficultyLevel;
     Stage = data.Stage;
     Hp = data.maxHp;
     LuckPercent = data.LuckPercent;
@@ -246,7 +273,9 @@ public void Init()
     Defence = data.Defence;
     HintKey = data.HintKey;
     Avoid = data.Avoid;
-    
+    ClothesIndex = data.ClothesIndex;
+
+    StatDataState[] StatDataState = Managers.Game.SaveData.StatDataState;
 
     // 컬렉션 수치 적용
 	// ReApplyCollectionStats();
@@ -261,12 +290,40 @@ public void Init()
 
         foreach (QuizData quiz in Managers.Data.Quiz.Values)
         {
-            if((Stage ) >= 4 && 2 == quiz.Difficulty)
+            // Difficulty 매핑을 Stage 값에 따라 설정
+            int difficulty = 0;
+
+            if (Stage >= 1 && Stage <= 4)
             {
-                filteredQuizzes.Add(quiz);
+                difficulty = 1;
+            }
+            else if (Stage >= 5 && Stage <= 14)
+            {
+                difficulty = 2;
+            }
+            else if (Stage >= 15 && Stage <= 24)
+            {
+                difficulty = 3;
+            }
+            else if (Stage >= 25 && Stage <= 34)
+            {
+                difficulty = 4;
+            }
+            else if (Stage >= 35 && Stage <= 44)
+            {
+                difficulty = 5;
+            }
+            else if (Stage >= 45 && Stage <= 55)
+            {
+                difficulty = 6;
+            }
+            else if (Stage >= 55 && Stage <= 70)
+            {
+                difficulty = 7;
             }
 
-            else if ( Stage / 10 + 1 == quiz.Difficulty)
+            // difficulty에 맞는 퀴즈를 필터링
+            if (quiz.Difficulty == difficulty)
             {
                 filteredQuizzes.Add(quiz);
             }
@@ -275,7 +332,6 @@ public void Init()
         if (filteredQuizzes.Count > 0)
         {
             randomQuiz = filteredQuizzes[UnityEngine.Random.Range(0, filteredQuizzes.Count)];
-
         }
         else
         {
@@ -284,6 +340,7 @@ public void Init()
 
         return randomQuiz;
     }
+
 
 
     #region Save & Load	

@@ -5,6 +5,7 @@ using static Define;
 
 public class UI_TitlePopup : UI_Popup
 {
+	GameObject Player;
 	enum Texts
 	{
 		// TouchToStartText,
@@ -44,6 +45,10 @@ public class UI_TitlePopup : UI_Popup
 		GetText((int)Texts.CollectionButtonText).text = Managers.GetText(Define.CollectionButtonText);
 
 		Managers.Sound.Clear();
+
+		Player = Managers.Resource.Instantiate("StaticPlayer");
+        Player.transform.position = Vector3.zero;
+        Player.transform.localScale = new Vector3(1, 1, 1);
 
 		int music = Random.Range(0,100);
 		if( music < 50)

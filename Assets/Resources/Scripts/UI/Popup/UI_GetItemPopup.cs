@@ -54,7 +54,6 @@ public class UI_GetItemPopup : UI_Popup
             {
                 incorrectCount = uiGuessPopup.IncorrectCount;
                 isAvoid = uiGuessPopup.isAvoid;
-                Debug.Log($"incorrectCount and  isAvoid{incorrectCount} {isAvoid}");
             }
         }
 

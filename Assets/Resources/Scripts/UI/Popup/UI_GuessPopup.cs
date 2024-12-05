@@ -31,7 +31,6 @@ public class UI_GuessPopup : UI_Popup
     enum Texts
     {
         ConfirmButtonText,
-        Question,
         Timer,
         TheWorldText,
         AvoidButtonText,
@@ -128,8 +127,8 @@ public class UI_GuessPopup : UI_Popup
         GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {customManager.emotionM.count.Length}"; 
         GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {customManager.hairM.count.Length}"; 
         GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 11"; 
-        #region 질문 설정 알고리즘
-        //Text에 질문 설정
+        #region 질문 텍스트
+
         LoadRandomQuiz();
 
         #endregion
@@ -605,7 +604,7 @@ public class UI_GuessPopup : UI_Popup
         QuizFilterButton(randomQuiz.quizType);
 
         // 선택된 퀴즈의 질문 텍스트 출력
-        GetText((int)Texts.Question).text = $"{randomQuiz.kor}";
+        // GetText((int)Texts.Question).text = $"{randomQuiz.kor}";
     }
     
     public void QuizFilterButton(string QuizType)
