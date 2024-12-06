@@ -55,6 +55,9 @@ public class UI_PlayerScene : UI_Scene
         customManager = _customManager.GetComponent<CustomManager>();
         animationManager = _customManager.GetComponent<AnimationManager>();
 
+        //헤어 다시 설정
+        StaticPlayerEx();
+
         BindText(typeof(Texts));
         BindImage(typeof(Images));
         BindButton(typeof(Buttons));
@@ -64,7 +67,7 @@ public class UI_PlayerScene : UI_Scene
         GetText((int)Texts.GoTitleText).text = Managers.GetText(Define.GOBACKText);
         //상태창
         GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n운: {Managers.Game.LuckPercent}% \n회피력: {Managers.Game.Avoid}% \n추측 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
-        
+        GetImage((int)Images.CollectionSuccessImage).gameObject.SetActive(false);
 
         GetButton((int)Buttons.GoTitle).gameObject.BindEvent(ClearGame);
 
@@ -101,10 +104,16 @@ public class UI_PlayerScene : UI_Scene
     }
 
     //캐릭터 감정 표현 TODO
-    public void StaticPlayerEx(string express)
+    public void StaticPlayerEx(string express = null)
     {
         GameObject t = GameObject.FindGameObjectWithTag("StaticManager");
         customManager = t.GetComponent<CustomManager>();
+
+        if(express == null)
+        {
+            customManager.clothes = Managers.Game.ClothesIndex;
+            customManager.numberCheck(1);
+        }
 
         if(express == "Initial")
         {
@@ -173,13 +182,14 @@ public class UI_PlayerScene : UI_Scene
     //업적 달성 시 collection
 	void OnNewCollection(CollectionData data)
 	{
+        Debug.Log("onNewCollection go");
         GetText((int)Texts.CollectionSuccessText).gameObject.SetActive(true);
+        GetImage((int)Images.CollectionSuccessImage).gameObject.SetActive(true);
         Managers.Sound.Play(Sound.Effect, "Sound_Archive");
-		// GetImage((int)Images.CollectionSuccess).gameObject.SetActive(true);
+
 		GetText((int)Texts.CollectionSuccessText).text = $"업적 달성! {data.description}";
-
         GetImage((int)Images.CollectionSuccessImage).sprite = Managers.Resource.Load<Sprite>(data.iconPath);
-
+    
         Managers.Game.SaveGame();
 
 		if (_coHideCollection != null)
@@ -192,6 +202,7 @@ public class UI_PlayerScene : UI_Scene
 	{
 		yield return new WaitForSeconds(seconds);
         GetText((int)Texts.CollectionSuccessText).gameObject.SetActive(false);
+        GetImage((int)Images.CollectionSuccessImage).gameObject.SetActive(false);
 		// GetImage((int)Images.CollectionSuccess).gameObject.SetActive(false);
 	}
 
@@ -203,4 +214,5 @@ public class UI_PlayerScene : UI_Scene
         Managers.UI.ShowPopupUI<UI_TitlePopup>();  
         Managers.UI.ClosePlayerSceneUI();
     }
+
 }

@@ -40,7 +40,7 @@ public class UI_CollectionPopup : UI_Popup
             _collections.Add(data);
         }
 		//사용자 업적했는지 확인 데이터
-		CollectionState[] _CollectionState = Managers.Game.coordCollections;
+		CollectionState[] _CollectionState = Managers.Game.Collections;
 
 		GetButton((int)Buttons.ExitButton).gameObject.BindEvent(OnCloseCollection);
 		

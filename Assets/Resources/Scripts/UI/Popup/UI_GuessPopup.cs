@@ -119,14 +119,39 @@ public class UI_GuessPopup : UI_Popup
         GetText((int)Texts.Avoid).gameObject.SetActive(false);
 
         //초반 Guess 어딘지 확인
-        GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {customManager.hairM.count.Length}"; 
-        GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {customManager.clothesM.count.Length}"; 
-        GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {customManager.eyebrowM.count.Length}"; 
-        GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {customManager.eyeM.count.Length}"; 
-        GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {customManager.mouthM.count.Length}"; 
-        GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {customManager.emotionM.count.Length}"; 
-        GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {customManager.hairM.count.Length}"; 
-        GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 11"; 
+        if(Managers.Game.DifficultyLevel == "Normal")
+        {
+            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {Define.NormalIndex}"; 
+            GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {Define.NormalIndex}"; 
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.NormalIndex}"; 
+            GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {Define.NormalIndex}"; 
+            GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {Define.NormalIndex}"; 
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.NormalIndex}"; 
+            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {Define.NormalIndex}"; 
+            GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 5"; 
+        }
+        if(Managers.Game.DifficultyLevel == "Hard")
+        {
+            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {Define.HardIndex}"; 
+            GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {Define.HardIndex}"; 
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.HardIndexEyebrow}"; 
+            GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {Define.HardIndex}"; 
+            GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {Define.HardIndex}"; 
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.HardIndexEmotion}"; 
+            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {Define.HardIndex}"; 
+            GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 10"; 
+        }
+        if(Managers.Game.DifficultyLevel == "unlimited")
+        {
+            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {customManager.hairM.count.Length}"; 
+            GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {customManager.clothesM.count.Length}"; 
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {customManager.eyebrowM.count.Length}"; 
+            GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {customManager.eyeM.count.Length}"; 
+            GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {customManager.mouthM.count.Length}"; 
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {customManager.emotionM.count.Length}"; 
+            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {customManager.hairM.count.Length}"; 
+            GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 11"; 
+        }
         #region 질문 텍스트
 
         LoadRandomQuiz();
@@ -194,213 +219,12 @@ public class UI_GuessPopup : UI_Popup
         #endregion
         //추측하는 버튼 바인딩
         #region 추측플레이어 바인딩
-        GetButton((int)Buttons.HairMinus).gameObject.BindEvent(() => 
-        {
-            if(customManager.hair == 0)
-            {
-                customManager.hair = customManager.hairM.count.Length -1;
-            }
-            else if ( 0 < customManager.hair )
-                {
-                    customManager.hair--; 
-                }
-            
-            customManager.numberCheck(0);  
-            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {customManager.hairM.count.Length}";
-            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
-        
-        });
-        GetButton((int)Buttons.HairPlus).gameObject.BindEvent(() => 
-        {
-            if(customManager.hairM.count.Length <= customManager.hair+1)
-            {
-                customManager.hair = 0;
-            }
-            else if (customManager.hairM.count.Length > customManager.hair)
-                {
-                    customManager.hair++; 
-                }
-            customManager.numberCheck(0);  
-            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {customManager.hairM.count.Length}";
-            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
-        });
-
-        GetButton((int)Buttons.ClothesMinus).gameObject.BindEvent(() => 
-        {
-            if(customManager.clothes == 0)
-            {
-                customManager.clothes = customManager.clothesM.count.Length -1;
-            }
-            else if ( 0 < customManager.clothes )
-                {
-                    customManager.clothes--; 
-                }
-            customManager.numberCheck(1);  
-            GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {customManager.clothesM.count.Length}";
-            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
-        });
-        GetButton((int)Buttons.ClothesPlus).gameObject.BindEvent(() => 
-        {
-            if(customManager.clothesM.count.Length <= customManager.clothes+1)
-            {
-                customManager.clothes = 0;
-            }
-            else if (customManager.clothesM.count.Length > customManager.clothes)
-                {
-                    customManager.clothes++; 
-                }
-            GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {customManager.clothesM.count.Length}";
-            customManager.numberCheck(1);  
-            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
-        });
-
-        GetButton((int)Buttons.EyebrowMinus).gameObject.BindEvent(() => 
-        {
-            if(customManager.eyebrow == 0)
-            {
-                customManager.eyebrow = customManager.eyebrowM.count.Length -1;
-            }
-            else if ( 0 < customManager.eyebrow )
-                {
-                    customManager.eyebrow--; 
-                }
-                
-            customManager.numberCheck(2); 
-            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {customManager.eyebrowM.count.Length}";
-            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
-        });
-        GetButton((int)Buttons.EyebrowPlus).gameObject.BindEvent(() => 
-        {
-            if(customManager.eyebrowM.count.Length <= customManager.eyebrow+1)
-            {
-                customManager.eyebrow = 0;
-            }
-            else if (customManager.eyebrowM.count.Length > customManager.eyebrow)
-                {
-                    customManager.eyebrow++; 
-                }
-            customManager.numberCheck(2);  
-            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {customManager.eyebrowM.count.Length}";
-            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
-        });
-
-        GetButton((int)Buttons.EyeMinus).gameObject.BindEvent(() => 
-        {
-            if(customManager.eye == 0)
-            {
-                customManager.eye = customManager.eyeM.count.Length -1;
-            }
-            else if ( 0 < customManager.eye )
-                {
-                    customManager.eye--; 
-                }
-            customManager.numberCheck(3);  
-            GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {customManager.eyeM.count.Length}";
-            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
-        });
-        GetButton((int)Buttons.EyePlus).gameObject.BindEvent(() => 
-        {
-            if(customManager.eyeM.count.Length <= customManager.eye+1)
-            {
-                customManager.eye = 0;
-            }
-            else if (customManager.eyeM.count.Length > customManager.eye)
-                {
-                    customManager.eye++; 
-                }
-
-            customManager.numberCheck(3);  
-            GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {customManager.eyeM.count.Length}";
-            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
-        });
-
-        GetButton((int)Buttons.MouthMinus).gameObject.BindEvent(() => 
-        {
-            if(customManager.mouth == 0)
-            {
-                customManager.mouth = customManager.mouthM.count.Length -1;
-            }
-            else if ( 0 < customManager.mouth )
-                {
-                    customManager.mouth--; 
-                }
-            customManager.numberCheck(4);  
-            GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {customManager.mouthM.count.Length}";
-            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
-        });
-        GetButton((int)Buttons.MouthPlus).gameObject.BindEvent(() => 
-        {
-            if(customManager.mouthM.count.Length <= customManager.mouth+1)
-            {
-                customManager.mouth = 0;
-            }
-            else if (customManager.mouthM.count.Length > customManager.mouth)
-                {
-                    customManager.mouth++; 
-                }
-            customManager.numberCheck(4); 
-            GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {customManager.mouthM.count.Length}";
-            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
-        });
-
-        GetButton((int)Buttons.EmotionMinus).gameObject.BindEvent(() => 
-        {
-            if(customManager.emotion == 0)
-            {
-                customManager.emotion = customManager.emotionM.count.Length -1;
-            }
-            else if ( 0 < customManager.emotion )
-                {
-                    customManager.emotion--; 
-                }
-
-            customManager.numberCheck(5); 
-            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {customManager.emotionM.count.Length}"; 
-            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
-        });
-        GetButton((int)Buttons.EmotionPlus).gameObject.BindEvent(() => 
-        {
-            if(customManager.emotionM.count.Length <= customManager.emotion+1)
-            {
-                customManager.emotion = 0;
-            }
-            else if (customManager.emotionM.count.Length > customManager.emotion)
-                {
-                    customManager.emotion++; 
-                }
-            customManager.numberCheck(5);  
-            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {customManager.emotionM.count.Length}"; 
-            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
-        });
-
-        GetButton((int)Buttons.AnimationMinus).gameObject.BindEvent(() => 
-        {
-            if(animationManager.ani == 0)
-            {
-                animationManager.ani = 11;
-                animationManager.PlayAni(false);
-            }
-            else
-                animationManager.PlayAni(false);
-
-            GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 11"; 
-            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
-        });
-        GetButton((int)Buttons.AnimationPlus).gameObject.BindEvent(() => 
-        {
-            if(animationManager.ani == 10)
-            {
-                animationManager.ani = -1;
-                animationManager.PlayAni(true);
-            }
-            else
-                animationManager.PlayAni(true);
-
-            GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 11"; 
-            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
-        });
-        
-        
+        if(Managers.Game.DifficultyLevel == "Normal")
+            NormalBinding();
+        else if(Managers.Game.DifficultyLevel == "Hard")
+            HardBinding();
+        else if (Managers.Game.DifficultyLevel == "Unlimited")
+            unLimitedBinding();
         
         #endregion
 
@@ -798,6 +622,636 @@ public class UI_GuessPopup : UI_Popup
     {
         yield return new WaitForSeconds(delay); // 지정된 시간 동안 대기
         Stranger.transform.position = new Vector3(-12, 2.2f, 0);
+    }
+    
+    void NormalBinding()
+    {
+    GetButton((int)Buttons.HairMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.hair == 0)
+            {
+                customManager.hair = Define.NormalIndex -1;
+            }
+            else if ( 0 < customManager.hair )
+                {
+                    customManager.hair--; 
+                }
+            
+            customManager.numberCheck(0);  
+            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {Define.NormalIndex}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        
+        });
+        GetButton((int)Buttons.HairPlus).gameObject.BindEvent(() => 
+        {
+            if(Define.NormalIndex  <= customManager.hair+1)
+            {
+                customManager.hair = 0;
+            }
+            else if (Define.NormalIndex  > customManager.hair)
+                {
+                    customManager.hair++; 
+                }
+            customManager.numberCheck(0);  
+            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {Define.NormalIndex }";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+        GetButton((int)Buttons.ClothesMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.clothes == 0)
+            {
+                customManager.clothes = Define.NormalIndex  -1;
+            }
+            else if ( 0 < customManager.clothes )
+                {
+                    customManager.clothes--; 
+                }
+            customManager.numberCheck(1);  
+            GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {Define.NormalIndex }";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        GetButton((int)Buttons.ClothesPlus).gameObject.BindEvent(() => 
+        {
+            if(Define.NormalIndex  <= customManager.clothes+1)
+            {
+                customManager.clothes = 0;
+            }
+            else if (Define.NormalIndex  > customManager.clothes)
+                {
+                    customManager.clothes++; 
+                }
+            GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {Define.NormalIndex }";
+            customManager.numberCheck(1);  
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+        GetButton((int)Buttons.EyebrowMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.eyebrow == 0)
+            {
+                customManager.eyebrow = Define.NormalIndex  -1;
+            }
+            else if ( 0 < customManager.eyebrow )
+                {
+                    customManager.eyebrow--; 
+                }
+                
+            customManager.numberCheck(2); 
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.NormalIndex }";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
+        });
+        GetButton((int)Buttons.EyebrowPlus).gameObject.BindEvent(() => 
+        {
+            if(Define.NormalIndex  <= customManager.eyebrow+1)
+            {
+                customManager.eyebrow = 0;
+            }
+            else if (Define.NormalIndex  > customManager.eyebrow)
+                {
+                    customManager.eyebrow++; 
+                }
+            customManager.numberCheck(2);  
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.NormalIndex }";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+        GetButton((int)Buttons.EyeMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.eye == 0)
+            {
+                customManager.eye = Define.NormalIndex  -1;
+            }
+            else if ( 0 < customManager.eye )
+                {
+                    customManager.eye--; 
+                }
+            customManager.numberCheck(3);  
+            GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {Define.NormalIndex }";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        GetButton((int)Buttons.EyePlus).gameObject.BindEvent(() => 
+        {
+            if(Define.NormalIndex  <= customManager.eye+1)
+            {
+                customManager.eye = 0;
+            }
+            else if (Define.NormalIndex  > customManager.eye)
+                {
+                    customManager.eye++; 
+                }
+
+            customManager.numberCheck(3);  
+            GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {Define.NormalIndex }";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+        GetButton((int)Buttons.MouthMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.mouth == 0)
+            {
+                customManager.mouth = Define.NormalIndex  -1;
+            }
+            else if ( 0 < customManager.mouth )
+                {
+                    customManager.mouth--; 
+                }
+            customManager.numberCheck(4);  
+            GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {Define.NormalIndex }";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        GetButton((int)Buttons.MouthPlus).gameObject.BindEvent(() => 
+        {
+            if(Define.NormalIndex  <= customManager.mouth+1)
+            {
+                customManager.mouth = 0;
+            }
+            else if (Define.NormalIndex  > customManager.mouth)
+                {
+                    customManager.mouth++; 
+                }
+            customManager.numberCheck(4); 
+            GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {Define.NormalIndex }";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
+        });
+
+        GetButton((int)Buttons.EmotionMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.emotion == 0)
+            {
+                customManager.emotion = Define.NormalIndex  -1;
+            }
+            else if ( 0 < customManager.emotion )
+                {
+                    customManager.emotion--; 
+                }
+
+            customManager.numberCheck(5); 
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.NormalIndex }"; 
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        GetButton((int)Buttons.EmotionPlus).gameObject.BindEvent(() => 
+        {
+            if(Define.NormalIndex  <= customManager.emotion+1)
+            {
+                customManager.emotion = 0;
+            }
+            else if (Define.NormalIndex  > customManager.emotion)
+                {
+                    customManager.emotion++; 
+                }
+            customManager.numberCheck(5);  
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.NormalIndex }"; 
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+        GetButton((int)Buttons.AnimationMinus).gameObject.BindEvent(() => 
+        {
+            if(animationManager.ani == 0)
+            {
+                animationManager.ani = 4;
+                animationManager.PlayAni(false);
+            }
+            else
+                animationManager.PlayAni(false);
+
+            GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 5"; 
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        GetButton((int)Buttons.AnimationPlus).gameObject.BindEvent(() => 
+        {
+            if(animationManager.ani == 4)
+            {
+                animationManager.ani = -1;
+                animationManager.PlayAni(true);
+            }
+            else
+                animationManager.PlayAni(true);
+
+            GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 5"; 
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        
+        
+    }
+
+
+    void HardBinding()
+    {
+        GetButton((int)Buttons.HairMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.hair == 0)
+            {
+                customManager.hair = Define.HardIndex -1;
+            }
+            else if ( 0 < customManager.hair )
+                {
+                    customManager.hair--; 
+                }
+            
+            customManager.numberCheck(0);  
+            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {Define.HardIndex}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        
+        });
+        GetButton((int)Buttons.HairPlus).gameObject.BindEvent(() => 
+        {
+            if(Define.HardIndex <= customManager.hair+1)
+            {
+                customManager.hair = 0;
+            }
+            else if (Define.HardIndex > customManager.hair)
+                {
+                    customManager.hair++; 
+                }
+            customManager.numberCheck(0);  
+            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {Define.HardIndex}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+        GetButton((int)Buttons.ClothesMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.clothes == 0)
+            {
+                customManager.clothes = Define.HardIndex -1;
+            }
+            else if ( 0 < customManager.clothes )
+                {
+                    customManager.clothes--; 
+                }
+            customManager.numberCheck(1);  
+            GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {Define.HardIndex}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        GetButton((int)Buttons.ClothesPlus).gameObject.BindEvent(() => 
+        {
+            if(Define.HardIndex <= customManager.clothes+1)
+            {
+                customManager.clothes = 0;
+            }
+            else if (customManager.clothesM.count.Length > customManager.clothes)
+                {
+                    customManager.clothes++; 
+                }
+            GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {Define.HardIndex}";
+            customManager.numberCheck(1);  
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        //Define.HardIndex - 5
+        GetButton((int)Buttons.EyebrowMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.eyebrow == 0)
+            {
+                customManager.eyebrow = (Define.HardIndexEyebrow) -1;
+            }
+            else if ( 0 < customManager.eyebrow )
+                {
+                    customManager.eyebrow--; 
+                }
+                
+            customManager.numberCheck(2); 
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.HardIndexEyebrow}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
+        });
+        GetButton((int)Buttons.EyebrowPlus).gameObject.BindEvent(() => 
+        {
+            if(Define.HardIndex - 5 <= customManager.eyebrow+1)
+            {
+                customManager.eyebrow = 0;
+            }
+            else if (Define.HardIndex - 5 > customManager.eyebrow)
+                {
+                    customManager.eyebrow++; 
+                }
+            customManager.numberCheck(2);  
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.HardIndexEyebrow}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+        GetButton((int)Buttons.EyeMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.eye == 0)
+            {
+                customManager.eye = Define.HardIndex -1;
+            }
+            else if ( 0 < customManager.eye )
+                {
+                    customManager.eye--; 
+                }
+            customManager.numberCheck(3);  
+            GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {Define.HardIndex}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        GetButton((int)Buttons.EyePlus).gameObject.BindEvent(() => 
+        {
+            if(Define.HardIndex <= customManager.eye+1)
+            {
+                customManager.eye = 0;
+            }
+            else if (Define.HardIndex > customManager.eye)
+                {
+                    customManager.eye++; 
+                }
+
+            customManager.numberCheck(3);  
+            GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {Define.HardIndex}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+        GetButton((int)Buttons.MouthMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.mouth == 0)
+            {
+                customManager.mouth = Define.HardIndex -1;
+            }
+            else if ( 0 < customManager.mouth )
+                {
+                    customManager.mouth--; 
+                }
+            customManager.numberCheck(4);  
+            GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {Define.HardIndex}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        GetButton((int)Buttons.MouthPlus).gameObject.BindEvent(() => 
+        {
+            if(Define.HardIndex <= customManager.mouth+1)
+            {
+                customManager.mouth = 0;
+            }
+            else if (Define.HardIndex > customManager.mouth)
+                {
+                    customManager.mouth++; 
+                }
+            customManager.numberCheck(4); 
+            GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {Define.HardIndex}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
+        });
+
+        GetButton((int)Buttons.EmotionMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.emotion == 0)
+            {
+                customManager.emotion = Define.HardIndexEmotion -1;
+            }
+            else if ( 0 < customManager.emotion )
+                {
+                    customManager.emotion--; 
+                }
+
+            customManager.numberCheck(5); 
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.HardIndexEmotion}"; 
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        GetButton((int)Buttons.EmotionPlus).gameObject.BindEvent(() => 
+        {
+            if(Define.HardIndexEmotion <= customManager.emotion+1)
+            {
+                customManager.emotion = 0;
+            }
+            else if (Define.HardIndexEmotion > customManager.emotion)
+                {
+                    customManager.emotion++; 
+                }
+            customManager.numberCheck(5);  
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.HardIndexEmotion}"; 
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+        GetButton((int)Buttons.AnimationMinus).gameObject.BindEvent(() => 
+        {
+            if(animationManager.ani == 0)
+            {
+                animationManager.ani = 10;
+                animationManager.PlayAni(false);
+            }
+            else
+                animationManager.PlayAni(false);
+
+            GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 10"; 
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        GetButton((int)Buttons.AnimationPlus).gameObject.BindEvent(() => 
+        {
+            if(animationManager.ani == 9)
+            {
+                animationManager.ani = -1;
+                animationManager.PlayAni(true);
+            }
+            else
+                animationManager.PlayAni(true);
+
+            GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 10"; 
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+    }
+
+    void unLimitedBinding()
+    {
+        GetButton((int)Buttons.HairMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.hair == 0)
+            {
+                customManager.hair = customManager.hairM.count.Length -1;
+            }
+            else if ( 0 < customManager.hair )
+                {
+                    customManager.hair--; 
+                }
+            
+            customManager.numberCheck(0);  
+            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {customManager.hairM.count.Length}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        
+        });
+        GetButton((int)Buttons.HairPlus).gameObject.BindEvent(() => 
+        {
+            if(customManager.hairM.count.Length <= customManager.hair+1)
+            {
+                customManager.hair = 0;
+            }
+            else if (customManager.hairM.count.Length > customManager.hair)
+                {
+                    customManager.hair++; 
+                }
+            customManager.numberCheck(0);  
+            GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {customManager.hairM.count.Length}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+        GetButton((int)Buttons.ClothesMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.clothes == 0)
+            {
+                customManager.clothes = customManager.clothesM.count.Length -1;
+            }
+            else if ( 0 < customManager.clothes )
+                {
+                    customManager.clothes--; 
+                }
+            customManager.numberCheck(1);  
+            GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {customManager.clothesM.count.Length}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        GetButton((int)Buttons.ClothesPlus).gameObject.BindEvent(() => 
+        {
+            if(customManager.clothesM.count.Length <= customManager.clothes+1)
+            {
+                customManager.clothes = 0;
+            }
+            else if (customManager.clothesM.count.Length > customManager.clothes)
+                {
+                    customManager.clothes++; 
+                }
+            GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {customManager.clothesM.count.Length}";
+            customManager.numberCheck(1);  
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+        GetButton((int)Buttons.EyebrowMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.eyebrow == 0)
+            {
+                customManager.eyebrow = customManager.eyebrowM.count.Length -1;
+            }
+            else if ( 0 < customManager.eyebrow )
+                {
+                    customManager.eyebrow--; 
+                }
+                
+            customManager.numberCheck(2); 
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {customManager.eyebrowM.count.Length}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
+        });
+        GetButton((int)Buttons.EyebrowPlus).gameObject.BindEvent(() => 
+        {
+            if(customManager.eyebrowM.count.Length <= customManager.eyebrow+1)
+            {
+                customManager.eyebrow = 0;
+            }
+            else if (customManager.eyebrowM.count.Length > customManager.eyebrow)
+                {
+                    customManager.eyebrow++; 
+                }
+            customManager.numberCheck(2);  
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {customManager.eyebrowM.count.Length}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+        GetButton((int)Buttons.EyeMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.eye == 0)
+            {
+                customManager.eye = customManager.eyeM.count.Length -1;
+            }
+            else if ( 0 < customManager.eye )
+                {
+                    customManager.eye--; 
+                }
+            customManager.numberCheck(3);  
+            GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {customManager.eyeM.count.Length}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        GetButton((int)Buttons.EyePlus).gameObject.BindEvent(() => 
+        {
+            if(customManager.eyeM.count.Length <= customManager.eye+1)
+            {
+                customManager.eye = 0;
+            }
+            else if (customManager.eyeM.count.Length > customManager.eye)
+                {
+                    customManager.eye++; 
+                }
+
+            customManager.numberCheck(3);  
+            GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {customManager.eyeM.count.Length}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+        GetButton((int)Buttons.MouthMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.mouth == 0)
+            {
+                customManager.mouth = customManager.mouthM.count.Length -1;
+            }
+            else if ( 0 < customManager.mouth )
+                {
+                    customManager.mouth--; 
+                }
+            customManager.numberCheck(4);  
+            GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {customManager.mouthM.count.Length}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        GetButton((int)Buttons.MouthPlus).gameObject.BindEvent(() => 
+        {
+            if(customManager.mouthM.count.Length <= customManager.mouth+1)
+            {
+                customManager.mouth = 0;
+            }
+            else if (customManager.mouthM.count.Length > customManager.mouth)
+                {
+                    customManager.mouth++; 
+                }
+            customManager.numberCheck(4); 
+            GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {customManager.mouthM.count.Length}";
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
+        });
+
+        GetButton((int)Buttons.EmotionMinus).gameObject.BindEvent(() => 
+        {
+            if(customManager.emotion == 0)
+            {
+                customManager.emotion = customManager.emotionM.count.Length -1;
+            }
+            else if ( 0 < customManager.emotion )
+                {
+                    customManager.emotion--; 
+                }
+
+            customManager.numberCheck(5); 
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {customManager.emotionM.count.Length}"; 
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        GetButton((int)Buttons.EmotionPlus).gameObject.BindEvent(() => 
+        {
+            if(customManager.emotionM.count.Length <= customManager.emotion+1)
+            {
+                customManager.emotion = 0;
+            }
+            else if (customManager.emotionM.count.Length > customManager.emotion)
+                {
+                    customManager.emotion++; 
+                }
+            customManager.numberCheck(5);  
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {customManager.emotionM.count.Length}"; 
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+        GetButton((int)Buttons.AnimationMinus).gameObject.BindEvent(() => 
+        {
+            if(animationManager.ani == 0)
+            {
+                animationManager.ani = 11;
+                animationManager.PlayAni(false);
+            }
+            else
+                animationManager.PlayAni(false);
+
+            GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 11"; 
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+        GetButton((int)Buttons.AnimationPlus).gameObject.BindEvent(() => 
+        {
+            if(animationManager.ani == 10)
+            {
+                animationManager.ani = -1;
+                animationManager.PlayAni(true);
+            }
+            else
+                animationManager.PlayAni(true);
+
+            GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 11"; 
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
     }
 
 }

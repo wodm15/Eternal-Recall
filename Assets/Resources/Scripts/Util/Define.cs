@@ -52,7 +52,7 @@ public class Define
 		upLuck, //행운 올리기(확률 10퍼씩 증가)
 	}
 
-	public const int MAX_COLLECTION_COUNT = 50;
+	public const int MAX_COLLECTION_COUNT = 19;
 
 	//현재 코디 옷 (19개 이므로)
 	public const int MAX_STAT_COUNT = 50;
@@ -60,6 +60,13 @@ public class Define
 
 	//틀린 1개당 데미지
 	public const int Damage = 10;
+
+	//난이도 별 인덱스 범위
+	public const int NormalIndex = 5;
+	public const int HardIndex = 10;
+	public const int HardIndexEyebrow = 5;
+	public const int HardIndexEmotion = 6;
+	public const int UnlimitedIndex = 20;
 
 	//닉네임 입력
 	public const int WriteNickname = 6500;	
@@ -69,6 +76,10 @@ public class Define
 	public const int CorrectText = 6503;
 	public const int WrongText = 6504;
 	public const int WrongButAvoid = 6505;
+	public const int DifficultyNormal = 6506;
+	public const int DifficultyHard = 6507;
+	public const int DifficultyUnlimited = 6508;
+
 	public const int StartButtonText = 10000;
 	public const int ContinueButtonText = 10001;
 	public const int CollectionButtonText = 10002;

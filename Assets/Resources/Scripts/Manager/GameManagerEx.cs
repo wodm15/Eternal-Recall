@@ -34,13 +34,6 @@ public enum CollectionState
         Done
     }
 
-
-public enum StatDataState
-    {
-        None,
-        Done
-    }
-
 [Serializable]
 public class GameData
     {
@@ -64,12 +57,11 @@ public class GameData
         
         //컬렉션 
 
-        public CollectionState[] coordCollections = new CollectionState[MAX_COLLECTION_COUNT];
+        public CollectionState[] Collections = new CollectionState[MAX_COLLECTION_COUNT];
         
         //코디
         public int ClothesIndex;
         public StatData StatData = new StatData();
-        public StatDataState[] StatDataState = new StatDataState[MAX_STAT_COUNT];
         // 클리어 한 엔딩
 	    public CollectionState[] Endings = new CollectionState[MAX_ENDING_COUNT];
 
@@ -142,7 +134,7 @@ public class GameManagerEx
     public int Avoid
     {
         get {return _gameData.Avoid;}
-        set {_gameData.Avoid=value; }
+        set {_gameData.Avoid=value; RefreshStatCollections();}
     }
 
 
@@ -178,15 +170,9 @@ public class GameManagerEx
         set { _gameData.quizData = value; }
     }
 
-    public StatDataState[] StatDataState
-    {
-        get { return _gameData.StatDataState; }
-        set { _gameData.StatDataState = value; }
-    }
-
     #region 컬렉션 & 프로젝트
 
-    public CollectionState[] coordCollections { get { return _gameData.coordCollections; } }
+    public CollectionState[] Collections { get { return _gameData.Collections; } }
     public CollectionState[] Endings { get { return _gameData.Endings; } }
     public Action<CollectionData> OnNewCollection;
 
@@ -197,51 +183,54 @@ public class GameManagerEx
     }
 
 
-    //실시간으로 적용
+    //실시간으로 업적 확인
     public void RefreshStatCollections()
         {
-            foreach (CollectionData data in Managers.Data.Collections.Values)
+            foreach (CollectionData data in Managers.Data.CodyCollections)
             {
-                if (coordCollections[data.ID - 1] != CollectionState.None)
+                if (Collections[data.ID - 1] != CollectionState.None)
 				continue;
-
-                if (data.reqHp >= Hp)
+                
+                
+                if (data.reqHp > Hp)
                     continue;
-                if (data.reqLuckPercent >= LuckPercent)
+                if (data.reqLuckPercent > LuckPercent)
                     continue;
-                if(data.reqStage >= Stage)
+                if(data.reqStage > Stage)
                     continue;
-                if(data.reqHintKey >= HintKey)
+                if(data.reqHintKey > HintKey)
                     continue;
-
-
+                if(data.reqAvoid > Avoid)
+                    continue;
+                
+    
                 //옷얻는거 기록
-                coordCollections[data.ID - 1] = CollectionState.Done;
+                Collections[data.ID - 1] = CollectionState.Done;
+                Debug.Log("옷 기록");
                 //옷 변경(TODO)
                 // Managers.Game.StatDataState[10] = global::StatDataState.Done;
-
                 OnNewCollection?.Invoke(data);
             }
         }
 	
     //처음 컬렉션 업적 만큼 스탯 더하기
-    void ReApplyCollectionStats()
-	{
-		foreach (CollectionData data in Managers.Data.Collections.Values)
-		{
-			CollectionState state = coordCollections[data.ID - 1];
-			if (state == CollectionState.None)
-				continue;
+    // void ReApplyCollectionStats()
+	// {
+	// 	foreach (CollectionData data in Managers.Data.Collections.Values)
+	// 	{
+	// 		CollectionState state = coordCollections[data.ID - 1];
+	// 		if (state == CollectionState.None)
+	// 			continue;
 
-			Debug.Log($"Apply Collection : {data.ID}");
-                MaxHp += data.difHp;
-                LuckPercent += data.difLuckPercent;
-                Stage += data.difStage;
-                PassTicket += data.difPassTicket;
+	// 		Debug.Log($"Apply Collection : {data.ID}");
+    //             MaxHp += data.difHp;
+    //             LuckPercent += data.difLuckPercent;
+    //             Stage += data.difStage;
+    //             PassTicket += data.difPassTicket;
 
-			OnNewCollection?.Invoke(data);
-		}
-	}
+	// 		OnNewCollection?.Invoke(data);
+	// 	}
+	// }
 
     #endregion
 
@@ -264,11 +253,11 @@ public void Init()
     Avoid = data.Avoid;
     ClothesIndex = data.ClothesIndex;
     
-    StatDataState[] StatDataState = Managers.Game.SaveData.StatDataState;
-    if (StatDataState.All(state => state == global::StatDataState.None))
-    {
-        InitializeStatDataState();
-    }
+    // if (Collections.All(state => state == global::CollectionState.None))
+    // {
+    //     Debug.Log("first InitializeStatDataState");
+    //     InitializeStatDataState();
+    // }
 
     // 컬렉션 초기 수치 적용
 	// ReApplyCollectionStats();
@@ -286,27 +275,27 @@ public void Init()
             // Difficulty 매핑을 Stage 값에 따라 설정
             int difficulty = 0;
 
-            if (Stage >= 1 && Stage <= 4)
+            if (Stage >= 1 && Stage <= 3)
             {
                 difficulty = 1;
             }
-            else if (Stage >= 5 && Stage <= 14)
+            else if (Stage >= 4 && Stage <= 9)
             {
                 difficulty = 2;
             }
-            else if (Stage >= 15 && Stage <= 24)
+            else if (Stage >= 10 && Stage <= 19)
             {
                 difficulty = 3;
             }
-            else if (Stage >= 25 && Stage <= 34)
+            else if (Stage >= 20 && Stage <= 29)
             {
                 difficulty = 4;
             }
-            else if (Stage >= 35 && Stage <= 44)
+            else if (Stage >= 30 && Stage <= 39)
             {
                 difficulty = 5;
             }
-            else if (Stage >= 45 && Stage <= 55)
+            else if (Stage >= 40 && Stage <= 54)
             {
                 difficulty = 6;
             }
@@ -396,18 +385,18 @@ public void Init()
 		Managers.Ads.ShowInterstitialAd();
     }
     
-    public void InitializeStatDataState()
-    {
-        // 모든 값을 Zero로 초기화
-        for (int i = 0; i < StatDataState.Length; i++)
-        {
-            StatDataState[i] = 0;
-        }
+    // public void InitializeStatDataState()
+    // {
+    //     // 모든 값을 Zero로 초기화
+    //     for (int i = 0; i < StatDataState.Length; i++)
+    //     {
+    //         StatDataState[i] = 0;
+    //     }
 
-        // 3번째 인덱스만 One으로 설정
-        if (StatDataState.Length > 2) // 배열의 길이가 3 이상일 때만
-        {
-            StatDataState[2] = global::StatDataState.Done;
-        }
-    }
+    //     // 3번째 인덱스만 One으로 설정
+    //     if (StatDataState.Length > 2) // 배열의 길이가 3 이상일 때만
+    //     {
+    //         StatDataState[2] = global::StatDataState.Done;
+    //     }
+    // }
 }

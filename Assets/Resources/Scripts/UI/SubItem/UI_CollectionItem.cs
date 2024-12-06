@@ -79,7 +79,7 @@ public class UI_CollectionItem : UI_Base
 
 		gameObject.SetActive(true);
 
-		CollectionState state = Managers.Game.coordCollections[_collectionId - 1];
+		CollectionState state = Managers.Game.Collections[_collectionId - 1];
 
 		GetObject((int)GameObjects.Gallery).SetActive(false);
 

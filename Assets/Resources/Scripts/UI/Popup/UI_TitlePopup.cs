@@ -46,9 +46,9 @@ public class UI_TitlePopup : UI_Popup
 
 		Managers.Sound.Clear();
 
-		Player = Managers.Resource.Instantiate("StaticPlayer");
-        Player.transform.position = Vector3.zero;
-        Player.transform.localScale = new Vector3(1, 1, 1);
+		// Player = Managers.Resource.Instantiate("StaticPlayer");
+        // Player.transform.position = Vector3.zero;
+        // Player.transform.localScale = new Vector3(1, 1, 1);
 
 		int music = Random.Range(0,100);
 		if( music < 50)
@@ -100,7 +100,7 @@ void OnClickStartButton()
 
 	void OnClickCollectionButton()
 	{
-		Managers.Sound.Play(Sound.Effect, ("Sound_"));
+		// Managers.Sound.Play(Sound.Effect, ("Sound_"));
 		Managers.Game.Init();
 		Managers.Game.LoadGame();
 

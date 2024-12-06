@@ -23,6 +23,8 @@ public class DataManager
     //컬렉션
     public Dictionary<int, CollectionData> Collections { get; private set; }
 
+    public List<CollectionData> CodyCollections { get; private set; }
+
     public void Init()
     {
         Start = LoadSingleXml<StartData>("StartData");
@@ -33,8 +35,12 @@ public class DataManager
         Endings = LoadXml<EndingDataLoader, int, EndingData>("EndingData").MakeDic();
 
 		// Collection
-		Collections = LoadXml<CollectionDataLoader, int, CollectionData>("CollectionData").MakeDic();
-		
+		var collectionLoader = LoadXml<CollectionDataLoader, int, CollectionData>("CollectionData");
+		CodyCollections = collectionLoader._collectionData.Where(c => c.type == CollectionType.Cody).ToList();
+
+
+		Collections = collectionLoader.MakeDic();
+
         
     }
 

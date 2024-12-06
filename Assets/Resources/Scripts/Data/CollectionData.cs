@@ -6,11 +6,7 @@ using UnityEngine;
 
 public enum CollectionType
 {
-	Stat,
-	Wealth,
-	Level,
-	Project,
-	Battle
+	Cody,
 }
 
 public class CollectionData
@@ -29,6 +25,9 @@ public class CollectionData
 	public int reqLuckPercent;
 	[XmlAttribute]
 	public int reqStage;
+	[XmlAttribute]
+	public int reqAvoid;
+	
 	[XmlAttribute]
 	public int reqPassTicket;
 	[XmlAttribute]

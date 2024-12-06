@@ -51,7 +51,14 @@ public class UI_PlayPopup : UI_Popup
             //중간에 잠시 멈추기
         if (Stranger.transform.position.x >= 0 && !hasPausedOnce)
         {
-            StartCoroutine(PauseMovement(3f));
+            //난이도 별
+            if(Managers.Game.DifficultyLevel == "Normal")
+                StartCoroutine(PauseMovement(3f));
+            else if(Managers.Game.DifficultyLevel == "Hard")
+                StartCoroutine(PauseMovement(2f));
+            else if(Managers.Game.DifficultyLevel == "Unlimited")
+                StartCoroutine(PauseMovement(1f));
+
             hasPausedOnce = true;
         }
 
