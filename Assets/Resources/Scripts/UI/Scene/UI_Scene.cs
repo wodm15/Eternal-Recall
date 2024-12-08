@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class UI_Scene : UI_Base
 {
-	public override bool Init()
-	{
-		if (base.Init() == false)
-			return false;
+    public override bool Init()
+    {
+        if (base.Init() == false)
+            return false;
 
-		Managers.UI.SetCanvas(gameObject, false);
-		return true;
-	}
+        // Camera.main을 전달하여 Canvas에 카메라 설정
+        Managers.UI.SetCanvas(gameObject, Camera.main, false);
+        return true;
+    }
 }

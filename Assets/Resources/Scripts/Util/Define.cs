@@ -60,6 +60,8 @@ public class Define
 
 	//틀린 1개당 데미지
 	public const int Damage = 10;
+	//게임 종료 End
+	public const int GameEndStage = 70;
 
 	//난이도 별 인덱스 범위
 	public const int NormalIndex = 5;
@@ -105,5 +107,5 @@ public class Define
 	public const int AvoidButtonText = 50005;
 	public const int AvoidSucessText = 50006;
 	public const int AvoidFailText = 50007;
-
+	
 }

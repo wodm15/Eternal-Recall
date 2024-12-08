@@ -77,6 +77,7 @@ public class UI_NamePopup : UI_Popup
             customManager.clothes--;
             customManager.numberCheck(1);
             RefreshClothesText();
+
             // RefreshClothes();
         });
         GetButton((int)Buttons.ClothesPlus).gameObject.BindEvent(() =>
@@ -296,7 +297,7 @@ public class UI_NamePopup : UI_Popup
         Debug.Log($"Input ID {_inputField.text}");
 
         Managers.Game.Name = _inputField.text;
-        Managers.Resource.Destroy(Player);
+        // Managers.Resource.Destroy(Player);
 		// Managers.UI.ShowPopupUI<UI_IntroPopup>();
         Managers.UI.ClosePopupUI(this);
         Managers.UI.ShowPopupUI<UI_CountPopup>();

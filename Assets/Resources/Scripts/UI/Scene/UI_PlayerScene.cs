@@ -46,14 +46,19 @@ public class UI_PlayerScene : UI_Scene
             _collectionData.Add(collectionData);
         }
 
+
         //static 캐릭터
-        StaticPlayer = Managers.Resource.Instantiate("StaticPlayer");
+        // StaticPlayer = Managers.Resource.Instantiate("StaticPlayer");
+        StaticPlayer = GameObject.Find("StaticPlayer");
+        if(StaticPlayer == null)
+            StaticPlayer = Managers.Resource.Instantiate("StaticPlayer");
         StaticPlayer.transform.position = new Vector3(-5,-3,0);
         StaticPlayer.transform.localScale = new Vector3(0.6f,0.6f, 1);
 
         _customManager = GameObject.FindGameObjectWithTag("StaticManager");
         customManager = _customManager.GetComponent<CustomManager>();
         animationManager = _customManager.GetComponent<AnimationManager>();
+
 
         //헤어 다시 설정
         StaticPlayerEx();

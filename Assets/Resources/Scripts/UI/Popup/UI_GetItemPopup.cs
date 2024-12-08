@@ -268,12 +268,11 @@ public class UI_GetItemPopup : UI_Popup
             }
         else if(selectedItem.productID == "FreePass")
             {
-                Debug.Log($"TheWorld 개수 : {(int)selectedItem.effectValues[0]} {(int)selectedItem.effectValues[1]} {(int)selectedItem.effectValues[2]}");
-                //HP, 운, 스테이지 순서
+                Debug.Log($"FreePass : {(int)selectedItem.effectValues[0]} {(int)selectedItem.effectValues[1]}");
+                //HP, 스테이지 순서
                 Managers.Game.Hp += (int)selectedItem.effectValues[0];
                 Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
-                Managers.Game.LuckPercent += (int)selectedItem.effectValues[1];
-                Managers.Game.Stage += 1;
+                Managers.Game.Stage += (int)selectedItem.effectValues[1];
 
                 playerScene.HPUp();
             }

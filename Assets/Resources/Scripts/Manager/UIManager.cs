@@ -22,22 +22,28 @@ public class UIManager
 		}
 	}
 
-	public void SetCanvas(GameObject go, bool sort = true)
-	{
-		Canvas canvas = Utils.GetOrAddComponent<Canvas>(go);
-		canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-		canvas.overrideSorting = true;
+public void SetCanvas(GameObject go, Camera camera, bool sort = true)
+{
+    // Canvas 컴포넌트를 가져오거나 추가
+    Canvas canvas = Utils.GetOrAddComponent<Canvas>(go);
+    
+    // RenderMode를 ScreenSpaceCamera로 설정
+    canvas.renderMode = RenderMode.ScreenSpaceCamera;
+    canvas.worldCamera = camera; // 렌더링할 카메라를 설정
 
-		if (sort)
-		{
-			canvas.sortingOrder = _order;
-			_order++;
-		}
-		else
-		{
-			canvas.sortingOrder = 0;
-		}
-	}
+    // Sorting Order 설정
+    canvas.overrideSorting = true;
+    if (sort)
+    {
+        canvas.sortingOrder = _order;
+        _order++;
+    }
+    else
+    {
+        canvas.sortingOrder = 0;
+    }
+}
+
 
 	public T MakeSubItem<T>(Transform parent = null, string name = null) where T : UI_Base
 	{

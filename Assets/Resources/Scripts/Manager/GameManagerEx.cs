@@ -213,6 +213,8 @@ public class GameManagerEx
             }
         }
 	
+
+
     //처음 컬렉션 업적 만큼 스탯 더하기
     // void ReApplyCollectionStats()
 	// {
@@ -252,12 +254,6 @@ public void Init()
     HintKey = data.HintKey;
     Avoid = data.Avoid;
     ClothesIndex = data.ClothesIndex;
-    
-    // if (Collections.All(state => state == global::CollectionState.None))
-    // {
-    //     Debug.Log("first InitializeStatDataState");
-    //     InitializeStatDataState();
-    // }
 
     // 컬렉션 초기 수치 적용
 	// ReApplyCollectionStats();
@@ -381,22 +377,10 @@ public void Init()
     //광고
     public void ADSHOW()
     {
+
         Managers.Ads.Init();
 		Managers.Ads.ShowInterstitialAd();
     }
     
-    // public void InitializeStatDataState()
-    // {
-    //     // 모든 값을 Zero로 초기화
-    //     for (int i = 0; i < StatDataState.Length; i++)
-    //     {
-    //         StatDataState[i] = 0;
-    //     }
 
-    //     // 3번째 인덱스만 One으로 설정
-    //     if (StatDataState.Length > 2) // 배열의 길이가 3 이상일 때만
-    //     {
-    //         StatDataState[2] = global::StatDataState.Done;
-    //     }
-    // }
 }

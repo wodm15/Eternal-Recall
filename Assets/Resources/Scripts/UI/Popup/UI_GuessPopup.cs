@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using static Define;
@@ -383,6 +384,10 @@ public class UI_GuessPopup : UI_Popup
         {
             GameOver();
         }
+        if(Managers.Game.Stage >= Define.GameEndStage -1)
+        {
+            GameEnd();
+        }
         else
         {
             GameContinue();
@@ -405,10 +410,21 @@ public class UI_GuessPopup : UI_Popup
     //게임오버일 경우
     void GameOver()
     {
+        Managers.Game.Hp =0;
         Managers.Game.SaveGame();
         Managers.Sound.Stop(Sound.Bgm);
         Managers.UI.ClosePopupUI(this);
         Managers.UI.ShowPopupUI<UI_GameOverPopup>();
+        
+    }
+    //게임 스테이지 모두 클리어일 경우
+    void GameEnd()
+    {
+        Managers.Game.Hp =0;
+        Managers.Game.SaveGame();
+        Managers.Sound.Stop(Sound.Bgm);
+        Managers.UI.ClosePopupUI(this);
+        Managers.UI.ShowPopupUI<UI_GameEndPopup>();
         
     }
     //게임오버가 아닌 경우 

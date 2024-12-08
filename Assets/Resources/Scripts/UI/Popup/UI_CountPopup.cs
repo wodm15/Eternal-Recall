@@ -6,16 +6,16 @@ using static Define;
 
 public class UI_CountPopup : UI_Popup
 {
+    UI_PlayerScene playerScene;
     private string _description;
     private string _productId;
     private float _effectValue1;
-    private float _effectValue2;
-    private float _effectValue3;
+
     enum Images
     {
         CountDown1,
         CountDown2,
-        CountDown3,
+        // CountDown3,
     }
 
     enum Texts
@@ -35,29 +35,26 @@ public class UI_CountPopup : UI_Popup
 
         GetText((int)Texts.PreviousStage).gameObject.SetActive(false);
         GetText((int)Texts.ShowStage).gameObject.SetActive(false);
-        GetImage((int)Images.CountDown3).gameObject.SetActive(false);
+        // GetImage((int)Images.CountDown3).gameObject.SetActive(false);
         GetImage((int)Images.CountDown2).gameObject.SetActive(false);
         GetImage((int)Images.CountDown1).gameObject.SetActive(false);
 
         int _Stage = Managers.Game.Stage;
+
+        playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
+        playerScene.StaticPlayerEx();
 
         GetText((int)Texts.PreviousStage).text = $" Stage : {_Stage -1}";
         GetText((int)Texts.ShowStage).text = $" Stage : {_Stage}";
         if(_description !=null)
         {
             GetText((int)Texts.AmountText).gameObject.SetActive(true);
-            string amountText = $"{_description} \n+{_effectValue1}";
+            string amountText = $"{_description}";
 
-            if (_effectValue2 != 0)  // effectValue2가 null이 아닌지 확인
-            {
-                amountText += $" : +{_effectValue2}";
-            }
-            if(_effectValue3 !=0)
-            {
-                amountText += $" : +{_effectValue3}";
-            }
-
-            GetText((int)Texts.AmountText).text = amountText;  
+            if (_effectValue1 != -1)
+                GetText((int)Texts.AmountText).text = $"{_description} \n 힐링:{_effectValue1}";
+            else
+                GetText((int)Texts.AmountText).text = $"{_description}";
         }
         
 
@@ -72,14 +69,20 @@ public void SetAmountText(ShopData _selectedItem)
     _productId = _selectedItem.productID;
     _effectValue1 = _selectedItem.effectValues[0];
 
-    if (_selectedItem.effectValues.Count > 1 )
+    //gambleHealing 일 때만 양도 가져가기
+    if (_selectedItem.productID == "gambleHealing")
     {
-        _effectValue2 = _selectedItem.effectValues[1];
+        _effectValue1 = _selectedItem.effectValues[0];
     }
-    if (_selectedItem.effectValues.Count > 2 )
+    else
     {
-        _effectValue3 = _selectedItem.effectValues[2];
+        _effectValue1 = -1;
     }
+
+    // if (_selectedItem.effectValues.Count > 2 )
+    // {
+    //     _effectValue3 = _selectedItem.effectValues[2];
+    // }
 
 }
 
@@ -102,14 +105,13 @@ public void SetAmountText(ShopData _selectedItem)
 
         yield return ShowText((int)Texts.ShowStage);
 
-        yield return ShowImage((int)Images.CountDown3);
+        // yield return ShowImage((int)Images.CountDown3);
         yield return ShowImage((int)Images.CountDown2);
         yield return ShowImage((int)Images.CountDown1);
 
         yield return new WaitForSeconds(0.5f); 
         Managers.UI.ClosePopupUI(this); 
         Managers.UI.ShowPopupUI<UI_QuestionPopup>(); 
-        // Managers.UI.ShowSceneUI<UI_PlayerScene>(); //
     }
 
     private IEnumerator ShowText(int textIndex)

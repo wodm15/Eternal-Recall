@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfStatData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <StatData ID="0" type="clothes" nameID="100" icon="0_SailorUniform" name="선원복" description="바다를 누비는 선장이 된 기분!" effectType="luck" effectValue="1" />
-  <StatData ID="1" type="clothes" nameID="101" icon="1_WeddingDress" name="웨딩드레스" description="꿈꾸던 결혼식의 주인공이 되어보세요." effectType="luck" effectValue="1" />
-  <StatData ID="2" type="clothes" nameID="102" icon="2_Basic" name="기본" description="귀엽고 깜찍한 병아리처럼!" effectType="luck" effectValue="1" />
-  <StatData ID="3" type="clothes" nameID="103" icon="3_Bikini" name="비키니" description="여름을 책임질 완벽한 해변 룩!" effectType="luck" effectValue="1" />
-  <StatData ID="4" type="clothes" nameID="104" icon="4_Maid" name="메이드" description="청소는 물론, 마음까지 깨끗하게!" effectType="luck" effectValue="1" />
-  <StatData ID="5" type="clothes" nameID="105" icon="5_Coat" name="코트" description="어디서나 어울리는 기본 아이템!" effectType="luck" effectValue="1" />
-  <StatData ID="6" type="clothes" nameID="106" icon="6_Swimsuit" name="수영복" description="시원한 물놀이 준비 완료!" effectType="luck" effectValue="1" />
-  <StatData ID="7" type="clothes" nameID="107" icon="7_Yukata" name="유카타" description="여름 축제의 주인공은 바로 나!" effectType="luck" effectValue="1" />
-  <StatData ID="8" type="clothes" nameID="108" icon="8_Cheongsam" name="치파오" description="우아함과 기품을 한껏 뽐내보세요." effectType="luck" effectValue="1" />
-  <StatData ID="9" type="clothes" nameID="109" icon="9_Hanbok" name="한복" description="전통과 아름다움의 완벽한 조화!" effectType="luck" effectValue="1" />
-  <StatData ID="10" type="clothes" nameID="110" icon="10_NightWear" name="잠옷" description="꿈속에서도 스타일을 놓치지 마세요!" effectType="luck" effectValue="1" />
-  <StatData ID="11" type="clothes" nameID="111" icon="11_SweatSuit" name="운동복" description="언제든 운동할 준비 완료!" effectType="luck" effectValue="1" />
-  <StatData ID="12" type="clothes" nameID="112" icon="12_GarterBelt" name="가터벨트" description="은근한 섹시함이 포인트!" effectType="luck" effectValue="1" />
-  <StatData ID="13" type="clothes" nameID="113" icon="13_PrincessClothes" name="공주옷" description="동화 속 공주가 현실로 등장!" effectType="luck" effectValue="1" />
-  <StatData ID="14" type="clothes" nameID="114" icon="14_Jean" name="청바지" description="어디에나 잘 어울리는 만능 아이템." effectType="luck" effectValue="1" />
-  <StatData ID="15" type="clothes" nameID="115" icon="15_SchoolUniform" name="교복" description="청춘의 추억을 다시 떠올려보세요." effectType="luck" effectValue="1" />
-  <StatData ID="16" type="clothes" nameID="116" icon="16_NurseUniform" name="간호복" description="힐링의 아이콘! 모두를 치유할 준비 완료." effectType="luck" effectValue="1" />
-  <StatData ID="17" type="clothes" nameID="117" icon="17_Magical" name="마법소녀" description="마법의 힘으로 세상을 구할 시간!" effectType="luck" effectValue="1" />
-  <StatData ID="18" type="clothes" nameID="118" icon="18_Swimsuit2" name="수영복2" description="수영복의 또 다른 매력, 두 번째 이야기!" effectType="luck" effectValue="1" />
-  <StatData ID="19" type="clothes" nameID="119" icon="19_Warrior" name="전투복" description="전장에서 무적의 전사가 되어보세요!" effectType="luck" effectValue="1" />
+  <StatData ID="0" type="clothes" nameID="100" icon="0_SailorUniform" name="선원복" description="바다를 누비는 &#10;선장이 된 기분!" effectType="luck" effectValue="1" />
+  <StatData ID="1" type="clothes" nameID="101" icon="1_WeddingDress" name="웨딩드레스" description="꿈꾸던 결혼식의 &#10;주인공이 되어보세요." effectType="luck" effectValue="1" />
+  <StatData ID="2" type="clothes" nameID="102" icon="2_Basic" name="기본" description="귀엽고 깜찍한 &#10;병아리처럼!" effectType="luck" effectValue="1" />
+  <StatData ID="3" type="clothes" nameID="103" icon="3_Bikini" name="비키니" description="여름을 책임질 &#10;완벽한 해변 룩!" effectType="luck" effectValue="1" />
+  <StatData ID="4" type="clothes" nameID="104" icon="4_Maid" name="메이드" description="청소는 물론, &#10;마음까지 깨끗하게!" effectType="luck" effectValue="1" />
+  <StatData ID="5" type="clothes" nameID="105" icon="5_Coat" name="코트" description="어디서나 어울리는 &#10;기본 아이템!" effectType="luck" effectValue="1" />
+  <StatData ID="6" type="clothes" nameID="106" icon="6_Swimsuit" name="수영복" description="시원한 물놀이 &#10;준비 완료!" effectType="luck" effectValue="1" />
+  <StatData ID="7" type="clothes" nameID="107" icon="7_Yukata" name="유카타" description="여름 축제의 &#10;주인공은 바로 나!" effectType="luck" effectValue="1" />
+  <StatData ID="8" type="clothes" nameID="108" icon="8_Cheongsam" name="치파오" description="우아함과 기품을 &#10;한껏 뽐내보세요." effectType="luck" effectValue="1" />
+  <StatData ID="9" type="clothes" nameID="109" icon="9_Hanbok" name="한복" description="전통과 아름다움의 &#10;완벽한 조화!" effectType="luck" effectValue="1" />
+  <StatData ID="10" type="clothes" nameID="110" icon="10_NightWear" name="잠옷" description="꿈속에서도 스타일을 &#10;놓치지 마세요!" effectType="luck" effectValue="1" />
+  <StatData ID="11" type="clothes" nameID="111" icon="11_SweatSuit" name="운동복" description="언제든 운동할 &#10;준비 완료!" effectType="luck" effectValue="1" />
+  <StatData ID="12" type="clothes" nameID="112" icon="12_GarterBelt" name="가터벨트" description="은근한 섹시함이 &#10;포인트!" effectType="luck" effectValue="1" />
+  <StatData ID="13" type="clothes" nameID="113" icon="13_PrincessClothes" name="공주옷" description="동화 속 공주가 &#10;현실로 등장!" effectType="luck" effectValue="1" />
+  <StatData ID="14" type="clothes" nameID="114" icon="14_Jean" name="청바지" description="어디에나 잘 어울리는 &#10;만능 아이템." effectType="luck" effectValue="1" />
+  <StatData ID="15" type="clothes" nameID="115" icon="15_SchoolUniform" name="교복" description="청춘의 추억을 &#10;다시 떠올려보세요." effectType="luck" effectValue="1" />
+  <StatData ID="16" type="clothes" nameID="116" icon="16_NurseUniform" name="간호복" description="힐링의 아이콘! &#10;모두를 치유할 준비 완료." effectType="luck" effectValue="1" />
+  <StatData ID="17" type="clothes" nameID="117" icon="17_Magical" name="마법소녀" description="마법의 힘으로 &#10;세상을 구할 시간!" effectType="luck" effectValue="1" />
+  <StatData ID="18" type="clothes" nameID="118" icon="18_Swimsuit2" name="수영복2" description="귀여운 수영복" effectType="luck" effectValue="1" />
+  <StatData ID="19" type="clothes" nameID="119" icon="19_Warrior" name="전투복" description="전장에서 무적의 &#10;전사가 되어보세요!" effectType="luck" effectValue="1" />
 </ArrayOfStatData>
