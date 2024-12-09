@@ -23,6 +23,8 @@ public class DataManager
     //컬렉션
     public Dictionary<int, CollectionData> Collections { get; private set; }
 
+    public List<CollectionData> CodyCollections { get; private set; }
+
     public void Init()
     {
         Start = LoadSingleXml<StartData>("StartData");
@@ -33,8 +35,12 @@ public class DataManager
         Endings = LoadXml<EndingDataLoader, int, EndingData>("EndingData").MakeDic();
 
 		// Collection
-		Collections = LoadXml<CollectionDataLoader, int, CollectionData>("CollectionData").MakeDic();
-		
+		var collectionLoader = LoadXml<CollectionDataLoader, int, CollectionData>("CollectionData");
+		CodyCollections = collectionLoader._collectionData.Where(c => c.type == CollectionType.Cody).ToList();
+
+
+		Collections = collectionLoader.MakeDic();
+
         
     }
 
@@ -55,6 +61,37 @@ public class DataManager
         TextAsset textAsset = Resources.Load<TextAsset>("Data/" + name);
         using (MemoryStream stream = new MemoryStream(System.Text.Encoding.UTF8.GetBytes(textAsset.text)))
             return (Loader)xs.Deserialize(stream);
+    }
+    
+    //코디 아이템들 가져오기
+    public string GetStatNameById(int id)
+    {
+        foreach (KeyValuePair<int, StatData> entry in Managers.Data.Stat)
+        {
+            int key = entry.Key; // key는 StatData의 ID
+            StatData data = entry.Value; // value는 StatData 객체
+
+            // Debug.Log($"ID: {data.ID}, Name: {data.Name}, Effect: {data.EffectValue}");
+            if(data.ID == id)
+                return data.Name;
+
+        }
+        return "null";
+    }
+    //옷 효과 가져오기
+    public string GetStatDesById(int id)
+    {
+        foreach (KeyValuePair<int, StatData> entry in Managers.Data.Stat)
+        {
+            int key = entry.Key; // key는 StatData의 ID
+            StatData data = entry.Value; // value는 StatData 객체
+
+            // Debug.Log($"ID: {data.ID}, Name: {data.Name}, Effect: {data.EffectValue}");
+            if(data.ID == id)
+                return data.Description;
+
+        }
+        return "null";
     }
     
 }

@@ -6,11 +6,7 @@ using UnityEngine;
 
 public enum CollectionType
 {
-	Stat,
-	Wealth,
-	Level,
-	Project,
-	Battle
+	Cody,
 }
 
 public class CollectionData
@@ -20,33 +16,35 @@ public class CollectionData
 	[XmlAttribute]
 	public int nameID;
 	[XmlAttribute]
-	public CollectionType type;
-	[XmlAttribute]
 	public string iconPath;
 	[XmlAttribute]
-	public int reqHp;
+	public CollectionType type;
 	[XmlAttribute]
-	public int reqLuckPercent;
+	public string name;
+
+	[XmlAttribute]
+	public int reqHp;
+
 	[XmlAttribute]
 	public int reqStage;
-	[XmlAttribute]
-	public int reqPassTicket;
+	
 	[XmlAttribute]
 	public int reqHintKey;
+	[XmlAttribute]
+	public string reqLevel;
 
+	// [XmlAttribute]
+	// public int difHp;
 
-	[XmlAttribute]
-	public int difHp;
-	[XmlAttribute]
-	public int difLuckPercent;
-	[XmlAttribute]
-	public int difStage;
-	[XmlAttribute]
-	public int difPassTicket;
-	[XmlAttribute]
-	public int difHintKey;
+	// [XmlAttribute]
+	// public int difStage;
+
+	// [XmlAttribute]
+	// public int difHintKey;
 	[XmlAttribute]
 	public string description;
+	[XmlAttribute]
+	public string How;
 
 }
 

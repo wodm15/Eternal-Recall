@@ -98,11 +98,10 @@ public class UI_CollectionItem : UI_Base
 
 		Managers.Data.Collections.TryGetValue(_collectionId, out CollectionData data);
 
-		GetText((int)Texts.CollectionName).text =  $"{data.description}";
-		GetText((int)Texts.LikeabilityText).text = $"+{data.difHp}";
-		GetText((int)Texts.WorkAbilityText).text = $"+{data.difHintKey}";
-		GetText((int)Texts.LuckText).text = $"+{data.difStage}";
-		GetText((int)Texts.MaxHpText).text = $"+{data.difLuckPercent}";
+		// GetText((int)Texts.CollectionName).text =  $"{data.description}";
+		// GetText((int)Texts.LikeabilityText).text = $"+{data.difHp}";
+		// GetText((int)Texts.WorkAbilityText).text = $"+{data.difHintKey}";
+		// GetText((int)Texts.LuckText).text = $"+{data.difStage}";
 
 		if (state == CollectionState.Uncheck)
 			SetNoti(true);

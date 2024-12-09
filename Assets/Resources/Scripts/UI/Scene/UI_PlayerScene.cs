@@ -6,18 +6,21 @@ using static Define;
 
 public class UI_PlayerScene : UI_Scene
 {
+    private List<CollectionData> _collectionData = new List<CollectionData>();
     enum Texts
     {
         Stage,
         HPText,
         PlayerInfo,
         CollectionSuccessText,
-        GoTitleText
+        GoTitleText,
+        DifficultyLevel,
     }
     enum Images
     {
         HP,
         HPBG, //hp 배경바
+        CollectionSuccessImage,
     }
     
     enum Buttons
@@ -28,7 +31,7 @@ public class UI_PlayerScene : UI_Scene
     GameObject StaticPlayer;
     GameObject Character;
     GameObject _customManager;
-    public CustomManager customManager;    
+    CustomManager customManager;    
     protected AnimationManager animationManager;
 
     public override bool Init()
@@ -39,14 +42,31 @@ public class UI_PlayerScene : UI_Scene
         Managers.Game.OnNewCollection = OnNewCollection;
         //TODO
 
+        foreach (CollectionData collectionData in Managers.Data.Collections.Values)
+        {
+            _collectionData.Add(collectionData);
+        }
+
+
         //static 캐릭터
-        StaticPlayer = Managers.Resource.Instantiate("StaticPlayer");
-        StaticPlayer.transform.position = new Vector3(-5,-3,0);
+        // StaticPlayer = Managers.Resource.Instantiate("StaticPlayer");
+        StaticPlayer = GameObject.Find("StaticPlayer");
+        if(StaticPlayer == null)
+            StaticPlayer = Managers.Resource.Instantiate("StaticPlayer");
+        StaticPlayer.transform.position = new Vector3(-4.5f,-3,0);
         StaticPlayer.transform.localScale = new Vector3(0.6f,0.6f, 1);
 
         _customManager = GameObject.FindGameObjectWithTag("StaticManager");
         customManager = _customManager.GetComponent<CustomManager>();
         animationManager = _customManager.GetComponent<AnimationManager>();
+
+        animationManager.ani = -1;
+        animationManager.PlayAni(true);
+        
+
+
+        //헤어 다시 설정
+        StaticPlayerEx();
 
         BindText(typeof(Texts));
         BindImage(typeof(Images));
@@ -55,9 +75,10 @@ public class UI_PlayerScene : UI_Scene
         GetText((int)Texts.Stage).text = $"{Managers.Game.Stage} 단계";
         GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
         GetText((int)Texts.GoTitleText).text = Managers.GetText(Define.GOBACKText);
+        GetText((int)Texts.DifficultyLevel).text = $"{Managers.Game.DifficultyLevel}";
         //상태창
-        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n운: {Managers.Game.LuckPercent}% \n회피력: {Managers.Game.Avoid}% \n추측 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
-        
+        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n추측 가능한 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
+        GetImage((int)Images.CollectionSuccessImage).gameObject.SetActive(false);
 
         GetButton((int)Buttons.GoTitle).gameObject.BindEvent(ClearGame);
 
@@ -83,7 +104,8 @@ public class UI_PlayerScene : UI_Scene
     public void RefreshUI()
     {
         GetText((int)Texts.Stage).text = $"{Managers.Game.Stage}단계";
-        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n운: {Managers.Game.LuckPercent}% \n회피력: {Managers.Game.Avoid}% \n추측 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
+        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n추측 가능한 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
+        GetText((int)Texts.DifficultyLevel).text = $"{Managers.Game.DifficultyLevel}";
     }
 
     public void HPUp()
@@ -94,10 +116,16 @@ public class UI_PlayerScene : UI_Scene
     }
 
     //캐릭터 감정 표현 TODO
-    public void StaticPlayerEx(string express)
+    public void StaticPlayerEx(string express = null)
     {
         GameObject t = GameObject.FindGameObjectWithTag("StaticManager");
         customManager = t.GetComponent<CustomManager>();
+
+        if(express == null)
+        {
+            customManager.clothes = Managers.Game.ClothesIndex;
+            customManager.numberCheck(1);
+        }
 
         if(express == "Initial")
         {
@@ -163,14 +191,17 @@ public class UI_PlayerScene : UI_Scene
 
     }
 
-        //업적 달성 시 collection
+    //업적 달성 시 collection
 	void OnNewCollection(CollectionData data)
 	{
+        Debug.Log("onNewCollection go");
         GetText((int)Texts.CollectionSuccessText).gameObject.SetActive(true);
+        GetImage((int)Images.CollectionSuccessImage).gameObject.SetActive(true);
         Managers.Sound.Play(Sound.Effect, "Sound_Archive");
-		// GetImage((int)Images.CollectionSuccess).gameObject.SetActive(true);
-		GetText((int)Texts.CollectionSuccessText).text = $"이걸 해냈다고?! 업적 달성! {data.description}";
 
+		GetText((int)Texts.CollectionSuccessText).text = $"업적 달성! {data.description}";
+        GetImage((int)Images.CollectionSuccessImage).sprite = Managers.Resource.Load<Sprite>(data.iconPath);
+    
         Managers.Game.SaveGame();
 
 		if (_coHideCollection != null)
@@ -183,14 +214,17 @@ public class UI_PlayerScene : UI_Scene
 	{
 		yield return new WaitForSeconds(seconds);
         GetText((int)Texts.CollectionSuccessText).gameObject.SetActive(false);
+        GetImage((int)Images.CollectionSuccessImage).gameObject.SetActive(false);
 		// GetImage((int)Images.CollectionSuccess).gameObject.SetActive(false);
 	}
 
     public void ClearGame()
     {
         Managers.Game.SaveGame();
+        Managers.Game.CharacterDelete();
         Managers.UI.CloseAllPopupUI();
         Managers.UI.ShowPopupUI<UI_TitlePopup>();  
         Managers.UI.ClosePlayerSceneUI();
     }
+
 }

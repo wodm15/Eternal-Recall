@@ -22,7 +22,7 @@ TagManager:
   - Water
   - UI
   - Player
-  - 
+  - FrontUI
   - 
   - 
   - 
@@ -51,6 +51,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
-  - name: New Layer 1
+  - name: UI
     uniqueID: 525437721
+    locked: 0
+  - name: Character
+    uniqueID: 1610374259
+    locked: 0
+  - name: The Front UI
+    uniqueID: 2309171585
     locked: 0

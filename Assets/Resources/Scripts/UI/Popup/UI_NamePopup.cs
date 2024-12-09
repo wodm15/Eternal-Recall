@@ -4,12 +4,21 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using static Define;
+using System.Linq;
+using JetBrains.Annotations;
+using System.Collections.ObjectModel;
+
 
 public class UI_NamePopup : UI_Popup
 {
     //플레이어 모습 저장 배열
-    int[] playerIndex = new int[6] {0,0,0,0,0,0};
+    public int[] playerIndex = new int[6] {0,0,0,0,0,0};
+    
+    //스테틱플레이어 매니저
     GameObject Player;
+    CustomManager customManager;
+    AnimationManager animationManager;
+
     [SerializeField] Toggle Normal;
     [SerializeField] Toggle Hard;
     [SerializeField] Toggle UnLimited;
@@ -22,12 +31,17 @@ public class UI_NamePopup : UI_Popup
 	{
 		ConfirmButtonText,
 		HintText,
-		ValueText
+		ValueText,
+        ClothesText,
+        ClothesEffectText,
+        DifficultyExplainText,
 	}
 
 	enum Buttons
 	{
-		ConfirmButton
+		ConfirmButton,
+        ClothesMinus,
+        ClothesPlus,
 	}
 
     TMP_InputField _inputField;
@@ -40,30 +54,164 @@ public class UI_NamePopup : UI_Popup
 			return false;
 
         Player = Managers.Resource.Instantiate("StaticPlayer");
+        GameObject player = GameObject.FindGameObjectWithTag("StaticManager");
+        customManager = player.GetComponent<CustomManager>();
+        animationManager = player.GetComponent<AnimationManager>();
+
         Player.transform.position = Vector3.zero;
         Player.transform.localScale = new Vector3(1, 1, 1);
-
+        
         BindObject(typeof(GameObjects));
 		BindText(typeof(Texts));
 		BindButton(typeof(Buttons));
-
+        
         GetText((int)Texts.ConfirmButtonText).text = Managers.GetText(Define.NicknameConfirm);
 		GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
         
+        #region 코디 (현재는 옷만)
 
+        RefreshClothesText();
+        
+        // GetButton((int)Buttons.ClothesMinus).gameObject.BindEvent(() =>
+        // {            
+        //     customManager.clothes--;
+        //     customManager.numberCheck(1);
+        //     RefreshClothesText();
+
+        //     // RefreshClothes();
+        // });
+        // GetButton((int)Buttons.ClothesPlus).gameObject.BindEvent(() =>
+        // {            
+        //     customManager.clothes++;
+        //     customManager.numberCheck(1);  
+        //     RefreshClothesText();
+        //     // RefreshClothes();
+        // });
+
+            
+
+        //가지고 있는 옷만 필터링해서 버튼 클릭시 이동
+        int maxClothesIndex = customManager.clothesM.count.Length - 1;
+
+        GetButton((int)Buttons.ClothesMinus).gameObject.BindEvent(() =>
+        {
+            // 현재 customManager.clothes - 1이 Done 상태라면 바로 이동
+            if (customManager.clothes > 0 && Managers.Game.Collections[customManager.clothes - 1] == CollectionState.Done)
+            {
+
+                customManager.clothes--;  
+            }
+            else
+            {
+                // Done 상태의 가장 가까운 항목으로 이동
+                for (int i = customManager.clothes - 1; i >= 0; i--)
+                {
+                    if (Managers.Game.Collections[i] == CollectionState.Done)
+                    {
+                        customManager.clothes = i;  
+                        break;
+                    }
+                }
+            }
+
+            customManager.numberCheck(1);  
+            RefreshClothesText();
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+
+        GetButton((int)Buttons.ClothesPlus).gameObject.BindEvent(() =>
+        {
+            // 배열 범위 확인 추가
+            if (customManager.clothes + 1 < customManager.clothesM.count.Length &&
+                Managers.Game.Collections[customManager.clothes + 1] == CollectionState.Done)
+            {
+                customManager.clothes++;  // Done 상태의 다음 항목으로 이동
+            }
+            else
+            {
+            for (int i = customManager.clothes + 1; i < customManager.clothesM.count.Length; i++)
+            {
+                if (i >= Managers.Game.Collections.Length) // 배열 길이 검사
+                    break;
+
+                if (Managers.Game.Collections[i] == CollectionState.Done)
+                {
+                    customManager.clothes = i;  // Done 상태의 항목으로 이동
+                    break;
+                }
+            }
+            }
+
+            customManager.numberCheck(1);
+            RefreshClothesText();
+            Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+        });
+
+
+
+        #endregion
+        
+        #region 토글 설정
         Normal.group = toggleGroup;
         Hard.group = toggleGroup;
         UnLimited.group = toggleGroup;
 
+        // 토글 설정
         Normal.isOn = true;
+        if (Normal.isOn)
+            GetText((int)Texts.DifficultyExplainText).text = Managers.GetText(Define.DifficultyNormal);
+        
+        // 토글 상태 변경 이벤트 등록
+        Normal.onValueChanged.AddListener((isOn) =>
+        {
+            if (isOn)
+            {
+                GetText((int)Texts.DifficultyExplainText).text = Managers.GetText(Define.DifficultyNormal);
+                Managers.Game.DifficultyLevel = "Normal";
+            }
+        });
+
+        Hard.onValueChanged.AddListener((isOn) =>
+        {
+            if (isOn)
+            {
+                GetText((int)Texts.DifficultyExplainText).text = Managers.GetText(Define.DifficultyHard);
+                Managers.Game.DifficultyLevel = "Hard";
+            }
+        });
+
+        UnLimited.onValueChanged.AddListener((isOn) =>
+        {
+            if (isOn)
+            {
+                GetText((int)Texts.DifficultyExplainText).text = Managers.GetText(Define.DifficultyUnlimited);
+                Managers.Game.DifficultyLevel = "UnLimited";
+            }
+        });
+        #endregion
 
         RefreshUI();
     	_inputField = GetObject((int)GameObjects.InputField).gameObject.GetComponent<TMP_InputField>();
 		_inputField.text = "";
 
-        // CharacterResponse();
+        if(Managers.Game.StatData.ID == 101)
+            Debug.Log("101옷 있음");
 
         return true;
+    }
+
+    //옷 텍스트 가져오기
+    public void RefreshClothesText()
+    {
+        string statDataName = Managers.Data.GetStatNameById(customManager.clothes); 
+        GetText((int)Texts.ClothesText).text = $"{statDataName}";
+        string statDataDes = Managers.Data.GetStatDesById(customManager.clothes); 
+        GetText((int)Texts.ClothesEffectText).text = $"{statDataDes}";
+    }
+    public void RefreshClothes()
+    {
+        customManager.numberCheck(1);  
     }
 
     private void SetToggleGroup()
@@ -77,6 +225,8 @@ public class UI_NamePopup : UI_Popup
 		GetText((int)Texts.HintText).text = Managers.GetText(Define.WriteNickname);
         GetText((int)Texts.ConfirmButtonText).text = Managers.GetText(Define.NicknameConfirm);
 		GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
+
+        
 	}
 
     //캐릭 랜덤 생성 (아직 안씀)
@@ -132,16 +282,23 @@ public class UI_NamePopup : UI_Popup
 
     void OnClickConfirmButton()
     {
+        Managers.Game.ClothesIndex = customManager.clothes;
+        if(Normal.isOn) Managers.Game.DifficultyLevel = "Normal";
+        else if(Hard.isOn) Managers.Game.DifficultyLevel = "Hard";
+        else if(UnLimited.isOn) Managers.Game.DifficultyLevel = "UnLimited";
+        Managers.Game.SaveGame();
+
         Managers.Sound.Play(Sound.Effect, "Sound_Checkbutton");
         Debug.Log("onClickConfirmButton");
         Debug.Log($"Input ID {_inputField.text}");
 
         Managers.Game.Name = _inputField.text;
-        Managers.Resource.Destroy(Player);
+        // Managers.Resource.Destroy(Player);
 		// Managers.UI.ShowPopupUI<UI_IntroPopup>();
         Managers.UI.ClosePopupUI(this);
         Managers.UI.ShowPopupUI<UI_CountPopup>();
         Managers.UI.ShowSceneUI<UI_PlayerScene>();
     }
+
 
 }

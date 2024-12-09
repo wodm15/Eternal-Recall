@@ -9,7 +9,8 @@ public class UI_Popup : UI_Base
         if (base.Init() == false)
             return false;
 
-        Managers.UI.SetCanvas(gameObject, true);
+        // Camera.main을 전달하여 Canvas에 카메라 설정
+        Managers.UI.SetCanvas(gameObject, Camera.main, true);
         return true;
     }
 
@@ -17,6 +18,4 @@ public class UI_Popup : UI_Base
     {
         Managers.UI.ClosePopupUI(this);
     }
-
-    
 }

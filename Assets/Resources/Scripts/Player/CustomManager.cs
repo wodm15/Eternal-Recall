@@ -74,7 +74,14 @@ public class CustomManager : MonoBehaviour {
                 }
 
                 
-                hairM.changeItem(hair);
+                if (hairM != null) 
+                    {
+                        hairM.changeItem(hair);
+                    }
+                    else 
+                    {
+                        Debug.LogWarning("hairM is destroyed or not assigned.");
+}
                 break;
 
             case (int)itemEnum.CLOTHES:
@@ -178,11 +185,19 @@ public class CustomManager : MonoBehaviour {
 
     }
 
-    void callChangeItem()
-    {
-        for(int i=0; i<bodyTexture.Length; i++)
+        void callChangeItem()
         {
-            bodyTexture[i].SetActive(true);
+            for (int i = 0; i < bodyTexture.Length; i++)
+            {
+                if (bodyTexture[i] != null)
+                {
+                    bodyTexture[i].SetActive(true);
+                }
+                else
+                {
+                    Debug.LogWarning("bodyTexture[" + i + "] is destroyed or not assigned.");
+                }
+            }
         }
-    }
+
 }

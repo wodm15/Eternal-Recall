@@ -10,7 +10,7 @@ public class StartData
 	[XmlAttribute]
 	public int ID;
 	[XmlAttribute]
-	public string Difficulty;
+	public string DifficultyLevel;
 	[XmlAttribute]
 	public int Hp;
 	[XmlAttribute]
@@ -41,6 +41,8 @@ public class StartData
 
 	[XmlAttribute]
 	public int	Avoid;
+	[XmlAttribute]
+	public int	ClothesIndex;
 
 
 }

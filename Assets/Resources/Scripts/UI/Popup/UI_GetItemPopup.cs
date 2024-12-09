@@ -10,6 +10,7 @@ public class UI_GetItemPopup : UI_Popup
     
     //GuessPopup 변수들
     private int incorrectCount;
+    private string WrongRegion;
     private bool isAvoid;
     //임시로 저장할 조건부 shopData 전체 가져오기
     private List<ShopData> _shopData = new List<ShopData>();
@@ -38,6 +39,8 @@ public class UI_GetItemPopup : UI_Popup
         Text3,
         ExplainText,
         WrongCount,
+        GuessPlayerText,
+        AnswerPlayerText,
     }
     
     public override bool Init()
@@ -53,8 +56,8 @@ public class UI_GetItemPopup : UI_Popup
             if (uiGuessPopup != null)
             {
                 incorrectCount = uiGuessPopup.IncorrectCount;
+                WrongRegion = uiGuessPopup.WrongRegion;
                 isAvoid = uiGuessPopup.isAvoid;
-                Debug.Log($"incorrectCount and  isAvoid{incorrectCount} {isAvoid}");
             }
         }
 
@@ -65,7 +68,7 @@ public class UI_GetItemPopup : UI_Popup
 
         GameObject GuessPlayer = GameObject.Find("Player");
         GuessPlayer.transform.position = new Vector3(0,-3, 0);
-        GuessPlayer.transform.localScale = new Vector3(0.7f,0.7f, 1);
+        GuessPlayer.transform.localScale = new Vector3(0.65f,0.65f, 1);
 
         
         // shopData 스테이지별 픽업
@@ -87,6 +90,9 @@ public class UI_GetItemPopup : UI_Popup
         GetText((int)Texts.ExplainText).text = Managers.GetText(Define.SkillChoseText);
         GetText((int)Texts.WrongCount).gameObject.SetActive(true);
 
+        GetText((int)Texts.GuessPlayerText).text = Managers.GetText(Define.GuessPlayerText);
+        GetText((int)Texts.AnswerPlayerText).text = Managers.GetText(Define.AnswerPlayerText);
+
         GetButton((int)Buttons.Item1BG).gameObject.BindEvent(OnClickItem1);
         GetButton((int)Buttons.Item2BG).gameObject.BindEvent(OnClickItem2);
         GetButton((int)Buttons.Item3BG).gameObject.BindEvent(OnClickItem3);
@@ -94,10 +100,49 @@ public class UI_GetItemPopup : UI_Popup
         //맞았을 경우
         if(incorrectCount == 0)
             GetText((int)Texts.WrongCount).text = Managers.GetText(Define.CorrectText);
-        else if(incorrectCount!=0 && isAvoid == false)
-            GetText((int)Texts.WrongCount).text =$"틀린 개수: {incorrectCount} 데미지: -{incorrectCount * 10}";
+        else if (incorrectCount != 0 && isAvoid == false)
+        {
+            string[] parts = { "헤어", "복장", "눈썹", "눈동자", "입모양", "감정", "포즈" };
+            string resultText = "";
+
+            for (int i = 0; i < WrongRegion.Length && i < parts.Length; i++)
+            {
+                if (WrongRegion[i] == '1') 
+                {
+                    resultText += $"{parts[i]}, ";
+                }
+            }
+
+            if (!string.IsNullOrEmpty(resultText))
+            {
+                resultText = resultText.TrimEnd(',', ' ') + $" 틀려서\n {incorrectCount * 10} 데미지를 받았어";
+                
+                // 최종 텍스트
+                GetText((int)Texts.WrongCount).text = resultText;
+            }
+        }
+
         else if(incorrectCount!=0 && isAvoid == true)
-            GetText((int)Texts.WrongCount).text =$"틀린 개수: {incorrectCount} 회피하였습니다";
+        {
+            string[] parts = { "헤어", "복장", "눈썹", "눈동자", "입모양", "감정", "포즈" };
+            string resultText = "";
+
+            for (int i = 0; i < WrongRegion.Length && i < parts.Length; i++)
+            {
+                if (WrongRegion[i] == '1') 
+                {
+                    resultText += $"{parts[i]}, ";
+                }
+            }
+
+            if (!string.IsNullOrEmpty(resultText))
+            {
+                resultText = resultText.TrimEnd(',', ' ') + " 틀렸지만\n 회피했어";
+                
+                // 최종 텍스트
+                GetText((int)Texts.WrongCount).text = resultText;
+            }
+        }
        
        //랜덤 아이템 3개 생성(이미지 + 글자)
         for (int i = 0; i < 3; i++) 
@@ -269,12 +314,11 @@ public class UI_GetItemPopup : UI_Popup
             }
         else if(selectedItem.productID == "FreePass")
             {
-                Debug.Log($"TheWorld 개수 : {(int)selectedItem.effectValues[0]} {(int)selectedItem.effectValues[1]} {(int)selectedItem.effectValues[2]}");
-                //HP, 운, 스테이지 순서
+                Debug.Log($"FreePass : {(int)selectedItem.effectValues[0]} {(int)selectedItem.effectValues[1]}");
+                //HP, 스테이지 순서
                 Managers.Game.Hp += (int)selectedItem.effectValues[0];
                 Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
-                Managers.Game.LuckPercent += (int)selectedItem.effectValues[1];
-                Managers.Game.Stage += 1;
+                Managers.Game.Stage += (int)selectedItem.effectValues[1];
 
                 playerScene.HPUp();
             }

@@ -3,16 +3,9 @@ using System.Collections.Generic;
 using static Define;
 using UnityEngine;
 using System.IO;
+using System.Linq;
 
 
-
-[Serializable]
-public class PlayerState
-    {
-        public Emotion state = Emotion.None;
-        public bool dialogueEvent = false;
-        public bool goHomeEvent = false;
-    }
 
 [Serializable]
 public enum StrangerIndex
@@ -36,7 +29,7 @@ public enum CollectionState
 [Serializable]
 public class GameData
     {
-        public string Difficulty;
+        public string DifficultyLevel;
         //캐릭터용 + 패시브 스킬
         public int Stage;
         public string Name;
@@ -53,14 +46,13 @@ public class GameData
         public int TheWorld; //3초간 멈추기
         public int PassTicket; //스테이지 1개 바로 패스
         public int HintKey;
-
-        //얻은 스킬
-        public Skill[] Skills = new Skill[MAX_SKILL_COUNT];
         
         //컬렉션 
-        public CollectionData CollectionData = new CollectionData();
         public CollectionState[] Collections = new CollectionState[MAX_COLLECTION_COUNT];
-
+        
+        //코디
+        public int ClothesIndex;
+        public StatData StatData = new StatData();
         // 클리어 한 엔딩
 	    public CollectionState[] Endings = new CollectionState[MAX_ENDING_COUNT];
 
@@ -75,15 +67,16 @@ public class GameManagerEx
     GameData _gameData = new GameData();
     public GameData SaveData { get { return _gameData; } set { _gameData = value; } }
 
-    public string Difficulty
+    //난이도
+    public string DifficultyLevel
     {
-        get { return _gameData.Difficulty;}
-        set { _gameData.Difficulty = value; }
+        get { return _gameData.DifficultyLevel;}
+        set { _gameData.DifficultyLevel = value; DifficultySetting(DifficultyLevel);}
     }
     public int Stage
     {
         get { return _gameData.Stage;}
-        set { _gameData.Stage = value; RefreshStatCollections();}
+        set { _gameData.Stage = value; RefreshStatCollections(); }
     }
     public int[] StrangerIndex = new int[7];
 
@@ -96,7 +89,7 @@ public class GameManagerEx
     public int Hp
     {
         get { return _gameData.Hp; }
-        set { _gameData.Hp = value; RefreshStatCollections();}
+        set { _gameData.Hp = value; RefreshStatCollections(); }
     }
     public int Defence
     {
@@ -117,7 +110,7 @@ public class GameManagerEx
     public int LuckPercent
     {
         get { return _gameData.LuckPercent; }
-        set { _gameData.LuckPercent = value; RefreshStatCollections();}
+        set { _gameData.LuckPercent = value; RefreshStatCollections(); }
     }
     public int DownSpeed
     {
@@ -133,7 +126,7 @@ public class GameManagerEx
     public int Avoid
     {
         get {return _gameData.Avoid;}
-        set {_gameData.Avoid=value; }
+        set {_gameData.Avoid=value; RefreshStatCollections();}
     }
 
 
@@ -146,12 +139,19 @@ public class GameManagerEx
     public int PassTicket
     {
         get { return _gameData.PassTicket;}
-        set { _gameData.PassTicket=value; RefreshStatCollections();}
+        set { _gameData.PassTicket=value; }
     }
     public int HintKey
     {
         get {return _gameData.HintKey;}
         set { _gameData.HintKey=value; RefreshStatCollections();}
+    }
+
+    //코디
+    public int ClothesIndex
+    {
+        get { return _gameData.ClothesIndex;}
+        set { _gameData.ClothesIndex=value; }
     }
 
     #endregion
@@ -164,68 +164,65 @@ public class GameManagerEx
 
     #region 컬렉션 & 프로젝트
 
-    public CollectionData CollectionData
-    {
-        get { return _gameData.CollectionData; }
-        set { _gameData.CollectionData = value; }
-    }
     public CollectionState[] Collections { get { return _gameData.Collections; } }
     public CollectionState[] Endings { get { return _gameData.Endings; } }
     public Action<CollectionData> OnNewCollection;
 
+    public StatData StatData 
+    {
+         get { return _gameData.StatData; }
+         set { _gameData.StatData = value; }
+    }
 
 
-    //실시간으로 적용(안씀)
+    //실시간으로 업적 확인
     public void RefreshStatCollections()
         {
-            
-            foreach (CollectionData data in Managers.Data.Collections.Values)
+
+            foreach (CollectionData data in Managers.Data.CodyCollections)
             {
-                if (Collections[data.ID - 1] != CollectionState.None)
+                
+                if (Collections[data.ID ] != CollectionState.None)
+				continue;
+
+                if(data.reqLevel != DifficultyLevel[..1])
                     continue;
 
                 if (data.reqHp > Hp)
                     continue;
-                if (data.reqLuckPercent > LuckPercent)
-                    continue;
                 if(data.reqStage > Stage)
-                    continue;
-                if (data.reqPassTicket > PassTicket)
                     continue;
                 if(data.reqHintKey > HintKey)
                     continue;
-
-
-                Collections[data.ID - 1] = CollectionState.Uncheck;
-                Debug.Log($"Collection Clear : {data.ID}");
-                // //TODO MAXHP
-                // MaxHp += data.difHp;
-                // LuckPercent += data.difLuckPercent;
-                // Stage += data.difStage;
-                // PassTicket += data.difPassTicket;
+    
+                //옷얻는거 기록
+                Collections[data.ID] = CollectionState.Done;
+                Debug.Log("옷 기록");
 
                 OnNewCollection?.Invoke(data);
             }
         }
 	
+
+
     //처음 컬렉션 업적 만큼 스탯 더하기
-    void ReApplyCollectionStats()
-	{
-		foreach (CollectionData data in Managers.Data.Collections.Values)
-		{
-			CollectionState state = Collections[data.ID - 1];
-			if (state == CollectionState.None)
-				continue;
+    // void ReApplyCollectionStats()
+	// {
+	// 	foreach (CollectionData data in Managers.Data.Collections.Values)
+	// 	{
+	// 		CollectionState state = coordCollections[data.ID - 1];
+	// 		if (state == CollectionState.None)
+	// 			continue;
 
-			Debug.Log($"Apply Collection : {data.ID}");
-                MaxHp += data.difHp;
-                LuckPercent += data.difLuckPercent;
-                Stage += data.difStage;
-                PassTicket += data.difPassTicket;
+	// 		Debug.Log($"Apply Collection : {data.ID}");
+    //             MaxHp += data.difHp;
+    //             LuckPercent += data.difLuckPercent;
+    //             Stage += data.difStage;
+    //             PassTicket += data.difPassTicket;
 
-			OnNewCollection?.Invoke(data);
-		}
-	}
+	// 		OnNewCollection?.Invoke(data);
+	// 	}
+	// }
 
     #endregion
 
@@ -235,7 +232,7 @@ public void Init()
     // 초기 세팅
     StartData data = Managers.Data.Start;
 
-    Difficulty = data.Difficulty;
+    DifficultyLevel = data.DifficultyLevel;
     Stage = data.Stage;
     Hp = data.maxHp;
     LuckPercent = data.LuckPercent;
@@ -246,10 +243,12 @@ public void Init()
     Defence = data.Defence;
     HintKey = data.HintKey;
     Avoid = data.Avoid;
-    
+    ClothesIndex = data.ClothesIndex;
 
-    // 컬렉션 수치 적용
-	// ReApplyCollectionStats();
+    //기본 옷 상시 활성화
+    if (Collections[2] == CollectionState.None)
+        Collections[2] = CollectionState.Done;
+
 }
 
 
@@ -261,12 +260,40 @@ public void Init()
 
         foreach (QuizData quiz in Managers.Data.Quiz.Values)
         {
-            if((Stage ) >= 4 && 2 == quiz.Difficulty)
+            // Difficulty 매핑을 Stage 값에 따라 설정
+            int difficulty = 0;
+
+            if (Stage >= 1 && Stage <= 3)
             {
-                filteredQuizzes.Add(quiz);
+                difficulty = 1;
+            }
+            else if (Stage >= 4 && Stage <= 9)
+            {
+                difficulty = 2;
+            }
+            else if (Stage >= 10 && Stage <= 19)
+            {
+                difficulty = 3;
+            }
+            else if (Stage >= 20 && Stage <= 29)
+            {
+                difficulty = 4;
+            }
+            else if (Stage >= 30 && Stage <= 39)
+            {
+                difficulty = 5;
+            }
+            else if (Stage >= 40 && Stage <= 54)
+            {
+                difficulty = 6;
+            }
+            else if (Stage >= 55 && Stage <= 70)
+            {
+                difficulty = 7;
             }
 
-            else if ( Stage / 10 + 1 == quiz.Difficulty)
+            // difficulty에 맞는 퀴즈를 필터링
+            if (quiz.Difficulty == difficulty)
             {
                 filteredQuizzes.Add(quiz);
             }
@@ -275,7 +302,6 @@ public void Init()
         if (filteredQuizzes.Count > 0)
         {
             randomQuiz = filteredQuizzes[UnityEngine.Random.Range(0, filteredQuizzes.Count)];
-
         }
         else
         {
@@ -283,6 +309,36 @@ public void Init()
         }
 
         return randomQuiz;
+    }
+
+    //난이도에 따른 설정
+    public void DifficultySetting(string DifficultyLevel)
+    {
+        if(DifficultyLevel == "Normal")
+        {
+            HintKey = 0;
+            Avoid = 30;
+            DownSpeed = 0;
+            GuessTimer = 10;
+            HintKey = 5;
+        }
+        if(DifficultyLevel == "Hard")
+        {
+            HintKey = 0;
+            Avoid = 10;
+            DownSpeed = 0;
+            GuessTimer = 10;
+            HintKey = 3;
+        }
+        if(DifficultyLevel == "UnLimited")
+        {
+            HintKey = 0;
+            Avoid = 0;
+            DownSpeed = 0;
+            GuessTimer = 8;
+            HintKey = 0;
+        }
+
     }
 
 
@@ -322,11 +378,11 @@ public void Init()
     //캐릭터 있을 경우 삭제 함수
 	public void CharacterDelete()
     {
-		GameObject staticPlayer = GameObject.Find("StaticPlayer");
-		if (staticPlayer != null)
-		{
-			Managers.Resource.Destroy(staticPlayer);
-		}
+		// GameObject staticPlayer = GameObject.Find("StaticPlayer");
+		// if (staticPlayer != null)
+		// {
+		// 	Managers.Resource.Destroy(staticPlayer);
+		// }
 		GameObject Stranger = GameObject.Find("Stranger");
 		if (Stranger != null)
 		{
@@ -342,9 +398,10 @@ public void Init()
     //광고
     public void ADSHOW()
     {
+
         Managers.Ads.Init();
 		Managers.Ads.ShowInterstitialAd();
     }
-
     
+
 }

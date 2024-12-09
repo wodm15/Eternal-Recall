@@ -1,54 +1,34 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Xml.Serialization;
-using UnityEngine;
 
+[Serializable]
 public class StatData
 {
     [XmlAttribute]
     public int ID;
 
     [XmlAttribute]
-    public int name;
+    public string type; // 문자열로 변경
 
     [XmlAttribute]
-    public string productID;
+    public int nameID;
 
     [XmlAttribute]
     public string icon;
 
-    [XmlAttribute]
-    public string description;
+    [XmlAttribute("name")]
+    public string Name; // 속성명과 XML 일치
 
-    [XmlAttribute]
-    public string effectType;  // Health, Skill, Passive
+    [XmlAttribute("description")]
+    public string Description; // 속성명과 XML 일치
+
+    [XmlAttribute("effectType")]
+    public string EffectType; // 속성명과 XML 일치
 
     [XmlAttribute("effectValue")]
-    public string effectValueString; // Effect value를 string으로 받아옴
-    public List<float> effectValues = new List<float>(); //나중에 소수점 올 수도 있으니 float 저장
-
-    // XML 파싱 후 effectValueString을 List로 변환하는 함수
-    public void ParseEffectValue()
-    {
-		// 여러 값이 있을 때
-        if (effectValueString.StartsWith("{") && effectValueString.EndsWith("}"))
-        {
-            string[] values = effectValueString.Substring(1, effectValueString.Length - 2).Split(',');
-            foreach (var value in values)
-            {
-                effectValues.Add(float.Parse(value.Trim()));
-            }
-        }
-        // 하나의 값만 있을 때
-        else
-        {
-            effectValues.Add(float.Parse(effectValueString));
-        }
-    }
+    public int EffectValue; // 이름 일치 및 정수형
 }
-
-
 
 [Serializable, XmlRoot("ArrayOfStatData")]
 public class StatDataLoader : ILoader<int, StatData>
@@ -62,7 +42,6 @@ public class StatDataLoader : ILoader<int, StatData>
 
         foreach (StatData data in _statDatas)
         {
-            data.ParseEffectValue(); 
             dic.Add(data.ID, data);
         }
 
