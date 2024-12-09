@@ -19,6 +19,8 @@ public class CollectionData
 	public string iconPath;
 	[XmlAttribute]
 	public CollectionType type;
+	[XmlAttribute]
+	public string name;
 
 	[XmlAttribute]
 	public int reqHp;
@@ -28,6 +30,8 @@ public class CollectionData
 	
 	[XmlAttribute]
 	public int reqHintKey;
+	[XmlAttribute]
+	public string reqLevel;
 
 	// [XmlAttribute]
 	// public int difHp;

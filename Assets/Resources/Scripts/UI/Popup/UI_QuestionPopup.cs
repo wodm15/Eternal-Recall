@@ -75,7 +75,7 @@ public class UI_QuestionPopup : UI_Popup
             Managers.Game.StrangerIndex[5] = Random.Range(0, Define.HardIndexEmotion);  //감정 6개밖에 없음
             Managers.Game.StrangerIndex[6] = animationManager.ani; //애니메이션
             }
-            else if (Managers.Game.DifficultyLevel == "Unlimited")
+            else if (Managers.Game.DifficultyLevel == "UnLimited")
             {
             animationManager.ani = Random.Range(0, 10); 
             Managers.Game.StrangerIndex[0] = Random.Range(0, 20); //헤어

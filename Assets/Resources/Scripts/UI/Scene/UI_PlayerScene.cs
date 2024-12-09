@@ -13,7 +13,8 @@ public class UI_PlayerScene : UI_Scene
         HPText,
         PlayerInfo,
         CollectionSuccessText,
-        GoTitleText
+        GoTitleText,
+        DifficultyLevel,
     }
     enum Images
     {
@@ -74,6 +75,7 @@ public class UI_PlayerScene : UI_Scene
         GetText((int)Texts.Stage).text = $"{Managers.Game.Stage} 단계";
         GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
         GetText((int)Texts.GoTitleText).text = Managers.GetText(Define.GOBACKText);
+        GetText((int)Texts.DifficultyLevel).text = $"{Managers.Game.DifficultyLevel}";
         //상태창
         GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n추측 가능한 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
         GetImage((int)Images.CollectionSuccessImage).gameObject.SetActive(false);
@@ -103,6 +105,7 @@ public class UI_PlayerScene : UI_Scene
     {
         GetText((int)Texts.Stage).text = $"{Managers.Game.Stage}단계";
         GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n추측 가능한 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
+        GetText((int)Texts.DifficultyLevel).text = $"{Managers.Game.DifficultyLevel}";
     }
 
     public void HPUp()

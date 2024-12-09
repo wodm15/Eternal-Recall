@@ -8,14 +8,6 @@ using System.Linq;
 
 
 [Serializable]
-public enum DifficultyLevel
-    {
-        Normal,
-        Hard,
-        Unlimited,
-    }
-
-[Serializable]
 public enum StrangerIndex
 {
     HairIndex,
@@ -75,10 +67,11 @@ public class GameManagerEx
     GameData _gameData = new GameData();
     public GameData SaveData { get { return _gameData; } set { _gameData = value; } }
 
+    //난이도
     public string DifficultyLevel
     {
         get { return _gameData.DifficultyLevel;}
-        set { _gameData.DifficultyLevel = value; }
+        set { _gameData.DifficultyLevel = value; DifficultySetting(DifficultyLevel);}
     }
     public int Stage
     {
@@ -185,12 +178,16 @@ public class GameManagerEx
     //실시간으로 업적 확인
     public void RefreshStatCollections()
         {
+
             foreach (CollectionData data in Managers.Data.CodyCollections)
             {
-                if (Collections[data.ID - 1] != CollectionState.None)
+                
+                if (Collections[data.ID ] != CollectionState.None)
 				continue;
-                
-                
+
+                if(data.reqLevel != DifficultyLevel[..1])
+                    continue;
+
                 if (data.reqHp > Hp)
                     continue;
                 if(data.reqStage > Stage)
@@ -199,10 +196,9 @@ public class GameManagerEx
                     continue;
     
                 //옷얻는거 기록
-                Collections[data.ID - 1] = CollectionState.Done;
+                Collections[data.ID] = CollectionState.Done;
                 Debug.Log("옷 기록");
-                //옷 변경(TODO)
-                // Managers.Game.StatDataState[10] = global::StatDataState.Done;
+
                 OnNewCollection?.Invoke(data);
             }
         }
@@ -249,8 +245,10 @@ public void Init()
     Avoid = data.Avoid;
     ClothesIndex = data.ClothesIndex;
 
-    // 컬렉션 초기 수치 적용
-	// ReApplyCollectionStats();
+    //기본 옷 상시 활성화
+    if (Collections[2] == CollectionState.None)
+        Collections[2] = CollectionState.Done;
+
 }
 
 
@@ -313,6 +311,35 @@ public void Init()
         return randomQuiz;
     }
 
+    //난이도에 따른 설정
+    public void DifficultySetting(string DifficultyLevel)
+    {
+        if(DifficultyLevel == "Normal")
+        {
+            HintKey = 0;
+            Avoid = 30;
+            DownSpeed = 0;
+            GuessTimer = 10;
+            HintKey = 5;
+        }
+        if(DifficultyLevel == "Hard")
+        {
+            HintKey = 0;
+            Avoid = 10;
+            DownSpeed = 0;
+            GuessTimer = 10;
+            HintKey = 3;
+        }
+        if(DifficultyLevel == "UnLimited")
+        {
+            HintKey = 0;
+            Avoid = 0;
+            DownSpeed = 0;
+            GuessTimer = 8;
+            HintKey = 0;
+        }
+
+    }
 
 
     #region Save & Load	

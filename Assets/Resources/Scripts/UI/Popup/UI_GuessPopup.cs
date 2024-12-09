@@ -143,7 +143,7 @@ public class UI_GuessPopup : UI_Popup
             GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {Define.HardIndex}"; 
             GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 10"; 
         }
-        if(Managers.Game.DifficultyLevel == "unlimited")
+        if(Managers.Game.DifficultyLevel == "UnLimted")
         {
             GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {customManager.hairM.count.Length}"; 
             GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {customManager.clothesM.count.Length}"; 
@@ -225,8 +225,8 @@ public class UI_GuessPopup : UI_Popup
             NormalBinding();
         else if(Managers.Game.DifficultyLevel == "Hard")
             HardBinding();
-        else if (Managers.Game.DifficultyLevel == "Unlimited")
-            unLimitedBinding();
+        else if (Managers.Game.DifficultyLevel == "UnLimited")
+            UnLimitedBinding();
         
         #endregion
 
@@ -1089,7 +1089,7 @@ public class UI_GuessPopup : UI_Popup
         });
     }
 
-    void unLimitedBinding()
+    void UnLimitedBinding()
     {
         GetButton((int)Buttons.HairMinus).gameObject.BindEvent(() => 
         {
