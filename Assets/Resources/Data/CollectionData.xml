@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCollectionData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <CollectionData ID="1" nameID="7500" iconPath="Sprites/Collection/0_SailorUniform" type="Cody" reqHp="0" reqLuckPercent="0" reqStage="2" reqAvoid="0" reqHintKey="0" description="Stage 2 gogo "/>
-  <CollectionData ID="2" nameID="7501" iconPath="Sprites/Collection/1_WeddingDress" type="Cody" reqHp="0" reqLuckPercent="0" reqStage="3" reqAvoid="0" reqHintKey="0" description="Stage 3 gogo"/>
-  <CollectionData ID="3" nameID="7502"  iconPath="Sprites/Collection/2_Basic" type="Cody" reqHp="0" reqLuckPercent="0" reqStage="2" reqAvoid="0" reqHintKey="0" description="기본 옷"/>
-  <CollectionData ID="4" nameID="7503"  iconPath="Sprites/Collection/3_Bikini" type="Cody" reqHp="1" reqLuckPercent="0" reqStage="30" reqAvoid="0" reqHintKey="0" description="Stage 30 gogo"/>
-  <CollectionData ID="5" nameID="7504"  iconPath="Sprites/Collection/4_Maid" type="Cody" reqHp="10" reqLuckPercent="1" reqStage="50" reqAvoid="0" reqHintKey="0" description="Stage 50 gogo"/>
-  <CollectionData ID="6" nameID="7505"  iconPath="Sprites/Collection/6_Swimsuit" type="Cody" reqHp="70" reqLuckPercent="0" reqStage="0" reqAvoid="0" reqHintKey="0" description="Stage 70 gogo"/>
-  <CollectionData ID="7" nameID="7500"  iconPath="Sprites/Collection/7_Yukata" type="Cody" reqHp="0" reqLuckPercent="10" reqStage="0" reqAvoid="0" reqHintKey="0" description="행운의 초심자"/>
-  <CollectionData ID="8" nameID="7501"  iconPath="Sprites/Collection/8_Cheongsam" type="Cody" reqHp="0" reqLuckPercent="30" reqStage="2" reqAvoid="0" reqHintKey="0" description="행운을 좋아함"/>
-  <CollectionData ID="9" nameID="7502"  iconPath="Sprites/Collection/9_Hanbok" type="Cody" reqHp="0" reqLuckPercent="50" reqStage="2" reqAvoid="0" reqHintKey="0" description="절반이 행운"/>
-  <CollectionData ID="10" nameID="7503"  iconPath="Sprites/Collection/10_NightWear" type="Cody" reqHp="0" reqLuckPercent="100" reqStage="2" reqAvoid="0" reqHintKey="0" description="행운의 여신"/>
-  <CollectionData ID="11" nameID="7504"  iconPath="Sprites/Collection/11_SweatSuit" type="Cody" reqHp="0" reqLuckPercent="0" reqStage="2" reqAvoid="10" reqHintKey="0" description="회피가 좋아"/>
-  <CollectionData ID="12" nameID="7505"  iconPath="Sprites/Collection/12_GarterBelt" type="Cody" reqHp="0" reqLuckPercent="0" reqStage="2" reqAvoid="30" reqHintKey="0" description="도적급 회피"/>
-  <CollectionData ID="13" nameID="7500"  iconPath="Sprites/Collection/13_PrincessClothes" type="Cody" reqHp="0" reqLuckPercent="0" reqStage="2" reqvoid="50" reqHintKey="0" description="인생이 회피"/>
-  <CollectionData ID="14" nameID="7501"  iconPath="Sprites/Collection/14_Jean" type="Cody" reqHp="0" reqLuckPercent="0" reqStage="2" Avoid="100" reqHintKey="0" description="회피의 달인"/>
-  <CollectionData ID="15" nameID="7502"  iconPath="Sprites/Collection/15_SchoolUniform" type="Cody" reqHp="0" reqLuckPercent="0" reqStage="2" reqAvoid="0" reqHintKey="10" description="힌트가 좋아"/>
-  <CollectionData ID="16" nameID="7503"  iconPath="Sprites/Collection/16_NurseUniform" type="Cody" reqHp="0" reqLuckPercent="1" reqStage="2" reqAvoid="0" reqHintKey="20" description="힌트 저축이 좋아"/>
-  <CollectionData ID="17" nameID="7504"  iconPath="Sprites/Collection/17_Magical" type="Cody" reqHp="0" reqLuckPercent="0" reqStage="2" Avoid="0" reqHintKey="30" description="힌트를 좋아하는 변태"/>
-  <CollectionData ID="18" nameID="7505"  iconPath="Sprites/Collection/18_Swimsuit2" type="Cody" reqHp="100" reqLuckPercent="1" reqStage="70" reqAvoid="30" reqHintKey="0" description="완벽한 클리어"/>
-  <CollectionData ID="19" nameID="7500"  iconPath="Sprites/Collection/19_Warrior" type="Cody" reqHp="100" reqLuckPercent="0" reqStage="70" reqAvoid="0" reqHintKey="0" description="철옹성"/>
+  <CollectionData ID="1" nameID="7500" iconPath="Sprites/Collection/0_SailorUniform" type="Cody" reqHp="0" reqStage="2"  reqHintKey="0" description="Stage 2 gogo " How = "스테이지 2단계 가기"/>
+  <CollectionData ID="2" nameID="7501" iconPath="Sprites/Collection/1_WeddingDress" type="Cody" reqHp="0" reqStage="3"  reqHintKey="0" description="Stage 3 gogo"  How = "스테이지 2단계 가기"/>
+  <CollectionData ID="3" nameID="7502"  iconPath="Sprites/Collection/2_Basic" type="Cody" reqHp="0" reqStage="2"  reqHintKey="0" description="기본 옷"  How = "스테이지 2단계 가기"/>
+  <CollectionData ID="4" nameID="7503"  iconPath="Sprites/Collection/3_Bikini" type="Cody" reqHp="1" reqStage="30"  reqHintKey="0" description="Stage 30 gogo"  How = "스테이지 2단계 가기"/>
+  <CollectionData ID="5" nameID="7504"  iconPath="Sprites/Collection/4_Maid" type="Cody" reqHp="10" reqStage="50"  reqHintKey="0" description="Stage 50 gogo"  How = "스테이지 2단계 가기" />
+  <CollectionData ID="6" nameID="7505"  iconPath="Sprites/Collection/6_Swimsuit" type="Cody" reqHp="70" reqStage="0"  reqHintKey="0" description="Stage 70 gogo"  How = "스테이지 2단계 가기"/>
+  <CollectionData ID="7" nameID="7500"  iconPath="Sprites/Collection/7_Yukata" type="Cody" reqHp="0" reqStage="0"  reqHintKey="0" description="행운의 초심자" How = "스테이지 2단계 가기"/>
+  <CollectionData ID="8" nameID="7501"  iconPath="Sprites/Collection/8_Cheongsam" type="Cody" reqHp="0" reqStage="2"  reqHintKey="0" description="행운을 좋아함" How = "스테이지 2단계 가기"/>
+  <CollectionData ID="9" nameID="7502"  iconPath="Sprites/Collection/9_Hanbok" type="Cody" reqHp="0" reqStage="2"  reqHintKey="0" description="절반이 행운" How = "스테이지 2단계 가기"/>
+  <CollectionData ID="10" nameID="7503"  iconPath="Sprites/Collection/10_NightWear" type="Cody" reqHp="0" reqStage="2"  reqHintKey="0" description="행운의 여신" How = "스테이지 2단계 가기"/>
+  <CollectionData ID="11" nameID="7504"  iconPath="Sprites/Collection/11_SweatSuit" type="Cody" reqHp="0" reqStage="2"  reqHintKey="0" description="회피가 좋아" How = "스테이지 2단계 가기"/>
+  <CollectionData ID="12" nameID="7505"  iconPath="Sprites/Collection/12_GarterBelt" type="Cody" reqHp="0" reqStage="2" reqHintKey="0" description="도적급 회피" How = "스테이지 2단계 가기"/>
+  <CollectionData ID="13" nameID="7500"  iconPath="Sprites/Collection/13_PrincessClothes" type="Cody" reqHp="0" reqStage="2" reqvoid="50" reqHintKey="0" description="인생이 회피" How = "스테이지 2단계 가기"/>
+  <CollectionData ID="14" nameID="7501"  iconPath="Sprites/Collection/14_Jean" type="Cody" reqHp="0" reqStage="2" Avoid="100" reqHintKey="0" description="회피의 달인" How = "스테이지 2단계 가기"/>
+  <CollectionData ID="15" nameID="7502"  iconPath="Sprites/Collection/15_SchoolUniform" type="Cody" reqHp="0" reqStage="2"  reqHintKey="10" description="힌트가 좋아" How = "스테이지 2단계 가기"/>
+  <CollectionData ID="16" nameID="7503"  iconPath="Sprites/Collection/16_NurseUniform" type="Cody" reqHp="0" reqStage="2"  reqHintKey="20" description="힌트 저축이 좋아" How = "스테이지 2단계 가기" />
+  <CollectionData ID="17" nameID="7504"  iconPath="Sprites/Collection/17_Magical" type="Cody" reqHp="0" reqStage="2" Avoid="0" reqHintKey="30" description="힌트를 좋아하는 변태" How = "스테이지 2단계 가기"/>
+  <CollectionData ID="18" nameID="7505"  iconPath="Sprites/Collection/18_Swimsuit2" type="Cody" reqHp="100" reqStage="70" reqHintKey="0" description="완벽한 클리어" How = "스테이지 2단계 가기"/>
+  <CollectionData ID="19" nameID="7500"  iconPath="Sprites/Collection/19_Warrior" type="Cody" reqHp="100" reqStage="70"  reqHintKey="0" description="철옹성" How = "체력 100으로 스테이지 클리어"/>
 </ArrayOfCollectionData>

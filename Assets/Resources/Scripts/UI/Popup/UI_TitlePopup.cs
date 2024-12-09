@@ -6,6 +6,8 @@ using static Define;
 public class UI_TitlePopup : UI_Popup
 {
 	GameObject Player;
+	CustomManager customManager;
+    AnimationManager animationManager;
 	enum Texts
 	{
 		// TouchToStartText,
@@ -30,6 +32,19 @@ public class UI_TitlePopup : UI_Popup
 		BindText(typeof(Texts));
 		BindButton(typeof(Buttons)); 
 
+		Player = GameObject.Find("StaticPlayer");
+		if(Player == null)
+			Player = Managers.Resource.Instantiate("StaticPlayer");
+			
+		Player.transform.position = new Vector3(0,-1,-0);
+        Player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        GameObject _customManager = GameObject.FindGameObjectWithTag("StaticManager");
+        customManager = _customManager.GetComponent<CustomManager>();
+        animationManager = _customManager.GetComponent<AnimationManager>();
+		animationManager.ani = Random.Range(0,10);
+		animationManager.PlayAni(true);
+		
+
 		GetButton((int)Buttons.StartButton).gameObject.BindEvent(OnClickStartButton);
 		GetButton((int)Buttons.ContinueButton).gameObject.BindEvent(OnClickContinueButton);
 		GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(() =>
@@ -47,8 +62,7 @@ public class UI_TitlePopup : UI_Popup
 		Managers.Sound.Clear();
 
 		// Player = Managers.Resource.Instantiate("StaticPlayer");
-        // Player.transform.position = Vector3.zero;
-        // Player.transform.localScale = new Vector3(1, 1, 1);
+
 
 		int music = Random.Range(0,100);
 		if( music < 50)
@@ -69,6 +83,7 @@ void OnClickStartButton()
 
 			Managers.UI.ClosePopupUI(this);
 			Managers.UI.ShowPopupUI<UI_ConfirmPopup>();
+			Managers.Resource.Destroy(Player);
 		}
 		else
 		{
@@ -77,6 +92,7 @@ void OnClickStartButton()
 
 			Managers.UI.ClosePopupUI(this);
 			Managers.UI.ShowPopupUI<UI_NamePopup>();
+			Managers.Resource.Destroy(Player);
 		}	
 
 	}
@@ -84,7 +100,7 @@ void OnClickStartButton()
 	void OnClickContinueButton()
 	{
 		Debug.Log("OnClickContinueButton");
-		Managers.Game.CharacterDelete();
+		// Managers.Game.CharacterDelete();
 		Managers.Game.Init();
 		if(!Managers.Game.LoadGame())
 			{
@@ -93,16 +109,18 @@ void OnClickStartButton()
 		else if(Managers.Game.LoadGame() && Managers.Game.Hp > 0)
 		{
 			Managers.UI.ClosePopupUI(this);
-			Managers.UI.ShowSceneUI<UI_PlayerScene>();
 			Managers.UI.ShowPopupUI<UI_CountPopup>();
+			Managers.UI.ShowSceneUI<UI_PlayerScene>();
 		}
 	}
 
 	void OnClickCollectionButton()
 	{
 		// Managers.Sound.Play(Sound.Effect, ("Sound_"));
+		// Managers.Resource.Destroy(Player);
 		Managers.Game.Init();
 		Managers.Game.LoadGame();
+		Player.transform.localPosition = new Vector3(12,0,0);
 
 		Debug.Log("OnClickCollectionButton");
 		Managers.UI.ShowPopupUI<UI_CollectionPopup>();

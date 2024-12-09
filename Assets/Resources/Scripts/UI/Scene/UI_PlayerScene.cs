@@ -52,12 +52,16 @@ public class UI_PlayerScene : UI_Scene
         StaticPlayer = GameObject.Find("StaticPlayer");
         if(StaticPlayer == null)
             StaticPlayer = Managers.Resource.Instantiate("StaticPlayer");
-        StaticPlayer.transform.position = new Vector3(-5,-3,0);
+        StaticPlayer.transform.position = new Vector3(-4.5f,-3,0);
         StaticPlayer.transform.localScale = new Vector3(0.6f,0.6f, 1);
 
         _customManager = GameObject.FindGameObjectWithTag("StaticManager");
         customManager = _customManager.GetComponent<CustomManager>();
         animationManager = _customManager.GetComponent<AnimationManager>();
+
+        animationManager.ani = -1;
+        animationManager.PlayAni(true);
+        
 
 
         //헤어 다시 설정
@@ -71,7 +75,7 @@ public class UI_PlayerScene : UI_Scene
         GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
         GetText((int)Texts.GoTitleText).text = Managers.GetText(Define.GOBACKText);
         //상태창
-        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n운: {Managers.Game.LuckPercent}% \n회피력: {Managers.Game.Avoid}% \n추측 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
+        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n추측 가능한 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
         GetImage((int)Images.CollectionSuccessImage).gameObject.SetActive(false);
 
         GetButton((int)Buttons.GoTitle).gameObject.BindEvent(ClearGame);
@@ -98,7 +102,7 @@ public class UI_PlayerScene : UI_Scene
     public void RefreshUI()
     {
         GetText((int)Texts.Stage).text = $"{Managers.Game.Stage}단계";
-        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n운: {Managers.Game.LuckPercent}% \n회피력: {Managers.Game.Avoid}% \n추측 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
+        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n추측 가능한 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
     }
 
     public void HPUp()

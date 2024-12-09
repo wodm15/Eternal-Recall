@@ -56,7 +56,6 @@ public class GameData
         public int HintKey;
         
         //컬렉션 
-
         public CollectionState[] Collections = new CollectionState[MAX_COLLECTION_COUNT];
         
         //코디
@@ -194,15 +193,10 @@ public class GameManagerEx
                 
                 if (data.reqHp > Hp)
                     continue;
-                if (data.reqLuckPercent > LuckPercent)
-                    continue;
                 if(data.reqStage > Stage)
                     continue;
                 if(data.reqHintKey > HintKey)
                     continue;
-                if(data.reqAvoid > Avoid)
-                    continue;
-                
     
                 //옷얻는거 기록
                 Collections[data.ID - 1] = CollectionState.Done;
@@ -357,11 +351,11 @@ public void Init()
     //캐릭터 있을 경우 삭제 함수
 	public void CharacterDelete()
     {
-		GameObject staticPlayer = GameObject.Find("StaticPlayer");
-		if (staticPlayer != null)
-		{
-			Managers.Resource.Destroy(staticPlayer);
-		}
+		// GameObject staticPlayer = GameObject.Find("StaticPlayer");
+		// if (staticPlayer != null)
+		// {
+		// 	Managers.Resource.Destroy(staticPlayer);
+		// }
 		GameObject Stranger = GameObject.Find("Stranger");
 		if (Stranger != null)
 		{

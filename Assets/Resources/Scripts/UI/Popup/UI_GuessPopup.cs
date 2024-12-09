@@ -12,6 +12,7 @@ public class UI_GuessPopup : UI_Popup
     //timer
     public float RemainTime;
     public bool isAvoid;
+    public string WrongRegion;
 
     private int _incorrectCount = 0;
     public int IncorrectCount
@@ -264,24 +265,50 @@ public class UI_GuessPopup : UI_Popup
     }
 
     //stranger와 추측 캐릭터 비교
-    void CompareCharacter()
+    string CompareCharacter(string WrongRegion)
     {
+        
         if (customManager.hair != Managers.Game.StrangerIndex[0])
+        {
+            WrongRegion += "1";
             IncorrectCount++;
+        } else {WrongRegion += "0";}
         if (customManager.clothes != Managers.Game.StrangerIndex[1])
+        {
+            WrongRegion += "1";
             IncorrectCount++;
+        } else {WrongRegion += "0";}
         if (customManager.eyebrow != Managers.Game.StrangerIndex[2])
+        {
+            WrongRegion += "1";
             IncorrectCount++;
+        } else {WrongRegion += "0";}
         if (customManager.eye != Managers.Game.StrangerIndex[3])
+        {
+            WrongRegion += "1";
             IncorrectCount++;
+        }
+            else {WrongRegion += "0";}
         if (customManager.mouth != Managers.Game.StrangerIndex[4])
+        {
+            WrongRegion += "1";
             IncorrectCount++;
+        }
+            else {WrongRegion += "0";}
         if (customManager.emotion != Managers.Game.StrangerIndex[5])
+        {
+            WrongRegion += "1";    
             IncorrectCount++;
+        }
+            else {WrongRegion += "0";}
         if (animationManager.ani != Managers.Game.StrangerIndex[6])
+        {
+            WrongRegion += "1";
             IncorrectCount++;
-
+        }
+            else {WrongRegion += "0";}
             Debug.Log($"틀린 개수: {IncorrectCount}");
+            return WrongRegion;
     }
 
     void OnClickConfirmButton(bool isCorrect)
@@ -290,8 +317,9 @@ public class UI_GuessPopup : UI_Popup
 
         IsButtonClick = true;
         Managers.Sound.Play(Sound.Effect, "Sound_CheckButton");
+        string _wrong = "";
         //캐릭 비교
-        CompareCharacter();
+        WrongRegion = CompareCharacter(_wrong);
 
         if (IncorrectCount == 0) //정답일 경우
         {

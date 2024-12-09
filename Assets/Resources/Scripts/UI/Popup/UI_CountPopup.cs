@@ -42,7 +42,6 @@ public class UI_CountPopup : UI_Popup
         int _Stage = Managers.Game.Stage;
 
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
-        playerScene.StaticPlayerEx();
 
         GetText((int)Texts.PreviousStage).text = $" Stage : {_Stage -1}";
         GetText((int)Texts.ShowStage).text = $" Stage : {_Stage}";

@@ -46,12 +46,16 @@ public class UI_CollectionPopup : UI_Popup
 		
 		Debug.Log(_collections[0].description);
 		GetText((int)Texts.ArchiveTitle1).text = $"{_collections[0].description}";
-		GetText((int)Texts.ArchiveEffect1).text = $"{_collections[0].difHp}";
+		// GetText((int)Texts.ArchiveEffect1).text = $"{_collections[0].difHp}";
 		return true;
 	}
 
 	public void OnCloseCollection()
 	{
+		GameObject Player = GameObject.Find("StaticPlayer");
+		if(Player)
+			Player.transform.localPosition = new Vector3(0,0,0);
+
 		Managers.UI.ClosePopupUI(this);
 	}
 }

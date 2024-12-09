@@ -297,6 +297,7 @@ GameObject:
   - component: {fileID: 3421346637764861662}
   - component: {fileID: 6031697669145754453}
   - component: {fileID: 7001059497663407574}
+  - component: {fileID: 8304221406236397459}
   m_Layer: 5
   m_Name: UI_CountPopup
   m_TagString: Untagged
@@ -313,7 +314,7 @@ RectTransform:
   m_GameObject: {fileID: 4934002869631286972}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1.0851852, y: 1.0851852, z: 1.0851852}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6049251510156538723}
@@ -339,7 +340,7 @@ Canvas:
   m_GameObject: {fileID: 4934002869631286972}
   m_Enabled: 1
   serializedVersion: 3
-  m_RenderMode: 0
+  m_RenderMode: 2
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
   m_PixelPerfect: 0
@@ -350,8 +351,8 @@ Canvas:
   m_VertexColorAlwaysGammaSpace: 0
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 525437721
+  m_SortingOrder: 22
   m_TargetDisplay: 0
 --- !u!114 &3421346637764861662
 MonoBehaviour:
@@ -375,7 +376,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 0
+  m_PresetInfoIsWorld: 1
 --- !u!114 &6031697669145754453
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -405,6 +406,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef23d8f294b8846538bd2f449c038625, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!210 &8304221406236397459
+SortingGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4934002869631286972}
+  m_Enabled: 1
+  m_SortingLayerID: -1985795711
+  m_SortingLayer: 3
+  m_SortingOrder: 5
+  m_SortAtRoot: 0
 --- !u!1 &5533817955238668904
 GameObject:
   m_ObjectHideFlags: 0

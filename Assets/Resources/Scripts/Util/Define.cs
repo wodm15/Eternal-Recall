@@ -107,5 +107,7 @@ public class Define
 	public const int AvoidButtonText = 50005;
 	public const int AvoidSucessText = 50006;
 	public const int AvoidFailText = 50007;
+	public const int GuessPlayerText = 50008;
+	public const int AnswerPlayerText = 50009;
 	
 }
