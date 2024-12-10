@@ -75,6 +75,9 @@ public class UI_TitlePopup : UI_Popup
 
 		Managers.Game.Init();
 
+		//어떤 옷인지 체크
+		// customManager.clothes = Managers.Game.ClothesIndex;
+        // customManager.numberCheck(1); 
 
 		//노래 설정
 		Managers.Sound.Clear();
@@ -94,7 +97,7 @@ void OnClickStartButton()
 
 		if (Managers.Game.HasSavedData())
 		{
-			// Managers.Game.Init();
+			Managers.Game.Init();
 			Managers.Game.LoadGame();
 
 			Managers.UI.ClosePopupUI(this);
@@ -104,7 +107,7 @@ void OnClickStartButton()
 		else
 		{
 			Managers.Game.CharacterDelete();
-			// Managers.Game.Init();
+			Managers.Game.Init();
 
 			Managers.UI.ClosePopupUI(this);
 			Managers.UI.ShowPopupUI<UI_NamePopup>();
@@ -117,7 +120,7 @@ void OnClickStartButton()
 	{
 		Debug.Log("OnClickContinueButton");
 		// Managers.Game.CharacterDelete();
-		// Managers.Game.Init();
+		Managers.Game.Init();
 		if(!Managers.Game.LoadGame())
 			{
 
@@ -134,7 +137,7 @@ void OnClickStartButton()
 	{
 		// Managers.Sound.Play(Sound.Effect, ("Sound_"));
 		// Managers.Resource.Destroy(Player);
-		// Managers.Game.Init();
+		Managers.Game.Init();
 		Managers.Game.LoadGame();
 		Player.transform.localPosition = new Vector3(12,0,0);
 

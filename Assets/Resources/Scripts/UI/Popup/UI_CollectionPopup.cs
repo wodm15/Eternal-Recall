@@ -7,6 +7,7 @@ public class UI_CollectionPopup : UI_Popup
 {
     List<int> Usercollections = new List<int>();
     List<CollectionData> CollectionData = new List<CollectionData>();
+    CustomManager customManager;
 
     // 마지막으로 클릭된 이미지 확인용
     private Image lastSelectedImage = null;
@@ -51,6 +52,11 @@ public class UI_CollectionPopup : UI_Popup
         GetText((int)Texts.DesToText).gameObject.SetActive(false);
         GetImage((int)Images.HowToImage).gameObject.SetActive(false);
         GetImage((int)Images.DesToImage).gameObject.SetActive(false);
+
+        GameObject Player = GameObject.Find("StaticPlayer");
+        Player.transform.position = new Vector3(-6,-3,0);
+        GameObject _customManager = GameObject.FindGameObjectWithTag("StaticManager");
+        customManager = _customManager.GetComponent<CustomManager>();
 
 
         GetData(); //유저 데이터와 컬렉션 데이터 가져오기
@@ -155,6 +161,10 @@ public class UI_CollectionPopup : UI_Popup
         outline.effectColor = Color.black; 
         outline.effectDistance = new Vector2(6, 6); 
 
+        //캐릭터 옷도 수정
+        customManager.clothes = index;
+        customManager.numberCheck(1); 
+
         // 마지막 이미지 기록
         lastSelectedImage = selectedImage;
     }
@@ -163,6 +173,19 @@ public class UI_CollectionPopup : UI_Popup
     public void OnClickBackButton()
     {
         Managers.UI.ClosePopupUI(this);
+
+        //옷이 소유권이 있으면 가져가고, 없으면 빼기
+        // if(Usercollections[index] == 2) 
+        // {
+        //     Managers.Game.Collections[index] = 2;
+        //      Managers.Game.
+        // }
+        // else
+        // {
+        //     Managers.Game.Collections[index] = 0;
+        customManager.clothes = Managers.Game.ClothesIndex;
+        customManager.numberCheck(1); 
+
         GameObject Player = GameObject.Find("StaticPlayer");
         Player.transform.position = new Vector3(0,-1,0);
     }

@@ -110,7 +110,7 @@ public class GameManagerEx
     public int LuckPercent
     {
         get { return _gameData.LuckPercent; }
-        set { _gameData.LuckPercent = value; RefreshStatCollections(); }
+        set { _gameData.LuckPercent = value;}
     }
     public int DownSpeed
     {
@@ -244,6 +244,7 @@ public void Init()
     HintKey = data.HintKey;
     Avoid = data.Avoid;
     ClothesIndex = data.ClothesIndex;
+
 
     //기본 옷 상시 활성화
     if (Collections[2] == CollectionState.None)

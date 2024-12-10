@@ -10,6 +10,8 @@ public class UI_CountPopup : UI_Popup
     private string _description;
     private string _productId;
     private float _effectValue1;
+    private float _effectValue2;
+    bool _isLuck;
 
     enum Images
     {
@@ -45,15 +47,31 @@ public class UI_CountPopup : UI_Popup
 
         GetText((int)Texts.PreviousStage).text = $" Stage : {_Stage -1}";
         GetText((int)Texts.ShowStage).text = $" Stage : {_Stage}";
+        Debug.Log(_isLuck);
         if(_description !=null)
         {
             GetText((int)Texts.AmountText).gameObject.SetActive(true);
-            string amountText = $"{_description}";
 
-            if (_effectValue1 != -1)
+            if(_effectValue1 != -1 && _isLuck)
+            {
+                Managers.Sound.Play(Sound.Effect , "Sound_Luck");
+                GetText((int)Texts.AmountText).text = $"{_description} \n 두배 획득 성공! \n 힐링:{_effectValue1} -> {2*_effectValue1}";
+            }
+            if (_effectValue1 != -1 && !_isLuck)
+            {
+                Managers.Sound.Play(Sound.Effect , "Sound_GetItem");
                 GetText((int)Texts.AmountText).text = $"{_description} \n 힐링:{_effectValue1}";
-            else
+            }
+            else if(_effectValue1 == -1 && _isLuck)
+            {
+                Managers.Sound.Play(Sound.Effect , "Sound_Luck");
+                GetText((int)Texts.AmountText).text = $"두배 획득 성공! \n {_description}\n  {_effectValue2} -> {2 * _effectValue2}";
+            }
+            else if(_effectValue1 == -1 && !_isLuck)
+            {
+                Managers.Sound.Play(Sound.Effect , "Sound_GetItem");
                 GetText((int)Texts.AmountText).text = $"{_description}";
+            }
         }
         
 
@@ -62,20 +80,23 @@ public class UI_CountPopup : UI_Popup
         return true;
     }
         // AmountText 값을 설정하는 메서드
-public void SetAmountText(ShopData _selectedItem)
+public void SetAmountText(ShopData _selectedItem , bool isLuck = false)
 {
     _description = _selectedItem.description;
     _productId = _selectedItem.productID;
     _effectValue1 = _selectedItem.effectValues[0];
+    if(isLuck)
+        _isLuck = true;
 
     //gambleHealing 일 때만 양도 가져가기
-    if (_selectedItem.productID == "gambleHealing")
+    else if (_selectedItem.productID == "gambleHealing")
     {
         _effectValue1 = _selectedItem.effectValues[0];
     }
     else
     {
         _effectValue1 = -1;
+        _effectValue2 = _selectedItem.effectValues[0];
     }
 
     // if (_selectedItem.effectValues.Count > 2 )

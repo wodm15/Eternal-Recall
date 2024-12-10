@@ -122,5 +122,6 @@ public class Define
 	public const int GuessPlayerText = 50008;
 	public const int AnswerPlayerText = 50009;
 	public const int WarningInputText = 50010;
+	public const int LuckSkillText = 50011;
 	
 }

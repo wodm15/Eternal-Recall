@@ -12,6 +12,7 @@ public class UI_GetItemPopup : UI_Popup
     private int incorrectCount;
     private string WrongRegion;
     private bool isAvoid;
+    private bool isLuck;
     //임시로 저장할 조건부 shopData 전체 가져오기
     private List<ShopData> _shopData = new List<ShopData>();
 
@@ -60,6 +61,8 @@ public class UI_GetItemPopup : UI_Popup
                 isAvoid = uiGuessPopup.isAvoid;
             }
         }
+
+        isLuck = false; //더블 획득 기본 false
 
         //추측 플레이어 아직 남아있을 경우 검증
         GameObject PassingPlayer = GameObject.Find("Stranger");
@@ -249,9 +252,9 @@ public class UI_GetItemPopup : UI_Popup
         //만약 행운으로 인해 스킬을 한번 더 획득
         if(Random.Range(1, 101) <= Managers.Game.LuckPercent)
         {
-            Managers.UI.ClosePopupUI(this);
-            Debug.Log("행운 효과로 인해 2배 상승");
+            isLuck = true;
             ApplyItemEffect(selectedItem);
+            Debug.Log("행운 효과로 인해 2배 상승");
         }
     }
     //마지막 팝업용
@@ -276,9 +279,12 @@ public class UI_GetItemPopup : UI_Popup
         playerScene.StageUp();
         UI_CountPopup countPopup = Managers.UI.ShowPopupUI<UI_CountPopup>();
         int selectedIndex = _selectedIndexes[0]; // 첫 번째 아이템 선택
-        //효과가 3개까지 일 수 있음.
-        countPopup.SetAmountText(_selectedItem);
-
+        
+        //더블 획득 성공
+        if(isLuck)
+            countPopup.SetAmountText(_selectedItem , true);
+        else
+            countPopup.SetAmountText(_selectedItem);
     }
 
     //체력 업데이트
