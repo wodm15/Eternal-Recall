@@ -19,6 +19,7 @@ public class UI_CollectionPopup : UI_Popup
         CollectionTitle,
         HowToText,
         DesToText,
+        ExitButtonText,
     }
     enum Buttons
     {
@@ -45,10 +46,12 @@ public class UI_CollectionPopup : UI_Popup
 
         GetButton((int)Buttons.ExitButton).gameObject.BindEvent(OnClickBackButton); 
         GetText((int)Texts.CollectionTitle).text = Managers.GetText(Define.CollectionTitle);
+        GetText((int)Texts.ExitButtonText).text = Managers.GetText(Define.GoToTitleText);
         GetText((int)Texts.HowToText).gameObject.SetActive(false);
         GetText((int)Texts.DesToText).gameObject.SetActive(false);
         GetImage((int)Images.HowToImage).gameObject.SetActive(false);
         GetImage((int)Images.DesToImage).gameObject.SetActive(false);
+
 
         GetData(); //유저 데이터와 컬렉션 데이터 가져오기
         MakeImage(GetObject((int)GameObjects.Content)); //화면에 컬렉션 이미지 생성
@@ -56,7 +59,7 @@ public class UI_CollectionPopup : UI_Popup
         //첫번째 그림 클릭한 거로 일단 하기
         if (CollectionData.Count > 0)
         {
-            OnImageClick(0); 
+            OnImageClick(2); 
         }
         return true;
 

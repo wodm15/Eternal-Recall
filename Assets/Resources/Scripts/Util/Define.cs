@@ -94,12 +94,21 @@ public class Define
 	public const int DataResetConfirm = 20022;
 	public const int CollectionTitle = 20023;
 
-	public const int HairQuestion = 30000;
-	public const int ClothesQuestion= 30001;
-	public const int EyebrowQuestion = 30002;
-	public const int EyeQuestion = 30003;
-	public const int MouthQuestion = 30004;
-	public const int AnimationQuestion = 30005;
+	// public const int HairQuestion = 30000;
+	// public const int ClothesQuestion= 30001;
+	// public const int EyebrowQuestion = 30002;
+	// public const int EyeQuestion = 30003;
+	// public const int MouthQuestion = 30004;
+	// public const int AnimationQuestion = 30005;
+    public static int[] CharacterSaying = new int[51]
+    {
+        30000, 30001, 30002, 30003, 30004, 30005, 30006, 30007, 30008, 30009,
+        30010, 30011, 30012, 30013, 30014, 30015, 30016, 30017, 30018, 30019,
+        30020, 30021, 30022, 30023, 30024, 30025, 30026, 30027, 30028, 30029,
+        30030, 30031, 30032, 30033, 30034, 30035, 30036, 30037, 30038, 30039,
+        30040, 30041, 30042, 30043, 30044, 30045, 30046, 30047, 30048, 30049,
+		30050
+    };
 
 	public const int GameEndText = 50000;
 	public const int GoToTitleText = 50001;

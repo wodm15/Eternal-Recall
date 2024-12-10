@@ -36,6 +36,7 @@ public class UI_NamePopup : UI_Popup
         ClothesEffectText,
         DifficultyExplainText,
         WarningInput,
+        GotoTitleText,
 	}
 
 	enum Buttons
@@ -43,6 +44,7 @@ public class UI_NamePopup : UI_Popup
 		ConfirmButton,
         ClothesMinus,
         ClothesPlus,
+        GotoTitleButton,
 	}
 
     TMP_InputField _inputField;
@@ -68,8 +70,11 @@ public class UI_NamePopup : UI_Popup
         
         GetText((int)Texts.ConfirmButtonText).text = Managers.GetText(Define.NicknameConfirm);
 		GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
+        GetButton((int)Buttons.GotoTitleButton).gameObject.BindEvent(GotoTitle);
         GetText((int)Texts.WarningInput).text = Managers.GetText(Define.WarningInputText);
         GetText((int)Texts.WarningInput).gameObject.SetActive(false);
+        GetText((int)Texts.GotoTitleText).text = Managers.GetText(Define.GoToTitleText);
+
         
         #region 코디 (현재는 옷만)
 
@@ -311,5 +316,13 @@ public class UI_NamePopup : UI_Popup
         Managers.UI.ShowSceneUI<UI_PlayerScene>();
     }
 
+    public void GotoTitle()
+    {
+        Managers.UI.ClosePopupUI(this);
+        Managers.UI.ShowPopupUI<UI_TitlePopup>();
+        GameObject Player = GameObject.Find("StaticPlayer");
+        Player.transform.position = new Vector3(0, -1,0);
+        Player.transform.localScale = new Vector3(0.5f, 0.5f,0.5f);
+    }
 
 }

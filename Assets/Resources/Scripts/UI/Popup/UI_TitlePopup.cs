@@ -15,6 +15,7 @@ public class UI_TitlePopup : UI_Popup
 		ContinueButtonText,
 		CollectionButtonText,
 		QuitButtonText,
+		SayingText,
 	}
 
     enum Buttons
@@ -45,6 +46,8 @@ public class UI_TitlePopup : UI_Popup
 		animationManager.ani = Random.Range(0,10);
 		animationManager.PlayAni(true);
 		
+		int randSay = Random.Range(0, Define.CharacterSaying.Length);
+		GetText((int)Texts.SayingText).text = Managers.GetText(Define.CharacterSaying[randSay]);
 
 		GetButton((int)Buttons.StartButton).gameObject.BindEvent(OnClickStartButton);
 		GetButton((int)Buttons.ContinueButton).gameObject.BindEvent(OnClickContinueButton);
@@ -70,16 +73,18 @@ public class UI_TitlePopup : UI_Popup
 		GetText((int)Texts.CollectionButtonText).text = Managers.GetText(Define.CollectionButtonText);
 		GetText((int)Texts.QuitButtonText).text = Managers.GetText(Define.QuitButtonText);
 
+		Managers.Game.Init();
+
+
+		//노래 설정
 		Managers.Sound.Clear();
-
-		// Player = Managers.Resource.Instantiate("StaticPlayer");
-
-
 		int music = Random.Range(0,100);
 		if( music < 50)
 			Managers.Sound.Play(Sound.Bgm, "Sound_MainTitle");
 		else
 			Managers.Sound.Play(Sound.Bgm, "Sound_MainPlayBGM");
+
+		
 		return true;
 	}
 
@@ -89,7 +94,7 @@ void OnClickStartButton()
 
 		if (Managers.Game.HasSavedData())
 		{
-			Managers.Game.Init();
+			// Managers.Game.Init();
 			Managers.Game.LoadGame();
 
 			Managers.UI.ClosePopupUI(this);
@@ -99,7 +104,7 @@ void OnClickStartButton()
 		else
 		{
 			Managers.Game.CharacterDelete();
-			Managers.Game.Init();
+			// Managers.Game.Init();
 
 			Managers.UI.ClosePopupUI(this);
 			Managers.UI.ShowPopupUI<UI_NamePopup>();
@@ -112,7 +117,7 @@ void OnClickStartButton()
 	{
 		Debug.Log("OnClickContinueButton");
 		// Managers.Game.CharacterDelete();
-		Managers.Game.Init();
+		// Managers.Game.Init();
 		if(!Managers.Game.LoadGame())
 			{
 
@@ -129,7 +134,7 @@ void OnClickStartButton()
 	{
 		// Managers.Sound.Play(Sound.Effect, ("Sound_"));
 		// Managers.Resource.Destroy(Player);
-		Managers.Game.Init();
+		// Managers.Game.Init();
 		Managers.Game.LoadGame();
 		Player.transform.localPosition = new Vector3(12,0,0);
 
