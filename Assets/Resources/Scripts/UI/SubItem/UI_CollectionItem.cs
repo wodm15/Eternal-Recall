@@ -1,164 +1,57 @@
-using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class UI_CollectionItem : UI_Base
+public class UI_CollectionItem : UI_Popup
 {
-	enum GameObjects
-	{
-		Collection,
-		CollectionLock,
-		Gallery,
-	}
+    int _collectionId;
+    enum Texts
+    {
+        CollectionName,
+        CollectionHow
+    }
+    enum Images
+    {
+        CollectionImage,
+    }
 
-	enum Texts
-	{
-		CollectionName,
-		LikeabilityText,
-		WorkAbilityText,
-		LuckText,
-		MaxHpText,
-	}
+    public override bool Init()
+    {
+        if (base.Init() == false)
+            return false;
 
-	enum Images
-	{
-		CollectionIcon,
-		IconNotice,
-		GalleryImage,
-	}
-
-	public enum CollectionItemType
-	{
-		Collection,
-		Gallery
-	}
-
-	int _collectionId;
-	int _galleryId;
-	CollectionItemType _type;
-
-	public override bool Init()
-	{
-		if (base.Init() == false)
-			return false;
-
-		BindObject(typeof(GameObjects));
 		BindText(typeof(Texts));
-		BindImage(typeof(Images));
+        BindImage(typeof(Images));
+        
 
-		RefreshUI();
+        return true;
+    }
 
-		return true;
-	}
-
+    // 더미 데이터를 설정하는 함수
+    public void SetData(CollectionData data)
+    {
+        Debug.Log(data.How);
+        GetText((int)Texts.CollectionName).text = data.description;
+        GetText((int)Texts.CollectionHow).text = data.How;
+        GetImage((int)Images.CollectionImage).sprite = Managers.Resource.Load<Sprite>(data.iconPath);
+    }
 	public void SetCollectionInfo(int collectionId)
 	{
-		if (collectionId >= 0)
+		if (collectionId > 0)
 			_collectionId = collectionId;
-
 	}
 
-	public void SetGalleryInfo(int galleryId)
-	{
-		if (galleryId > 0)
-			_galleryId = galleryId;
-	}
+	// void RefreshCollectionUI()
+	// {
+    //     if (_collectionId == 0)
+	// 		return;
 
-	public void SetType(CollectionItemType type)
-	{
-		_type = type;
-		RefreshUI();
-	}
+    //     Managers.Data.Collections.TryGetValue(_collectionId, out CollectionData data);
 
-	void RefreshCollectionUI()
-	{
-		gameObject.SetActive(false);
-
-		if (_collectionId == 0)
-			return;
-
-		gameObject.SetActive(true);
-
-		CollectionState state = Managers.Game.Collections[_collectionId - 1];
-
-		GetObject((int)GameObjects.Gallery).SetActive(false);
-
-		if (state == CollectionState.None)
-		{
-			GetObject((int)GameObjects.CollectionLock).SetActive(true);
-			GetObject((int)GameObjects.Collection).SetActive(false);
-		}
-		else
-		{
-			string path = Managers.Data.Collections[_collectionId].iconPath;
-			GetImage((int)Images.CollectionIcon).sprite = Managers.Resource.Load<Sprite>(path);
-			GetObject((int)GameObjects.CollectionLock).SetActive(false);
-			GetObject((int)GameObjects.Collection).SetActive(true);
-		}
-
-		Managers.Data.Collections.TryGetValue(_collectionId, out CollectionData data);
-
-		// GetText((int)Texts.CollectionName).text =  $"{data.description}";
-		// GetText((int)Texts.LikeabilityText).text = $"+{data.difHp}";
-		// GetText((int)Texts.WorkAbilityText).text = $"+{data.difHintKey}";
-		// GetText((int)Texts.LuckText).text = $"+{data.difStage}";
-
-		if (state == CollectionState.Uncheck)
-			SetNoti(true);
-		else
-			SetNoti(false);
-	}
-
-	void RefreshGalleryUI()
-	{
-		gameObject.SetActive(false);
-
-		if (_galleryId == 0)
-			return;
-
-		CollectionState state = Managers.Game.Endings[_galleryId - 1];
-		
-		gameObject.SetActive(true);
-
-		GetObject((int)GameObjects.Collection).SetActive(false);
-
-		if (state == CollectionState.None)
-		{
-			GetObject((int)GameObjects.CollectionLock).SetActive(true);
-			GetObject((int)GameObjects.Gallery).SetActive(false);
-		}
-		else
-		{
-			Managers.Data.Endings.TryGetValue(_galleryId, out EndingData data);
-			Debug.Log($"GalleryID {_galleryId}");
-			Debug.Log($"Sprite {data.illustPath}");
-			GetImage((int)Images.GalleryImage).sprite = Managers.Resource.Load<Sprite>(data.illustPath);
-			GetObject((int)GameObjects.CollectionLock).SetActive(false);
-			GetObject((int)GameObjects.Gallery).SetActive(true);
-		}
-
-		if (state == CollectionState.Uncheck)
-			SetNoti(true);
-		else
-			SetNoti(false);
-	}
-
-	void RefreshUI()
-	{
-		if (_init == false)
-			return;
-
-		if (_type == CollectionItemType.Collection)
-			RefreshCollectionUI();
-		else
-			RefreshGalleryUI();
-	}
-
-	void SetNoti(bool flag)
-	{
-		if (_init == false)
-			return;
-
-		GetImage((int)Images.IconNotice).gameObject.SetActive(flag);
-	}
+    //     string path = Managers.Data.Collections[_collectionId].iconPath;
+    //     GetImage((int)Images.CollectionImage).sprite = Managers.Resource.Load<Sprite>(path);
+    // 	GetText((int)Texts.CollectionText).text = Managers.GetText(data.nameID);
+	// 	GetText((int)Texts.DescriptionText).text = $"+{data.description}";
+    // }
 }

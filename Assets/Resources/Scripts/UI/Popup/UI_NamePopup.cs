@@ -35,6 +35,7 @@ public class UI_NamePopup : UI_Popup
         ClothesText,
         ClothesEffectText,
         DifficultyExplainText,
+        WarningInput,
 	}
 
 	enum Buttons
@@ -67,6 +68,8 @@ public class UI_NamePopup : UI_Popup
         
         GetText((int)Texts.ConfirmButtonText).text = Managers.GetText(Define.NicknameConfirm);
 		GetButton((int)Buttons.ConfirmButton).gameObject.BindEvent(OnClickConfirmButton);
+        GetText((int)Texts.WarningInput).text = Managers.GetText(Define.WarningInputText);
+        GetText((int)Texts.WarningInput).gameObject.SetActive(false);
         
         #region 코디 (현재는 옷만)
 
@@ -282,6 +285,14 @@ public class UI_NamePopup : UI_Popup
 
     void OnClickConfirmButton()
     {
+        //닉네임 유효성 검증
+        if (string.IsNullOrEmpty(_inputField.text) || _inputField.text.Length >= 7)
+        {
+            GetText((int)Texts.WarningInput).gameObject.SetActive(true);
+            Debug.Log("입력 오류: 유효한 값이 아닙니다.");
+            return; 
+        }
+
         Managers.Game.ClothesIndex = customManager.clothes;
         if(Normal.isOn) Managers.Game.DifficultyLevel = "Normal";
         else if(Hard.isOn) Managers.Game.DifficultyLevel = "Hard";

@@ -66,9 +66,10 @@ public class Define
 	//난이도 별 인덱스 범위
 	public const int NormalIndex = 5;
 	public const int HardIndex = 10;
-	public const int HardIndexEyebrow = 5;
-	public const int HardIndexEmotion = 6;
-	public const int UnlimitedIndex = 20;
+	public const int MaxIndexEyebrow = 5;
+	public const int MaxIndexEmotion = 6;
+	public const int UnlimitedIndex = 20; //눈썹과 감정 제외
+	public const int MaxAnimationIndex = 10;
 
 	//닉네임 입력
 	public const int WriteNickname = 6500;	
@@ -85,11 +86,13 @@ public class Define
 	public const int StartButtonText = 10000;
 	public const int ContinueButtonText = 10001;
 	public const int CollectionButtonText = 10002;
+	public const int QuitButtonText = 10003;
 	public const int SkillChoseText = 100;
 	public const int Intro1 = 20019;
 	public const int Intro2 = 20020;
 	public const int Intro3 = 20021;
 	public const int DataResetConfirm = 20022;
+	public const int CollectionTitle = 20023;
 
 	public const int HairQuestion = 30000;
 	public const int ClothesQuestion= 30001;
@@ -109,5 +112,6 @@ public class Define
 	public const int AvoidFailText = 50007;
 	public const int GuessPlayerText = 50008;
 	public const int AnswerPlayerText = 50009;
+	public const int WarningInputText = 50010;
 	
 }

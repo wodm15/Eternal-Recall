@@ -136,10 +136,10 @@ public class UI_GuessPopup : UI_Popup
         {
             GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {Define.HardIndex}"; 
             GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {Define.HardIndex}"; 
-            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.HardIndexEyebrow}"; 
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.MaxIndexEyebrow}"; 
             GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {Define.HardIndex}"; 
             GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {Define.HardIndex}"; 
-            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.HardIndexEmotion}"; 
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.MaxIndexEmotion}"; 
             GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {Define.HardIndex}"; 
             GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 10"; 
         }
@@ -946,7 +946,7 @@ public class UI_GuessPopup : UI_Popup
         {
             if(customManager.eyebrow == 0)
             {
-                customManager.eyebrow = (Define.HardIndexEyebrow) -1;
+                customManager.eyebrow = (Define.MaxIndexEyebrow) -1;
             }
             else if ( 0 < customManager.eyebrow )
                 {
@@ -954,7 +954,7 @@ public class UI_GuessPopup : UI_Popup
                 }
                 
             customManager.numberCheck(2); 
-            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.HardIndexEyebrow}";
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.MaxIndexEyebrow}";
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
         });
         GetButton((int)Buttons.EyebrowPlus).gameObject.BindEvent(() => 
@@ -968,7 +968,7 @@ public class UI_GuessPopup : UI_Popup
                     customManager.eyebrow++; 
                 }
             customManager.numberCheck(2);  
-            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.HardIndexEyebrow}";
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.MaxIndexEyebrow}";
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 
@@ -1035,7 +1035,7 @@ public class UI_GuessPopup : UI_Popup
         {
             if(customManager.emotion == 0)
             {
-                customManager.emotion = Define.HardIndexEmotion -1;
+                customManager.emotion = Define.MaxIndexEmotion -1;
             }
             else if ( 0 < customManager.emotion )
                 {
@@ -1043,21 +1043,21 @@ public class UI_GuessPopup : UI_Popup
                 }
 
             customManager.numberCheck(5); 
-            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.HardIndexEmotion}"; 
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.MaxIndexEmotion}"; 
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.EmotionPlus).gameObject.BindEvent(() => 
         {
-            if(Define.HardIndexEmotion <= customManager.emotion+1)
+            if(Define.MaxIndexEmotion <= customManager.emotion+1)
             {
                 customManager.emotion = 0;
             }
-            else if (Define.HardIndexEmotion > customManager.emotion)
+            else if (Define.MaxIndexEmotion > customManager.emotion)
                 {
                     customManager.emotion++; 
                 }
             customManager.numberCheck(5);  
-            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.HardIndexEmotion}"; 
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.MaxIndexEmotion}"; 
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 

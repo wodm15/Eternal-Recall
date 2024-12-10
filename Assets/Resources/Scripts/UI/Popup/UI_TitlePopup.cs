@@ -14,14 +14,15 @@ public class UI_TitlePopup : UI_Popup
 		StartButtonText,
 		ContinueButtonText,
 		CollectionButtonText,
-		//DataResetConfirmText
+		QuitButtonText,
 	}
 
     enum Buttons
 	{
 		StartButton,
 		ContinueButton,
-		CollectionButton
+		CollectionButton,
+		QuitButton,
 	}
 
     public override bool Init()
@@ -49,15 +50,25 @@ public class UI_TitlePopup : UI_Popup
 		GetButton((int)Buttons.ContinueButton).gameObject.BindEvent(OnClickContinueButton);
 		GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(() =>
 		{
-			int a = Random.Range(0,50);
-			if(a < 50)
-				Managers.Game.ADSHOW();
+			// int a = Random.Range(0,50);
+			// if(a < 50)
+			// 	Managers.Game.ADSHOW();
 			OnClickCollectionButton();
 		});
+		GetButton((int)Buttons.QuitButton).gameObject.BindEvent(() =>
+        {
+            #if UNITY_EDITOR
+					UnityEditor.EditorApplication.isPlaying = false;
+			#else
+					// 빌드된 게임에서 종료
+					Application.Quit();
+			#endif
+        });
 		// GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(OnClickCollectionButton);
 		GetText((int)Texts.StartButtonText).text = Managers.GetText(Define.StartButtonText);
 		GetText((int)Texts.ContinueButtonText).text = Managers.GetText(Define.ContinueButtonText);
 		GetText((int)Texts.CollectionButtonText).text = Managers.GetText(Define.CollectionButtonText);
+		GetText((int)Texts.QuitButtonText).text = Managers.GetText(Define.QuitButtonText);
 
 		Managers.Sound.Clear();
 
