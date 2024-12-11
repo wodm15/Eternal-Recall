@@ -17,7 +17,7 @@
   <CollectionData ID="14" nameID="7514"  iconPath="Sprites/Collection/14_Jean" type="Cody" name="청바지" reqHp= "1" reqStage="70" reqHintKey="0" reqLevel= "N" description="하드모드 클리어" How = "하드모드 70단계 클리어"/>
   <CollectionData ID="15" nameID="7515"  iconPath="Sprites/Collection/15_SchoolUniform" type="Cody" name="교복" reqHp="1" reqStage="70"  reqHintKey="0" reqLevel= "U" description="언리미티드모드 클리어" How = "언리미티드 70단계 클리어" />
   <CollectionData ID="16" nameID="7516"  iconPath="Sprites/Collection/16_NurseUniform" type="Cody" name="간호복" reqHp="1" reqStage="70"  reqHintKey="0" reqLevel= "N" description="노말모드 클리어" How = "노말 70단계 클리어" />
-  <CollectionData ID="17" nameID="7517"  iconPath="Sprites/Collection/17_Magical" type="Cody" name="마법소녀" reqHp="100" reqStage="70" reqHintKey="0" reqLevel= "H"  description="기억력의 신" How = "체력 100으로 Hard 70단계 클리어"/>
+  <CollectionData ID="17" nameID="7517"  iconPath="Sprites/Collection/17_Magical" type="Cody" name="마법소녀" reqHp="100" reqStage="70" reqHintKey="0" reqLevel= "H"  description="기억력의 신" How = "체력 100으로 하드모드 70단계 클리어"/>
   <CollectionData ID="18" nameID="7518"  iconPath="Sprites/Collection/18_Swimsuit2" type="Cody" name="수영복2" reqHp="100" reqStage="70" reqHintKey="0" reqLevel= "U" description="신" How = "체력 100으로 언리미티드모드 70단계 클리어"/>
   <CollectionData ID="19" nameID="7519"  iconPath="Sprites/Collection/19_Warrior" type="Cody" name="전투복" reqHp="100" reqStage="70"  reqHintKey="0" reqLevel= "N" description="철옹성" How = "체력 100으로 노말 70단계 클리어"/>
 </ArrayOfCollectionData>

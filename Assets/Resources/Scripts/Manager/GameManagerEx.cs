@@ -66,7 +66,6 @@ public class GameManagerEx
 {
     GameData _gameData = new GameData();
     public GameData SaveData { get { return _gameData; } set { _gameData = value; } }
-
     //난이도
     public string DifficultyLevel
     {
@@ -144,7 +143,7 @@ public class GameManagerEx
     public int HintKey
     {
         get {return _gameData.HintKey;}
-        set { _gameData.HintKey=value; RefreshStatCollections();}
+        set { _gameData.HintKey=value; RefreshStatCollections(); }
     }
 
     //코디
@@ -205,27 +204,7 @@ public class GameManagerEx
 	
 
 
-    //처음 컬렉션 업적 만큼 스탯 더하기
-    // void ReApplyCollectionStats()
-	// {
-	// 	foreach (CollectionData data in Managers.Data.Collections.Values)
-	// 	{
-	// 		CollectionState state = coordCollections[data.ID - 1];
-	// 		if (state == CollectionState.None)
-	// 			continue;
-
-	// 		Debug.Log($"Apply Collection : {data.ID}");
-    //             MaxHp += data.difHp;
-    //             LuckPercent += data.difLuckPercent;
-    //             Stage += data.difStage;
-    //             PassTicket += data.difPassTicket;
-
-	// 		OnNewCollection?.Invoke(data);
-	// 	}
-	// }
-
     #endregion
-
 
 public void Init()
 {
@@ -245,10 +224,9 @@ public void Init()
     Avoid = data.Avoid;
     ClothesIndex = data.ClothesIndex;
 
-
-    //기본 옷 상시 활성화
-    if (Collections[2] == CollectionState.None)
-        Collections[2] = CollectionState.Done;
+    // 기본 옷 상시 활성화
+    if (Collections[Define.DefaultCollectionIndex] == CollectionState.None)
+        Collections[Define.DefaultCollectionIndex] = CollectionState.Done;
 
 }
 
@@ -341,6 +319,7 @@ public void Init()
         }
 
     }
+
 
 
     #region Save & Load	

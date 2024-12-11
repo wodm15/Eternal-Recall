@@ -73,7 +73,7 @@ public class UI_TitlePopup : UI_Popup
 		GetText((int)Texts.CollectionButtonText).text = Managers.GetText(Define.CollectionButtonText);
 		GetText((int)Texts.QuitButtonText).text = Managers.GetText(Define.QuitButtonText);
 
-		Managers.Game.Init();
+		// Managers.Game.Init();
 
 		//어떤 옷인지 체크
 		// customManager.clothes = Managers.Game.ClothesIndex;
@@ -98,6 +98,7 @@ void OnClickStartButton()
 		if (Managers.Game.HasSavedData())
 		{
 			Managers.Game.Init();
+			CheckFirstVisit();
 			Managers.Game.LoadGame();
 
 			Managers.UI.ClosePopupUI(this);
@@ -137,11 +138,20 @@ void OnClickStartButton()
 	{
 		// Managers.Sound.Play(Sound.Effect, ("Sound_"));
 		// Managers.Resource.Destroy(Player);
-		Managers.Game.Init();
+		// Managers.Game.Init();
 		Managers.Game.LoadGame();
 		Player.transform.localPosition = new Vector3(12,0,0);
 
 		Debug.Log("OnClickCollectionButton");
 		Managers.UI.ShowPopupUI<UI_CollectionPopup>();
+	}
+
+	void CheckFirstVisit()
+	{
+		//처음 접속일 경우 병아리 옷 획득 후 저장
+		if (Managers.Game.Collections[2] == CollectionState.None)
+		{
+        	Managers.Game.Collections[2] = CollectionState.Done;
+		}
 	}
 }

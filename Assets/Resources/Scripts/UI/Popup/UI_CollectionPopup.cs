@@ -7,7 +7,11 @@ public class UI_CollectionPopup : UI_Popup
 {
     List<int> Usercollections = new List<int>();
     List<CollectionData> CollectionData = new List<CollectionData>();
+    
+    //선택된 변수 마지막에 가지고 있는 인덱스면 타이틀화면에 가져가고 아니면 초기화
+    private int selectedIndex = -1;
     CustomManager customManager;
+    
 
     // 마지막으로 클릭된 이미지 확인용
     private Image lastSelectedImage = null;
@@ -58,7 +62,7 @@ public class UI_CollectionPopup : UI_Popup
         GameObject _customManager = GameObject.FindGameObjectWithTag("StaticManager");
         customManager = _customManager.GetComponent<CustomManager>();
 
-
+        CheckFirstVisit();
         GetData(); //유저 데이터와 컬렉션 데이터 가져오기
         MakeImage(GetObject((int)GameObjects.Content)); //화면에 컬렉션 이미지 생성
 
@@ -127,6 +131,7 @@ public class UI_CollectionPopup : UI_Popup
     // 이미지를 클릭했을 때 실행될 함수
     public void OnImageClick(int index)
     {
+        selectedIndex = index;
         GetText((int)Texts.HowToText).gameObject.SetActive(true);
         GetText((int)Texts.DesToText).gameObject.SetActive(true);
 
@@ -163,6 +168,7 @@ public class UI_CollectionPopup : UI_Popup
 
         //캐릭터 옷도 수정
         customManager.clothes = index;
+
         customManager.numberCheck(1); 
 
         // 마지막 이미지 기록
@@ -175,20 +181,31 @@ public class UI_CollectionPopup : UI_Popup
         Managers.UI.ClosePopupUI(this);
 
         //옷이 소유권이 있으면 가져가고, 없으면 빼기
-        // if(Usercollections[index] == 2) 
-        // {
-        //     Managers.Game.Collections[index] = 2;
-        //      Managers.Game.
-        // }
-        // else
-        // {
-        //     Managers.Game.Collections[index] = 0;
+        if(Usercollections[selectedIndex] == 2) 
+        {
+            Managers.Game.ClothesIndex = selectedIndex;
+        }
+        else
+        {
+            Managers.Game.ClothesIndex = 2;
+        }
+    
+
         customManager.clothes = Managers.Game.ClothesIndex;
         customManager.numberCheck(1); 
 
         GameObject Player = GameObject.Find("StaticPlayer");
         Player.transform.position = new Vector3(0,-1,0);
     }
+
+    void CheckFirstVisit()
+	{
+		//처음 접속일 경우 병아리 옷 획득 후 저장
+		if (Managers.Game.Collections[2] == CollectionState.None)
+		{
+        	Managers.Game.Collections[2] = CollectionState.Done;
+		}
+	}
 
 }
 

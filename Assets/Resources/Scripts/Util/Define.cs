@@ -51,7 +51,7 @@ public class Define
 		FreePass, //한번 살아남기 10퍼 획득
 		upLuck, //행운 올리기(확률 10퍼씩 증가)
 	}
-
+	public const int DefaultCollectionIndex = 2;
 	public const int MAX_COLLECTION_COUNT = 21;
 
 	//현재 코디 옷 (19개 이므로)

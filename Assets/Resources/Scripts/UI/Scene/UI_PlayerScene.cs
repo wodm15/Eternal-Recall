@@ -227,4 +227,6 @@ public class UI_PlayerScene : UI_Scene
         Managers.UI.ClosePlayerSceneUI();
     }
 
+    
+
 }

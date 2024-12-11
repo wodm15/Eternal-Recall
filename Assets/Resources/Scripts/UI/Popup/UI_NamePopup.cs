@@ -79,24 +79,6 @@ public class UI_NamePopup : UI_Popup
         #region 코디 (현재는 옷만)
 
         RefreshClothesText();
-        
-        // GetButton((int)Buttons.ClothesMinus).gameObject.BindEvent(() =>
-        // {            
-        //     customManager.clothes--;
-        //     customManager.numberCheck(1);
-        //     RefreshClothesText();
-
-        //     // RefreshClothes();
-        // });
-        // GetButton((int)Buttons.ClothesPlus).gameObject.BindEvent(() =>
-        // {            
-        //     customManager.clothes++;
-        //     customManager.numberCheck(1);  
-        //     RefreshClothesText();
-        //     // RefreshClothes();
-        // });
-
-            
 
         //가지고 있는 옷만 필터링해서 버튼 클릭시 이동
         int maxClothesIndex = customManager.clothesM.count.Length - 1;
@@ -165,11 +147,13 @@ public class UI_NamePopup : UI_Popup
         Hard.group = toggleGroup;
         UnLimited.group = toggleGroup;
 
+        string clothesEffect = $"\n 특수능력 :{Managers.Data.Stat[Managers.Game.ClothesIndex].EffectType} +{Managers.Data.Stat[Managers.Game.ClothesIndex].EffectValue}";
         // 토글 설정
         Normal.isOn = true;
         if (Normal.isOn)
+        {
             GetText((int)Texts.DifficultyExplainText).text = Managers.GetText(Define.DifficultyNormal);
-        
+        }
         // 토글 상태 변경 이벤트 등록
         Normal.onValueChanged.AddListener((isOn) =>
         {
@@ -299,10 +283,16 @@ public class UI_NamePopup : UI_Popup
         }
 
         Managers.Game.ClothesIndex = customManager.clothes;
+        Managers.Data.Start.ClothesIndex = Managers.Game.ClothesIndex;
+        // Managers.Game.Init();
+
+        //순서 중요 (난이도로 스탯 변경 후 -> 옷 능력치 추가)
         if(Normal.isOn) Managers.Game.DifficultyLevel = "Normal";
         else if(Hard.isOn) Managers.Game.DifficultyLevel = "Hard";
         else if(UnLimited.isOn) Managers.Game.DifficultyLevel = "UnLimited";
-        Managers.Game.SaveGame();
+
+        //옷 능력치 추가
+        ApplyInitialStats();
 
         Managers.Sound.Play(Sound.Effect, "Sound_Checkbutton");
         Debug.Log("onClickConfirmButton");
@@ -325,4 +315,44 @@ public class UI_NamePopup : UI_Popup
         Player.transform.localScale = new Vector3(0.5f, 0.5f,0.5f);
     }
 
+    //처음 컬렉션 업적 만큼 스탯 더하기
+    private void ApplyInitialStats()
+    {
+        foreach (int statID in Managers.Data.Stat.Keys)
+        {
+            if (Managers.Game.ClothesIndex == statID)
+            {
+                StatData statData = Managers.Data.Stat[statID];
+                Debug.Log($"statData.EffectType: {statData.EffectType}");
+                Debug.Log($"statData.EffectValue: {statData.EffectValue}");
+                Debug.Log(Managers.Game.HintKey);
+                if(statData.EffectType == "Stage")
+                {
+                    Managers.Game.Stage += statData.EffectValue;
+                }
+                else if(statData.EffectType == "Avoid")
+                {
+                    Managers.Game.Avoid += statData.EffectValue;
+                }
+                else if(statData.EffectType == "HintKey")
+                {
+                    Managers.Game.HintKey += statData.EffectValue;
+                }
+                else if(statData.EffectType == "Luck")
+                {
+                    Managers.Game.LuckPercent += statData.EffectValue;
+                }
+                else if(statData.EffectType == "GuessTimer")
+                {
+                    Managers.Game.GuessTimer += statData.EffectValue;
+                }
+                else if(statData.EffectType == "Defence")
+                {
+                    Managers.Game.Defence += statData.EffectValue;
+                }
+                else
+                    Debug.Log("XML STATDATA EFFECTTYPE ERROR");
+            }
+        }
+    }
 }
