@@ -71,6 +71,11 @@ public class Define
 	public const int UnlimitedIndex = 20; //눈썹과 감정 제외
 	public const int MaxAnimationIndex = 10;
 
+	//움직임 제어
+	public const float GuessPlayerSpeed = 5.0f;
+	public const float BirdSpeed = 5.0f;
+
+
 	//닉네임 입력
 	public const int WriteNickname = 6500;	
 	public const int NicknameConfirm = 6501;
@@ -126,4 +131,6 @@ public class Define
 	public const int WarningInputText = 50010;
 	public const int LuckSkillText = 50011;
 	
+
+
 }

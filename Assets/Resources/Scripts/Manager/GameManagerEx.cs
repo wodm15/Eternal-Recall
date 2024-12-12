@@ -295,15 +295,13 @@ public void Init()
     {
         if(DifficultyLevel == "Normal")
         {
-            HintKey = 0;
             Avoid = 30;
             DownSpeed = 0;
-            GuessTimer = 10;
+            GuessTimer = 13;
             HintKey = 5;
         }
         if(DifficultyLevel == "Hard")
         {
-            HintKey = 0;
             Avoid = 10;
             DownSpeed = 0;
             GuessTimer = 10;
@@ -311,7 +309,6 @@ public void Init()
         }
         if(DifficultyLevel == "UnLimited")
         {
-            HintKey = 0;
             Avoid = 0;
             DownSpeed = 0;
             GuessTimer = 8;
