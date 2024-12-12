@@ -14,6 +14,8 @@ public class UI_GuessPopup : UI_Popup
     public string WrongRegion;
     public int totalDamage;
 
+    private float lastSoundTime = 0f; 
+
     private int _incorrectCount = 0;
     public int IncorrectCount
     {
@@ -77,6 +79,7 @@ public class UI_GuessPopup : UI_Popup
     {
         Correct,
         Wrong,
+        RemindImage,
     }
     
     GameObject GuessPlayer;
@@ -114,11 +117,15 @@ public class UI_GuessPopup : UI_Popup
 
         // Text에 설정
         GetText((int)Texts.Timer).text = $"{Managers.Game.GuessTimer}";
-        GetText((int)Texts.TheWorldText).text = $"{Managers.Game.TheWorld}";
+        GetText((int)Texts.TheWorldText).text = Managers.GetText(Define.RemindButtonText);
+        GetText((int)Texts.TheWorldText).text += $" *{Managers.Game.TheWorld}";
         GetButton((int)Buttons.TheWorldButton).gameObject.SetActive(Managers.Game.TheWorld > 0);
         GetText((int)Texts.AvoidButtonText).text = Managers.GetText(Define.AvoidButtonText);
         GetButton((int)Buttons.AvoidButton).gameObject.SetActive(false);
         GetText((int)Texts.Avoid).gameObject.SetActive(false);
+        GetImage((int)Images.RemindImage).gameObject.SetActive(false);
+        GetText((int)Texts.ConfirmButtonText).text = Managers.GetText(Define.ConfirmButtonText);
+
 
         //초반 Guess 어딘지 확인
         if(Managers.Game.DifficultyLevel == "Normal")
@@ -238,30 +245,40 @@ public class UI_GuessPopup : UI_Popup
 
     void Update()
     {
-        //시간이 다 지나면 자동으로 false
-        RemainTime -= Time.deltaTime;
-        if (RemainTime < 0)
-            RemainTime = 0;
+        if(!IsButtonClick)
+            {
+            //시간이 다 지나면 자동으로 false
+            RemainTime -= Time.deltaTime;
+            if (RemainTime < 0)
+                RemainTime = 0;
+                
+            GetText((int)Texts.Timer).text = $"{(int)RemainTime}";
             
-        GetText((int)Texts.Timer).text = $"{(int)RemainTime}";
-        
-        //3초 이내는 빨간색
-        if (RemainTime <= 4)
-        {
-            GetText((int)Texts.Timer).color = Color.red;
-            Managers.Sound.Play(Sound.Effect, "Sound_RemainTime");
-        }
-        else
-        {
-            GetText((int)Texts.Timer).color = Color.black;  
-        }
+            //3초 이내는 빨간색
+            if (RemainTime <= 4 )
+            {
+                GetText((int)Texts.Timer).color = Color.red;
+                // 1초마다 한 번만 사운드 재생
+                if (Time.time - lastSoundTime >= 1f && RemainTime > 1)
+                {
+                    Managers.Sound.Play(Sound.Effect, "Sound_RemainTime");
+                    lastSoundTime = Time.time;
+                }
+                // Managers.Sound.Play(Sound.Effect, "Sound_RemainTime");
+                // Managers.Sound.Stop(Sound.Effect);
+            }
+            else
+            {
+                GetText((int)Texts.Timer).color = Color.black;  
+            }
 
-        if (RemainTime <= 0 && IsButtonClick == false)
-        {
-            GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
-            GetImage((int)Images.Wrong).gameObject.SetActive(false);
-            
-            OnClickConfirmButton(isCorrect);
+            if (RemainTime <= 0)
+            {
+                GetButton((int)Buttons.ConfirmButton).gameObject.SetActive(false);
+                GetImage((int)Images.Wrong).gameObject.SetActive(false);
+                
+                OnClickConfirmButton(isCorrect);
+            }
         }
     }
 
@@ -341,12 +358,16 @@ public class UI_GuessPopup : UI_Popup
             // 회피 되는지 확인 
             if (Random.Range(0, 100) < Managers.Game.Avoid)
             {
+                bool isAvoidClick = false;
+
+                playerScene.StaticPlayerEx("AvoidPlease"); 
 
                 GetButton((int)Buttons.AvoidButton).gameObject.SetActive(true);
                 GetButton((int)Buttons.TheWorldButton).gameObject.SetActive(false);
 
                 GetButton((int)Buttons.AvoidButton).gameObject.BindEvent(() =>
                 {
+                    isAvoidClick = true;
                     if (Random.Range(1, 3) == 1)
                     {
                         Debug.Log("회피 성공!");
@@ -354,6 +375,8 @@ public class UI_GuessPopup : UI_Popup
                         playerScene.StaticPlayerEx("AvoidSucess"); 
                         // 회피 성공 처리 (TODO 회피 애니메이션 등)
                         Managers.Sound.Play(Sound.Effect, "Sound_Avoid"); 
+                        if(isAvoidClick)
+                            GetButton((int)Buttons.AvoidButton).gameObject.SetActive(false);
 
                         GetText((int)Texts.Avoid).text = Managers.GetText(Define.AvoidSucessText);
                         GetText((int)Texts.Avoid).gameObject.SetActive(true);
@@ -660,14 +683,16 @@ public class UI_GuessPopup : UI_Popup
     {
         _isMoving = true;
         Managers.Game.TheWorld--;
-        GetText((int)Texts.TheWorldText).text = $"{Managers.Game.TheWorld}";
+        playerScene.StaticPlayerEx("Reminding");
+        GetImage((int)Images.RemindImage).gameObject.SetActive(true);
+        // GetText((int)Texts.TheWorldText).text = $"{Managers.Game.TheWorld}";
     }
 
     private void FixedUpdate()
     {
         if (_isMoving)
         {
-            Stranger.transform.position = new Vector3(-7, 2.2f, 0); // 특정 위치로 이동
+            Stranger.transform.position = new Vector3(-6.5f, 1.5f, 0); // 특정 위치로 이동
             _isMoving = false; // 위치 설정 후 바로 이동 멈춤
             StartCoroutine(HideStrangerAfterDelay(2f)); // 2초 후 사라지게 하기
         }
@@ -677,6 +702,8 @@ public class UI_GuessPopup : UI_Popup
     {
         yield return new WaitForSeconds(delay); // 지정된 시간 동안 대기
         Stranger.transform.position = new Vector3(-12, 2.2f, 0);
+        GetImage((int)Images.RemindImage).gameObject.SetActive(false);
+        playerScene.StaticPlayerEx("Initial");
     }
     
     void NormalBinding()

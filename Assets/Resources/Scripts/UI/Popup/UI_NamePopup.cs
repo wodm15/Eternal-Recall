@@ -161,6 +161,7 @@ public class UI_NamePopup : UI_Popup
             {
                 GetText((int)Texts.DifficultyExplainText).text = Managers.GetText(Define.DifficultyNormal);
                 Managers.Game.DifficultyLevel = "Normal";
+                Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
             }
         });
 
@@ -170,6 +171,7 @@ public class UI_NamePopup : UI_Popup
             {
                 GetText((int)Texts.DifficultyExplainText).text = Managers.GetText(Define.DifficultyHard);
                 Managers.Game.DifficultyLevel = "Hard";
+                Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
             }
         });
 
@@ -179,6 +181,7 @@ public class UI_NamePopup : UI_Popup
             {
                 GetText((int)Texts.DifficultyExplainText).text = Managers.GetText(Define.DifficultyUnlimited);
                 Managers.Game.DifficultyLevel = "UnLimited";
+                Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
             }
         });
         #endregion
