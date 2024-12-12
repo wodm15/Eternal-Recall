@@ -156,6 +156,13 @@ public class UI_PlayerScene : UI_Scene
             customManager.numberCheck(4); 
             customManager.numberCheck(5); 
         }
+        else if(express == "AvoidPlease")
+        {
+            customManager.eye = 17;
+            customManager.mouth =23;
+            customManager.numberCheck(3);
+            customManager.numberCheck(4); 
+        }
         else if(express == "AvoidFail")
         {
             customManager.mouth = 19;
@@ -167,6 +174,13 @@ public class UI_PlayerScene : UI_Scene
         {
             customManager.eye = 14;
             customManager.mouth =16;
+            customManager.numberCheck(3);
+            customManager.numberCheck(4); 
+        }
+        else if(express == "Reminding")
+        {
+            customManager.eye = 13;
+            customManager.mouth =10;
             customManager.numberCheck(3);
             customManager.numberCheck(4); 
         }

@@ -100,6 +100,8 @@ public class Define
 	public const int Intro3 = 20021;
 	public const int DataResetConfirm = 20022;
 	public const int CollectionTitle = 20023;
+	public const int ConfirmButtonText = 20024;
+	public const int RemindButtonText = 20025;
 
 	// public const int HairQuestion = 30000;
 	// public const int ClothesQuestion= 30001;
