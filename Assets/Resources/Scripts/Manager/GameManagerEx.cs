@@ -53,8 +53,8 @@ public class GameData
         //코디
         public int ClothesIndex;
         public StatData StatData = new StatData();
-        // 클리어 한 엔딩
-	    public CollectionState[] Endings = new CollectionState[MAX_ENDING_COUNT];
+        // // 클리어 한 엔딩
+	    // public CollectionState[] Endings = new CollectionState[MAX_ENDING_COUNT];
 
 
         //그 전 질문
@@ -66,7 +66,6 @@ public class GameManagerEx
 {
     GameData _gameData = new GameData();
     public GameData SaveData { get { return _gameData; } set { _gameData = value; } }
-
     //난이도
     public string DifficultyLevel
     {
@@ -110,7 +109,7 @@ public class GameManagerEx
     public int LuckPercent
     {
         get { return _gameData.LuckPercent; }
-        set { _gameData.LuckPercent = value; RefreshStatCollections(); }
+        set { _gameData.LuckPercent = value;}
     }
     public int DownSpeed
     {
@@ -144,7 +143,7 @@ public class GameManagerEx
     public int HintKey
     {
         get {return _gameData.HintKey;}
-        set { _gameData.HintKey=value; RefreshStatCollections();}
+        set { _gameData.HintKey=value; RefreshStatCollections(); }
     }
 
     //코디
@@ -165,7 +164,7 @@ public class GameManagerEx
     #region 컬렉션 & 프로젝트
 
     public CollectionState[] Collections { get { return _gameData.Collections; } }
-    public CollectionState[] Endings { get { return _gameData.Endings; } }
+    // public CollectionState[] Endings { get { return _gameData.Endings; } }
     public Action<CollectionData> OnNewCollection;
 
     public StatData StatData 
@@ -205,27 +204,7 @@ public class GameManagerEx
 	
 
 
-    //처음 컬렉션 업적 만큼 스탯 더하기
-    // void ReApplyCollectionStats()
-	// {
-	// 	foreach (CollectionData data in Managers.Data.Collections.Values)
-	// 	{
-	// 		CollectionState state = coordCollections[data.ID - 1];
-	// 		if (state == CollectionState.None)
-	// 			continue;
-
-	// 		Debug.Log($"Apply Collection : {data.ID}");
-    //             MaxHp += data.difHp;
-    //             LuckPercent += data.difLuckPercent;
-    //             Stage += data.difStage;
-    //             PassTicket += data.difPassTicket;
-
-	// 		OnNewCollection?.Invoke(data);
-	// 	}
-	// }
-
     #endregion
-
 
 public void Init()
 {
@@ -245,9 +224,9 @@ public void Init()
     Avoid = data.Avoid;
     ClothesIndex = data.ClothesIndex;
 
-    //기본 옷 상시 활성화
-    if (Collections[2] == CollectionState.None)
-        Collections[2] = CollectionState.Done;
+    // 기본 옷 상시 활성화
+    if (Collections[Define.DefaultCollectionIndex] == CollectionState.None)
+        Collections[Define.DefaultCollectionIndex] = CollectionState.Done;
 
 }
 
@@ -342,6 +321,7 @@ public void Init()
     }
 
 
+
     #region Save & Load	
 	public string _path = Application.persistentDataPath + "/SaveData.json";
 
@@ -392,6 +372,14 @@ public void Init()
 		if (Player != null)
 		{
 			Managers.Resource.Destroy(Player);
+		}
+	}
+	public void StaticCharacterDelete()
+    {
+		GameObject staticPlayer = GameObject.Find("StaticPlayer");
+		if (staticPlayer != null)
+		{
+			Managers.Resource.Destroy(staticPlayer);
 		}
 	}
 

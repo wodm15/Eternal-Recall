@@ -18,7 +18,6 @@ public class DataManager
     public Dictionary<int, ShopData> Shops { get; private set; }
     public Dictionary<int, QuizData> Quiz { get; private set; }
     public Dictionary<int, StatData> Stat { get; private set; }
-    public Dictionary<int, EndingData> Endings { get; private set; }
 
     //컬렉션
     public Dictionary<int, CollectionData> Collections { get; private set; }
@@ -32,7 +31,6 @@ public class DataManager
         Shops = LoadXml<ShopDataLoader, int, ShopData>("ShopData").MakeDic();
         Quiz = LoadXml<QuizDataLoader, int, QuizData>("QuizData").MakeDic();
         Stat = LoadXml<StatDataLoader, int, StatData>("StatData").MakeDic();
-        Endings = LoadXml<EndingDataLoader, int, EndingData>("EndingData").MakeDic();
 
 		// Collection
 		var collectionLoader = LoadXml<CollectionDataLoader, int, CollectionData>("CollectionData");
@@ -83,13 +81,12 @@ public class DataManager
     {
         foreach (KeyValuePair<int, StatData> entry in Managers.Data.Stat)
         {
-            int key = entry.Key; // key는 StatData의 ID
-            StatData data = entry.Value; // value는 StatData 객체
-
-            // Debug.Log($"ID: {data.ID}, Name: {data.Name}, Effect: {data.EffectValue}");
+            int key = entry.Key; 
+            StatData data = entry.Value; 
             if(data.ID == id)
-                return data.Description;
-
+            {
+                return $"{data.Description} \n \n {data.Power}";
+            }
         }
         return "null";
     }

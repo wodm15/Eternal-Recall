@@ -23,6 +23,9 @@ public class StatData
     [XmlAttribute("description")]
     public string Description; // 속성명과 XML 일치
 
+    [XmlAttribute("power")]
+    public string Power;
+
     [XmlAttribute("effectType")]
     public string EffectType; // 속성명과 XML 일치
 

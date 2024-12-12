@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfStatData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <StatData ID="0" type="clothes" nameID="100" icon="0_SailorUniform" name="선원복" description="바다를 누비는 &#10;선장이 된 기분!&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="1" type="clothes" nameID="101" icon="1_WeddingDress" name="웨딩드레스" description="꿈꾸던 결혼식의 &#10;주인공이 되어보세요.&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="2" type="clothes" nameID="102" icon="2_Basic" name="기본" description="귀엽고 깜찍한 &#10;병아리처럼!&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="3" type="clothes" nameID="103" icon="3_Bikini" name="비키니" description="여름을 책임질 &#10;완벽한 해변 룩!&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="4" type="clothes" nameID="104" icon="4_Maid" name="메이드" description="청소는 물론, &#10;마음까지 깨끗하게!&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="5" type="clothes" nameID="105" icon="5_Coat" name="코트" description="어디서나 어울리는 &#10;기본 아이템!&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="6" type="clothes" nameID="106" icon="6_Swimsuit" name="수영복" description="시원한 물놀이 &#10;준비 완료!&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="7" type="clothes" nameID="107" icon="7_Yukata" name="유카타" description="여름 축제의 &#10;주인공은 바로 나!&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="8" type="clothes" nameID="108" icon="8_Cheongsam" name="치파오" description="우아함과 기품을 &#10;한껏 뽐내보세요.&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="9" type="clothes" nameID="109" icon="9_Hanbok" name="한복" description="전통과 아름다움의 &#10;완벽한 조화!&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="10" type="clothes" nameID="110" icon="10_NightWear" name="잠옷" description="꿈속에서도 스타일을 &#10;놓치지 마세요!&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="11" type="clothes" nameID="111" icon="11_SweatSuit" name="운동복" description="언제든 운동할 &#10;준비 완료!&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="12" type="clothes" nameID="112" icon="12_GarterBelt" name="가터벨트" description="은근한 섹시함이 &#10;포인트!&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="13" type="clothes" nameID="113" icon="13_PrincessClothes" name="공주옷" description="동화 속 공주가 &#10;현실로 등장!&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="14" type="clothes" nameID="114" icon="14_Jean" name="청바지" description="어디에나 잘 어울리는 &#10;만능 아이템.&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="15" type="clothes" nameID="115" icon="15_SchoolUniform" name="교복" description="청춘의 추억을 &#10;다시 떠올려보세요.&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="16" type="clothes" nameID="116" icon="16_NurseUniform" name="간호복" description="힐링의 아이콘! &#10;모두를 치유할 준비 완료.&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="17" type="clothes" nameID="117" icon="17_Magical" name="마법소녀" description="마법의 힘으로 &#10;세상을 구할 시간!&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="18" type="clothes" nameID="118" icon="18_Swimsuit2" name="수영복2" description="귀여운 수영복&#10;회피 +1%" effectType="luck" effectValue="1" />
-  <StatData ID="19" type="clothes" nameID="119" icon="19_Warrior" name="전투복" description="전장에서 무적의 &#10;전사가 되어보세요!&#10;회피 +1%" effectType="luck" effectValue="1" />
+  <StatData ID="0" type="clothes" nameID="100" icon="0_SailorUniform" name="선원복" description="바다를 누비는 &#10;선장이 된 기분!" power ="스테이지 5단계 시작" effectType="Stage" effectValue="4" />
+  <StatData ID="1" type="clothes" nameID="101" icon="1_WeddingDress" name="웨딩드레스" description="꿈꾸던 결혼식의 &#10;주인공이 되어보세요." power ="회피 +1%" effectType="Avoid" effectValue="1" />
+  <StatData ID="2" type="clothes" nameID="102" icon="2_Basic" name="기본" description="귀엽고 깜찍한 &#10;병아리처럼!" power ="추측 시간 +1초" effectType="GuessTimer" effectValue="1" />
+  <StatData ID="3" type="clothes" nameID="103" icon="3_Bikini" name="비키니" description="여름을 책임질 &#10;완벽한 해변 룩!" power ="힌트 키 1개 바로 획득" effectType="HintKey" effectValue="1" />
+  <StatData ID="4" type="clothes" nameID="104" icon="4_Maid" name="메이드" description="청소는 물론, &#10;마음까지 깨끗하게!" power ="스킬 두배 획득확률 +5%" effectType="Luck" effectValue="5" />
+  <StatData ID="5" type="clothes" nameID="105" icon="5_Coat" name="코트" description="어디서나 어울리는 &#10;기본 아이템!" power ="회피 +1%" effectType="Avoid" effectValue="1" />
+  <StatData ID="6" type="clothes" nameID="106" icon="6_Swimsuit" name="수영복" description="시원한 물놀이 &#10;준비 완료!" power ="스테이지 5단계 시작" effectType="Stage" effectValue="5" />
+  <StatData ID="7" type="clothes" nameID="107" icon="7_Yukata" name="유카타" description="여름 축제의 &#10;주인공은 바로 나!" power ="회피 +2%" effectType="Avoid" effectValue="2" />
+  <StatData ID="8" type="clothes" nameID="108" icon="8_Cheongsam" name="치파오" description="우아함과 기품을 &#10;한껏 뽐내보세요." power ="회피 +1%" effectType="Avoid" effectValue="1" />
+  <StatData ID="9" type="clothes" nameID="109" icon="9_Hanbok" name="한복" description="전통과 아름다움의 &#10;완벽한 조화!" power ="추측 시간 +2초" effectType="GuessTimer" effectValue="2" />
+  <StatData ID="10" type="clothes" nameID="110" icon="10_NightWear" name="잠옷" description="꿈속에서도 스타일을 &#10;놓치지 마세요!" power ="스테이지 10단계 시작" effectType="Stage" effectValue="9" />
+  <StatData ID="11" type="clothes" nameID="111" icon="11_SweatSuit" name="운동복" description="언제든 운동할 &#10;준비 완료!" power ="추측 시간 +1초" effectType="GuessTimer" effectValue="1" />
+  <StatData ID="12" type="clothes" nameID="112" icon="12_GarterBelt" name="가터벨트" description="은근한 섹시함이 &#10;포인트!" power ="회피 +2%" effectType="Avoid" effectValue="2" />
+  <StatData ID="13" type="clothes" nameID="113" icon="13_PrincessClothes" name="공주옷" description="동화 속 공주가 &#10;현실로 등장!" power ="힌트 키 2개 바로 획득" effectType="HintKey" effectValue="2" />
+  <StatData ID="14" type="clothes" nameID="114" icon="14_Jean" name="청바지" description="어디에나 잘 어울리는 &#10;만능 아이템." power ="회피 +1%" effectType="Avoid" effectValue="1" />
+  <StatData ID="15" type="clothes" nameID="115" icon="15_SchoolUniform" name="교복" description="청춘의 추억을 &#10;다시 떠올려보세요." power ="추측 시간 +1초" effectType="GuessTimer" effectValue="1" />
+  <StatData ID="16" type="clothes" nameID="116" icon="16_NurseUniform" name="간호복" description="힐링의 아이콘! &#10;모두를 치유할 준비 완료." power ="데미지 -1감소" effectType="Defence" effectValue="1" />
+  <StatData ID="17" type="clothes" nameID="117" icon="17_Magical" name="마법소녀" description="마법의 힘으로 &#10;세상을 구할 시간!" power ="추측 시간 +3초" effectType="GuessTimer" effectValue="3" />
+  <StatData ID="18" type="clothes" nameID="118" icon="18_Swimsuit2" name="수영복2" description="귀여운 수영복" power ="힌트 키 +3" effectType="HintKey" effectValue="3" />
+  <StatData ID="19" type="clothes" nameID="119" icon="19_Warrior" name="전투복" description="전장에서 무적의 &#10;전사가 되어보세요!" power ="회피 +5%" effectType="Avoid" effectValue="5" />
 </ArrayOfStatData>

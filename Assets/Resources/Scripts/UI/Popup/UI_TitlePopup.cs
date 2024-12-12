@@ -14,14 +14,16 @@ public class UI_TitlePopup : UI_Popup
 		StartButtonText,
 		ContinueButtonText,
 		CollectionButtonText,
-		//DataResetConfirmText
+		QuitButtonText,
+		SayingText,
 	}
 
     enum Buttons
 	{
 		StartButton,
 		ContinueButton,
-		CollectionButton
+		CollectionButton,
+		QuitButton,
 	}
 
     public override bool Init()
@@ -44,31 +46,47 @@ public class UI_TitlePopup : UI_Popup
 		animationManager.ani = Random.Range(0,10);
 		animationManager.PlayAni(true);
 		
+		int randSay = Random.Range(0, Define.CharacterSaying.Length);
+		GetText((int)Texts.SayingText).text = Managers.GetText(Define.CharacterSaying[randSay]);
 
 		GetButton((int)Buttons.StartButton).gameObject.BindEvent(OnClickStartButton);
 		GetButton((int)Buttons.ContinueButton).gameObject.BindEvent(OnClickContinueButton);
 		GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(() =>
 		{
-			int a = Random.Range(0,50);
-			if(a < 50)
-				Managers.Game.ADSHOW();
+			// int a = Random.Range(0,50);
+			// if(a < 50)
+			// 	Managers.Game.ADSHOW();
 			OnClickCollectionButton();
 		});
+		GetButton((int)Buttons.QuitButton).gameObject.BindEvent(() =>
+        {
+            
+					Application.Quit();
+
+        });
 		// GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(OnClickCollectionButton);
 		GetText((int)Texts.StartButtonText).text = Managers.GetText(Define.StartButtonText);
 		GetText((int)Texts.ContinueButtonText).text = Managers.GetText(Define.ContinueButtonText);
 		GetText((int)Texts.CollectionButtonText).text = Managers.GetText(Define.CollectionButtonText);
+		GetText((int)Texts.QuitButtonText).text = Managers.GetText(Define.QuitButtonText);
 
+		// Managers.Game.Init();
+
+		//어떤 옷인지 체크
+		// customManager.clothes = Managers.Game.ClothesIndex;
+        // customManager.numberCheck(1); 
+
+		//노래 설정
 		Managers.Sound.Clear();
+		List<string> bgmTracks = new List<string>
+		{
+			"Sound_MainTitle"
+		};
 
-		// Player = Managers.Resource.Instantiate("StaticPlayer");
+		int randomIndex = Random.Range(0, bgmTracks.Count);
+		Managers.Sound.Play(Sound.Bgm, bgmTracks[randomIndex]);
 
-
-		int music = Random.Range(0,100);
-		if( music < 50)
-			Managers.Sound.Play(Sound.Bgm, "Sound_MainTitle");
-		else
-			Managers.Sound.Play(Sound.Bgm, "Sound_MainPlayBGM");
+		
 		return true;
 	}
 
@@ -79,6 +97,7 @@ void OnClickStartButton()
 		if (Managers.Game.HasSavedData())
 		{
 			Managers.Game.Init();
+			// CheckFirstVisit();
 			Managers.Game.LoadGame();
 
 			Managers.UI.ClosePopupUI(this);
@@ -104,8 +123,13 @@ void OnClickStartButton()
 		Managers.Game.Init();
 		if(!Managers.Game.LoadGame())
 			{
-
+				GetText((int)Texts.SayingText).text = Managers.GetText(Define.SaveNothing);
 			}
+		else if(Managers.Game.LoadGame() && Managers.Game.Hp <=0)
+		{
+			GetText((int)Texts.SayingText).text = Managers.GetText(Define.SaveButEnd);
+		}
+		
 		else if(Managers.Game.LoadGame() && Managers.Game.Hp > 0)
 		{
 			Managers.UI.ClosePopupUI(this);
@@ -118,11 +142,20 @@ void OnClickStartButton()
 	{
 		// Managers.Sound.Play(Sound.Effect, ("Sound_"));
 		// Managers.Resource.Destroy(Player);
-		Managers.Game.Init();
+		// Managers.Game.Init();
 		Managers.Game.LoadGame();
 		Player.transform.localPosition = new Vector3(12,0,0);
 
 		Debug.Log("OnClickCollectionButton");
 		Managers.UI.ShowPopupUI<UI_CollectionPopup>();
+	}
+
+	void CheckFirstVisit()
+	{
+		//처음 접속일 경우 병아리 옷 획득 후 저장
+		if (Managers.Game.Collections[2] == CollectionState.None)
+		{
+        	Managers.Game.Collections[2] = CollectionState.Done;
+		}
 	}
 }

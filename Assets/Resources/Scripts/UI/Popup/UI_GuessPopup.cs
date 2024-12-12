@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using static Define;
@@ -13,6 +12,7 @@ public class UI_GuessPopup : UI_Popup
     public float RemainTime;
     public bool isAvoid;
     public string WrongRegion;
+    public int totalDamage;
 
     private int _incorrectCount = 0;
     public int IncorrectCount
@@ -136,10 +136,10 @@ public class UI_GuessPopup : UI_Popup
         {
             GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {Define.HardIndex}"; 
             GetText((int)Texts.ClothesText).text = $"Clothes {customManager.clothes+1} / {Define.HardIndex}"; 
-            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.HardIndexEyebrow}"; 
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.MaxIndexEyebrow}"; 
             GetText((int)Texts.EyeText).text = $"Eye {customManager.eye+1} / {Define.HardIndex}"; 
             GetText((int)Texts.MouthText).text = $"Mouth {customManager.mouth+1} / {Define.HardIndex}"; 
-            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.HardIndexEmotion}"; 
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.MaxIndexEmotion}"; 
             GetText((int)Texts.HairText).text = $"Hair {customManager.hair+1} / {Define.HardIndex}"; 
             GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 10"; 
         }
@@ -248,7 +248,8 @@ public class UI_GuessPopup : UI_Popup
         //3초 이내는 빨간색
         if (RemainTime <= 4)
         {
-            GetText((int)Texts.Timer).color = Color.red;  
+            GetText((int)Texts.Timer).color = Color.red;
+            Managers.Sound.Play(Sound.Effect, "Sound_RemainTime");
         }
         else
         {
@@ -392,7 +393,7 @@ public class UI_GuessPopup : UI_Popup
     void DamageCalculate()
     {
         int damage = IncorrectCount * Define.Damage;
-        int totalDamage = Mathf.Max(damage - Managers.Game.Defence, 0);  // 방어력을 고려한 데미지 계산
+        totalDamage = Mathf.Max(damage - Managers.Game.Defence, 0);  // 방어력을 고려한 데미지 계산
         Managers.Game.Hp -= totalDamage; // 데미지 적용
         Debug.Log($"HP 감소: {totalDamage}, 남은 HP: {Managers.Game.Hp}");
     }
@@ -440,19 +441,29 @@ public class UI_GuessPopup : UI_Popup
     {
         Managers.Game.Hp =0;
         Managers.Game.SaveGame();
+        Managers.Game.CharacterDelete();
+        Managers.Game.StaticCharacterDelete();
         Managers.Sound.Stop(Sound.Bgm);
         Managers.UI.ClosePopupUI(this);
-        Managers.UI.ShowPopupUI<UI_GameOverPopup>();
-        
+        UI_GameOverPopup gameOverPopup = Managers.UI.ShowPopupUI<UI_GameOverPopup>();
+        gameOverPopup.transform.SetParent(null);
+
+        Managers.UI.ClosePlayerSceneUI();
+
     }
     //게임 스테이지 모두 클리어일 경우
-    void GameEnd()
+    public void GameEnd()
     {
         Managers.Game.Hp =0;
+        Managers.Game.CharacterDelete();
+        Managers.Game.StaticCharacterDelete();
         Managers.Game.SaveGame();
         Managers.Sound.Stop(Sound.Bgm);
         Managers.UI.ClosePopupUI(this);
-        Managers.UI.ShowPopupUI<UI_GameEndPopup>();
+        UI_GameEndPopup gameEndPopup = Managers.UI.ShowPopupUI<UI_GameEndPopup>();
+        gameEndPopup.transform.SetParent(null);
+
+        Managers.UI.ClosePlayerSceneUI();
         
     }
     //게임오버가 아닌 경우 
@@ -946,7 +957,7 @@ public class UI_GuessPopup : UI_Popup
         {
             if(customManager.eyebrow == 0)
             {
-                customManager.eyebrow = (Define.HardIndexEyebrow) -1;
+                customManager.eyebrow = (Define.MaxIndexEyebrow) -1;
             }
             else if ( 0 < customManager.eyebrow )
                 {
@@ -954,7 +965,7 @@ public class UI_GuessPopup : UI_Popup
                 }
                 
             customManager.numberCheck(2); 
-            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.HardIndexEyebrow}";
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.MaxIndexEyebrow}";
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton"); 
         });
         GetButton((int)Buttons.EyebrowPlus).gameObject.BindEvent(() => 
@@ -968,7 +979,7 @@ public class UI_GuessPopup : UI_Popup
                     customManager.eyebrow++; 
                 }
             customManager.numberCheck(2);  
-            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.HardIndexEyebrow}";
+            GetText((int)Texts.EyebrowText).text = $"Eyebrow {customManager.eyebrow+1} / {Define.MaxIndexEyebrow}";
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 
@@ -1035,7 +1046,7 @@ public class UI_GuessPopup : UI_Popup
         {
             if(customManager.emotion == 0)
             {
-                customManager.emotion = Define.HardIndexEmotion -1;
+                customManager.emotion = Define.MaxIndexEmotion -1;
             }
             else if ( 0 < customManager.emotion )
                 {
@@ -1043,21 +1054,21 @@ public class UI_GuessPopup : UI_Popup
                 }
 
             customManager.numberCheck(5); 
-            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.HardIndexEmotion}"; 
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.MaxIndexEmotion}"; 
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
         GetButton((int)Buttons.EmotionPlus).gameObject.BindEvent(() => 
         {
-            if(Define.HardIndexEmotion <= customManager.emotion+1)
+            if(Define.MaxIndexEmotion <= customManager.emotion+1)
             {
                 customManager.emotion = 0;
             }
-            else if (Define.HardIndexEmotion > customManager.emotion)
+            else if (Define.MaxIndexEmotion > customManager.emotion)
                 {
                     customManager.emotion++; 
                 }
             customManager.numberCheck(5);  
-            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.HardIndexEmotion}"; 
+            GetText((int)Texts.EmotionText).text = $"Emotion {customManager.emotion+1} / {Define.MaxIndexEmotion}"; 
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
 

@@ -7,25 +7,83 @@
   <TextData ID="6503" kor="캐릭터가 일치해!" eng="" />
   <TextData ID="6504" kor="틀렸어 " eng="" />
   <TextData ID="6505" kor=" 하지만 회피했지롱" eng="" />
-  <TextData ID="6506" kor="풀어야할 범위가 적음&#10;회피 버튼 확률 25퍼센트&#10;정지시간 3초" eng="" />
-  <TextData ID="6507" kor="풀어야할 범위가 많음&#10;회피 버튼 확률 10퍼센트&#10;정지시간 2초" eng="" />
-  <TextData ID="6508" kor="풀어야할 범위가 매우 많음&#10;회피 버튼 확률 0퍼센트&#10;정지시간 없음" eng="" />
+  <TextData ID="6506" kor="풀어야할 범위가 적음&#10;회피 버튼 확률 25퍼센트&#10;정지시간 3초&#10;추측 시간 10초&#10;힌트키 기본제공 5개"  eng="" />
+  <TextData ID="6507" kor="풀어야할 범위가 많음&#10;회피 버튼 확률 10퍼센트&#10;정지시간 2초&#10;추측 시간 10초&#10;힌트키 기본제공 3개" eng="" />
+  <TextData ID="6508" kor="풀어야할 범위가 매우 많음&#10;회피 버튼 확률 0퍼센트&#10;정지시간 1초&#10;추측 시간 8초&#10;힌트키 기본제공 없음" eng="" />
+  <TextData ID="6509" kor="저장된 파일이 없어" eng="" />
+  <TextData ID="6510" kor="새로운 게임을 시작하자" eng="" />
 
   <TextData ID="10000" kor="새로 시작하기" eng="" />
   <TextData ID="10001" kor="계속하기" eng="" />
   <TextData ID="10002" kor="컬렉션" eng="" />
+  <TextData ID="10003" kor="게임 종료" eng="" />
 
   <TextData ID="20019" kor="안녕! 나는 영원 회상의 도움이 뽐뽐이야! &lt;br&gt;오늘 첫 회상을 해볼까?" eng="" />
   <TextData ID="20020" kor="가이드 2 &lt;br&gt; 가이드 2" eng="" />
   <TextData ID="20021" kor="가이드 3&lt;br&gt;가이드3" eng="" />
-   <TextData ID="20022" kor="새로운 게임을 시작 하시겠습니까?&lt;br&gt;(진행중인 게임 데이터가 삭제됩니다.)" eng="" />
-
+  <TextData ID="20022" kor="새로운 게임을 시작 하시겠습니까?&lt;br&gt;(진행중인 게임 데이터가 삭제됩니다.)" eng="" />
+  <TextData ID="20023" kor="컬렉션" eng="" />
   <TextData ID="100" kor="스킬을 선택하세요" eng="" />
+
+<!-- 타이틀 캐릭터 말하기 TEXT-->
+<TextData ID="30000" kor="최고가 되기 위해 최선을 다하라." eng="Do your best to be the best." />
+<TextData ID="30001" kor="자신을 믿어라." eng="Believe in yourself." />
+<TextData ID="30002" kor="행동이 생각을 이긴다." eng="Action defeats thought." />
+<TextData ID="30003" kor="성공은 결코 끝이 아니다." eng="Success is never final." />
+<TextData ID="30004" kor="실패는 성공의 어머니이다." eng="Failure is the mother of success." />
+<TextData ID="30005" kor="오늘이 가장 젊은 날이다." eng="Today is the youngest day." />
+<TextData ID="30006" kor="꿈을 쫓아라." eng="Chase your dreams." />
+<TextData ID="30007" kor="당신의 꿈을 쫓아라." eng="Follow your dreams." />
+<TextData ID="30008" kor="포기하지 마라." eng="Never give up." />
+<TextData ID="30009" kor="시작이 반이다." eng="The beginning is half the work." />
+<TextData ID="30010" kor="끝까지 도전하라." eng="Keep challenging until the end." />
+<TextData ID="30011" kor="위대한 것은 작은 시작에서 나온다." eng="Great things come from small beginnings." />
+<TextData ID="30012" kor="성공은 작은 노력들의 합이다." eng="Success is the sum of small efforts." />
+<TextData ID="30013" kor="위험을 감수하라." eng="Take risks." />
+<TextData ID="30014" kor="불가능은 없다." eng="Nothing is impossible." />
+<TextData ID="30015" kor="희망을 잃지 마라." eng="Never lose hope." />
+<TextData ID="30016" kor="하루하루 조금씩 나아가라." eng="Improve little by little every day." />
+<TextData ID="30017" kor="꾸준함이 강력한 힘이다." eng="Consistency is a powerful force." />
+<TextData ID="30018" kor="실패는 배움의 기회다." eng="Failure is an opportunity to learn." />
+<TextData ID="30019" kor="무엇이든 할 수 있다." eng="You can do anything." />
+<TextData ID="30020" kor="기회는 준비된 자에게 온다." eng="Opportunity comes to the prepared." />
+<TextData ID="30021" kor="용기를 내라." eng="Be brave." />
+<TextData ID="30022" kor="오늘을 살아라." eng="Live for today." />
+<TextData ID="30023" kor="포기하지 않으면 결국 성공한다." eng="If you don't give up, you'll succeed." />
+<TextData ID="30024" kor="모든 것은 나로부터 시작된다." eng="Everything starts from me." />
+<TextData ID="30025" kor="작은 일이 큰 변화를 만든다." eng="Small actions create big changes." />
+<TextData ID="30026" kor="실패는 성공을 위한 밑거름이다." eng="Failure is the foundation of success." />
+<TextData ID="30027" kor="꿈은 이루어진다." eng="Dreams come true." />
+<TextData ID="30028" kor="모든 것이 가능하다." eng="Everything is possible." />
+<TextData ID="30029" kor="내일을 위해 오늘 최선을 다하라." eng="Do your best today for tomorrow." />
+<TextData ID="30030" kor="어떤 일이든 시작이 중요하다." eng="The beginning of anything is important." />
+<TextData ID="30031" kor="한 걸음씩 나아가라." eng="Take one step at a time." />
+<TextData ID="30032" kor="당신의 선택이 미래를 만든다." eng="Your choices shape your future." />
+<TextData ID="30033" kor="목표를 향해 달려라." eng="Run towards your goals." />
+<TextData ID="30034" kor="작은 성공이 큰 성공을 만든다." eng="Small successes lead to big successes." />
+<TextData ID="30035" kor="인생은 도전이다." eng="Life is a challenge." />
+<TextData ID="30036" kor="실패를 두려워하지 말라." eng="Don't fear failure." />
+<TextData ID="30037" kor="오늘을 소중히 여겨라." eng="Cherish today." />
+<TextData ID="30038" kor="내일의 성공은 오늘의 노력에서 나온다." eng="Tomorrow's success comes from today's efforts." />
+<TextData ID="30039" kor="변화는 자신으로부터 시작된다." eng="Change begins with yourself." />
+<TextData ID="30040" kor="열정을 가지라." eng="Have passion." />
+<TextData ID="30041" kor="결코 멈추지 마라." eng="Never stop." />
+<TextData ID="30042" kor="자신감을 가지라." eng="Have confidence." />
+<TextData ID="30043" kor="기회는 자주 오지 않는다." eng="Opportunities don't come often." />
+<TextData ID="30044" kor="노력은 배신하지 않는다." eng="Effort never betrays." />
+<TextData ID="30045" kor="지금 이 순간이 중요하다." eng="The present moment is important." />
+<TextData ID="30046" kor="기회를 잡아라." eng="Seize the opportunity." />
+<TextData ID="30047" kor="모든 것은 시간이 필요하다." eng="Everything takes time." />
+<TextData ID="30048" kor="자신의 길을 가라." eng="Go your own way." />
+<TextData ID="30049" kor="꾸준한 노력은 반드시 보상받는다." eng="Continuous effort will always be rewarded." />
+<TextData ID="30050" kor="지금의 노력은 미래의 성공으로 이어진다." eng="Today's effort leads to tomorrow's success." />
+
+
 
 
 <!-- 게임 종료 TEXT-->
-  <TextData ID="50000" kor= "축하합니다" eng="" />
-  <TextData ID="50001" kor= "GoToTitle" eng="" />
+  <TextData ID="50000" kor= "70단계 클리어! 축하합니다" eng="" />
+  <TextData ID="50001" kor= "돌아가기" eng="" />
   <TextData ID="50002" kor= "OLLECTION" eng="" />
   <TextData ID="50003" kor= "ARCHIVEMENTS" eng="" />
   <TextData ID="50004" kor= "ENDING" eng="" />
@@ -34,8 +92,8 @@
   <TextData ID="50007" kor= "회피 실패" eng="" />
   <TextData ID="50008" kor= "정답 캐릭터" eng="" />
   <TextData ID="50009" kor= "추측한 캐릭터" eng="" />
-
-
+  <TextData ID="50010" kor= "1자 이상 7자 이내로 닉네임을 입력하세요" eng="" />
+  <TextData ID="50011" kor= "스킬의 효과를 2배 획득합니다!" eng="" />
 
 <!-- Normal 모드 : 기다림 : 3초 , 퀴즈 범위 5개 ,                                             -->
 <!-- Hard 모드 : 기다림 : 2초   , 퀴즈 범위 10개,                                                -->

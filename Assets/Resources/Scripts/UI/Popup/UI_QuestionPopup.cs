@@ -66,24 +66,24 @@ public class UI_QuestionPopup : UI_Popup
             }
             else if (Managers.Game.DifficultyLevel == "Hard")
             {
-            animationManager.ani = Random.Range(0, Define.HardIndex); 
+            animationManager.ani = Random.Range(0, Define.MaxAnimationIndex); 
             Managers.Game.StrangerIndex[0] = Random.Range(0, Define.HardIndex); //헤어
             Managers.Game.StrangerIndex[1] = Random.Range(0, Define.HardIndex); //옷
-            Managers.Game.StrangerIndex[2] = Random.Range(0, Define.HardIndexEyebrow);  //눈썹 5개밖에 없음 
+            Managers.Game.StrangerIndex[2] = Random.Range(0, Define.MaxIndexEyebrow);  //눈썹 5개밖에 없음 
             Managers.Game.StrangerIndex[3] = Random.Range(0, Define.HardIndex); //눈
             Managers.Game.StrangerIndex[4] = Random.Range(0, Define.HardIndex); //입
-            Managers.Game.StrangerIndex[5] = Random.Range(0, Define.HardIndexEmotion);  //감정 6개밖에 없음
+            Managers.Game.StrangerIndex[5] = Random.Range(0, Define.MaxIndexEmotion);  //감정 6개밖에 없음
             Managers.Game.StrangerIndex[6] = animationManager.ani; //애니메이션
             }
             else if (Managers.Game.DifficultyLevel == "UnLimited")
             {
-            animationManager.ani = Random.Range(0, 10); 
-            Managers.Game.StrangerIndex[0] = Random.Range(0, 20); //헤어
-            Managers.Game.StrangerIndex[1] = Random.Range(0, 20); //옷
-            Managers.Game.StrangerIndex[2] = Random.Range(0, 5);  //눈썹
-            Managers.Game.StrangerIndex[3] = Random.Range(0, 20); //눈
-            Managers.Game.StrangerIndex[4] = Random.Range(0, 24); //입
-            Managers.Game.StrangerIndex[5] = Random.Range(0, 6);  //감정
+            animationManager.ani = Random.Range(0, Define.MaxAnimationIndex); 
+            Managers.Game.StrangerIndex[0] = Random.Range(0, Define.UnlimitedIndex); //헤어
+            Managers.Game.StrangerIndex[1] = Random.Range(0, Define.UnlimitedIndex); //옷
+            Managers.Game.StrangerIndex[2] = Random.Range(0, Define.MaxIndexEyebrow);  //눈썹
+            Managers.Game.StrangerIndex[3] = Random.Range(0, Define.UnlimitedIndex); //눈
+            Managers.Game.StrangerIndex[4] = Random.Range(0, Define.UnlimitedIndex); //입 24 -> 20개로
+            Managers.Game.StrangerIndex[5] = Random.Range(0, Define.MaxIndexEmotion);  //감정
             Managers.Game.StrangerIndex[6] = animationManager.ani; //애니메이션
             }
 

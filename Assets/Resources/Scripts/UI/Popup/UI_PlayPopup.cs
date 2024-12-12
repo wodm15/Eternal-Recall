@@ -57,7 +57,7 @@ public class UI_PlayPopup : UI_Popup
             else if(Managers.Game.DifficultyLevel == "Hard")
                 StartCoroutine(PauseMovement(2f));
             else if(Managers.Game.DifficultyLevel == "UnLimited")
-                StartCoroutine(PauseMovement(0f));
+                StartCoroutine(PauseMovement(1f));
 
             hasPausedOnce = true;
         }

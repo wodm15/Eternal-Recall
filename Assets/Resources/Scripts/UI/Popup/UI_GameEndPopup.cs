@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Define;
 
 public class UI_GameEndPopup : UI_Popup
 {
@@ -22,6 +23,9 @@ public class UI_GameEndPopup : UI_Popup
 
         BindText(typeof(Texts));
         BindButton(typeof(Buttons));
+
+        Managers.Sound.Clear();
+        Managers.Sound.Play(Sound.Effect, "Sound_GameEnd");
 
         GetText((int)Texts.GameEndText).text =  Managers.GetText(Define.GameEndText);
         GetText((int)Texts.GoToTitleText).text =  Managers.GetText(Define.GoToTitleText);

@@ -58,12 +58,9 @@ public class UI_ConfirmPopup : UI_Popup
 	{
 		if(Managers.Game.Hp > 0)
 		{
-			Managers.Game.CharacterDelete();
 			Managers.UI.ClosePopupUI(this);
-			Managers.Game.Init();
-			Managers.Game.LoadGame();
-			Managers.UI.ShowPopupUI<UI_CountPopup>();
-			Managers.UI.ShowSceneUI<UI_PlayerScene>();
+			Managers.UI.ShowPopupUI<UI_TitlePopup>();
+
 		}
 		else
 		{
