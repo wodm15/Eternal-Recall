@@ -7,9 +7,11 @@
   <TextData ID="6503" kor="캐릭터가 일치해!" eng="" />
   <TextData ID="6504" kor="틀렸어 " eng="" />
   <TextData ID="6505" kor=" 하지만 회피했지롱" eng="" />
-  <TextData ID="6506" kor="풀어야할 범위가 적음&#10;회피 버튼 확률 25퍼센트&#10;정지시간 3초" eng="" />
-  <TextData ID="6507" kor="풀어야할 범위가 많음&#10;회피 버튼 확률 10퍼센트&#10;정지시간 2초" eng="" />
-  <TextData ID="6508" kor="풀어야할 범위가 매우 많음&#10;회피 버튼 확률 0퍼센트&#10;정지시간 1초" eng="" />
+  <TextData ID="6506" kor="풀어야할 범위가 적음&#10;회피 버튼 확률 25퍼센트&#10;정지시간 3초&#10;추측 시간 10초&#10;힌트키 기본제공 5개"  eng="" />
+  <TextData ID="6507" kor="풀어야할 범위가 많음&#10;회피 버튼 확률 10퍼센트&#10;정지시간 2초&#10;추측 시간 10초&#10;힌트키 기본제공 3개" eng="" />
+  <TextData ID="6508" kor="풀어야할 범위가 매우 많음&#10;회피 버튼 확률 0퍼센트&#10;정지시간 1초&#10;추측 시간 8초&#10;힌트키 기본제공 없음" eng="" />
+  <TextData ID="6509" kor="저장된 파일이 없어" eng="" />
+  <TextData ID="6510" kor="새로운 게임을 시작하자" eng="" />
 
   <TextData ID="10000" kor="새로 시작하기" eng="" />
   <TextData ID="10001" kor="계속하기" eng="" />
@@ -80,7 +82,7 @@
 
 
 <!-- 게임 종료 TEXT-->
-  <TextData ID="50000" kor= "축하합니다" eng="" />
+  <TextData ID="50000" kor= "70단계 클리어! 축하합니다" eng="" />
   <TextData ID="50001" kor= "돌아가기" eng="" />
   <TextData ID="50002" kor= "OLLECTION" eng="" />
   <TextData ID="50003" kor= "ARCHIVEMENTS" eng="" />

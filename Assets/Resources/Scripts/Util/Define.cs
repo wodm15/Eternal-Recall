@@ -82,6 +82,8 @@ public class Define
 	public const int DifficultyNormal = 6506;
 	public const int DifficultyHard = 6507;
 	public const int DifficultyUnlimited = 6508;
+	public const int SaveNothing = 6509;
+	public const int SaveButEnd = 6510;
 
 	public const int StartButtonText = 10000;
 	public const int ContinueButtonText = 10001;

@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 using static Define;
@@ -13,6 +12,7 @@ public class UI_GuessPopup : UI_Popup
     public float RemainTime;
     public bool isAvoid;
     public string WrongRegion;
+    public int totalDamage;
 
     private int _incorrectCount = 0;
     public int IncorrectCount
@@ -248,7 +248,8 @@ public class UI_GuessPopup : UI_Popup
         //3초 이내는 빨간색
         if (RemainTime <= 4)
         {
-            GetText((int)Texts.Timer).color = Color.red;  
+            GetText((int)Texts.Timer).color = Color.red;
+            Managers.Sound.Play(Sound.Effect, "Sound_RemainTime");
         }
         else
         {
@@ -392,7 +393,7 @@ public class UI_GuessPopup : UI_Popup
     void DamageCalculate()
     {
         int damage = IncorrectCount * Define.Damage;
-        int totalDamage = Mathf.Max(damage - Managers.Game.Defence, 0);  // 방어력을 고려한 데미지 계산
+        totalDamage = Mathf.Max(damage - Managers.Game.Defence, 0);  // 방어력을 고려한 데미지 계산
         Managers.Game.Hp -= totalDamage; // 데미지 적용
         Debug.Log($"HP 감소: {totalDamage}, 남은 HP: {Managers.Game.Hp}");
     }
@@ -440,19 +441,29 @@ public class UI_GuessPopup : UI_Popup
     {
         Managers.Game.Hp =0;
         Managers.Game.SaveGame();
+        Managers.Game.CharacterDelete();
+        Managers.Game.StaticCharacterDelete();
         Managers.Sound.Stop(Sound.Bgm);
         Managers.UI.ClosePopupUI(this);
-        Managers.UI.ShowPopupUI<UI_GameOverPopup>();
-        
+        UI_GameOverPopup gameOverPopup = Managers.UI.ShowPopupUI<UI_GameOverPopup>();
+        gameOverPopup.transform.SetParent(null);
+
+        Managers.UI.ClosePlayerSceneUI();
+
     }
     //게임 스테이지 모두 클리어일 경우
-    void GameEnd()
+    public void GameEnd()
     {
         Managers.Game.Hp =0;
+        Managers.Game.CharacterDelete();
+        Managers.Game.StaticCharacterDelete();
         Managers.Game.SaveGame();
         Managers.Sound.Stop(Sound.Bgm);
         Managers.UI.ClosePopupUI(this);
-        Managers.UI.ShowPopupUI<UI_GameEndPopup>();
+        UI_GameEndPopup gameEndPopup = Managers.UI.ShowPopupUI<UI_GameEndPopup>();
+        gameEndPopup.transform.SetParent(null);
+
+        Managers.UI.ClosePlayerSceneUI();
         
     }
     //게임오버가 아닌 경우 

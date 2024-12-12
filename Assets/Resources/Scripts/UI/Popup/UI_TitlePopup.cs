@@ -60,12 +60,9 @@ public class UI_TitlePopup : UI_Popup
 		});
 		GetButton((int)Buttons.QuitButton).gameObject.BindEvent(() =>
         {
-            #if UNITY_EDITOR
-					UnityEditor.EditorApplication.isPlaying = false;
-			#else
-					// 빌드된 게임에서 종료
+            
 					Application.Quit();
-			#endif
+
         });
 		// GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(OnClickCollectionButton);
 		GetText((int)Texts.StartButtonText).text = Managers.GetText(Define.StartButtonText);
@@ -81,11 +78,13 @@ public class UI_TitlePopup : UI_Popup
 
 		//노래 설정
 		Managers.Sound.Clear();
-		int music = Random.Range(0,100);
-		if( music < 50)
-			Managers.Sound.Play(Sound.Bgm, "Sound_MainTitle");
-		else
-			Managers.Sound.Play(Sound.Bgm, "Sound_MainPlayBGM");
+		List<string> bgmTracks = new List<string>
+		{
+			"Sound_MainTitle"
+		};
+
+		int randomIndex = Random.Range(0, bgmTracks.Count);
+		Managers.Sound.Play(Sound.Bgm, bgmTracks[randomIndex]);
 
 		
 		return true;
@@ -98,7 +97,7 @@ void OnClickStartButton()
 		if (Managers.Game.HasSavedData())
 		{
 			Managers.Game.Init();
-			CheckFirstVisit();
+			// CheckFirstVisit();
 			Managers.Game.LoadGame();
 
 			Managers.UI.ClosePopupUI(this);
@@ -124,8 +123,13 @@ void OnClickStartButton()
 		Managers.Game.Init();
 		if(!Managers.Game.LoadGame())
 			{
-
+				GetText((int)Texts.SayingText).text = Managers.GetText(Define.SaveNothing);
 			}
+		else if(Managers.Game.LoadGame() && Managers.Game.Hp <=0)
+		{
+			GetText((int)Texts.SayingText).text = Managers.GetText(Define.SaveButEnd);
+		}
+		
 		else if(Managers.Game.LoadGame() && Managers.Game.Hp > 0)
 		{
 			Managers.UI.ClosePopupUI(this);

@@ -159,6 +159,8 @@ public void SetCanvas(GameObject go, Camera camera, bool sort = true)
 
         return null; // UI_Scene이 T 타입이 아니면 null 반환
     }
+
+
 	public void ClosePlayerSceneUI()
 	{
 		GameObject playerScene = GameObject.Find("UI_PlayerScene");

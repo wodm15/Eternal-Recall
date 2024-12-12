@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using static Define;
 
 public class UI_GetItemPopup : UI_Popup
 {
@@ -118,7 +119,7 @@ public class UI_GetItemPopup : UI_Popup
 
             if (!string.IsNullOrEmpty(resultText))
             {
-                resultText = resultText.TrimEnd(',', ' ') + $" 틀려서\n {incorrectCount * 10} 데미지를 받았어";
+                resultText = resultText.TrimEnd(',', ' ') + $" 틀려서\n {incorrectCount * 10 - Managers.Game.Defence} 데미지를 받았어";
                 
                 // 최종 텍스트
                 GetText((int)Texts.WrongCount).text = resultText;
@@ -260,31 +261,38 @@ public class UI_GetItemPopup : UI_Popup
     //마지막 팝업용
     void onClickEnd(ShopData _selectedItem)
     {
-        
         Managers.Game.SaveGame();
-        //stranger 캐릭터와 Player 삭제
-        GameObject PassingPlayer = GameObject.Find("Stranger");
-        if (PassingPlayer != null)
+        //HP 0 되는지 확인
+        if(Managers.Game.Hp <= 0)
         {
-            Managers.Resource.Destroy(PassingPlayer);
+            GameOver();
         }
-        GameObject guessPlayer = GameObject.Find("Player");
-        if (guessPlayer != null)
-        {
-            Managers.Resource.Destroy(guessPlayer);
-        }
-
-        
-        Managers.UI.ClosePopupUI(this);
-        playerScene.StageUp();
-        UI_CountPopup countPopup = Managers.UI.ShowPopupUI<UI_CountPopup>();
-        int selectedIndex = _selectedIndexes[0]; // 첫 번째 아이템 선택
-        
-        //더블 획득 성공
-        if(isLuck)
-            countPopup.SetAmountText(_selectedItem , true);
         else
-            countPopup.SetAmountText(_selectedItem);
+            {
+            //stranger 캐릭터와 Player 삭제
+            GameObject PassingPlayer = GameObject.Find("Stranger");
+            if (PassingPlayer != null)
+            {
+                Managers.Resource.Destroy(PassingPlayer);
+            }
+            GameObject guessPlayer = GameObject.Find("Player");
+            if (guessPlayer != null)
+            {
+                Managers.Resource.Destroy(guessPlayer);
+            }
+
+            
+            Managers.UI.ClosePopupUI(this);
+            playerScene.StageUp();
+            UI_CountPopup countPopup = Managers.UI.ShowPopupUI<UI_CountPopup>();
+            int selectedIndex = _selectedIndexes[0]; // 첫 번째 아이템 선택
+            
+            //더블 획득 성공
+            if(isLuck)
+                countPopup.SetAmountText(_selectedItem , true);
+            else
+                countPopup.SetAmountText(_selectedItem);
+        }
     }
 
     //체력 업데이트
@@ -349,6 +357,21 @@ public class UI_GetItemPopup : UI_Popup
             Managers.Game.Avoid += (int)selectedItem.effectValues[0];
 
         return selectedItem;
+    }
+
+    void GameOver()
+    {
+        Managers.Game.Hp =0;
+        Managers.Game.SaveGame();
+        Managers.Game.CharacterDelete();
+        Managers.Game.StaticCharacterDelete();
+        Managers.Sound.Stop(Sound.Bgm);
+        Managers.UI.ClosePopupUI(this);
+        UI_GameOverPopup gameOverPopup = Managers.UI.ShowPopupUI<UI_GameOverPopup>();
+        gameOverPopup.transform.SetParent(null);
+
+        Managers.UI.ClosePlayerSceneUI();
+
     }
 
 

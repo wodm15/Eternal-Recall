@@ -37,13 +37,39 @@ public class UI_CountPopup : UI_Popup
 
         GetText((int)Texts.PreviousStage).gameObject.SetActive(false);
         GetText((int)Texts.ShowStage).gameObject.SetActive(false);
-        // GetImage((int)Images.CountDown3).gameObject.SetActive(false);
         GetImage((int)Images.CountDown2).gameObject.SetActive(false);
         GetImage((int)Images.CountDown1).gameObject.SetActive(false);
 
         int _Stage = Managers.Game.Stage;
 
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
+
+        if (_Stage == 1)
+        {
+            Managers.Sound.Clear();
+            Managers.Sound.Play(Sound.Bgm, "Sound_MainPlay1");
+        }
+
+        // 10단계 씩마다 음악 바꾸기
+        if (_Stage >= 10 && _Stage <= 60 && _Stage % 10 == 0)
+        {
+            Managers.Sound.Clear();
+
+            string[] soundFiles = new string[]
+            {
+                "Sound_MainPlay10", // 10단계
+                "Sound_MainPlay20", // 20단계
+                "Sound_MainPlay30", // 30단계
+                "Sound_MainPlay40", // 40단계
+                "Sound_MainPlay50", // 50단계
+                "Sound_MainPlay60"  // 60단계
+            };
+
+            int index = (_Stage / 10) - 1; 
+            Managers.Sound.Play(Sound.Bgm, soundFiles[index]);
+        }
+
+
 
         GetText((int)Texts.PreviousStage).text = $" Stage : {_Stage -1}";
         GetText((int)Texts.ShowStage).text = $" Stage : {_Stage}";

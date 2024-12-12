@@ -25,6 +25,7 @@ public class UI_CollectionPopup : UI_Popup
         HowToText,
         DesToText,
         ExitButtonText,
+        ClothesEffectText,
     }
     enum Buttons
     {
@@ -54,6 +55,7 @@ public class UI_CollectionPopup : UI_Popup
         GetText((int)Texts.ExitButtonText).text = Managers.GetText(Define.GoToTitleText);
         GetText((int)Texts.HowToText).gameObject.SetActive(false);
         GetText((int)Texts.DesToText).gameObject.SetActive(false);
+        GetText((int)Texts.ClothesEffectText).gameObject.SetActive(false);
         GetImage((int)Images.HowToImage).gameObject.SetActive(false);
         GetImage((int)Images.DesToImage).gameObject.SetActive(false);
 
@@ -134,12 +136,14 @@ public class UI_CollectionPopup : UI_Popup
         selectedIndex = index;
         GetText((int)Texts.HowToText).gameObject.SetActive(true);
         GetText((int)Texts.DesToText).gameObject.SetActive(true);
+        GetText((int)Texts.ClothesEffectText).gameObject.SetActive(true);
 
         GetImage((int)Images.HowToImage).gameObject.SetActive(true);
         GetImage((int)Images.DesToImage).gameObject.SetActive(true);
 
         GetText((int)Texts.HowToText).text = CollectionData[index].How;
         GetText((int)Texts.DesToText).text = CollectionData[index].description;
+        GetText((int)Texts.ClothesEffectText).text = $"{Managers.Data.Stat[index].Power}";
 
         HighlightSelectedImage(index);
     }

@@ -5,15 +5,6 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
-    path: Assets/EasyTransitions/Demo/TransitionDemo.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 0
-    path: Assets/SD/Demo.unity
-    guid: aa989954e78531d48a38e96cb5cc8f53
-  - enabled: 0
-    path: Assets/SD/Demo2.unity
-    guid: 7cd36b6c2a041ba42916d8c1af10aaf9
   - enabled: 1
     path: Assets/Scenes/Game.unity
     guid: dbd1e819da8dd4cb6981a72465c1dc27

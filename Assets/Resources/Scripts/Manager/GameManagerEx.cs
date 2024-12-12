@@ -53,8 +53,8 @@ public class GameData
         //코디
         public int ClothesIndex;
         public StatData StatData = new StatData();
-        // 클리어 한 엔딩
-	    public CollectionState[] Endings = new CollectionState[MAX_ENDING_COUNT];
+        // // 클리어 한 엔딩
+	    // public CollectionState[] Endings = new CollectionState[MAX_ENDING_COUNT];
 
 
         //그 전 질문
@@ -164,7 +164,7 @@ public class GameManagerEx
     #region 컬렉션 & 프로젝트
 
     public CollectionState[] Collections { get { return _gameData.Collections; } }
-    public CollectionState[] Endings { get { return _gameData.Endings; } }
+    // public CollectionState[] Endings { get { return _gameData.Endings; } }
     public Action<CollectionData> OnNewCollection;
 
     public StatData StatData 
@@ -372,6 +372,14 @@ public void Init()
 		if (Player != null)
 		{
 			Managers.Resource.Destroy(Player);
+		}
+	}
+	public void StaticCharacterDelete()
+    {
+		GameObject staticPlayer = GameObject.Find("StaticPlayer");
+		if (staticPlayer != null)
+		{
+			Managers.Resource.Destroy(staticPlayer);
 		}
 	}
 
