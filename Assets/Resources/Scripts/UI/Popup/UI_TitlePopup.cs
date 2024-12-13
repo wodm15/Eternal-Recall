@@ -30,7 +30,7 @@ public class UI_TitlePopup : UI_Popup
 	{
 		if (base.Init() == false)
 			return false;
-		
+		        Debug.Log(Managers.Game.Hp);
 
 		BindText(typeof(Texts));
 		BindButton(typeof(Buttons)); 
@@ -54,15 +54,17 @@ public class UI_TitlePopup : UI_Popup
 		GetButton((int)Buttons.ContinueButton).gameObject.BindEvent(OnClickContinueButton);
 		GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(() =>
 		{
+			//TODO 광고
 			// int a = Random.Range(0,50);
 			// if(a < 50)
-			// 	Managers.Game.ADSHOW();
+			// Managers.Game.InterstitialAd();
+
 			OnClickCollectionButton();
 		});
 		GetButton((int)Buttons.QuitButton).gameObject.BindEvent(() =>
         {
             
-					Application.Quit();
+			Application.Quit();
 
         });
 		// GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(OnClickCollectionButton);

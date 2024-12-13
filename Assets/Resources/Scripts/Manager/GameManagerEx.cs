@@ -401,11 +401,15 @@ public void Init()
 	}
 
     //광고
-    public void ADSHOW()
+    public void InterstitialAd()
     {
-
         Managers.Ads.Init();
 		Managers.Ads.ShowInterstitialAd();
+    }
+    public void RewardedAd()
+    {
+        Managers.Ads.Init();
+		Managers.Ads.ShowRewardedAd();
     }
     
 

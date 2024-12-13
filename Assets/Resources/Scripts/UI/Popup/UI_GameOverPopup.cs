@@ -11,10 +11,13 @@ public class UI_GameOverPopup : UI_Popup
     {
         GameOverText,
         GoToTitleText,
+        ReviveText,
+        
     }
     enum Buttons
     {
         GoToTitleButton,
+        ReviveButton,
     }
 
     public override bool Init()
@@ -44,9 +47,11 @@ public class UI_GameOverPopup : UI_Popup
         Managers.Sound.Clear();
         Managers.Sound.Play(Sound.Effect, "Sound_Gameover");
 
-        GetText((int)Texts.GameOverText).text = "Game Over";
-        GetText((int)Texts.GoToTitleText).text = "타이틀로 돌아가기";
+        GetText((int)Texts.GameOverText).text = Managers.GetText(Define.GameOverText);
+        GetText((int)Texts.GoToTitleText).text = Managers.GetText(Define.GameOverTitle);
+        GetText((int)Texts.ReviveText).text = Managers.GetText(Define.ReviveText);
         GetButton((int)Buttons.GoToTitleButton).gameObject.BindEvent(() => OnClickConfirmButton());
+        GetButton((int)Buttons.ReviveButton).gameObject.BindEvent(() => OnClickReviveButton());
 
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
         playerScene.StaticPlayerEx("GameOver");
@@ -56,10 +61,23 @@ public class UI_GameOverPopup : UI_Popup
     void OnClickConfirmButton()
     {
         Managers.UI.ClosePopupUI(this);
+
         Managers.Game.SaveGame();
         Managers.UI.ShowPopupUI<UI_TitlePopup>();  
         Managers.UI.ClosePlayerSceneUI();
-        
+    }
+
+    void OnClickReviveButton()
+    {
+        Managers.UI.ClosePopupUI(this);
+
+        Managers.Game.RewardedAd();
+        Managers.Game.Hp = 1;
+
+        Managers.Game.SaveGame();
+        Managers.UI.ShowPopupUI<UI_TitlePopup>();  
+        Managers.UI.ClosePlayerSceneUI();
+        //Todo 버그로 부활누르고 계속하기 하고 다시 타이틀로 돌아가기하면 충돌남
     }
 
 }

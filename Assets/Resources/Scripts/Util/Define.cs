@@ -93,6 +93,9 @@ public class Define
 	public const int SaveButEnd = 6510;
 	public const int DeleteFile = 6511;
 	public const int FetchFile = 6512;
+	public const int GameOverText = 6513;
+	public const int GameOverTitle = 6514;
+	public const int ReviveText = 6515;
 
 	public const int StartButtonText = 10000;
 	public const int ContinueButtonText = 10001;
