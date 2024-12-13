@@ -232,6 +232,7 @@ public void Init()
     Stage = data.Stage;
     Hp = data.maxHp;
     LuckPercent = data.LuckPercent;
+    ExpendTime = data.ExpendTime;
     DownSpeed = data.DownSpeed;
     TheWorld = data.TheWorld;
     PassTicket = data.PassTicket;
