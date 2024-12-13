@@ -53,6 +53,8 @@ public class Define
 	}
 	public const int DefaultCollectionIndex = 2;
 	public const int MAX_COLLECTION_COUNT = 21;
+	public const int ErrorCodeInt = -100;
+	public const string ErrorCodeString = "Error";
 
 	//현재 코디 옷 (19개 이므로)
 	public const int MAX_STAT_COUNT = 50;
@@ -89,6 +91,12 @@ public class Define
 	public const int DifficultyUnlimited = 6508;
 	public const int SaveNothing = 6509;
 	public const int SaveButEnd = 6510;
+	public const int DeleteFile = 6511;
+	public const int FetchFile = 6512;
+	public const int GameOverText = 6513;
+	public const int GameOverTitle = 6514;
+	public const int ReviveText = 6515;
+	public const int ReviveSayText = 6516;
 
 	public const int StartButtonText = 10000;
 	public const int ContinueButtonText = 10001;

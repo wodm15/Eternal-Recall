@@ -30,7 +30,11 @@ public class UI_TitlePopup : UI_Popup
 	{
 		if (base.Init() == false)
 			return false;
-		
+
+		//일단 확인 후 false로 초기화
+		bool isRevive = Managers.Game.ReviveLife;
+		Managers.Game.ReviveLife = false;
+
 		BindText(typeof(Texts));
 		BindButton(typeof(Buttons)); 
 
@@ -46,22 +50,31 @@ public class UI_TitlePopup : UI_Popup
 		animationManager.ani = Random.Range(0,10);
 		animationManager.PlayAni(true);
 		
-		int randSay = Random.Range(0, Define.CharacterSaying.Length);
-		GetText((int)Texts.SayingText).text = Managers.GetText(Define.CharacterSaying[randSay]);
+		if(isRevive)
+		{
+			GetText((int)Texts.SayingText).text = Managers.GetText(Define.ReviveSayText);
+		}
+		else
+		{
+			int randSay = Random.Range(0, Define.CharacterSaying.Length);
+			GetText((int)Texts.SayingText).text = Managers.GetText(Define.CharacterSaying[randSay]);
+		}
 
 		GetButton((int)Buttons.StartButton).gameObject.BindEvent(OnClickStartButton);
 		GetButton((int)Buttons.ContinueButton).gameObject.BindEvent(OnClickContinueButton);
 		GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(() =>
 		{
+			//TODO 광고
 			// int a = Random.Range(0,50);
 			// if(a < 50)
-			// 	Managers.Game.ADSHOW();
+			// Managers.Game.InterstitialAd();
+
 			OnClickCollectionButton();
 		});
 		GetButton((int)Buttons.QuitButton).gameObject.BindEvent(() =>
         {
             
-					Application.Quit();
+			Application.Quit();
 
         });
 		// GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(OnClickCollectionButton);
@@ -69,12 +82,6 @@ public class UI_TitlePopup : UI_Popup
 		GetText((int)Texts.ContinueButtonText).text = Managers.GetText(Define.ContinueButtonText);
 		GetText((int)Texts.CollectionButtonText).text = Managers.GetText(Define.CollectionButtonText);
 		GetText((int)Texts.QuitButtonText).text = Managers.GetText(Define.QuitButtonText);
-
-		// Managers.Game.Init();
-
-		//어떤 옷인지 체크
-		// customManager.clothes = Managers.Game.ClothesIndex;
-        // customManager.numberCheck(1); 
 
 		//노래 설정
 		Managers.Sound.Clear();
@@ -85,6 +92,10 @@ public class UI_TitlePopup : UI_Popup
 
 		int randomIndex = Random.Range(0, bgmTracks.Count);
 		Managers.Sound.Play(Sound.Bgm, bgmTracks[randomIndex]);
+
+		//잘못된 값이 있어 삭제
+		if(Managers.CheckJson.CheckJson() == -1)
+			GetText((int)Texts.SayingText).text = Managers.GetText(Define.DeleteFile);
 
 		
 		return true;
@@ -121,16 +132,19 @@ void OnClickStartButton()
 		Debug.Log("OnClickContinueButton");
 		// Managers.Game.CharacterDelete();
 		Managers.Game.Init();
-		if(!Managers.Game.LoadGame())
+
+		bool isGameLoaded = Managers.Game.LoadGame();
+
+		if(!isGameLoaded)
 			{
 				GetText((int)Texts.SayingText).text = Managers.GetText(Define.SaveNothing);
 			}
-		else if(Managers.Game.LoadGame() && Managers.Game.Hp <=0)
+		else if(isGameLoaded && Managers.Game.Hp <=0)
 		{
 			GetText((int)Texts.SayingText).text = Managers.GetText(Define.SaveButEnd);
 		}
 		
-		else if(Managers.Game.LoadGame() && Managers.Game.Hp > 0)
+		else if(isGameLoaded && Managers.Game.Hp > 0)
 		{
 			Managers.UI.ClosePopupUI(this);
 			Managers.UI.ShowPopupUI<UI_CountPopup>();

@@ -133,8 +133,13 @@ public void SetCanvas(GameObject go, Camera camera, bool sort = true)
 			return;
 
 		UI_Popup popup = _popupStack.Pop();
-		Managers.Resource.Destroy(popup.gameObject);
-		popup = null;
+
+		if (popup != null) 
+		{
+			Managers.Resource.Destroy(popup.gameObject);
+			popup = null; 
+		}
+
 		_order--;
 	}
 

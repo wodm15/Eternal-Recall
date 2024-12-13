@@ -11,10 +11,13 @@ public class UI_GameOverPopup : UI_Popup
     {
         GameOverText,
         GoToTitleText,
+        ReviveText,
+        
     }
     enum Buttons
     {
         GoToTitleButton,
+        ReviveButton,
     }
 
     public override bool Init()
@@ -44,9 +47,17 @@ public class UI_GameOverPopup : UI_Popup
         Managers.Sound.Clear();
         Managers.Sound.Play(Sound.Effect, "Sound_Gameover");
 
-        GetText((int)Texts.GameOverText).text = "Game Over";
-        GetText((int)Texts.GoToTitleText).text = "타이틀로 돌아가기";
+        GetText((int)Texts.GameOverText).text = Managers.GetText(Define.GameOverText);
+        GetText((int)Texts.GoToTitleText).text = Managers.GetText(Define.GameOverTitle);
+        GetText((int)Texts.ReviveText).text = Managers.GetText(Define.ReviveText);
+        GetButton((int)Buttons.ReviveButton).gameObject.SetActive(true);
+
         GetButton((int)Buttons.GoToTitleButton).gameObject.BindEvent(() => OnClickConfirmButton());
+        GetButton((int)Buttons.ReviveButton).gameObject.BindEvent(() => OnClickReviveButton());
+        if(Managers.Game.Revive <= 0)
+        {
+            GetButton((int)Buttons.ReviveButton).gameObject.SetActive(false);
+        }
 
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
         playerScene.StaticPlayerEx("GameOver");
@@ -55,11 +66,27 @@ public class UI_GameOverPopup : UI_Popup
 
     void OnClickConfirmButton()
     {
-        Managers.Game.SaveGame();
         Managers.UI.ClosePopupUI(this);
+
+        Managers.Game.SaveGame();
         Managers.UI.ShowPopupUI<UI_TitlePopup>();  
         Managers.UI.ClosePlayerSceneUI();
+    }
+
+    void OnClickReviveButton()
+    {
+        Managers.Game.Revive--;
+        Managers.Game.ReviveLife = true;
         
+        Managers.UI.ClosePopupUI(this);
+
+        Managers.Game.Hp= 1;
+        Managers.Game.RewardedAd();
+        Managers.Game.SaveGame();
+        Managers.UI.ShowPopupUI<UI_TitlePopup>();  
+        Managers.UI.ClosePlayerSceneUI();
+
+
     }
 
 }

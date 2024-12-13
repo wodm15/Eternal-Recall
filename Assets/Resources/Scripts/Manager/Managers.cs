@@ -15,6 +15,7 @@ public class Managers : MonoBehaviour
     private static DataManager s_dataManager = new DataManager();
     private static GameManagerEx s_gameManager = new GameManagerEx();
     private static AdsManager s_adsManager = new AdsManager();
+    private static ValidFileManager s_validFileManager = new ValidFileManager();
 
 
     // 프로퍼티 생성
@@ -25,6 +26,7 @@ public class Managers : MonoBehaviour
     public static DataManager Data {get { Init(); return s_dataManager; } }
     public static GameManagerEx Game { get { Init(); return s_gameManager; } }
     public static AdsManager Ads { get { Init(); return s_adsManager; } }
+    public static ValidFileManager CheckJson { get { Init(); return s_validFileManager;}}
 
     public static string GetText(int id)
 	{
@@ -49,6 +51,7 @@ public class Managers : MonoBehaviour
             s_instance = Utils.GetOrAddComponent<Managers>(go);
             DontDestroyOnLoad(go);
 
+            // s_validFileManager.Init();
             s_resourceManager.Init();
             s_sceneManager.Init();
             s_soundManager.Init();

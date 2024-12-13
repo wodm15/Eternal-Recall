@@ -31,9 +31,11 @@ public class UI_CountPopup : UI_Popup
     {
         if (base.Init() == false)
 			return false;
-
+    
         BindImage(typeof(Images));
         BindText(typeof(Texts));
+
+        Managers.Game.ReviveLife = false;
 
         GetText((int)Texts.PreviousStage).gameObject.SetActive(false);
         GetText((int)Texts.ShowStage).gameObject.SetActive(false);
@@ -66,14 +68,14 @@ public class UI_CountPopup : UI_Popup
             };
 
             int index = (_Stage / 10) - 1; 
-            Managers.Sound.Play(Sound.Bgm, soundFiles[index]);
+            Managers.Game.BGM = soundFiles[index];
         }
 
-
+        Managers.Sound.Play(Sound.Bgm , Managers.Game.BGM);
 
         GetText((int)Texts.PreviousStage).text = $" Stage : {_Stage -1}";
         GetText((int)Texts.ShowStage).text = $" Stage : {_Stage}";
-        Debug.Log(_isLuck);
+
         if(_description !=null)
         {
             GetText((int)Texts.AmountText).gameObject.SetActive(true);

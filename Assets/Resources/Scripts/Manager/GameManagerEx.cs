@@ -60,6 +60,17 @@ public class GameData
         //그 전 질문
         public QuizData quizData = new QuizData();
 
+        //현재 브금 노래
+        public string BGM;
+
+        //장애물 확률 
+        public int BirdPercent;
+
+        //광고보고 살아남기
+        public int Revive;
+        //방금 살아남기 한지 확인
+        public bool ReviveLife;
+
     }
 
 public class GameManagerEx
@@ -161,6 +172,28 @@ public class GameManagerEx
         set { _gameData.quizData = value; }
     }
 
+    public string BGM
+    {
+        get { return _gameData.BGM;}
+        set { _gameData.BGM=value;}
+    }
+    public int BirdPercent
+    {
+        get { return _gameData.BirdPercent;}
+        set { _gameData.BirdPercent=value;}
+    }
+    public int Revive
+    {
+        get {return _gameData.Revive;}
+        set { _gameData.Revive=value;} 
+    }
+
+    public bool ReviveLife 
+    { 
+        get { return _gameData.ReviveLife; } 
+        set { _gameData.ReviveLife = value; } 
+    }
+
     #region 컬렉션 & 프로젝트
 
     public CollectionState[] Collections { get { return _gameData.Collections; } }
@@ -215,6 +248,7 @@ public void Init()
     Stage = data.Stage;
     Hp = data.maxHp;
     LuckPercent = data.LuckPercent;
+    ExpendTime = data.ExpendTime;
     DownSpeed = data.DownSpeed;
     TheWorld = data.TheWorld;
     PassTicket = data.PassTicket;
@@ -223,6 +257,10 @@ public void Init()
     HintKey = data.HintKey;
     Avoid = data.Avoid;
     ClothesIndex = data.ClothesIndex;
+    BGM = data.BGM;
+    BirdPercent = data.BirdPercent;
+    Revive = data.Revive;
+    ReviveLife = false;
 
     // 기본 옷 상시 활성화
     if (Collections[Define.DefaultCollectionIndex] == CollectionState.None)
@@ -381,11 +419,15 @@ public void Init()
 	}
 
     //광고
-    public void ADSHOW()
+    public void InterstitialAd()
     {
-
         Managers.Ads.Init();
 		Managers.Ads.ShowInterstitialAd();
+    }
+    public void RewardedAd()
+    {
+        Managers.Ads.Init();
+		Managers.Ads.ShowRewardedAd();
     }
     
 

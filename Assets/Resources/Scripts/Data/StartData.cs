@@ -17,6 +17,8 @@ public class StartData
 	public int maxHp;
 	[XmlAttribute]
 	public int LuckPercent;
+	[XmlAttribute]
+	public int ExpendTime;
 
 	[XmlAttribute]
     public int DownSpeed; // 지나가는 스피드 내리기
@@ -44,5 +46,13 @@ public class StartData
 	[XmlAttribute]
 	public int	ClothesIndex;
 
+	[XmlAttribute]
+	public string	BGM;
+	[XmlAttribute]
+	public int BirdPercent;
+	[XmlAttribute]
+	public int Revive;
+	[XmlAttribute]
+	public bool ReviveLife;
 
 }
