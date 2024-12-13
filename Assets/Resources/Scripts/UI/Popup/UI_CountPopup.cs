@@ -66,10 +66,10 @@ public class UI_CountPopup : UI_Popup
             };
 
             int index = (_Stage / 10) - 1; 
-            Managers.Sound.Play(Sound.Bgm, soundFiles[index]);
+            Managers.Game.BGM = soundFiles[index];
         }
 
-
+        Managers.Sound.Play(Sound.Bgm , Managers.Game.BGM);
 
         GetText((int)Texts.PreviousStage).text = $" Stage : {_Stage -1}";
         GetText((int)Texts.ShowStage).text = $" Stage : {_Stage}";

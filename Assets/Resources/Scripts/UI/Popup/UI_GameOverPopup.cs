@@ -55,8 +55,8 @@ public class UI_GameOverPopup : UI_Popup
 
     void OnClickConfirmButton()
     {
-        Managers.Game.SaveGame();
         Managers.UI.ClosePopupUI(this);
+        Managers.Game.SaveGame();
         Managers.UI.ShowPopupUI<UI_TitlePopup>();  
         Managers.UI.ClosePlayerSceneUI();
         

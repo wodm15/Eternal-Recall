@@ -44,5 +44,8 @@ public class StartData
 	[XmlAttribute]
 	public int	ClothesIndex;
 
-
+	[XmlAttribute]
+	public string	BGM;
+	[XmlAttribute]
+	public int BirdPercent;
 }

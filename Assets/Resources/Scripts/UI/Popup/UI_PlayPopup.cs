@@ -28,6 +28,7 @@ public class UI_PlayPopup : UI_Popup
         Stranger.transform.position = new Vector3(-10,2,0);
 
         BirdResponse();
+        BirdComing();
 
         return true;
     }
@@ -81,47 +82,25 @@ public class UI_PlayPopup : UI_Popup
 
     public void BirdResponse()
     {
-        // 스테이지 10 미만이면 새가 등장하지 않음
-        if (Managers.Game.Stage < 10)
-            return;
-
-        float spawnChance = 0f;
-
         // 난이도에 따른 기본 확률 설정 (노말 1, 하드 3, 언리미티드 5)
-        if (Managers.Game.DifficultyLevel == "Normal")
+        if (Managers.Game.DifficultyLevel == "Normal" && Managers.Game.Stage >= 10 && Managers.Game.Stage % 5 == 0)
         {
-            spawnChance = 1f; 
+            Managers.Game.BirdPercent +=1;
         }
-        else if (Managers.Game.DifficultyLevel == "Hard")
+        else if (Managers.Game.DifficultyLevel == "Hard" && Managers.Game.Stage >= 1 && Managers.Game.Stage % 5 == 0)
         {
-            spawnChance = 3f;
+            Managers.Game.BirdPercent +=2;
         }
-        else if (Managers.Game.DifficultyLevel == "UnLimited")
+        else if (Managers.Game.DifficultyLevel == "UnLimited" && Managers.Game.Stage >= 1 && Managers.Game.Stage % 5 == 0)
         {
-            spawnChance = 5f; 
+            Managers.Game.BirdPercent +=5;
         }
 
-        // 스테이지에 따라 확률 증가 (5단계마다 1%씩 추가)
-        int stageIncrement = (Managers.Game.Stage - 10) / 5;
-
-        // 각 난이도별 최대 확률 설정 (노말 10, 하드 30, 언리미티드 60)
-        if (Managers.Game.DifficultyLevel == "Normal")
-        {
-            spawnChance = Mathf.Min(spawnChance + stageIncrement * 1f, 10f);
-        }
-        else if (Managers.Game.DifficultyLevel == "Hard")
-        {
-            spawnChance = Mathf.Min(spawnChance + stageIncrement * 3f, 30f); 
-        }
-        else if (Managers.Game.DifficultyLevel == "UnLimited")
-        {
-            spawnChance = Mathf.Min(spawnChance + stageIncrement * 6f, 60f); 
-        }
 
         // 확률에 따라 Bird 생성 여부 결정
         float randomValue = Random.Range(0f, 100f);
         
-        if (randomValue < spawnChance)
+        if (randomValue < Managers.Game.BirdPercent)
         {
             // 1, 2, 3 중 무작위로 선택
             int birdIndex = Random.Range(1, 4); // 1부터 3까지 무작위 숫자 생성
@@ -134,7 +113,7 @@ public class UI_PlayPopup : UI_Popup
         }
         else
         {
-            Debug.Log($"새 생성안됨 {spawnChance}% 랜덤 밸류: {randomValue})");
+            Debug.Log($"새 생성안됨 {Managers.Game.BirdPercent} 랜덤 밸류: {randomValue})");
         }
     }
 
