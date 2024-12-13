@@ -30,7 +30,10 @@ public class UI_TitlePopup : UI_Popup
 	{
 		if (base.Init() == false)
 			return false;
-		        Debug.Log(Managers.Game.Hp);
+
+		//일단 확인 후 false로 초기화
+		bool isRevive = Managers.Game.ReviveLife;
+		Managers.Game.ReviveLife = false;
 
 		BindText(typeof(Texts));
 		BindButton(typeof(Buttons)); 
@@ -47,8 +50,15 @@ public class UI_TitlePopup : UI_Popup
 		animationManager.ani = Random.Range(0,10);
 		animationManager.PlayAni(true);
 		
-		int randSay = Random.Range(0, Define.CharacterSaying.Length);
-		GetText((int)Texts.SayingText).text = Managers.GetText(Define.CharacterSaying[randSay]);
+		if(isRevive)
+		{
+			GetText((int)Texts.SayingText).text = Managers.GetText(Define.ReviveSayText);
+		}
+		else
+		{
+			int randSay = Random.Range(0, Define.CharacterSaying.Length);
+			GetText((int)Texts.SayingText).text = Managers.GetText(Define.CharacterSaying[randSay]);
+		}
 
 		GetButton((int)Buttons.StartButton).gameObject.BindEvent(OnClickStartButton);
 		GetButton((int)Buttons.ContinueButton).gameObject.BindEvent(OnClickContinueButton);
@@ -122,16 +132,19 @@ void OnClickStartButton()
 		Debug.Log("OnClickContinueButton");
 		// Managers.Game.CharacterDelete();
 		Managers.Game.Init();
-		if(!Managers.Game.LoadGame())
+
+		bool isGameLoaded = Managers.Game.LoadGame();
+
+		if(!isGameLoaded)
 			{
 				GetText((int)Texts.SayingText).text = Managers.GetText(Define.SaveNothing);
 			}
-		else if(Managers.Game.LoadGame() && Managers.Game.Hp <=0)
+		else if(isGameLoaded && Managers.Game.Hp <=0)
 		{
 			GetText((int)Texts.SayingText).text = Managers.GetText(Define.SaveButEnd);
 		}
 		
-		else if(Managers.Game.LoadGame() && Managers.Game.Hp > 0)
+		else if(isGameLoaded && Managers.Game.Hp > 0)
 		{
 			Managers.UI.ClosePopupUI(this);
 			Managers.UI.ShowPopupUI<UI_CountPopup>();

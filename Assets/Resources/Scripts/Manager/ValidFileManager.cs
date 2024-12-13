@@ -51,7 +51,7 @@ public class ValidFileManager
             return -1;
         }
 
-        Debug.Log($"XML Data: {xmlData}");
+        // Debug.Log($"XML Data: {xmlData}");
 
         int validationResult = ValidateAndUpdateXmlAttributes(ref xmlData);
         if (validationResult == -1)
@@ -76,11 +76,12 @@ public int ValidateAndUpdateXmlAttributes(ref string xmlData)
         {
             "ID", "DifficultyLevel", "Hp", "maxHp", "LuckPercent", "ExpendTime",
             "DownSpeed", "TheWorld", "PassTicket", "Stage", "GuessTimer",
-            "Defence", "HintKey", "Avoid", "ClothesIndex", "BGM", "BirdPercent"
+            "Defence", "HintKey", "Avoid", "ClothesIndex", "BGM", "BirdPercent" ,
+            "Revive" , "ReviveLife" 
         };
 
         var actualAttributes = root.Attributes().Select(attr => attr.Name.LocalName).ToList();
-        Debug.Log("실제 속성: " + string.Join(", ", actualAttributes));
+        // Debug.Log("실제 속성: " + string.Join(", ", actualAttributes));
 
         var missingAttributes = expectedAttributes.Except(actualAttributes).ToList();
         var extraAttributes = actualAttributes.Except(expectedAttributes).ToList();
@@ -135,7 +136,9 @@ private string ConvertJsonToXml(GameData data)
             new XAttribute("Avoid", data.Avoid),
             new XAttribute("ClothesIndex", data.ClothesIndex),
             new XAttribute("BGM", data.BGM),
-            new XAttribute("BirdPercent", data.BirdPercent)
+            new XAttribute("BirdPercent", data.BirdPercent),
+            new XAttribute("Revive", data.Revive),
+            new XAttribute("ReviveLife", data.ReviveLife)
         );
 
         return root.ToString(); // XML 반환

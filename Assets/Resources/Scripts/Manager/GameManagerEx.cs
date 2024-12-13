@@ -66,6 +66,11 @@ public class GameData
         //장애물 확률 
         public int BirdPercent;
 
+        //광고보고 살아남기
+        public int Revive;
+        //방금 살아남기 한지 확인
+        public bool ReviveLife;
+
     }
 
 public class GameManagerEx
@@ -177,6 +182,17 @@ public class GameManagerEx
         get { return _gameData.BirdPercent;}
         set { _gameData.BirdPercent=value;}
     }
+    public int Revive
+    {
+        get {return _gameData.Revive;}
+        set { _gameData.Revive=value;} 
+    }
+
+    public bool ReviveLife 
+    { 
+        get { return _gameData.ReviveLife; } 
+        set { _gameData.ReviveLife = value; } 
+    }
 
     #region 컬렉션 & 프로젝트
 
@@ -243,6 +259,8 @@ public void Init()
     ClothesIndex = data.ClothesIndex;
     BGM = data.BGM;
     BirdPercent = data.BirdPercent;
+    Revive = data.Revive;
+    ReviveLife = false;
 
     // 기본 옷 상시 활성화
     if (Collections[Define.DefaultCollectionIndex] == CollectionState.None)

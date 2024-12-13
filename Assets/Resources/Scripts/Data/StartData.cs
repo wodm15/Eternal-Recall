@@ -50,4 +50,9 @@ public class StartData
 	public string	BGM;
 	[XmlAttribute]
 	public int BirdPercent;
+	[XmlAttribute]
+	public int Revive;
+	[XmlAttribute]
+	public bool ReviveLife;
+
 }
