@@ -287,7 +287,6 @@ public class UI_NamePopup : UI_Popup
 
         Managers.Game.ClothesIndex = customManager.clothes;
         Managers.Data.Start.ClothesIndex = Managers.Game.ClothesIndex;
-        // Managers.Game.Init();
 
         //순서 중요 (난이도로 스탯 변경 후 -> 옷 능력치 추가)
         if(Normal.isOn) Managers.Game.DifficultyLevel = "Normal";

@@ -13,14 +13,14 @@ public class UI_PlayerScene : UI_Scene
         HPText,
         PlayerInfo,
         CollectionSuccessText,
-        GoTitleText,
         DifficultyLevel,
+        HintKeyText,
     }
     enum Images
     {
-        HP,
         HPBG, //hp 배경바
         CollectionSuccessImage,
+        HintKeyImage,
     }
     
     enum Buttons
@@ -47,6 +47,7 @@ public class UI_PlayerScene : UI_Scene
             _collectionData.Add(collectionData);
         }
 
+        StaticPlayerEx("Initial");
 
         //static 캐릭터
         // StaticPlayer = Managers.Resource.Instantiate("StaticPlayer");
@@ -74,13 +75,13 @@ public class UI_PlayerScene : UI_Scene
 
         GetText((int)Texts.Stage).text = $"{Managers.Game.Stage} 단계";
         GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
-        GetText((int)Texts.GoTitleText).text = Managers.GetText(Define.GOBACKText);
         GetText((int)Texts.DifficultyLevel).text = $"{Managers.Game.DifficultyLevel}";
         //상태창
-        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n추측 가능한 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
+        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n추측 가능한 시간: {Managers.Game.GuessTimer}초";
         GetImage((int)Images.CollectionSuccessImage).gameObject.SetActive(false);
 
         GetButton((int)Buttons.GoTitle).gameObject.BindEvent(ClearGame);
+        GetText((int)Texts.HintKeyText).text = $"X{Managers.Game.HintKey}";
 
         return true;
     }
@@ -104,8 +105,9 @@ public class UI_PlayerScene : UI_Scene
     public void RefreshUI()
     {
         GetText((int)Texts.Stage).text = $"{Managers.Game.Stage}단계";
-        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n추측 가능한 시간: {Managers.Game.GuessTimer}초 \n힌트키: {Managers.Game.HintKey}개";
+        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n추측 가능한 시간: {Managers.Game.GuessTimer}초";
         GetText((int)Texts.DifficultyLevel).text = $"{Managers.Game.DifficultyLevel}";
+        GetText((int)Texts.HintKeyText).text = $"X{Managers.Game.HintKey}";
     }
 
     public void HPUp()
@@ -184,7 +186,21 @@ public class UI_PlayerScene : UI_Scene
             customManager.numberCheck(3);
             customManager.numberCheck(4); 
         }
-
+        
+        else if(express == "SomethingWrong")
+        {
+            customManager.eye = 18;
+            customManager.mouth =20;
+            customManager.numberCheck(3);
+            customManager.numberCheck(4); 
+        }
+        else if(express == "SomethingRight")
+        {
+            customManager.eye = 11;
+            customManager.mouth =12;
+            customManager.numberCheck(3);
+            customManager.numberCheck(4); 
+        }
         else if(express == "GameOver")
         {
             customManager.eye = 17;
