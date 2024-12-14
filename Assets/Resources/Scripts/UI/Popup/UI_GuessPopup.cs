@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 using static Define;
 
 public class UI_GuessPopup : UI_Popup
@@ -12,6 +12,7 @@ public class UI_GuessPopup : UI_Popup
     public float RemainTime;
     public bool isAvoid;
     public string WrongRegion;
+    public bool CheckSomethingWrong;
     public int totalDamage;
 
     private float lastSoundTime = 0f; 
@@ -80,6 +81,7 @@ public class UI_GuessPopup : UI_Popup
         Correct,
         Wrong,
         RemindImage,
+        WhenWrongImage,
     }
     
     GameObject GuessPlayer;
@@ -124,6 +126,7 @@ public class UI_GuessPopup : UI_Popup
         GetButton((int)Buttons.AvoidButton).gameObject.SetActive(false);
         GetText((int)Texts.Avoid).gameObject.SetActive(false);
         GetImage((int)Images.RemindImage).gameObject.SetActive(false);
+        GetImage((int)Images.WhenWrongImage).gameObject.SetActive(false);
         GetText((int)Texts.ConfirmButtonText).text = Managers.GetText(Define.ConfirmButtonText);
 
 
@@ -184,48 +187,20 @@ public class UI_GuessPopup : UI_Popup
         
 
         #region 힌트키 바인드
-        GetButton((int)Buttons.HairHint).gameObject.BindEvent(() => 
+        string[] hintKeys = { "HairHint", "ClothesHint", "EyebrowHint", "EyeHint", "MouthHint", "EmotionHint", "AnimationHint" };
+        foreach (var hintKey in hintKeys)
         {
-            Managers.Sound.Play(Sound.Effect, "Sound_Hint");
-            UseHintKey("HairHint");
-        });
-        GetButton((int)Buttons.ClothesHint).gameObject.BindEvent(() => 
-        {
-            Managers.Sound.Play(Sound.Effect, "Sound_Hint");
-            UseHintKey("ClothesHint");
-        });
-        GetButton((int)Buttons.EyebrowHint).gameObject.BindEvent(() => 
-        {
-            Managers.Sound.Play(Sound.Effect, "Sound_Hint");
-            UseHintKey("EyebrowHint");
-        });
-        GetButton((int)Buttons.EyeHint).gameObject.BindEvent(() => 
-        {
-            Managers.Sound.Play(Sound.Effect, "Sound_Hint");
-            UseHintKey("EyeHint");
-        });
-        GetButton((int)Buttons.EyeHint).gameObject.BindEvent(() => 
-        {
-            Managers.Sound.Play(Sound.Effect, "Sound_Hint");
-            UseHintKey("EyeHint");
-        });
-        GetButton((int)Buttons.MouthHint).gameObject.BindEvent(() => 
-        {
-            Managers.Sound.Play(Sound.Effect, "Sound_Hint");
-            UseHintKey("MouthHint");
-        });
-        GetButton((int)Buttons.EmotionHint).gameObject.BindEvent(() => 
-        {
-            Managers.Sound.Play(Sound.Effect, "Sound_Hint");
-            UseHintKey("EmotionHint");
-        });
-        GetButton((int)Buttons.AnimationHint).gameObject.BindEvent(() => 
-        {
-            Managers.Sound.Play(Sound.Effect, "Sound_Hint");
-            UseHintKey("AnimationHint");
-        });
-        
+            Buttons button = (Buttons)System.Enum.Parse(typeof(Buttons), hintKey);
+            GetButton((int)button).gameObject.BindEvent(() =>
+            {
+                Managers.Sound.Play(Sound.Effect, "Sound_Hint");
+                UseHintKey(hintKey);
+
+            });
+        }
         #endregion
+
+        
         //추측하는 버튼 바인딩
         #region 추측플레이어 바인딩
         if(Managers.Game.DifficultyLevel == "Normal")
@@ -285,49 +260,36 @@ public class UI_GuessPopup : UI_Popup
     //stranger와 추측 캐릭터 비교
     string CompareCharacter(string WrongRegion)
     {
-        
-        if (customManager.hair != Managers.Game.StrangerIndex[0])
+        int[] indicesToCompare = { 0, 1, 2, 3, 4, 5, 6 };
+        object[] propertiesToCompare = {
+            customManager.hair,
+            customManager.clothes,
+            customManager.eyebrow,
+            customManager.eye,
+            customManager.mouth,
+            customManager.emotion,
+            animationManager.ani
+        };
+
+        for (int i = 0; i < indicesToCompare.Length; i++)
         {
-            WrongRegion += "1";
-            IncorrectCount++;
-        } else {WrongRegion += "0";}
-        if (customManager.clothes != Managers.Game.StrangerIndex[1])
-        {
-            WrongRegion += "1";
-            IncorrectCount++;
-        } else {WrongRegion += "0";}
-        if (customManager.eyebrow != Managers.Game.StrangerIndex[2])
-        {
-            WrongRegion += "1";
-            IncorrectCount++;
-        } else {WrongRegion += "0";}
-        if (customManager.eye != Managers.Game.StrangerIndex[3])
-        {
-            WrongRegion += "1";
-            IncorrectCount++;
+            if (!propertiesToCompare[i].Equals(Managers.Game.StrangerIndex[indicesToCompare[i]]))
+            {
+                WrongRegion += "1";
+                IncorrectCount++;
+            }
+            else
+            {
+                WrongRegion += "0";
+            }
         }
-            else {WrongRegion += "0";}
-        if (customManager.mouth != Managers.Game.StrangerIndex[4])
-        {
-            WrongRegion += "1";
-            IncorrectCount++;
-        }
-            else {WrongRegion += "0";}
-        if (customManager.emotion != Managers.Game.StrangerIndex[5])
-        {
-            WrongRegion += "1";    
-            IncorrectCount++;
-        }
-            else {WrongRegion += "0";}
-        if (animationManager.ani != Managers.Game.StrangerIndex[6])
-        {
-            WrongRegion += "1";
-            IncorrectCount++;
-        }
-            else {WrongRegion += "0";}
-            Debug.Log($"틀린 개수: {IncorrectCount}");
-            return WrongRegion;
+
+        Debug.Log($"틀린 개수: {IncorrectCount}");
+        return WrongRegion;
     }
+
+
+
 
     void OnClickConfirmButton(bool isCorrect)
     {
@@ -688,8 +650,57 @@ public class UI_GuessPopup : UI_Popup
         // GetText((int)Texts.TheWorldText).text = $"{Managers.Game.TheWorld}";
     }
 
+    //힌트를 위한 계속해서 체크하기 함수
+    void CompareForHint()
+    {
+        int[] indicesToCompare = { 0, 1, 2, 3, 4, 5, 6 };
+        object[] propertiesToCompare = {
+            customManager.hair,
+            customManager.clothes,
+            customManager.eyebrow,
+            customManager.eye,
+            customManager.mouth,
+            customManager.emotion,
+            animationManager.ani
+        };
+
+         CheckSomethingWrong = false;
+
+        for (int i = 0; i < indicesToCompare.Length; i++)
+        {
+            if (!propertiesToCompare[i].Equals(Managers.Game.StrangerIndex[indicesToCompare[i]]))
+        {
+            CheckSomethingWrong = true; // 잘못된 점 발견 시 true 설정
+            break; // 하나라도 발견되면 반복 종료
+        }
+        }
+
+        
+    }
     private void FixedUpdate()
     {
+        //언리미티드난이도 아닐 경우에 3초 전에 잘못된 것을 알려주기
+        if(Managers.Game.DifficultyLevel != "UnLimited")
+        {
+            int chanceTime = 0;
+            if(Managers.Game.DifficultyLevel == "Hard")
+                chanceTime = 3;
+            else if(Managers.Game.DifficultyLevel == "Normal")
+                chanceTime = 3;
+
+            CompareForHint();
+            if(CheckSomethingWrong && RemainTime < chanceTime)
+            {
+                GetImage((int)Images.WhenWrongImage).gameObject.SetActive(true);
+                playerScene.StaticPlayerEx("SomethingWrong");
+            }
+            else
+            {
+                GetImage((int)Images.WhenWrongImage).gameObject.SetActive(false);
+                
+            }
+        }
+
         if (_isMoving)
         {
             Stranger.transform.position = new Vector3(-6.5f, 1.5f, 0); // 특정 위치로 이동
@@ -697,6 +708,7 @@ public class UI_GuessPopup : UI_Popup
             StartCoroutine(HideStrangerAfterDelay(2f)); // 2초 후 사라지게 하기
         }
     }
+
 
     private IEnumerator HideStrangerAfterDelay(float delay)
     {

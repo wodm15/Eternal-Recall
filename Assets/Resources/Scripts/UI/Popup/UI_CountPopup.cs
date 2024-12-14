@@ -45,33 +45,41 @@ public class UI_CountPopup : UI_Popup
         int _Stage = Managers.Game.Stage;
 
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
+    
+    if (_Stage == 1)
+    {
+        Managers.Sound.Clear();
+        Managers.Game.BGM = "Sound_MainPlay1";
+        Managers.Sound.Play(Sound.Bgm, Managers.Game.BGM);
+    }
 
-        if (_Stage == 1)
+    // 10단계씩마다 음악 변경 로직
+    if (_Stage >= 10 && _Stage <= 60)
+    {
+        string[] soundFiles = new string[]
         {
-            Managers.Sound.Clear();
-            Managers.Sound.Play(Sound.Bgm, "Sound_MainPlay1");
-        }
+            "Sound_MainPlay10", // 10단계
+            "Sound_MainPlay20", // 20단계
+            "Sound_MainPlay30", // 30단계
+            "Sound_MainPlay40", // 40단계
+            "Sound_MainPlay50", // 50단계
+            "Sound_MainPlay60"  // 60단계
+        };
 
-        // 10단계 씩마다 음악 바꾸기
-        if (_Stage >= 10 && _Stage <= 60 && _Stage % 10 == 0)
+        if (_Stage % 10 == 0) // 10의 배수일 때만 음악 변경
         {
-            Managers.Sound.Clear();
+            int index = (_Stage / 10) - 1; // 배열은 0부터 시작 (Stage 10 → index 0)
+            string nextBgm = soundFiles[index];
 
-            string[] soundFiles = new string[]
+            if (Managers.Game.BGM != nextBgm) // 동일한 음악이면 변경하지 않음
             {
-                "Sound_MainPlay10", // 10단계
-                "Sound_MainPlay20", // 20단계
-                "Sound_MainPlay30", // 30단계
-                "Sound_MainPlay40", // 40단계
-                "Sound_MainPlay50", // 50단계
-                "Sound_MainPlay60"  // 60단계
-            };
-
-            int index = (_Stage / 10) - 1; 
-            Managers.Game.BGM = soundFiles[index];
+                Managers.Game.BGM = nextBgm;
+                Managers.Sound.Play(Sound.Bgm, Managers.Game.BGM);
+            }
         }
-
-        Managers.Sound.Play(Sound.Bgm , Managers.Game.BGM);
+    }
+        if(Managers.Game.BGM == null)
+            Managers.Sound.Play(Sound.Bgm,"Sound_MainPlay10");
 
         GetText((int)Texts.PreviousStage).text = $" Stage : {_Stage -1}";
         GetText((int)Texts.ShowStage).text = $" Stage : {_Stage}";

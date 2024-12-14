@@ -131,7 +131,7 @@ void OnClickStartButton()
 	{
 		Debug.Log("OnClickContinueButton");
 		// Managers.Game.CharacterDelete();
-		Managers.Game.Init();
+
 
 		bool isGameLoaded = Managers.Game.LoadGame();
 
@@ -146,6 +146,8 @@ void OnClickStartButton()
 		
 		else if(isGameLoaded && Managers.Game.Hp > 0)
 		{
+			Managers.Sound.Clear();
+			Managers.Sound.Play(Sound.Bgm , Managers.Game.BGM);
 			Managers.UI.ClosePopupUI(this);
 			Managers.UI.ShowPopupUI<UI_CountPopup>();
 			Managers.UI.ShowSceneUI<UI_PlayerScene>();
