@@ -330,6 +330,8 @@ public class UI_GuessPopup : UI_Popup
                 GetButton((int)Buttons.AvoidButton).gameObject.BindEvent(() =>
                 {
                     isAvoidClick = true;
+                    GetButton((int)Buttons.AvoidButton).gameObject.SetActive(false);
+                    
                     if (Random.Range(1, 3) == 1)
                     {
                         Debug.Log("회피 성공!");
@@ -661,7 +663,7 @@ public class UI_GuessPopup : UI_Popup
             customManager.eye,
             customManager.mouth,
             customManager.emotion,
-            animationManager.ani
+            animationManager.ani +1,
         };
 
          CheckSomethingWrong = false;

@@ -13,7 +13,7 @@ public class UI_PlayPopup : UI_Popup
     private bool hasPausedOnce = false; // 멈춤 한번만 실행
     GameObject Stranger;
     GameObject Bird;
-    private string _birdName;
+
 
 
     public override bool Init()
@@ -27,7 +27,7 @@ public class UI_PlayPopup : UI_Popup
 
         Stranger.transform.position = new Vector3(-10,2,0);
 
-        BirdResponse();
+
         BirdComing();
 
         return true;
@@ -80,48 +80,23 @@ public class UI_PlayPopup : UI_Popup
         isPaused = false;
     }
 
-    public void BirdResponse()
-    {
-        // 난이도에 따른 기본 확률 설정 (노말 1, 하드 3, 언리미티드 5)
-        if (Managers.Game.DifficultyLevel == "Normal" && Managers.Game.Stage >= 10 && Managers.Game.Stage % 5 == 0)
-        {
-            Managers.Game.BirdPercent +=1;
-        }
-        else if (Managers.Game.DifficultyLevel == "Hard" && Managers.Game.Stage >= 1 && Managers.Game.Stage % 5 == 0)
-        {
-            Managers.Game.BirdPercent +=2;
-        }
-        else if (Managers.Game.DifficultyLevel == "UnLimited" && Managers.Game.Stage >= 1 && Managers.Game.Stage % 5 == 0)
-        {
-            Managers.Game.BirdPercent +=5;
-        }
-
-
-        // 확률에 따라 Bird 생성 여부 결정
-        float randomValue = Random.Range(0f, 100f);
-        
-        if (randomValue < Managers.Game.BirdPercent)
-        {
-            // 1, 2, 3 중 무작위로 선택
-            int birdIndex = Random.Range(1, 4); // 1부터 3까지 무작위 숫자 생성
-
-            _birdName = "Bird" + birdIndex; // "Bird1", "Bird2", "Bird3" 중 하나
-
-            // 무작위로 선택된 새 생성
-            Bird = Managers.Resource.Instantiate(_birdName);
-            Bird.transform.position = new Vector3(12, 2.5f, 0);
-        }
-        else
-        {
-            Debug.Log($"새 생성안됨 {Managers.Game.BirdPercent} 랜덤 밸류: {randomValue})");
-        }
-    }
-
-
 
     public void BirdComing()
     {
-        Bird = GameObject.Find(_birdName);
+        
+        if (GameObject.Find("Bird1") != null)
+        {
+            Bird = GameObject.Find("Bird1");
+        }
+        else if (GameObject.Find("Bird2") != null)
+        {
+            Bird = GameObject.Find("Bird2");
+        }
+        else if (GameObject.Find("Bird3") != null)
+        {
+            Bird = GameObject.Find("Bird3");
+        }
+
 
         if (Bird != null)
         {        

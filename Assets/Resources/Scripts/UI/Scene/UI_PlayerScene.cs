@@ -15,12 +15,14 @@ public class UI_PlayerScene : UI_Scene
         CollectionSuccessText,
         DifficultyLevel,
         HintKeyText,
+        GuessTimeText,
     }
     enum Images
     {
         HPBG, //hp 배경바
         CollectionSuccessImage,
         HintKeyImage,
+        GuessTimeImage,
     }
     
     enum Buttons
@@ -77,7 +79,8 @@ public class UI_PlayerScene : UI_Scene
         GetText((int)Texts.HPText).text = $"{Managers.Game.Hp}";
         GetText((int)Texts.DifficultyLevel).text = $"{Managers.Game.DifficultyLevel}";
         //상태창
-        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n추측 가능한 시간: {Managers.Game.GuessTimer}초";
+        GetText((int)Texts.GuessTimeText).text = $"{Managers.Game.GuessTimer}초";
+        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name}";
         GetImage((int)Images.CollectionSuccessImage).gameObject.SetActive(false);
 
         GetButton((int)Buttons.GoTitle).gameObject.BindEvent(ClearGame);
@@ -105,7 +108,8 @@ public class UI_PlayerScene : UI_Scene
     public void RefreshUI()
     {
         GetText((int)Texts.Stage).text = $"{Managers.Game.Stage}단계";
-        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name} \n추측 가능한 시간: {Managers.Game.GuessTimer}초";
+        GetText((int)Texts.GuessTimeText).text = $"{Managers.Game.GuessTimer}초";
+        GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name}";
         GetText((int)Texts.DifficultyLevel).text = $"{Managers.Game.DifficultyLevel}";
         GetText((int)Texts.HintKeyText).text = $"X{Managers.Game.HintKey}";
     }

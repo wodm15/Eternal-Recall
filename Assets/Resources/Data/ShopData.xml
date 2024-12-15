@@ -64,7 +64,7 @@
   <ShopData ID="602" name="6602" productID="GetExpendTime" icon="GetExpendTime" description="추측할 수 있는&#10;시간이 늘어납니다. +5초" effectType="Skill" effectValue="5"/>
   <ShopData ID="603" name="6603" productID="GetTheWorld" icon="GetTheWorld" description="한번 더 보기 2개 획득&#10;(소모성)" effectType="Skill" effectValue="2"/>
   <!-- <ShopData ID="604" name="6604" productID="upLuck" icon="upLuck" description="운을 5% 늘립니다." effectType="Passive" effectValue="5"/> -->
-  <ShopData ID="605" name="6605" productID="FreePass" icon="FreePass" description="HP를 -5를 깎는 대신&#10;스테이지를 3턴 넘깁니다." effectType="Skill" effectValue="{-5,3}"/>
+  <!-- <ShopData ID="605" name="6605" productID="FreePass" icon="FreePass" description="HP를 -5를 깎는 대신&#10;스테이지를 3턴 넘깁니다." effectType="Skill" effectValue="{-5,3}"/> -->
   <ShopData ID="607" name="6607" productID="HintKey" icon="HintKey" description="힌트 2개를 획득합니다 " effectType="Skill" effectValue="2"/>
   <!-- <ShopData ID="608" name="6608" productID="upAvoid" icon="upAvoid" description="회피율을 5% 늘립니다. " effectType="Passive" effectValue="5"/> -->
 

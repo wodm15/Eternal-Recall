@@ -33,18 +33,12 @@ public class CollectionData
 	[XmlAttribute]
 	public string reqLevel;
 
-	// [XmlAttribute]
-	// public int difHp;
-
-	// [XmlAttribute]
-	// public int difStage;
-
-	// [XmlAttribute]
-	// public int difHintKey;
 	[XmlAttribute]
 	public string description;
 	[XmlAttribute]
 	public string How;
+	[XmlAttribute]
+	public int purchase;
 
 }
 
