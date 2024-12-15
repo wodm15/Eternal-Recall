@@ -217,6 +217,9 @@ public class GameManagerEx
                 if (Collections[data.ID ] != CollectionState.None)
 				continue;
 
+                if(data.purchase == 1)
+                    continue;
+
                 if(data.reqLevel != DifficultyLevel[..1])
                     continue;
 

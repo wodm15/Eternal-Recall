@@ -10,6 +10,8 @@ public class GameScene : BaseScene
 			return false;
 
         SceneType = Define.Scene.Game;
+		Application.runInBackground = true;
+		
 		Managers.UI.ShowPopupUI<UI_TitlePopup>();
 		Debug.Log("Init");
 		return true;

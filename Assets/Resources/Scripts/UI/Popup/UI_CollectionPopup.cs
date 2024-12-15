@@ -77,21 +77,35 @@ public class UI_CollectionPopup : UI_Popup
 
     }
 
-    public void GetData()
-    {
-        //사용자 컬렉션 깬지 확인
-        foreach (int ZeroOrTwo in Managers.Game.Collections)
+        public void GetData()
         {
-            Usercollections.Add(ZeroOrTwo);
+            // 사용자 컬렉션 깬지 확인
+            foreach (int ZeroOrTwo in Managers.Game.Collections)
+            {
+                Usercollections.Add(ZeroOrTwo);
+            }
+
+            // purchase가 0인 데이터를 추가
+            List<CollectionData> purchaseOneList = new List<CollectionData>(); // purchase가 1인 데이터 저장용
+            foreach (CollectionData data in Managers.Data.Collections.Values)
+            {
+                if (data.purchase == 0) // purchase가 0인 경우
+                {
+                    CollectionData.Add(data);
+                }
+                else if (data.purchase == 1) // purchase가 1인 경우
+                {
+                    purchaseOneList.Add(data);
+                }
+            }
+
+            // purchase가 1인 데이터를 마지막에 추가
+            foreach (CollectionData data in purchaseOneList)
+            {
+                CollectionData.Add(data);
+            }
         }
 
-        //데이터 정보 가져오기
-        foreach (CollectionData data in Managers.Data.Collections.Values)
-        {
-            CollectionData.Add(data);
-        }
-
-    }
 
     public void MakeImage(GameObject content)
     {

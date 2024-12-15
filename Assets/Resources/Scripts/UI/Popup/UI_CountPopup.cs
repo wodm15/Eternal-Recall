@@ -66,16 +66,14 @@ public class UI_CountPopup : UI_Popup
             "Sound_MainPlay60"  // 60단계
         };
 
-        if (_Stage % 10 == 0) // 10의 배수일 때만 음악 변경
-        {
-            int index = (_Stage / 10) - 1; // 배열은 0부터 시작 (Stage 10 → index 0)
-            string nextBgm = soundFiles[index];
 
-            if (Managers.Game.BGM != nextBgm) // 동일한 음악이면 변경하지 않음
-            {
-                Managers.Game.BGM = nextBgm;
-                Managers.Sound.Play(Sound.Bgm, Managers.Game.BGM);
-            }
+        int index = (_Stage / 10) - 1; // 배열은 0부터 시작 (Stage 10 → index 0)
+        string nextBgm = soundFiles[index];
+
+        if (Managers.Game.BGM != nextBgm) // 동일한 음악이면 변경하지 않음
+        {
+            Managers.Game.BGM = nextBgm;
+            Managers.Sound.Play(Sound.Bgm, Managers.Game.BGM);
         }
     }
         if(Managers.Game.BGM == null)

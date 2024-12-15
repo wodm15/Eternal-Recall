@@ -16,7 +16,7 @@
   <StatData ID="13" type="clothes" nameID="113" icon="13_PrincessClothes" name="공주옷" description="동화 속 공주가 &#10;현실로 등장!" power ="힌트 키 2개 바로 획득" effectType="HintKey" effectValue="2" />
   <StatData ID="14" type="clothes" nameID="114" icon="14_Jean" name="청바지" description="어디에나 잘 어울리는 &#10;만능 아이템." power ="회피 +1%" effectType="Avoid" effectValue="1" />
   <StatData ID="15" type="clothes" nameID="115" icon="15_SchoolUniform" name="교복" description="청춘의 추억을 &#10;다시 떠올려보세요." power ="추측 시간 +1초" effectType="GuessTimer" effectValue="1" />
-  <StatData ID="16" type="clothes" nameID="116" icon="16_NurseUniform" name="간호복" description="힐링의 아이콘! &#10;모두를 치유할 준비 완료." power ="데미지 -1감소" effectType="Defence" effectValue="1" />
+  <StatData ID="16" type="clothes" nameID="116" icon="16_NurseUniform" name="간호복" description="힐링의 아이콘! &#10;모두를 치유할 &#10;준비 완료." power ="데미지 -1감소" effectType="Defence" effectValue="1" />
   <StatData ID="17" type="clothes" nameID="117" icon="17_Magical" name="마법소녀" description="마법의 힘으로 &#10;세상을 구할 시간!" power ="추측 시간 +3초" effectType="GuessTimer" effectValue="3" />
   <StatData ID="18" type="clothes" nameID="118" icon="18_Swimsuit2" name="수영복2" description="귀여운 수영복" power ="힌트 키 +3" effectType="HintKey" effectValue="3" />
   <StatData ID="19" type="clothes" nameID="119" icon="19_Warrior" name="전투복" description="전장에서 무적의 &#10;전사가 되어보세요!" power ="회피 +5%" effectType="Avoid" effectValue="5" />
