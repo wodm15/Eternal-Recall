@@ -7,6 +7,7 @@ using static Define;
 using System.Linq;
 using JetBrains.Annotations;
 using System.Collections.ObjectModel;
+using Unity.VisualScripting;
 
 
 public class UI_NamePopup : UI_Popup
@@ -37,6 +38,7 @@ public class UI_NamePopup : UI_Popup
         DifficultyExplainText,
         WarningInput,
         GotoTitleText,
+        UnlockText,
 	}
 
 	enum Buttons
@@ -45,7 +47,11 @@ public class UI_NamePopup : UI_Popup
         ClothesMinus,
         ClothesPlus,
         GotoTitleButton,
+        HardLock,
+        UnlimtedLock,
 	}
+
+
 
     TMP_InputField _inputField;
     [SerializeField] ToggleGroup toggleGroup; 
@@ -74,6 +80,43 @@ public class UI_NamePopup : UI_Popup
         GetText((int)Texts.WarningInput).text = Managers.GetText(Define.WarningInputText);
         GetText((int)Texts.WarningInput).gameObject.SetActive(false);
         GetText((int)Texts.GotoTitleText).text = Managers.GetText(Define.GoToTitleText);
+
+        GetButton((int)Buttons.HardLock).gameObject.BindEvent(() =>
+        {
+            GetText((int)Texts.UnlockText).text = Managers.GetText(Define.UnlockHardText);
+            GetText((int)Texts.UnlockText).gameObject.SetActive(true);
+        });
+        GetButton((int)Buttons.UnlimtedLock).gameObject.BindEvent(() =>
+        {
+            GetText((int)Texts.UnlockText).text = Managers.GetText(Define.UnlockUnlimitedText);
+            GetText((int)Texts.UnlockText).gameObject.SetActive(true);
+        });
+
+        Normal.onValueChanged.AddListener((isOn) =>
+        {
+            if(isOn)
+            {
+                GetText((int)Texts.UnlockText).gameObject.SetActive(false);
+            }
+        });
+        
+        GetButton((int)Buttons.HardLock).gameObject.SetActive(false);
+        GetButton((int)Buttons.UnlimtedLock).gameObject.SetActive(false);
+        GetText((int)Texts.UnlockText).gameObject.SetActive(false);
+
+
+        if (Managers.Game.Unlocked[0] == CollectionState.None) // Hard 잠금 상태
+        {
+            GetButton((int)Buttons.HardLock).gameObject.SetActive(true);
+            Hard.interactable = false;
+        }
+
+        if (Managers.Game.Unlocked[1] == CollectionState.None) //언리미티드 잠금 상태
+        {
+             GetButton((int)Buttons.UnlimtedLock).gameObject.SetActive(true);
+             UnLimited.interactable = false;
+        }
+
 
         
         #region 코디 (현재는 옷만)
@@ -190,9 +233,6 @@ public class UI_NamePopup : UI_Popup
     	_inputField = GetObject((int)GameObjects.InputField).gameObject.GetComponent<TMP_InputField>();
 		_inputField.text = "";
 
-        if(Managers.Game.StatData.ID == 101)
-            Debug.Log("101옷 있음");
-
         return true;
     }
 
@@ -209,10 +249,10 @@ public class UI_NamePopup : UI_Popup
         customManager.numberCheck(1);  
     }
 
-    private void SetToggleGroup()
-    {
+    // private void SetToggleGroup()
+    // {
 
-    }
+    // }
 
 
 	void RefreshUI()
@@ -223,57 +263,6 @@ public class UI_NamePopup : UI_Popup
 
         
 	}
-
-    //캐릭 랜덤 생성 (아직 안씀)
-    //TODO
-    public void CharacterResponse()
-    {
-        Player = GameObject.FindGameObjectWithTag("Player");
-        if(Player != null)
-        {
-            GameObject customManager = Utils.FindChild(Player, "CustomManager");
-            //스크립트 접근
-            CustomManager _customManager = customManager.GetComponent<CustomManager>();
-
-
-            //애니메이션 랜덤 변경
-            AnimationManager animationManager = customManager.GetComponent<AnimationManager>();
-            animationManager.ani = Random.Range(0, animationManager.aniName.Length);
-            
-
-            GameObject hair = GameObject.FindGameObjectWithTag("Hair");
-            GameObject clothes = GameObject.FindGameObjectWithTag("Clothes");
-            GameObject eyebrow = GameObject.FindGameObjectWithTag("Eyebrow");
-            GameObject eye = GameObject.FindGameObjectWithTag("Eye");
-            GameObject mouth = GameObject.FindGameObjectWithTag("Mouth");
-            GameObject emotion = GameObject.FindGameObjectWithTag("Emotion");
-            
-            int hairLength = hair.transform.childCount;
-            // int clothesLength = clothes.transform.childCount;
-            int clothesLength = 20;
-            int eyebrowLength = eyebrow.transform.childCount;
-            int eyeLength = eye.transform.childCount;
-            int mouthLength = mouth.transform.childCount;
-            int emotionLength = mouth.transform.childCount;
-
-            playerIndex[0] = Random.Range(0, hairLength);
-            playerIndex[1] = Random.Range(0,clothesLength );
-            playerIndex[2] = Random.Range(0,eyebrowLength);
-            playerIndex[3] = Random.Range(0,eyeLength);
-            playerIndex[4] = Random.Range(0,mouthLength);
-            playerIndex[5] = Random.Range(0,emotionLength);
-
-            _customManager.hair = playerIndex[0];
-            _customManager.clothes = playerIndex[1];
-            _customManager.eyebrow = playerIndex[2];
-            _customManager.eye = playerIndex[3];
-            _customManager.mouth = playerIndex[4];
-            _customManager.emotion = playerIndex[5];
-
-        }
-        else
-            Debug.LogError("NO PLAYER FOUND");
-    }
 
     void OnClickConfirmButton()
     {

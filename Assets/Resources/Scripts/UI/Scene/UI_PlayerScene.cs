@@ -105,6 +105,7 @@ public class UI_PlayerScene : UI_Scene
         RefreshUI();
     }
 
+
     public void RefreshUI()
     {
         GetText((int)Texts.Stage).text = $"{Managers.Game.Stage}단계";

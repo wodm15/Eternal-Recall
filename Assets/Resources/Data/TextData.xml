@@ -18,6 +18,9 @@
   <TextData ID="6514" kor="타이틀로 돌아가기" eng="" />
   <TextData ID="6515" kor="광고보고 피 1로 살아나기" eng="" />
   <TextData ID="6516" kor="계속하기를 눌러봐" eng="" />
+  <TextData ID="6517" kor="무엇인가 잘못된거 같아..." eng="" />
+  <TextData ID="6518" kor="노말난이도 클리어 시 해금" eng="" />
+  <TextData ID="6519" kor="하드난이도 클리어 시 해금" eng="" />
 
   <TextData ID="10000" kor="새로 시작하기" eng="" />
   <TextData ID="10001" kor="계속하기" eng="" />

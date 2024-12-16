@@ -56,6 +56,9 @@ public class Define
 	public const int ErrorCodeInt = -100;
 	public const string ErrorCodeString = "Error";
 
+	public const int GiveHintNormal = 5;
+	public const int GiveHintHard = 3;
+	public const int GiveHintUnLimted = 0;
 	//현재 코디 옷 (19개 이므로)
 	public const int MAX_STAT_COUNT = 50;
 	public const int MAX_ENDING_COUNT = 50;
@@ -97,6 +100,9 @@ public class Define
 	public const int GameOverTitle = 6514;
 	public const int ReviveText = 6515;
 	public const int ReviveSayText = 6516;
+	public const int WhenWrongText = 6517;
+	public const int UnlockHardText = 6518;
+	public const int UnlockUnlimitedText = 6519;
 
 	public const int StartButtonText = 10000;
 	public const int ContinueButtonText = 10001;

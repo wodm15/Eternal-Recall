@@ -46,18 +46,12 @@ public class UI_CountPopup : UI_Popup
 
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
     
-    if (_Stage == 1)
-    {
-        Managers.Sound.Clear();
-        Managers.Game.BGM = "Sound_MainPlay1";
-        Managers.Sound.Play(Sound.Bgm, Managers.Game.BGM);
-    }
-
     // 10단계씩마다 음악 변경 로직
-    if (_Stage >= 10 && _Stage <= 60)
+    if (_Stage >= 1 && _Stage <= 70)
     {
         string[] soundFiles = new string[]
         {
+            "Sound_MainPlay1",
             "Sound_MainPlay10", // 10단계
             "Sound_MainPlay20", // 20단계
             "Sound_MainPlay30", // 30단계
@@ -67,7 +61,7 @@ public class UI_CountPopup : UI_Popup
         };
 
 
-        int index = (_Stage / 10) - 1; // 배열은 0부터 시작 (Stage 10 → index 0)
+        int index = (_Stage / 10); // 배열은 0부터 시작 (Stage 10 → index 0)
         string nextBgm = soundFiles[index];
 
         if (Managers.Game.BGM != nextBgm) // 동일한 음악이면 변경하지 않음
@@ -80,7 +74,10 @@ public class UI_CountPopup : UI_Popup
             Managers.Sound.Play(Sound.Bgm,"Sound_MainPlay10");
 
         GetText((int)Texts.PreviousStage).text = $" Stage : {_Stage -1}";
-        GetText((int)Texts.ShowStage).text = $" Stage : {_Stage}";
+        if(_Stage == Define.GameEndStage -1)
+            GetText((int)Texts.ShowStage).text = $" Final Stage : {_Stage}";
+        else
+            GetText((int)Texts.ShowStage).text = $" Stage : {_Stage}";
 
         if(_description !=null)
         {
