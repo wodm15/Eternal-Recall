@@ -47,6 +47,7 @@ public class UI_GuessPopup : UI_Popup
         MouthText,
         EmotionText,
         AnimationText,
+        WhenWrongText,
     }
     enum Buttons
     {
@@ -126,7 +127,10 @@ public class UI_GuessPopup : UI_Popup
         GetButton((int)Buttons.AvoidButton).gameObject.SetActive(false);
         GetText((int)Texts.Avoid).gameObject.SetActive(false);
         GetImage((int)Images.RemindImage).gameObject.SetActive(false);
+
         GetImage((int)Images.WhenWrongImage).gameObject.SetActive(false);
+        GetText((int)Texts.WhenWrongText).gameObject.SetActive(false);
+
         GetText((int)Texts.ConfirmButtonText).text = Managers.GetText(Define.ConfirmButtonText);
 
 
@@ -331,7 +335,7 @@ public class UI_GuessPopup : UI_Popup
                 {
                     isAvoidClick = true;
                     GetButton((int)Buttons.AvoidButton).gameObject.SetActive(false);
-                    
+
                     if (Random.Range(1, 3) == 1)
                     {
                         Debug.Log("회피 성공!");
@@ -400,7 +404,7 @@ public class UI_GuessPopup : UI_Popup
         {
             GameOver();
         }
-        if(Managers.Game.Stage >= Define.GameEndStage -1)
+        else if(Managers.Game.Stage >= Define.GameEndStage -1 && Managers.Game.Hp > 0)
         {
             GameEnd();
         }
@@ -446,6 +450,12 @@ public class UI_GuessPopup : UI_Popup
         Managers.Game.StaticCharacterDelete();
         Managers.Game.SaveGame();
         Managers.Sound.Stop(Sound.Bgm);
+
+        if(Managers.Game.DifficultyLevel == "Normal")
+                Managers.Game.Unlocked[0] = CollectionState.Done;
+        else if( Managers.Game.DifficultyLevel == "Hard")
+                Managers.Game.Unlocked[1] = CollectionState.Done;
+                
         Managers.UI.ClosePopupUI(this);
         UI_GameEndPopup gameEndPopup = Managers.UI.ShowPopupUI<UI_GameEndPopup>();
         gameEndPopup.transform.SetParent(null);
@@ -605,8 +615,8 @@ public class UI_GuessPopup : UI_Popup
                 CheckHintZero();
                 break;
             case "AnimationHint":
-                animationManager.ani = Managers.Game.StrangerIndex[6];
-                // animationManager.animator.Play(Managers.Game.StrangerIndex[6]);
+                animationManager.ani = Managers.Game.StrangerIndex[6] -1;
+                animationManager.PlayAni(true);
                 GetButton((int)Buttons.AnimationHint).gameObject.SetActive(false);
                 GetButton((int)Buttons.AnimationMinus).gameObject.SetActive(false);
                 GetButton((int)Buttons.AnimationPlus).gameObject.SetActive(false);
@@ -652,7 +662,7 @@ public class UI_GuessPopup : UI_Popup
         // GetText((int)Texts.TheWorldText).text = $"{Managers.Game.TheWorld}";
     }
 
-    //힌트를 위한 계속해서 체크하기 함수
+    //5초 이내 틀리는거 방지 힌트용
     void CompareForHint()
     {
         int[] indicesToCompare = { 0, 1, 2, 3, 4, 5, 6 };
@@ -663,7 +673,7 @@ public class UI_GuessPopup : UI_Popup
             customManager.eye,
             customManager.mouth,
             customManager.emotion,
-            animationManager.ani +1,
+            animationManager.ani ,
         };
 
          CheckSomethingWrong = false;
@@ -681,27 +691,8 @@ public class UI_GuessPopup : UI_Popup
     }
     private void FixedUpdate()
     {
-        //언리미티드난이도 아닐 경우에 3초 전에 잘못된 것을 알려주기
-        if(Managers.Game.DifficultyLevel != "UnLimited")
-        {
-            int chanceTime = 0;
-            if(Managers.Game.DifficultyLevel == "Hard")
-                chanceTime = 3;
-            else if(Managers.Game.DifficultyLevel == "Normal")
-                chanceTime = 3;
 
-            CompareForHint();
-            if(CheckSomethingWrong && RemainTime < chanceTime)
-            {
-                GetImage((int)Images.WhenWrongImage).gameObject.SetActive(true);
-                playerScene.StaticPlayerEx("SomethingWrong");
-            }
-            else
-            {
-                GetImage((int)Images.WhenWrongImage).gameObject.SetActive(false);
-                
-            }
-        }
+        GiveHint();
 
         if (_isMoving)
         {
@@ -1348,6 +1339,37 @@ public class UI_GuessPopup : UI_Popup
             GetText((int)Texts.AnimationText).text = $"Animation {animationManager.ani+1} / 11"; 
             Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
         });
+    }
+
+
+    public void GiveHint()
+    {
+        
+        if(Managers.Game.DifficultyLevel != "UnLimited")
+        {
+            int chanceTime = 0;
+            if(Managers.Game.DifficultyLevel == "Hard")
+                chanceTime = Define.GiveHintHard;
+            else if(Managers.Game.DifficultyLevel == "Normal")
+                chanceTime = Define.GiveHintNormal;
+
+            if(RemainTime > chanceTime)
+                CompareForHint();
+
+            if(CheckSomethingWrong && RemainTime < chanceTime  && RemainTime > chanceTime -1)
+            {
+                GetImage((int)Images.WhenWrongImage).gameObject.SetActive(true);
+                GetText((int)Texts.WhenWrongText).text = Managers.GetText(Define.WhenWrongText);
+                GetText((int)Texts.WhenWrongText).gameObject.SetActive(true);
+                playerScene.StaticPlayerEx("SomethingWrong");
+            }
+            else if( RemainTime < Define.GiveHintNormal -1 && RemainTime > 1)
+            {
+                GetImage((int)Images.WhenWrongImage).gameObject.SetActive(false);
+                GetText((int)Texts.WhenWrongText).gameObject.SetActive(false);
+                // playerScene.StaticPlayerEx("Initial");
+            }
+        }
     }
 
 }

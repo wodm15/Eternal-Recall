@@ -56,6 +56,9 @@ public class Define
 	public const int ErrorCodeInt = -100;
 	public const string ErrorCodeString = "Error";
 
+	public const int GiveHintNormal = 5;
+	public const int GiveHintHard = 3;
+	public const int GiveHintUnLimted = 0;
 	//현재 코디 옷 (19개 이므로)
 	public const int MAX_STAT_COUNT = 50;
 	public const int MAX_ENDING_COUNT = 50;
@@ -63,7 +66,15 @@ public class Define
 	//틀린 1개당 데미지
 	public const int Damage = 10;
 	//게임 종료 End
+
 	public const int GameEndStage = 70;
+
+	//픽업 옷 번호
+	public const int sailer = 0;
+	public const int nightWear = 10;
+	public const int Maid = 4;
+	public const int Bikini = 3;
+	public const int magic = 17;
 
 	//난이도 별 인덱스 범위
 	public const int NormalIndex = 5;
@@ -97,11 +108,28 @@ public class Define
 	public const int GameOverTitle = 6514;
 	public const int ReviveText = 6515;
 	public const int ReviveSayText = 6516;
+	public const int WhenWrongText = 6517;
+	public const int UnlockHardText = 6518;
+	public const int UnlockUnlimitedText = 6519;
+	public const int Pickup1 = 6520;
+	public const int Pickup2 = 6521;
+	public const int Pickup3 = 6522;
+	public const int Pickup4 = 6523;
+	public const int Pickup5 = 6524;
+	public const int PickPickText = 6525;
+	public const int NoMoneyText = 6526;
+	public const int Pickup1Percent = 6527;
+	public const int Pickup2Percent = 6528;
+	public const int Pickup3Percent = 6529;
+	public const int Pickup4Percent = 6530;
+	public const int Pickup5Percent = 6531;
+
 
 	public const int StartButtonText = 10000;
 	public const int ContinueButtonText = 10001;
 	public const int CollectionButtonText = 10002;
 	public const int QuitButtonText = 10003;
+	public const int PickupText = 10004;
 	public const int SkillChoseText = 100;
 	public const int Intro1 = 20019;
 	public const int Intro2 = 20020;

@@ -18,11 +18,27 @@
   <TextData ID="6514" kor="타이틀로 돌아가기" eng="" />
   <TextData ID="6515" kor="광고보고 피 1로 살아나기" eng="" />
   <TextData ID="6516" kor="계속하기를 눌러봐" eng="" />
+  <TextData ID="6517" kor="무엇인가 잘못된거 같아..." eng="" />
+  <TextData ID="6518" kor="노말난이도 클리어 시 해금" eng="" />
+  <TextData ID="6519" kor="하드난이도 클리어 시 해금" eng="" />
+  <TextData ID="6520" kor="비키니" eng="" />
+  <TextData ID="6521" kor="메이드" eng="" />
+  <TextData ID="6522" kor="세일러복" eng="" />
+  <TextData ID="6523" kor="잠옷" eng="" />
+  <TextData ID="6524" kor="마법소녀" eng="" />
+  <TextData ID="6525" kor="픽업뽑기" eng="" />
+  <TextData ID="6526" kor="돈이 부족합니다" eng="" />
+  <TextData ID="6527" kor="확률 : 0.000027%" eng="" />
+  <TextData ID="6528" kor="확률 : 2%" eng="" />
+  <TextData ID="6529" kor="확률 : 3%" eng="" />
+  <TextData ID="6530" kor="확률 : 4%" eng="" />
+  <TextData ID="6531" kor="확률 : 5%" eng="" />
 
   <TextData ID="10000" kor="새로 시작하기" eng="" />
   <TextData ID="10001" kor="계속하기" eng="" />
   <TextData ID="10002" kor="컬렉션" eng="" />
   <TextData ID="10003" kor="게임 종료" eng="" />
+  <TextData ID="10004" kor="뽑기" eng="" />
 
   <TextData ID="20019" kor="안녕! 나는 영원 회상의 도움이 뽐뽐이야! &lt;br&gt;오늘 첫 회상을 해볼까?" eng="" />
   <TextData ID="20020" kor="가이드 2 &lt;br&gt; 가이드 2" eng="" />

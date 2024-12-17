@@ -77,13 +77,14 @@ public int ValidateAndUpdateXmlAttributes(ref string xmlData)
             "ID", "DifficultyLevel", "Hp", "maxHp", "LuckPercent", "ExpendTime",
             "DownSpeed", "TheWorld", "PassTicket", "Stage", "GuessTimer",
             "Defence", "HintKey", "Avoid", "ClothesIndex", "BGM", "BirdPercent" ,
-            "Revive" , "ReviveLife" 
+            "Revive" , "ReviveLife" , "Unlocked" , "Money"
         };
 
         var actualAttributes = root.Attributes().Select(attr => attr.Name.LocalName).ToList();
         // Debug.Log("실제 속성: " + string.Join(", ", actualAttributes));
 
         var missingAttributes = expectedAttributes.Except(actualAttributes).ToList();
+    
         var extraAttributes = actualAttributes.Except(expectedAttributes).ToList();
 
         // 누락된 속성 확인 및 처리
@@ -138,7 +139,9 @@ private string ConvertJsonToXml(GameData data)
             new XAttribute("BGM", data.BGM),
             new XAttribute("BirdPercent", data.BirdPercent),
             new XAttribute("Revive", data.Revive),
-            new XAttribute("ReviveLife", data.ReviveLife)
+            new XAttribute("ReviveLife", data.ReviveLife),
+            new XAttribute("Unlocked", data.Unlocked),
+            new XAttribute("Money", data.Unlocked)
         );
 
         return root.ToString(); // XML 반환

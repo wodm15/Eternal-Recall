@@ -16,6 +16,7 @@ public class UI_PlayerScene : UI_Scene
         DifficultyLevel,
         HintKeyText,
         GuessTimeText,
+        MoneyText,
     }
     enum Images
     {
@@ -85,6 +86,7 @@ public class UI_PlayerScene : UI_Scene
 
         GetButton((int)Buttons.GoTitle).gameObject.BindEvent(ClearGame);
         GetText((int)Texts.HintKeyText).text = $"X{Managers.Game.HintKey}";
+        GetText((int)Texts.MoneyText).text = $"X{Managers.Game.Money}";
 
         return true;
     }
@@ -105,6 +107,7 @@ public class UI_PlayerScene : UI_Scene
         RefreshUI();
     }
 
+
     public void RefreshUI()
     {
         GetText((int)Texts.Stage).text = $"{Managers.Game.Stage}단계";
@@ -112,6 +115,8 @@ public class UI_PlayerScene : UI_Scene
         GetText((int)Texts.PlayerInfo).text = $"이름 : {Managers.Game.Name}";
         GetText((int)Texts.DifficultyLevel).text = $"{Managers.Game.DifficultyLevel}";
         GetText((int)Texts.HintKeyText).text = $"X{Managers.Game.HintKey}";
+        GetText((int)Texts.MoneyText).text = $"X{Managers.Game.Money}";
+
     }
 
     public void HPUp()

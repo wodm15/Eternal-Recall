@@ -47,9 +47,11 @@ public class GameData
         public int PassTicket; //스테이지 1개 바로 패스
         public int HintKey;
         
-        //컬렉션 
+        //컬렉션 +돈
+        public int Money = 0;
         public CollectionState[] Collections = new CollectionState[MAX_COLLECTION_COUNT];
-        
+        //난이도 해금
+        public CollectionState[] Unlocked = new CollectionState[2];
         //코디
         public int ClothesIndex;
         public StatData StatData = new StatData();
@@ -83,6 +85,7 @@ public class GameManagerEx
         get { return _gameData.DifficultyLevel;}
         set { _gameData.DifficultyLevel = value; DifficultySetting(DifficultyLevel);}
     }
+
     public int Stage
     {
         get { return _gameData.Stage;}
@@ -197,7 +200,8 @@ public class GameManagerEx
     #region 컬렉션 & 프로젝트
 
     public CollectionState[] Collections { get { return _gameData.Collections; } }
-    // public CollectionState[] Endings { get { return _gameData.Endings; } }
+    public CollectionState[] Unlocked { get { return _gameData.Unlocked; } }
+    public int Money { get { return _gameData.Money; } set { _gameData.Money = value; } }
     public Action<CollectionData> OnNewCollection;
 
     public StatData StatData 
