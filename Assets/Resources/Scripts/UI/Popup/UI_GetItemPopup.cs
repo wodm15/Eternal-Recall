@@ -103,7 +103,10 @@ public class UI_GetItemPopup : UI_Popup
         
         //맞았을 경우
         if(incorrectCount == 0)
+        {
             GetText((int)Texts.WrongCount).text = Managers.GetText(Define.CorrectText);
+            EarnMoney(true);
+        }
         else if (incorrectCount != 0 && isAvoid == false)
         {
             string[] parts = { "헤어", "복장", "눈썹", "눈동자", "입모양", "감정", "포즈" };
@@ -357,6 +360,36 @@ public class UI_GetItemPopup : UI_Popup
             Managers.Game.Avoid += (int)selectedItem.effectValues[0];
 
         return selectedItem;
+    }
+
+    //돈 업데이트
+    public void EarnMoney(bool correct)
+    {
+        if(correct && Managers.Game.DifficultyLevel == "Normal")
+        {  
+            Managers.Game.Money += 100;
+        }
+        else if(correct && Managers.Game.DifficultyLevel == "Hard")
+        {
+            Managers.Game.Money += 200;
+        }
+        else if(correct && Managers.Game.DifficultyLevel == "UnLimited")
+        {
+            Managers.Game.Money += 300;
+        }
+
+        else if(!correct && Managers.Game.DifficultyLevel == "Normal")
+        {  
+            Managers.Game.Money += 50;
+        }
+        else if(!correct && Managers.Game.DifficultyLevel == "Hard")
+        {
+            Managers.Game.Money += 100;
+        }
+        else if(!correct && Managers.Game.DifficultyLevel == "UnLimited")
+        {
+            Managers.Game.Money += 150;
+        }
     }
 
     void GameOver()

@@ -47,7 +47,8 @@ public class GameData
         public int PassTicket; //스테이지 1개 바로 패스
         public int HintKey;
         
-        //컬렉션 
+        //컬렉션 +돈
+        public int Money = 0;
         public CollectionState[] Collections = new CollectionState[MAX_COLLECTION_COUNT];
         //난이도 해금
         public CollectionState[] Unlocked = new CollectionState[2];
@@ -200,6 +201,7 @@ public class GameManagerEx
 
     public CollectionState[] Collections { get { return _gameData.Collections; } }
     public CollectionState[] Unlocked { get { return _gameData.Unlocked; } }
+    public int Money { get { return _gameData.Money; } set { _gameData.Money = value; } }
     public Action<CollectionData> OnNewCollection;
 
     public StatData StatData 

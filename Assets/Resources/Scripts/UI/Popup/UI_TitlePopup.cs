@@ -15,6 +15,7 @@ public class UI_TitlePopup : UI_Popup
 		ContinueButtonText,
 		CollectionButtonText,
 		QuitButtonText,
+		PickupText,
 		SayingText,
 	}
 
@@ -23,6 +24,7 @@ public class UI_TitlePopup : UI_Popup
 		StartButton,
 		ContinueButton,
 		CollectionButton,
+		PickupButton,
 		QuitButton,
 	}
 
@@ -30,6 +32,7 @@ public class UI_TitlePopup : UI_Popup
 	{
 		if (base.Init() == false)
 			return false;
+		Managers.Game.LoadGame();
 
 		//일단 확인 후 false로 초기화
 		bool isRevive = Managers.Game.ReviveLife;
@@ -71,17 +74,26 @@ public class UI_TitlePopup : UI_Popup
 
 			OnClickCollectionButton();
 		});
+		GetButton((int)Buttons.PickupButton).gameObject.BindEvent(() =>
+        {
+            
+			OnClickPickupButton();
+
+        });
 		GetButton((int)Buttons.QuitButton).gameObject.BindEvent(() =>
         {
             
 			Application.Quit();
 
         });
+
+		
 		// GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(OnClickCollectionButton);
 		GetText((int)Texts.StartButtonText).text = Managers.GetText(Define.StartButtonText);
 		GetText((int)Texts.ContinueButtonText).text = Managers.GetText(Define.ContinueButtonText);
 		GetText((int)Texts.CollectionButtonText).text = Managers.GetText(Define.CollectionButtonText);
 		GetText((int)Texts.QuitButtonText).text = Managers.GetText(Define.QuitButtonText);
+		GetText((int)Texts.PickupText).text = Managers.GetText(Define.PickupText);
 
 		//노래 설정
 		Managers.Sound.Clear();
@@ -164,6 +176,15 @@ void OnClickStartButton()
 
 		Debug.Log("OnClickCollectionButton");
 		Managers.UI.ShowPopupUI<UI_CollectionPopup>();
+	}
+
+	void OnClickPickupButton()
+	{
+		Managers.Game.LoadGame();
+		Player.transform.localPosition = new Vector3(12,0,0);
+
+		Debug.Log("OnClickPickupButton");
+		Managers.UI.ShowPopupUI<UI_PickupPopup>();
 	}
 
 	void CheckFirstVisit()

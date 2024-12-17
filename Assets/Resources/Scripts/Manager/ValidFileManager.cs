@@ -77,7 +77,7 @@ public int ValidateAndUpdateXmlAttributes(ref string xmlData)
             "ID", "DifficultyLevel", "Hp", "maxHp", "LuckPercent", "ExpendTime",
             "DownSpeed", "TheWorld", "PassTicket", "Stage", "GuessTimer",
             "Defence", "HintKey", "Avoid", "ClothesIndex", "BGM", "BirdPercent" ,
-            "Revive" , "ReviveLife" , "Unlocked"
+            "Revive" , "ReviveLife" , "Unlocked" , "Money"
         };
 
         var actualAttributes = root.Attributes().Select(attr => attr.Name.LocalName).ToList();
@@ -140,7 +140,8 @@ private string ConvertJsonToXml(GameData data)
             new XAttribute("BirdPercent", data.BirdPercent),
             new XAttribute("Revive", data.Revive),
             new XAttribute("ReviveLife", data.ReviveLife),
-            new XAttribute("Unlocked", data.Unlocked)
+            new XAttribute("Unlocked", data.Unlocked),
+            new XAttribute("Money", data.Unlocked)
         );
 
         return root.ToString(); // XML 반환

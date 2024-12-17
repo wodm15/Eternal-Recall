@@ -1367,7 +1367,7 @@ public class UI_GuessPopup : UI_Popup
             {
                 GetImage((int)Images.WhenWrongImage).gameObject.SetActive(false);
                 GetText((int)Texts.WhenWrongText).gameObject.SetActive(false);
-                playerScene.StaticPlayerEx("Initial");
+                // playerScene.StaticPlayerEx("Initial");
             }
         }
     }

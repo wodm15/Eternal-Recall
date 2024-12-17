@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using TMPro;
 using UnityEditor.U2D.Sprites;
 using UnityEngine;
 using UnityEngine.UI;
@@ -105,7 +107,6 @@ public class UI_CollectionPopup : UI_Popup
 // ,마법소녀 12 ,비키니 13,메이드 14,세일러복 15,수영복 16,치파오 17,가터벨트 18,교복 19,간호사 20
 
         GetData(); //유저 데이터와 컬렉션 데이터 가져오기
-        GetFilter(); //화면에 컬렉션 이미지 생성
 
         //이름 매핑
         Dictionary<int, Texts> textMapping= new Dictionary<int, Texts>
@@ -170,6 +171,7 @@ public class UI_CollectionPopup : UI_Popup
                 kvp.Value.onClick.AddListener(() => OnImageClick(nameID));
             }
 
+        GetFilter(); //화면에 컬렉션 이미지 생성
 
         GameObject Player = GameObject.Find("StaticPlayer");
         Player.transform.position = new Vector3(-6,-3,0);
@@ -286,17 +288,65 @@ public class UI_CollectionPopup : UI_Popup
     //업적 못한 옷은 필터시키기
     public void GetFilter()
     {
-        for(int i=0 ; i< Usercollections.Count ; i++)
+        // CollectionData를 ID 기반 Dictionary로 캐싱
+        Dictionary<int, CollectionData> collectionDataDict = new Dictionary<int, CollectionData>();
+        foreach (CollectionData data in CollectionData)
+        {
+            collectionDataDict[data.ID] = data;
+        }
+
+        // 버튼과 텍스트 오브젝트를 캐싱
+        Dictionary<int, Button> buttonCache = new Dictionary<int, Button>();
+        Dictionary<int, TMP_Text> textCache = new Dictionary<int, TMP_Text>();
+
+        foreach (CollectionData data in CollectionData)
+        {
+            string buttonName = $"Button{data.nameID}";
+            string textName = $"Text{data.nameID}";
+
+            GameObject buttonObject = GameObject.Find(buttonName);
+            GameObject textObject = GameObject.Find(textName);
+
+            if (buttonObject != null)
             {
-                if(Usercollections[i] == 0)
+                Button button = buttonObject.GetComponent<Button>();
+                if (button != null)
                 {
-                    GameObject LockItem = GetObject((int)GameObjects.Content).transform.GetChild(i-1).gameObject;
-                    Button selectedButton = LockItem.GetComponent<Button>();
-                    GameObject text = selectedButton.transform.GetChild(0).gameObject;
-                    text.gameObject.SetActive(false);
-                    selectedButton.image.sprite = Managers.Resource.Load<Sprite>("Sprites/ItemIcon/GetExpendTime");
+                    buttonCache[data.ID] = button;
                 }
             }
+
+            if (textObject != null)
+            {
+                TMP_Text text = textObject.GetComponent<TMP_Text>();
+                if (text != null)
+                {
+                    textCache[data.ID] = text;
+                }
+            }
+        }
+
+        // Usercollections를 기반으로 UI 업데이트
+        for (int i = 0; i < Usercollections.Count; i++)
+        {
+            if (Usercollections[i] == 0 && collectionDataDict.ContainsKey(i))
+            {
+                CollectionData data = collectionDataDict[i];
+                if (buttonCache.ContainsKey(i) && textCache.ContainsKey(i))
+                {
+                    Button button = buttonCache[i];
+                    TMP_Text text = textCache[i];
+
+                    // 버튼 및 텍스트 설정
+                    button.image.sprite = Managers.Resource.Load<Sprite>("Sprites/ItemIcon/GetExpendTime");
+                    text.color = Color.white;
+                }
+                else
+                {
+                    Debug.LogWarning($"Button or Text for ID {i} not found.");
+                }
+            }
+        }
     }
 
 }
