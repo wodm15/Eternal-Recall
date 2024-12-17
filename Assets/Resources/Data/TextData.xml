@@ -29,9 +29,9 @@
   <TextData ID="6525" kor="픽업뽑기" eng="" />
   <TextData ID="6526" kor="돈이 부족합니다" eng="" />
   <TextData ID="6527" kor="확률 : 0.000027%" eng="" />
-  <TextData ID="6528" kor="확률 : 2%" eng="" />
-  <TextData ID="6529" kor="확률 : 3%" eng="" />
-  <TextData ID="6530" kor="확률 : 4%" eng="" />
+  <TextData ID="6528" kor="확률 : 0.2%" eng="" />
+  <TextData ID="6529" kor="확률 : 1%" eng="" />
+  <TextData ID="6530" kor="확률 : 2.5%" eng="" />
   <TextData ID="6531" kor="확률 : 5%" eng="" />
 
   <TextData ID="10000" kor="새로 시작하기" eng="" />

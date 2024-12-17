@@ -48,7 +48,7 @@ public class GameData
         public int HintKey;
         
         //컬렉션 +돈
-        public int Money = 0;
+        public int Money;
         public CollectionState[] Collections = new CollectionState[MAX_COLLECTION_COUNT];
         //난이도 해금
         public CollectionState[] Unlocked = new CollectionState[2];
@@ -268,6 +268,7 @@ public void Init()
     BirdPercent = data.BirdPercent;
     Revive = data.Revive;
     ReviveLife = false;
+    Money = data.Money;
 
     // 기본 옷 상시 활성화
     if (Collections[Define.DefaultCollectionIndex] == CollectionState.None)

@@ -54,5 +54,7 @@ public class StartData
 	public int Revive;
 	[XmlAttribute]
 	public bool ReviveLife;
+	[XmlAttribute]
+	public int Money;
 
 }
