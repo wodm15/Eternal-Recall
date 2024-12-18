@@ -365,17 +365,19 @@ public class UI_GetItemPopup : UI_Popup
     //돈 업데이트
     public void EarnMoney(bool correct)
     {
+        Managers.Game.Money += 50000; //TODO test용
+
         if(correct && Managers.Game.DifficultyLevel == "Normal")
         {  
-            Managers.Game.Money += 100;
+            Managers.Game.Money += 1000;
         }
         else if(correct && Managers.Game.DifficultyLevel == "Hard")
         {
-            Managers.Game.Money += 200;
+            Managers.Game.Money += 2000;
         }
         else if(correct && Managers.Game.DifficultyLevel == "UnLimited")
         {
-            Managers.Game.Money += 300;
+            Managers.Game.Money += 3000;
         }
 
         else if(!correct && Managers.Game.DifficultyLevel == "Normal")

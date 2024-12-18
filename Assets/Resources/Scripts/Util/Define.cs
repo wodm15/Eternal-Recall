@@ -66,8 +66,12 @@ public class Define
 	//틀린 1개당 데미지
 	public const int Damage = 10;
 	//게임 종료 End
+	public const int NormalGameEnd = 30;
+	public const int HardGameEnd = 50;
+	public const int UnLimitedGameEnd = 70;
 
-	public const int GameEndStage = 70;
+	//뽑기 가격
+	public const int PickupCost = 500;
 
 	//픽업 옷 번호
 	public const int sailer = 0;
@@ -123,6 +127,8 @@ public class Define
 	public const int Pickup3Percent = 6529;
 	public const int Pickup4Percent = 6530;
 	public const int Pickup5Percent = 6531;
+	public const int YesGet = 6532;
+	public const int NoGet = 6533;
 
 
 	public const int StartButtonText = 10000;

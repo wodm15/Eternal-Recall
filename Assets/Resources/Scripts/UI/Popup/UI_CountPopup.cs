@@ -74,8 +74,13 @@ public class UI_CountPopup : UI_Popup
             Managers.Sound.Play(Sound.Bgm,"Sound_MainPlay10");
 
         GetText((int)Texts.PreviousStage).text = $" Stage : {_Stage -1}";
-        if(_Stage == Define.GameEndStage -1)
-            GetText((int)Texts.ShowStage).text = $" Final Stage : {_Stage}";
+        if(_Stage == Define.NormalGameEnd -1 && Managers.Game.DifficultyLevel == "Normal")
+            GetText((int)Texts.ShowStage).text = $" Final Normal Stage : {_Stage}";
+        if(_Stage == Define.HardGameEnd -1 && Managers.Game.DifficultyLevel == "Hard")
+            GetText((int)Texts.ShowStage).text = $" Final Hard Stage : {_Stage}";
+        if(_Stage == Define.UnLimitedGameEnd -1 && Managers.Game.DifficultyLevel == "UnLimited")
+            GetText((int)Texts.ShowStage).text = $" Final Unlimited Stage : {_Stage}";
+        
         else
             GetText((int)Texts.ShowStage).text = $" Stage : {_Stage}";
 

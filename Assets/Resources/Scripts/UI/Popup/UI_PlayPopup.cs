@@ -25,7 +25,7 @@ public class UI_PlayPopup : UI_Popup
         if(Stranger == null)
             Debug.Log("Check Connect with UI_QUESTIONPOPUP(Stranger는 여기에서 생성됨)");
 
-        Stranger.transform.position = new Vector3(-10,2,0);
+        Stranger.transform.position = new Vector3(-12,2,0);
 
 
         BirdComing();

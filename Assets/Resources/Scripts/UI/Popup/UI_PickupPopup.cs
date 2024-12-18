@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
-using UnityEditor.U2D.Sprites;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -35,12 +34,23 @@ public class UI_PickupPopup : UI_Popup
         NoMoneyText,
         ExplainPower,
         MoneyText,
+        IsGet1,
+        IsGet2,
+        IsGet3,
+        IsGet4,
+        IsGet5,
     }
 
     public override bool Init()
 	{
 		if (base.Init() == false)
 			return false;
+
+        Managers.Game.InterstitialAd();
+        
+        //구독
+        UI_PickPopup.OnRefreshUI -= RefreshUI;
+        UI_PickPopup.OnRefreshUI += RefreshUI;
 
         BindButton(typeof(Buttons));
         BindText(typeof(Texts));
@@ -53,6 +63,7 @@ public class UI_PickupPopup : UI_Popup
         GetText((int)Texts.ExitText).text = Managers.GetText(Define.GoToTitleText);
         GetButton((int)Buttons.Exit).gameObject.BindEvent(OnClickGoBack); 
 
+        RefreshUI();
 
         Stranger = Managers.Resource.Instantiate("Player");
         Stranger.transform.position = new Vector3(0,0,0);
@@ -96,7 +107,7 @@ public class UI_PickupPopup : UI_Popup
         GetButton((int)Buttons.PickPick).gameObject.SetActive(true);
         GetText((int)Texts.ExplainPower).gameObject.SetActive(true);
         GetText((int)Texts.GetPercent).text = Managers.GetText(Define.Pickup1Percent);
-        GetText((int)Texts.ExplainPower).text = _statData[3].Power;
+        GetText((int)Texts.ExplainPower).text = _statData[Define.Bikini].Power;
     }
     public void OnClickPickup2()
     {
@@ -104,7 +115,7 @@ public class UI_PickupPopup : UI_Popup
         GetButton((int)Buttons.PickPick).gameObject.SetActive(true);
         GetText((int)Texts.ExplainPower).gameObject.SetActive(true);
         GetText((int)Texts.GetPercent).text = Managers.GetText(Define.Pickup2Percent);
-        GetText((int)Texts.ExplainPower).text = _statData[4].Power;
+        GetText((int)Texts.ExplainPower).text = _statData[Define.Maid].Power;
     }
     public void OnClickPickup3()
     {
@@ -112,15 +123,15 @@ public class UI_PickupPopup : UI_Popup
         GetButton((int)Buttons.PickPick).gameObject.SetActive(true);
         GetText((int)Texts.ExplainPower).gameObject.SetActive(true);
         GetText((int)Texts.GetPercent).text = Managers.GetText(Define.Pickup3Percent);
-        GetText((int)Texts.ExplainPower).text = _statData[0].Power;
+        GetText((int)Texts.ExplainPower).text = _statData[Define.sailer].Power;
     }
     public void OnClickPickup4()
     {
-        pickupfunc(Define.sailer); //잠옷
+        pickupfunc(Define.nightWear); //잠옷
         GetButton((int)Buttons.PickPick).gameObject.SetActive(true);
         GetText((int)Texts.ExplainPower).gameObject.SetActive(true);
         GetText((int)Texts.GetPercent).text = Managers.GetText(Define.Pickup4Percent);
-        GetText((int)Texts.ExplainPower).text = _statData[10].Power;
+        GetText((int)Texts.ExplainPower).text = _statData[Define.nightWear].Power;
     }
     public void OnClickPickup5()
     {
@@ -128,7 +139,7 @@ public class UI_PickupPopup : UI_Popup
         GetButton((int)Buttons.PickPick).gameObject.SetActive(true);
         GetText((int)Texts.ExplainPower).gameObject.SetActive(true);
         GetText((int)Texts.GetPercent).text = Managers.GetText(Define.Pickup5Percent);
-        GetText((int)Texts.ExplainPower).text = _statData[17].Power;
+        GetText((int)Texts.ExplainPower).text = _statData[Define.magic].Power;
     }
 
     public void pickupfunc(int num)
@@ -148,7 +159,7 @@ public class UI_PickupPopup : UI_Popup
         s_animationManager.PlayAni(true);
     
         // s_customManager.emotion = n;
-        StartCoroutine(VibrateUI(GetButton((int)Buttons.PickPick).gameObject, 0.2f, 5f));
+        // StartCoroutine(VibrateUI(GetButton((int)Buttons.PickPick).gameObject, 0.2f, 5f));
 
         GetText((int)Texts.GetPercent).gameObject.SetActive(true);
     }
@@ -167,29 +178,64 @@ public class UI_PickupPopup : UI_Popup
 
     }
 
-    protected IEnumerator VibrateUI(GameObject uiObject, float duration, float magnitude)
-    {
-        RectTransform rectTransform = uiObject.GetComponent<RectTransform>();
-        Vector3 originalPos = rectTransform.anchoredPosition;
-        float elapsed = 0.0f;
-
-        while (elapsed < duration)
-        {
-            float offsetX = Random.Range(-magnitude, magnitude);
-            float offsetY = Random.Range(-magnitude, magnitude);
-            rectTransform.anchoredPosition = originalPos + new Vector3(offsetX, offsetY, 0);
-
-            elapsed += Time.deltaTime;
-            yield return null;
-        }
-
-        rectTransform.anchoredPosition = originalPos;
-    }
 
     public void RefreshUI()
     {
         GetText((int)Texts.MoneyText).text = $"X{Managers.Game.Money}";
+    
+        if(Managers.Game.Collections[Define.magic] == CollectionState.Done)
+        {
+            GetText((int)Texts.IsGet1).text= Managers.GetText(Define.YesGet);
+            GetText((int)Texts.IsGet1).color = Color.green;
+        }
+        else
+        {
+            GetText((int)Texts.IsGet1).text= Managers.GetText(Define.NoGet);
+            GetText((int)Texts.IsGet1).color = Color.red;
+        }
+
+        if(Managers.Game.Collections[Define.nightWear] == CollectionState.Done)
+        {
+            GetText((int)Texts.IsGet2).text= Managers.GetText(Define.YesGet);
+            GetText((int)Texts.IsGet2).color = Color.green;
+        }
+        else
+        {
+            GetText((int)Texts.IsGet2).text= Managers.GetText(Define.NoGet);
+            GetText((int)Texts.IsGet2).color = Color.red;
+        }
+        if(Managers.Game.Collections[Define.sailer] == CollectionState.Done)
+        {
+            GetText((int)Texts.IsGet3).text= Managers.GetText(Define.YesGet);
+            GetText((int)Texts.IsGet3).color = Color.green;
+        }
+        else
+        {
+            GetText((int)Texts.IsGet3).text= Managers.GetText(Define.NoGet);
+            GetText((int)Texts.IsGet3).color = Color.red;
+        }
+        if(Managers.Game.Collections[Define.Maid] == CollectionState.Done)
+        {
+            GetText((int)Texts.IsGet4).text= Managers.GetText(Define.YesGet);
+            GetText((int)Texts.IsGet4).color = Color.green;
+        }
+        else
+        {
+            GetText((int)Texts.IsGet4).text= Managers.GetText(Define.NoGet);
+            GetText((int)Texts.IsGet4).color = Color.red;
+        }
+        if(Managers.Game.Collections[Define.Bikini] == CollectionState.Done)
+        {
+            GetText((int)Texts.IsGet5).text= Managers.GetText(Define.YesGet);
+            GetText((int)Texts.IsGet5).color = Color.green;
+        }
+        else
+        {
+            GetText((int)Texts.IsGet5).text= Managers.GetText(Define.NoGet);
+            GetText((int)Texts.IsGet5).color = Color.red;
+        }
     }
+
 
     public void OnClickGoBack()
     {

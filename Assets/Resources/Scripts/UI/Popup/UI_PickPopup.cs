@@ -6,6 +6,8 @@ using UnityEngine.XR;
 
 public class UI_PickPopup : UI_Popup
 {
+    private bool canClick = true;  // 버튼을 클릭할 수 있는지 확인하는 변수
+    private float cooldownTime = 0.3f; //버튼 누르기 쿨다운
     int index;
     GameObject Player;
     GameObject Stranger;
@@ -13,6 +15,23 @@ public class UI_PickPopup : UI_Popup
     AnimationManager animationManager;
     CustomManager s_customManager;
     AnimationManager s_animationManager;
+
+    //델리게이트
+    public delegate void UIRefreshHandler();
+    public static event UIRefreshHandler OnRefreshUI;
+
+    public static void TriggerRefreshUI()
+        {
+            OnRefreshUI?.Invoke(); 
+        }
+
+    private void _RefreshUI()
+        {
+            Debug.Log("UI_PickPopup의 RefreshUI 실행");
+
+            TriggerRefreshUI();
+        }
+    //델리게이트 (획득했을 때 초기화)
 
     enum Images
     {
@@ -31,6 +50,7 @@ public class UI_PickPopup : UI_Popup
         PickupText,
         GetSkinText,
         WhenGetText,
+        ExplainText,
     }
     public override bool Init()
 	{
@@ -61,16 +81,15 @@ public class UI_PickPopup : UI_Popup
         BindImage(typeof(Images));
 
         GetButton((int)Buttons.Exit).gameObject.BindEvent(()=> OnClickGoBack());
-        GetButton((int)Buttons.PickupButton).gameObject.BindEvent(()=> OnClickPickup());
+        GetButton((int)Buttons.PickupButton).gameObject.BindEvent(()=> OnClickPickup(),Define.UIEvent.Pressed);
         GetButton((int)Buttons.GetSkinButton).gameObject.BindEvent(()=> OnClickGetSkin(index));
-
-        
 
         GetText((int)Texts.ExitText).text = Managers.GetText(Define.GoToTitleText);
         GetText((int)Texts.MoneyText).text = $"X{Managers.Game.Money}";
-        GetText((int)Texts.PickupText).text = "픽업";
+        GetText((int)Texts.PickupText).text = "-500";
         GetText((int)Texts.GetSkinText).text = "스킨 얻기";
         GetText((int)Texts.WhenGetText).text = "스킨을 얻었습니다!";
+        GetText((int)Texts.ExplainText).text = "캐릭터를 매칭시켜주세요";
 
 
         GetButton((int)Buttons.GetSkinButton).gameObject.SetActive(false);
@@ -96,76 +115,94 @@ public class UI_PickPopup : UI_Popup
     //0부터 헤어 20까지, 옷 19까지, 눈썹 4까지, 눈 19까지, 입 23까지 , 감정 5까지, 
     private void OnClickPickup()
     {
-        index = 0;
-        if(Managers.Game.Money <= 500)
+        if (canClick)
         {
-            StartCoroutine(VibrateUI(GetButton((int)Buttons.PickupButton).gameObject, 0.2f, 5f));
-            StartCoroutine(VibrateUI(GetText((int)Texts.MoneyText).gameObject, 0.2f, 5f));
-            return;
-        }
-        
-        Managers.Game.Money -= 500;
-        RefreshUI();
-        // s_customManager.eyebrow = 3;
-        // s_customManager.mouth = 11;
-        if(s_customManager.clothes == Define.Bikini) //비키니
-        {
-            customManager.hair = Random.Range(0,20 +1 );
-            customManager.clothes = Random.Range(0, 19+1) ; 
-            customManager.eyebrow = Random.Range(0, 4+1);
-            customManager.eye = Random.Range(0, 19+1);
-            customManager.mouth = Random.Range(0, 23+1);
-            customManager.emotion = Random.Range(0, 5+1);
-            index = 3;
-        }
-
-        else if(s_customManager.clothes == Define.Maid) //메이드 0.2%
-        {
-            customManager.clothes = Random.Range(0,20);
-            customManager.hair = Random.Range(0,5);
-            customManager.eyebrow = Random.Range(0, 5);
-            index = 4;
-        }
-
-        else if(s_customManager.clothes == Define.sailer) //세일러복 1%
-        {
-            customManager.clothes = Random.Range(0,20);
-            customManager.eye = Random.Range(0,5);
             index = 0;
-        }
-
-        else if(s_customManager.clothes == Define.nightWear) //잠옷 2.5%
-        {
-            customManager.clothes = Random.Range(0,20); 
-            customManager.mouth = Random.Range(10,12);
-            index = 10;
-        }
-
-        else if(s_customManager.clothes == Define.magic) //마법소녀 5%
-        {
-            customManager.clothes = Random.Range(0,20); 
-            index = 17;
-        }
-
-        numberCheck();
-        Managers.Game.SaveGame();
-
-        //실행 결과가 맞으면
-        if (customManager.clothes == s_customManager.clothes 
-            && customManager.hair == s_customManager.hair
-            && customManager.eyebrow == s_customManager.eyebrow
-            && customManager.eye == s_customManager.eye
-            && customManager.emotion == s_customManager.emotion)
-        {
-            GetButton((int)Buttons.GetSkinButton).gameObject.SetActive(true);
-            GetButton((int)Buttons.PickupButton).gameObject.SetActive(false);
-
-            Managers.Game.Collections[index] = CollectionState.Done;
-            Managers.Game.SaveGame();
-        
-        }
+            if(Managers.Game.Money < Define.PickupCost)
+            {
+                StartCoroutine(VibrateUI(GetButton((int)Buttons.PickupButton).gameObject, 0.2f, 5f));
+                StartCoroutine(VibrateUI(GetText((int)Texts.MoneyText).gameObject, 0.2f, 5f));
+                return;
+            }
             
-        
+            Managers.Game.Money -= Define.PickupCost;
+            RefreshUI();
+            // s_customManager.eyebrow = 3;
+            // s_customManager.mouth = 11;
+            if(s_customManager.clothes == Define.Bikini) //비키니
+            {
+                customManager.hair = Random.Range(0,20 +1 );
+                customManager.clothes = Random.Range(0, 19+1) ; 
+                customManager.eyebrow = Random.Range(0, 4+1);
+                customManager.eye = Random.Range(0, 19+1);
+                customManager.mouth = Random.Range(0, 23+1);
+                customManager.emotion = Random.Range(0, 5+1);
+                index = Define.Bikini;
+            }
+
+            else if(s_customManager.clothes == Define.Maid) //메이드 0.2%
+            {
+                customManager.clothes = Random.Range(0,20);
+                customManager.hair = Random.Range(0,5);
+                customManager.eyebrow = Random.Range(0, 5);
+                index = Define.Maid;
+            }
+
+            else if(s_customManager.clothes == Define.sailer) //세일러복 1%
+            {
+                customManager.clothes = Random.Range(0,20);
+                customManager.hair = Random.Range(0,5);
+                index = Define.sailer;
+            }
+
+            else if(s_customManager.clothes == Define.nightWear) //잠옷 2.5%
+            {
+                customManager.clothes = Random.Range(0,20); 
+                customManager.mouth = Random.Range(10,12);
+                index = Define.nightWear;
+            }
+
+            else if(s_customManager.clothes == Define.magic) //마법소녀 5%
+            {
+                customManager.clothes = Random.Range(0,20); 
+                index = Define.magic;
+            }
+
+            numberCheck();
+            Managers.Game.SaveGame();
+
+            //실행 결과가 맞으면
+            if (customManager.clothes == s_customManager.clothes 
+                && customManager.hair == s_customManager.hair
+                && customManager.eyebrow == s_customManager.eyebrow
+                && customManager.eye == s_customManager.eye
+                && customManager.emotion == s_customManager.emotion)
+            {
+                Managers.Sound.Play(Define.Sound.Effect, "Sound_GetSkin");
+                GetButton((int)Buttons.GetSkinButton).gameObject.SetActive(true);
+                GetButton((int)Buttons.PickupButton).gameObject.SetActive(false);
+
+                Managers.Game.Collections[index] = CollectionState.Done;
+                Managers.Game.SaveGame();
+            
+            }
+            StartCoroutine(ButtonCooldownCoroutine());
+            
+        }
+        else
+        {
+            Debug.Log("1초 기다려 주세요.");
+        }
+    }
+     private IEnumerator ButtonCooldownCoroutine()
+    {
+        Managers.Sound.Play(Define.Sound.Effect , "Sound_Pickup");
+        canClick = false;  // 버튼 비활성화
+
+        // 지정된 시간만큼 대기
+        yield return new WaitForSeconds(cooldownTime);
+
+        canClick = true;  // 버튼 활성화
     }
 
     public void numberCheck()
@@ -190,6 +227,7 @@ public class UI_PickPopup : UI_Popup
         GetImage((int)Images.WhenGetImage).gameObject.SetActive(true);
         GetText((int)Texts.WhenGetText).gameObject.SetActive(true);
         GetButton((int)Buttons.GetSkinButton).gameObject.SetActive(false);
+        GetText((int)Texts.ExplainText).gameObject.SetActive(false);
         Managers.Game.Collections[index] = CollectionState.Done;
         StartCoroutine(DelayedGoBack());
     }
@@ -240,6 +278,7 @@ public class UI_PickPopup : UI_Popup
 
     public void OnClickGoBack()
     {
+         _RefreshUI();
         InitialPlayer();
         Managers.UI.ClosePopupUI(this);
 

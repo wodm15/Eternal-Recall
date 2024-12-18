@@ -268,7 +268,6 @@ public void Init()
     BirdPercent = data.BirdPercent;
     Revive = data.Revive;
     ReviveLife = false;
-    Money = data.Money;
 
     // 기본 옷 상시 활성화
     if (Collections[Define.DefaultCollectionIndex] == CollectionState.None)
@@ -341,6 +340,7 @@ public void Init()
     {
         if(DifficultyLevel == "Normal")
         {
+            Stage = 0;
             Avoid = 30;
             DownSpeed = 0;
             GuessTimer = 13;
@@ -348,6 +348,7 @@ public void Init()
         }
         if(DifficultyLevel == "Hard")
         {
+            Stage = 30;
             Avoid = 10;
             DownSpeed = 0;
             GuessTimer = 10;
@@ -355,6 +356,7 @@ public void Init()
         }
         if(DifficultyLevel == "UnLimited")
         {
+            Stage = 50;
             Avoid = 0;
             DownSpeed = 0;
             GuessTimer = 8;

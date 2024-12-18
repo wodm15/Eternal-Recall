@@ -2,7 +2,6 @@ using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using TMPro;
-using UnityEditor.U2D.Sprites;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -174,7 +173,7 @@ public class UI_CollectionPopup : UI_Popup
         GetFilter(); //화면에 컬렉션 이미지 생성
 
         GameObject Player = GameObject.Find("StaticPlayer");
-        Player.transform.position = new Vector3(-6,-3,0);
+        Player.transform.position = new Vector3(-6,-3.5f,0);
         GameObject _customManager = GameObject.FindGameObjectWithTag("StaticManager");
         customManager = _customManager.GetComponent<CustomManager>();
 

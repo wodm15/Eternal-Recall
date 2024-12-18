@@ -29,7 +29,7 @@ public class UI_QuestionPopup : UI_Popup
 
         Stranger = Managers.Resource.Instantiate("Stranger");
         RandomStranger();
-        Stranger.transform.position = new Vector3(-11,2,0);
+        Stranger.transform.position = new Vector3(-12,2,0);
 
         Managers.Game.quizData = Managers.Game.LoadRandomQuiz();
         GetText((int)Texts.Question).text = $"{Managers.Game.quizData.kor}";
@@ -38,7 +38,10 @@ public class UI_QuestionPopup : UI_Popup
         StartCoroutine(CloseAndShowPopupAfterDelay(5f));
 
         if(BirdResponse())
+        {
             GetImage((int)Images.birdSoundImage).gameObject.SetActive(true);
+            Managers.Sound.Play(Define.Sound.Effect , "Sound_Bird");
+        }
 
     return true;
 
