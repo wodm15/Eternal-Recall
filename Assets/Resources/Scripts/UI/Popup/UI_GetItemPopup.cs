@@ -32,6 +32,7 @@ public class UI_GetItemPopup : UI_Popup
         Item1,
         Item2,
         Item3,
+        BG,
     }
 
     enum Texts
@@ -49,6 +50,15 @@ public class UI_GetItemPopup : UI_Popup
     {
         if (base.Init() == false)
 			return false;
+
+        BindButton(typeof(Buttons));
+        BindText(typeof(Texts));
+        BindImage(typeof(Images));
+
+        //배경 변경
+        Managers.Game.changeBG();
+        GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
+
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
 
         GameObject guessPopup = GameObject.Find("UI_GuessPopup");
@@ -86,10 +96,6 @@ public class UI_GetItemPopup : UI_Popup
                 _shopData.Add(shopData);
             }
         }
-
-        BindButton(typeof(Buttons));
-        BindText(typeof(Texts));
-        BindImage(typeof(Images));
 
         GetText((int)Texts.ExplainText).text = Managers.GetText(Define.SkillChoseText);
         GetText((int)Texts.WrongCount).gameObject.SetActive(true);

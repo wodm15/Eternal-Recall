@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using static Define;
@@ -17,6 +19,7 @@ public class UI_CountPopup : UI_Popup
     {
         CountDown1,
         CountDown2,
+        BG,
         // CountDown3,
     }
 
@@ -31,9 +34,16 @@ public class UI_CountPopup : UI_Popup
     {
         if (base.Init() == false)
 			return false;
-    
+
         BindImage(typeof(Images));
         BindText(typeof(Texts));
+        
+        int _Stage = Managers.Game.Stage;
+        //배경 변경
+        Managers.Game.changeBG();
+        GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
+
+       
 
         Managers.Game.ReviveLife = false;
 
@@ -42,7 +52,6 @@ public class UI_CountPopup : UI_Popup
         GetImage((int)Images.CountDown2).gameObject.SetActive(false);
         GetImage((int)Images.CountDown1).gameObject.SetActive(false);
 
-        int _Stage = Managers.Game.Stage;
 
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
     
@@ -186,4 +195,13 @@ public void SetAmountText(ShopData _selectedItem , bool isLuck = false)
         yield return new WaitForSeconds(1f); // 1초 동안 이미지 표시
         GetImage(imageIndex).gameObject.SetActive(false);
     }
+    // public void changeBG()
+    // {
+    //     int galaxyIndex = Managers.Game.Stage / 10 + 1;
+    //     galaxyIndex = Math.Min(galaxyIndex, 8); // Limit to Galaxy8
+    //     Managers.Game.BG = $"Galaxy{galaxyIndex}";
+    // }
+
+
+
 }

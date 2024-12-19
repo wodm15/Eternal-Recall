@@ -14,12 +14,22 @@ public class UI_PlayPopup : UI_Popup
     GameObject Stranger;
     GameObject Bird;
 
+    enum Images
+    {
+        BG,
+    }
 
 
     public override bool Init()
     {
         if (base.Init() == false)
 			return false;
+
+        BindImage(typeof(Images));
+
+        //배경 변경
+        Managers.Game.changeBG();
+        GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
 
         Stranger = GameObject.Find("Stranger");
         if(Stranger == null)

@@ -79,6 +79,7 @@ public class UI_GuessPopup : UI_Popup
 
     enum Images
     {
+        BG,
         Correct,
         Wrong,
         RemindImage,
@@ -95,6 +96,15 @@ public class UI_GuessPopup : UI_Popup
     {
         if (base.Init() == false)
 			return false;
+
+		BindText(typeof(Texts));
+		BindButton(typeof(Buttons));
+        BindImage(typeof(Images));
+
+        //배경 변경
+        Managers.Game.changeBG();
+        GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
+        
 
         Stranger = GameObject.Find("Stranger");
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
@@ -113,10 +123,6 @@ public class UI_GuessPopup : UI_Popup
         _customManager = GameObject.FindGameObjectWithTag("GuessManager");
         customManager = _customManager.GetComponent<CustomManager>();
         animationManager = _customManager.GetComponent<AnimationManager>();
-
-		BindText(typeof(Texts));
-		BindButton(typeof(Buttons));
-        BindImage(typeof(Images));
 
         // Text에 설정
         GetText((int)Texts.Timer).text = $"{Managers.Game.GuessTimer}";

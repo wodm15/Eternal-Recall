@@ -16,6 +16,7 @@ public class UI_QuestionPopup : UI_Popup
 
     enum Images
     {
+        BG,
         birdSoundImage,
     }
 
@@ -32,6 +33,12 @@ public class UI_QuestionPopup : UI_Popup
         Stranger.transform.position = new Vector3(-12,2,0);
 
         Managers.Game.quizData = Managers.Game.LoadRandomQuiz();
+
+
+        //배경 변경
+        Managers.Game.changeBG();
+        GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
+        
         GetText((int)Texts.Question).text = $"{Managers.Game.quizData.kor}";
         GetImage((int)Images.birdSoundImage).gameObject.SetActive(false);
 

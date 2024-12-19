@@ -10,7 +10,10 @@ public class UI_PickupPopup : UI_Popup
     CustomManager s_customManager;
     AnimationManager s_animationManager;
     GameObject Stranger;
-    
+    RectTransform ExplainimageRect;
+    Vector2 Explainsize;
+    RectTransform PercentimageRect;
+    Vector2 Percentsize;
     enum Buttons
     {
         Exit,
@@ -40,6 +43,11 @@ public class UI_PickupPopup : UI_Popup
         IsGet4,
         IsGet5,
     }
+    enum Images
+    {
+        ExplainPowerImage,
+        GetPercentImage,
+    }
 
     public override bool Init()
 	{
@@ -54,6 +62,7 @@ public class UI_PickupPopup : UI_Popup
 
         BindButton(typeof(Buttons));
         BindText(typeof(Texts));
+        BindImage(typeof(Images));
 
         foreach (StatData statData in Managers.Data.Stat.Values)
         {
@@ -85,6 +94,11 @@ public class UI_PickupPopup : UI_Popup
         GetText((int)Texts.PickPickText).text = Managers.GetText(Define.PickPickText);
         GetButton((int)Buttons.PickPick).gameObject.SetActive(false);
         GetText((int)Texts.MoneyText).text = $"X{Managers.Game.Money}";
+
+        ExplainimageRect = GetImage((int)Images.ExplainPowerImage).GetComponent<RectTransform>();
+        Explainsize = ExplainimageRect.sizeDelta;
+        PercentimageRect = GetImage((int)Images.GetPercentImage).GetComponent<RectTransform>();
+        Percentsize = PercentimageRect.sizeDelta;
         
         GetButton((int)Buttons.Pickup1).gameObject.BindEvent(() => OnClickPickup1());
         GetButton((int)Buttons.Pickup2).gameObject.BindEvent(() => OnClickPickup2());
@@ -144,6 +158,13 @@ public class UI_PickupPopup : UI_Popup
 
     public void pickupfunc(int num)
     {
+        Explainsize.x  = _statData[num].Power.Length * 19;
+        ExplainimageRect.sizeDelta = Explainsize;
+
+        // Percentsize.x = GetText((int)Texts.GetPercent).text.Length * 19;
+        // PercentimageRect.sizeDelta = Percentsize;
+        
+
         s_customManager.clothes = num;
         s_customManager.eyebrow = 3;
         s_customManager.mouth = 11;

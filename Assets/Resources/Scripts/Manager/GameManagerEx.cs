@@ -4,6 +4,7 @@ using static Define;
 using UnityEngine;
 using System.IO;
 using System.Linq;
+using UnityEngine.UI;
 
 
 
@@ -61,6 +62,7 @@ public class GameData
 
         //그 전 질문
         public QuizData quizData = new QuizData();
+        
 
         //현재 브금 노래
         public string BGM;
@@ -72,6 +74,9 @@ public class GameData
         public int Revive;
         //방금 살아남기 한지 확인
         public bool ReviveLife;
+
+        //배경화면
+        public string BG;
 
     }
 
@@ -197,6 +202,12 @@ public class GameManagerEx
         set { _gameData.ReviveLife = value; } 
     }
 
+    public string BG
+    {
+        get { return _gameData.BG;}
+        set { _gameData.BG=value;}
+    }
+
     #region 컬렉션 & 프로젝트
 
     public CollectionState[] Collections { get { return _gameData.Collections; } }
@@ -268,6 +279,7 @@ public void Init()
     BirdPercent = data.BirdPercent;
     Revive = data.Revive;
     ReviveLife = false;
+    BG = data.BG;
 
     // 기본 옷 상시 활성화
     if (Collections[Define.DefaultCollectionIndex] == CollectionState.None)
@@ -340,7 +352,7 @@ public void Init()
     {
         if(DifficultyLevel == "Normal")
         {
-            Stage = 0;
+            Stage = 1;
             Avoid = 30;
             DownSpeed = 0;
             GuessTimer = 13;
@@ -363,6 +375,13 @@ public void Init()
             HintKey = 0;
         }
 
+    }
+    //배경 저장
+    public void changeBG()
+    {
+        int galaxyIndex = Managers.Game.Stage / 10 + 1;
+        galaxyIndex = Math.Min(galaxyIndex, 8); 
+        Managers.Game.BG = $"Galaxy{galaxyIndex}";
     }
 
 
