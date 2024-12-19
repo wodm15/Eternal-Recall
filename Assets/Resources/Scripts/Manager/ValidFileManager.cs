@@ -141,7 +141,7 @@ private string ConvertJsonToXml(GameData data)
             new XAttribute("Revive", data.Revive),
             new XAttribute("ReviveLife", data.ReviveLife),
             new XAttribute("Unlocked", data.Unlocked),
-            new XAttribute("Money", data.Unlocked)
+            new XAttribute("Money", data.Money)
         );
 
         return root.ToString(); // XML 반환

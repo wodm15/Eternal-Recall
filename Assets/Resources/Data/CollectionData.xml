@@ -1,24 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfCollectionData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
   <CollectionData ID="0" nameID="15" iconPath="Sprites/Collection/0_SailorUniform" type="Cody" name="세일러복" reqHp="1" reqStage="10" reqHintKey="0" reqLevel="N" description="세일러복" How="세일러복 뽑기" purchase="1" />
-  <CollectionData ID="1" nameID="7" iconPath="Sprites/Collection/1_WeddingDress" type="Cody" name="웨딩드레스" reqHp="1" reqStage="60" reqHintKey="15" reqLevel="H" description="하드모드 힌트왕" How="힌트키 15개가지고 하드모드 60층 등반" purchase="0" />
+  <CollectionData ID="1" nameID="7" iconPath="Sprites/Collection/1_WeddingDress" type="Cody" name="웨딩드레스" reqHp="1" reqStage="60" reqHintKey="15" reqLevel="H" description="웨딩드레스" How="웨딩드레스" purchase="1" />
   <CollectionData ID="2" nameID="1"  iconPath="Sprites/Collection/2_Basic" type="Cody" name="기본" reqHp="0" reqStage="0" reqHintKey="0" reqLevel="S" description="기본 병아리옷" How="게임 접속" purchase="0" />
   <CollectionData ID="3" nameID="13"  iconPath="Sprites/Collection/3_Bikini" type="Cody" name="비키니" reqHp="80" reqStage="70" reqHintKey="0" reqLevel="U" description="비키니" How="비키니 뽑기" purchase="1" />
   <CollectionData ID="4" nameID="14"  iconPath="Sprites/Collection/4_Maid" type="Cody" name="메이드" reqHp="1" reqStage="30"  reqHintKey="0" reqLevel= "N" description="메이드"  How = "메이드 뽑기" purchase = "1" />
   <CollectionData ID="5" nameID="2"  iconPath="Sprites/Collection/5_Coat" type="Cody"  name="코트" reqHp="1" reqStage="35" reqHintKey="0" reqLevel="N" description="노말모드 절반 등반" How="노말모드 35단계 가기" purchase="0" />
   <CollectionData ID="6" nameID="16"  iconPath="Sprites/Collection/6_Swimsuit" type="Cody"  name="수영복" reqHp="1" reqStage="30"  reqHintKey="0" reqLevel= "U" description="수영복"  How = "수영복 구매" purchase = "1" />
-  <CollectionData ID="7" nameID="9"  iconPath="Sprites/Collection/7_Yukata" type="Cody" name="유카타" reqHp="1" reqStage="70" reqHintKey="0" reqLevel="U" description="언리미티드 등반왕" How="언리미티드 클리어" purchase="0" />
+  <CollectionData ID="7" nameID="9"  iconPath="Sprites/Collection/7_Yukata" type="Cody" name="유카타" reqHp="1" reqStage="69" reqHintKey="0" reqLevel="U" description="유카타" How="유카타" purchase="1" />
   <CollectionData ID="8" nameID="17"  iconPath="Sprites/Collection/8_Cheongsam" type="Cody" name="치파오" reqHp="1" reqStage="50"  reqHintKey="0" reqLevel= "H" description="치파오" How = "치파오 구매" purchase = "1"/>
-  <CollectionData ID="9" nameID="8"  iconPath="Sprites/Collection/9_Hanbok" type="Cody" name="한복" reqHp="1" reqStage="35" reqHintKey="0" reqLevel="U" description="언리미티드 절반 등반" How="언리미티드 35단계 가기" purchase="0" />
-  <CollectionData ID="10" nameID="11"  iconPath="Sprites/Collection/10_NightWear" type="Cody" name="잠옷" reqHp="80" reqStage="70" reqHintKey="0" reqLevel="H" description="잠옷" How="잠옷 뽑기" purchase="0" />
+  <CollectionData ID="9" nameID="8"  iconPath="Sprites/Collection/9_Hanbok" type="Cody" name="한복" reqHp="1" reqStage="35" reqHintKey="0" reqLevel="U" description="한복" How="한복" purchase="1" />
+  <CollectionData ID="10" nameID="11"  iconPath="Sprites/Collection/10_NightWear" type="Cody" name="잠옷" reqHp="80" reqStage="69" reqHintKey="0" reqLevel="H" description="잠옷" How="잠옷 뽑기" purchase="1" />
   <CollectionData ID="11" nameID="5"  iconPath="Sprites/Collection/11_SweatSuit" type="Cody" name="운동복" reqHp="1" reqStage="35" reqHintKey="0" reqLevel="H" description="하드모드 절반 등반" How="하드모드 35단계 가기" purchase="0" />
   <CollectionData ID="12" nameID="18"  iconPath="Sprites/Collection/12_GarterBelt" type="Cody" name="가터벨트" reqHp="1" reqStage="2" reqHintKey="10" reqLevel= "U" description="가터벨트" How = "가터벨트 구매" purchase = "1"/>
-  <CollectionData ID="13" nameID="10"  iconPath="Sprites/Collection/13_PrincessClothes" type="Cody" name="공주옷" reqHp="1" reqStage="70" reqHintKey="15" reqLevel="U" description="힌트의 신" How="힌트키 15개 가지고 언리미티드모드 60층 등반" purchase="0" />
-  <CollectionData ID="14" nameID="3"  iconPath="Sprites/Collection/14_Jean" type="Cody" name="청바지" reqHp="1" reqStage="70" reqHintKey="0" reqLevel="N" description="노말모드 클리어" How="노말모드 클리어" purchase="0" />
-  <CollectionData ID="15" nameID="19"  iconPath="Sprites/Collection/15_SchoolUniform" type="Cody" name="교복" reqHp="1" reqStage="70"  reqHintKey="0" reqLevel= "U" description="교복" How = "교복 구매" purchase = "1" />
+  <CollectionData ID="13" nameID="10"  iconPath="Sprites/Collection/13_PrincessClothes" type="Cody" name="공주옷" reqHp="1" reqStage="70" reqHintKey="15" reqLevel="U" description="공주옷" How="공주옷" purchase="1" />
+  <CollectionData ID="14" nameID="3"  iconPath="Sprites/Collection/14_Jean" type="Cody" name="청바지" reqHp="1" reqStage="69" reqHintKey="0" reqLevel="N" description="노말모드 클리어" How="노말모드 클리어" purchase="0" />
+  <CollectionData ID="15" nameID="19"  iconPath="Sprites/Collection/15_SchoolUniform" type="Cody" name="교복" reqHp="1" reqStage="69"  reqHintKey="0" reqLevel= "U" description="교복" How = "교복 구매" purchase = "1" />
   <CollectionData ID="16" nameID="20"  iconPath="Sprites/Collection/16_NurseUniform" type="Cody" name="간호복" reqHp="1" reqStage="70"  reqHintKey="0" reqLevel= "N" description="간호복" How = "간호복 구매" purchase = "1"/>
-  <CollectionData ID="17" nameID="12"  iconPath="Sprites/Collection/17_Magical" type="Cody" name="마법소녀" reqHp="80" reqStage="70" reqHintKey="0" reqLevel="U" description="마법소녀" How="마법 소녀 뽑기" purchase="0" />
-  <CollectionData ID="18" nameID="6"  iconPath="Sprites/Collection/18_Swimsuit2" type="Cody" name="수영복2" reqHp="1" reqStage="70" reqHintKey="0" reqLevel="H" description="하드모드 등반왕" How="하드모드 클리어" purchase="0" />
+  <CollectionData ID="17" nameID="12"  iconPath="Sprites/Collection/17_Magical" type="Cody" name="마법소녀" reqHp="80" reqStage="70" reqHintKey="0" reqLevel="U" description="마법소녀" How="마법 소녀 뽑기" purchase="1" />
+  <CollectionData ID="18" nameID="6"  iconPath="Sprites/Collection/18_Swimsuit2" type="Cody" name="수영복2" reqHp="1" reqStage="60" reqHintKey="0" reqLevel="H" description="수영복2" How="수영복2" purchase="1" />
   <CollectionData ID="19" nameID="4"  iconPath="Sprites/Collection/19_Warrior" type="Cody" name="전투복" reqHp="1" reqStage="60" reqHintKey="15" reqLevel="N" description="노말모드 힌트왕" How="힌트키 15개가지고 노말모드 60층 등반" purchase="0" />
 </ArrayOfCollectionData>
 

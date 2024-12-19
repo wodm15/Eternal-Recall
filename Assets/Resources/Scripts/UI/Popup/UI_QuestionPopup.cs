@@ -16,6 +16,7 @@ public class UI_QuestionPopup : UI_Popup
 
     enum Images
     {
+        BG,
         birdSoundImage,
     }
 
@@ -29,16 +30,25 @@ public class UI_QuestionPopup : UI_Popup
 
         Stranger = Managers.Resource.Instantiate("Stranger");
         RandomStranger();
-        Stranger.transform.position = new Vector3(-11,2,0);
+        Stranger.transform.position = new Vector3(-12,2,0);
 
         Managers.Game.quizData = Managers.Game.LoadRandomQuiz();
+
+
+        //배경 변경
+        Managers.Game.changeBG();
+        GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
+        
         GetText((int)Texts.Question).text = $"{Managers.Game.quizData.kor}";
         GetImage((int)Images.birdSoundImage).gameObject.SetActive(false);
 
         StartCoroutine(CloseAndShowPopupAfterDelay(5f));
 
         if(BirdResponse())
+        {
             GetImage((int)Images.birdSoundImage).gameObject.SetActive(true);
+            Managers.Sound.Play(Define.Sound.Effect , "Sound_Bird");
+        }
 
     return true;
 

@@ -79,6 +79,7 @@ public class UI_GuessPopup : UI_Popup
 
     enum Images
     {
+        BG,
         Correct,
         Wrong,
         RemindImage,
@@ -95,6 +96,15 @@ public class UI_GuessPopup : UI_Popup
     {
         if (base.Init() == false)
 			return false;
+
+		BindText(typeof(Texts));
+		BindButton(typeof(Buttons));
+        BindImage(typeof(Images));
+
+        //배경 변경
+        Managers.Game.changeBG();
+        GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
+        
 
         Stranger = GameObject.Find("Stranger");
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
@@ -113,10 +123,6 @@ public class UI_GuessPopup : UI_Popup
         _customManager = GameObject.FindGameObjectWithTag("GuessManager");
         customManager = _customManager.GetComponent<CustomManager>();
         animationManager = _customManager.GetComponent<AnimationManager>();
-
-		BindText(typeof(Texts));
-		BindButton(typeof(Buttons));
-        BindImage(typeof(Images));
 
         // Text에 설정
         GetText((int)Texts.Timer).text = $"{Managers.Game.GuessTimer}";
@@ -404,7 +410,15 @@ public class UI_GuessPopup : UI_Popup
         {
             GameOver();
         }
-        else if(Managers.Game.Stage >= Define.GameEndStage -1 && Managers.Game.Hp > 0)
+        else if(Managers.Game.Stage >= Define.NormalGameEnd -1 && Managers.Game.DifficultyLevel == "Normal")
+        {
+            GameEnd();
+        }
+        else if(Managers.Game.Stage >= Define.HardGameEnd -1 && Managers.Game.DifficultyLevel == "Hard")
+        {
+            GameEnd();
+        }
+        else if(Managers.Game.Stage >= Define.UnLimitedGameEnd -1 && Managers.Game.DifficultyLevel == "UnLimited")
         {
             GameEnd();
         }
@@ -452,9 +466,19 @@ public class UI_GuessPopup : UI_Popup
         Managers.Sound.Stop(Sound.Bgm);
 
         if(Managers.Game.DifficultyLevel == "Normal")
-                Managers.Game.Unlocked[0] = CollectionState.Done;
+        {
+            Managers.Game.Unlocked[0] = CollectionState.Done;
+            Managers.Game.Money += 10000;
+        }
         else if( Managers.Game.DifficultyLevel == "Hard")
-                Managers.Game.Unlocked[1] = CollectionState.Done;
+        {
+            Managers.Game.Unlocked[1] = CollectionState.Done;
+            Managers.Game.Money += 30000;
+        }
+        else if( Managers.Game.DifficultyLevel == "UnLimited")
+        {
+            Managers.Game.Money += 100000;
+        }
                 
         Managers.UI.ClosePopupUI(this);
         UI_GameEndPopup gameEndPopup = Managers.UI.ShowPopupUI<UI_GameEndPopup>();
@@ -696,7 +720,7 @@ public class UI_GuessPopup : UI_Popup
 
         if (_isMoving)
         {
-            Stranger.transform.position = new Vector3(-6.5f, 1.5f, 0); // 특정 위치로 이동
+            Stranger.transform.position = new Vector3(-7.5f, 1.5f, 0); // 특정 위치로 이동
             _isMoving = false; // 위치 설정 후 바로 이동 멈춤
             StartCoroutine(HideStrangerAfterDelay(2f)); // 2초 후 사라지게 하기
         }

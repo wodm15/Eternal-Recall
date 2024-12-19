@@ -14,6 +14,10 @@ public class UI_PlayPopup : UI_Popup
     GameObject Stranger;
     GameObject Bird;
 
+    enum Images
+    {
+        BG,
+    }
 
 
     public override bool Init()
@@ -21,11 +25,17 @@ public class UI_PlayPopup : UI_Popup
         if (base.Init() == false)
 			return false;
 
+        BindImage(typeof(Images));
+
+        //배경 변경
+        Managers.Game.changeBG();
+        GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
+
         Stranger = GameObject.Find("Stranger");
         if(Stranger == null)
             Debug.Log("Check Connect with UI_QUESTIONPOPUP(Stranger는 여기에서 생성됨)");
 
-        Stranger.transform.position = new Vector3(-10,2,0);
+        Stranger.transform.position = new Vector3(-12,2,0);
 
 
         BirdComing();

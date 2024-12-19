@@ -32,7 +32,8 @@ public class UI_TitlePopup : UI_Popup
 	{
 		if (base.Init() == false)
 			return false;
-		Managers.Game.LoadGame();
+		if(!Managers.Game.LoadGame())
+			Managers.Game.Init();
 
 		//일단 확인 후 false로 초기화
 		bool isRevive = Managers.Game.ReviveLife;
@@ -45,11 +46,15 @@ public class UI_TitlePopup : UI_Popup
 		if(Player == null)
 			Player = Managers.Resource.Instantiate("StaticPlayer");
 			
+		
 		Player.transform.position = new Vector3(0,-1,-0);
         Player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         GameObject _customManager = GameObject.FindGameObjectWithTag("StaticManager");
         customManager = _customManager.GetComponent<CustomManager>();
         animationManager = _customManager.GetComponent<AnimationManager>();
+		
+		initialPlayer();
+		
 		animationManager.ani = Random.Range(0,10);
 		animationManager.PlayAni(true);
 		
@@ -164,6 +169,22 @@ void OnClickStartButton()
 			Managers.UI.ShowPopupUI<UI_CountPopup>();
 			Managers.UI.ShowSceneUI<UI_PlayerScene>();
 		}
+	}
+	void initialPlayer()
+	{
+		customManager.hair = 2;
+		customManager.clothes = 2;
+		customManager.eyebrow = 0;
+		customManager.eye = 2;
+		customManager.mouth = 0;
+		customManager.emotion = 0;
+
+	    customManager.numberCheck(0);
+        customManager.numberCheck(1);
+        customManager.numberCheck(2);
+        customManager.numberCheck(3);
+        customManager.numberCheck(4);
+        customManager.numberCheck(5);
 	}
 
 	void OnClickCollectionButton()
