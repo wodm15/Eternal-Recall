@@ -56,7 +56,7 @@ public class UI_GetItemPopup : UI_Popup
         BindImage(typeof(Images));
 
         //배경 변경
-        Managers.Game.changeBG();
+        // Managers.Game.changeBG();
         GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
 
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();

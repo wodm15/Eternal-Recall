@@ -35,6 +35,13 @@
   <TextData ID="6531" kor="확률 : 5%" eng="" />
   <TextData ID="6532" kor="획득 완료" eng="" />
   <TextData ID="6533" kor="획득 못함" eng="" />
+  <TextData ID="6534" kor="수영복2" eng="" />
+  <TextData ID="6535" kor="웨딩드레스" eng="" />
+  <TextData ID="6536" kor="한복" eng="" />
+  <TextData ID="6537" kor="유카타" eng="" />
+  <TextData ID="6538" kor="공주옷" eng="" />
+  <TextData ID="6544" kor="픽업 1로 이동" eng="" />
+  <TextData ID="6545" kor="픽업 2로 이동" eng="" />
 
   <TextData ID="10000" kor="새로 시작하기" eng="" />
   <TextData ID="10001" kor="계속하기" eng="" />

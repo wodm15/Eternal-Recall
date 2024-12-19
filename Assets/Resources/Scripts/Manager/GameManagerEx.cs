@@ -299,11 +299,11 @@ public void Init()
             // Difficulty 매핑을 Stage 값에 따라 설정
             int difficulty = 0;
 
-            if (Stage >= 1 && Stage <= 3)
+            if (Stage >= 1 && Stage <= 2)
             {
                 difficulty = 1;
             }
-            else if (Stage >= 4 && Stage <= 9)
+            else if (Stage >= 3 && Stage <= 9)
             {
                 difficulty = 2;
             }

@@ -14,6 +14,12 @@ public class UI_PickupPopup : UI_Popup
     Vector2 Explainsize;
     RectTransform PercentimageRect;
     Vector2 Percentsize;
+
+    enum GameObjects
+    {
+        Pick1Item,
+        Pick2Item,
+    }
     enum Buttons
     {
         Exit,
@@ -22,7 +28,15 @@ public class UI_PickupPopup : UI_Popup
         Pickup3,
         Pickup4,
         Pickup5,
+        Pickup6,
+        Pickup7,
+        Pickup8,
+        Pickup9,
+        Pickup10,
+        Pickup11,
         PickPick,
+        Toggle1Button,
+        Toggle2Button,
     }
     enum Texts
     {
@@ -32,6 +46,11 @@ public class UI_PickupPopup : UI_Popup
         PickupText3,
         PickupText4,
         PickupText5,
+        PickupText6,
+        PickupText7,
+        PickupText8,
+        PickupText9,
+        PickupText10,
         GetPercent,
         PickPickText,
         NoMoneyText,
@@ -42,6 +61,13 @@ public class UI_PickupPopup : UI_Popup
         IsGet3,
         IsGet4,
         IsGet5,
+        IsGet6,
+        IsGet7,
+        IsGet8,
+        IsGet9,
+        IsGet10,
+        Toggle1Text,
+        Toggle2Text,
     }
     enum Images
     {
@@ -60,6 +86,7 @@ public class UI_PickupPopup : UI_Popup
         UI_PickPopup.OnRefreshUI -= RefreshUI;
         UI_PickPopup.OnRefreshUI += RefreshUI;
 
+        BindObject(typeof(GameObjects));
         BindButton(typeof(Buttons));
         BindText(typeof(Texts));
         BindImage(typeof(Images));
@@ -82,11 +109,23 @@ public class UI_PickupPopup : UI_Popup
         s_customManager = customManager2.GetComponent<CustomManager>();
         s_animationManager = customManager2.GetComponent<AnimationManager>();
 
+        GetObject((int)GameObjects.Pick1Item).SetActive(true);
+        GetObject((int)GameObjects.Pick2Item).SetActive(false);
+
         GetText((int)Texts.PickupText1).text = Managers.GetText(Define.Pickup1);
         GetText((int)Texts.PickupText2).text = Managers.GetText(Define.Pickup2);
         GetText((int)Texts.PickupText3).text = Managers.GetText(Define.Pickup3);
         GetText((int)Texts.PickupText4).text = Managers.GetText(Define.Pickup4);
         GetText((int)Texts.PickupText5).text = Managers.GetText(Define.Pickup5);
+        GetText((int)Texts.PickupText6).text = Managers.GetText(Define.Pickup6);
+        GetText((int)Texts.PickupText7).text = Managers.GetText(Define.Pickup7);
+        GetText((int)Texts.PickupText8).text = Managers.GetText(Define.Pickup8);
+        GetText((int)Texts.PickupText9).text = Managers.GetText(Define.Pickup9);
+        GetText((int)Texts.PickupText10).text = Managers.GetText(Define.Pickup10);
+        GetText((int)Texts.Toggle1Text).text = "1";
+        GetText((int)Texts.Toggle2Text).text = "2";
+
+
         GetText((int)Texts.GetPercent).gameObject.SetActive(false);
         GetText((int)Texts.NoMoneyText).text = Managers.GetText(Define.NoMoneyText);
         GetText((int)Texts.NoMoneyText).gameObject.SetActive(false);
@@ -99,12 +138,28 @@ public class UI_PickupPopup : UI_Popup
         Explainsize = ExplainimageRect.sizeDelta;
         PercentimageRect = GetImage((int)Images.GetPercentImage).GetComponent<RectTransform>();
         Percentsize = PercentimageRect.sizeDelta;
+
+        GetButton((int)Buttons.Toggle1Button).gameObject.BindEvent(() => 
+        {
+            GetObject((int)GameObjects.Pick1Item).SetActive(true);
+            GetObject((int)GameObjects.Pick2Item).SetActive(false);
+        });
+        GetButton((int)Buttons.Toggle2Button).gameObject.BindEvent(() => 
+        {
+            GetObject((int)GameObjects.Pick1Item).SetActive(false);
+            GetObject((int)GameObjects.Pick2Item).SetActive(true);
+        });
         
         GetButton((int)Buttons.Pickup1).gameObject.BindEvent(() => OnClickPickup1());
         GetButton((int)Buttons.Pickup2).gameObject.BindEvent(() => OnClickPickup2());
         GetButton((int)Buttons.Pickup3).gameObject.BindEvent(() => OnClickPickup3());
         GetButton((int)Buttons.Pickup4).gameObject.BindEvent(() => OnClickPickup4());
         GetButton((int)Buttons.Pickup5).gameObject.BindEvent(() => OnClickPickup5());
+        GetButton((int)Buttons.Pickup6).gameObject.BindEvent(() => OnClickPickup6());
+        GetButton((int)Buttons.Pickup7).gameObject.BindEvent(() => OnClickPickup7());
+        GetButton((int)Buttons.Pickup8).gameObject.BindEvent(() => OnClickPickup8());
+        GetButton((int)Buttons.Pickup9).gameObject.BindEvent(() => OnClickPickup9());
+        GetButton((int)Buttons.Pickup10).gameObject.BindEvent(() => OnClickPickup10());
         GetButton((int)Buttons.PickPick).gameObject.BindEvent(() => OnClickPickPick());
 
         // Player.gameObject.SetActive(false);
@@ -154,6 +209,46 @@ public class UI_PickupPopup : UI_Popup
         GetText((int)Texts.ExplainPower).gameObject.SetActive(true);
         GetText((int)Texts.GetPercent).text = Managers.GetText(Define.Pickup5Percent);
         GetText((int)Texts.ExplainPower).text = _statData[Define.magic].Power;
+    }
+    public void OnClickPickup6()
+    {
+        pickupfunc(Define.Swimsuit2); //수영복2
+        GetButton((int)Buttons.PickPick).gameObject.SetActive(true);
+        GetText((int)Texts.ExplainPower).gameObject.SetActive(true);
+        GetText((int)Texts.GetPercent).text = Managers.GetText(Define.Pickup5Percent);
+        GetText((int)Texts.ExplainPower).text = _statData[Define.Swimsuit2].Power;
+    }
+    public void OnClickPickup7()
+    {
+        pickupfunc(Define.weddingDress); //웨딩드레스
+        GetButton((int)Buttons.PickPick).gameObject.SetActive(true);
+        GetText((int)Texts.ExplainPower).gameObject.SetActive(true);
+        GetText((int)Texts.GetPercent).text = Managers.GetText(Define.Pickup5Percent);
+        GetText((int)Texts.ExplainPower).text = _statData[Define.weddingDress].Power;
+    }
+    public void OnClickPickup8()
+    {
+        pickupfunc(Define.Hanbok); //한복
+        GetButton((int)Buttons.PickPick).gameObject.SetActive(true);
+        GetText((int)Texts.ExplainPower).gameObject.SetActive(true);
+        GetText((int)Texts.GetPercent).text = Managers.GetText(Define.Pickup5Percent);
+        GetText((int)Texts.ExplainPower).text = _statData[Define.Hanbok].Power;
+    }
+    public void OnClickPickup9()
+    {
+        pickupfunc(Define.Yukata); //유카타
+        GetButton((int)Buttons.PickPick).gameObject.SetActive(true);
+        GetText((int)Texts.ExplainPower).gameObject.SetActive(true);
+        GetText((int)Texts.GetPercent).text = Managers.GetText(Define.Pickup5Percent);
+        GetText((int)Texts.ExplainPower).text = _statData[Define.Yukata].Power;
+    }
+    public void OnClickPickup10()
+    {
+        pickupfunc(Define.Princess); //공주옷
+        GetButton((int)Buttons.PickPick).gameObject.SetActive(true);
+        GetText((int)Texts.ExplainPower).gameObject.SetActive(true);
+        GetText((int)Texts.GetPercent).text = Managers.GetText(Define.Pickup5Percent);
+        GetText((int)Texts.ExplainPower).text = _statData[Define.Princess].Power;
     }
 
     public void pickupfunc(int num)
@@ -254,6 +349,56 @@ public class UI_PickupPopup : UI_Popup
         {
             GetText((int)Texts.IsGet5).text= Managers.GetText(Define.NoGet);
             GetText((int)Texts.IsGet5).color = Color.red;
+        }
+        if(Managers.Game.Collections[Define.Princess] == CollectionState.Done)
+        {
+            GetText((int)Texts.IsGet6).text= Managers.GetText(Define.YesGet);
+            GetText((int)Texts.IsGet6).color = Color.green;
+        }
+        else
+        {
+            GetText((int)Texts.IsGet6).text= Managers.GetText(Define.NoGet);
+            GetText((int)Texts.IsGet6).color = Color.red;
+        }
+        if(Managers.Game.Collections[Define.Yukata] == CollectionState.Done)
+        {
+            GetText((int)Texts.IsGet7).text= Managers.GetText(Define.YesGet);
+            GetText((int)Texts.IsGet7).color = Color.green;
+        }
+        else
+        {
+            GetText((int)Texts.IsGet7).text= Managers.GetText(Define.NoGet);
+            GetText((int)Texts.IsGet7).color = Color.red;
+        }
+        if(Managers.Game.Collections[Define.Hanbok] == CollectionState.Done)
+        {
+            GetText((int)Texts.IsGet8).text= Managers.GetText(Define.YesGet);
+            GetText((int)Texts.IsGet8).color = Color.green;
+        }
+        else
+        {
+            GetText((int)Texts.IsGet8).text= Managers.GetText(Define.NoGet);
+            GetText((int)Texts.IsGet8).color = Color.red;
+        }
+            if(Managers.Game.Collections[Define.weddingDress] == CollectionState.Done)
+        {
+            GetText((int)Texts.IsGet9).text= Managers.GetText(Define.YesGet);
+            GetText((int)Texts.IsGet9).color = Color.green;
+        }
+        else
+        {
+            GetText((int)Texts.IsGet9).text= Managers.GetText(Define.NoGet);
+            GetText((int)Texts.IsGet9).color = Color.red;
+        }
+            if(Managers.Game.Collections[Define.Swimsuit2] == CollectionState.Done)
+        {
+            GetText((int)Texts.IsGet9).text= Managers.GetText(Define.YesGet);
+            GetText((int)Texts.IsGet9).color = Color.green;
+        }
+        else
+        {
+            GetText((int)Texts.IsGet10).text= Managers.GetText(Define.NoGet);
+            GetText((int)Texts.IsGet10).color = Color.red;
         }
     }
 

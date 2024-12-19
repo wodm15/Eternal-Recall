@@ -95,6 +95,7 @@ public class UI_PlayerScene : UI_Scene
     public void StageUp()
     {
         Managers.Game.Stage++;
+        Managers.Game.changeBG();
         
         //스테이지 70층이면 clear 검증
         if(Managers.Game.Stage >= 70)

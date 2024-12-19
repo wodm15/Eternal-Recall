@@ -79,6 +79,11 @@ public class Define
 	public const int Maid = 4;
 	public const int Bikini = 3;
 	public const int magic = 17;
+	public const int Swimsuit2 = 18;
+	public const int weddingDress = 1;
+	public const int Hanbok = 9;
+	public const int Yukata = 7;
+	public const int Princess = 13;
 
 	//난이도 별 인덱스 범위
 	public const int NormalIndex = 5;
@@ -129,6 +134,18 @@ public class Define
 	public const int Pickup5Percent = 6531;
 	public const int YesGet = 6532;
 	public const int NoGet = 6533;
+	public const int Pickup6 = 6534;
+	public const int Pickup7 = 6535;
+	public const int Pickup8 = 6536;
+	public const int Pickup9 = 6537;
+	public const int Pickup10 = 6538;
+	public const int Pickup6Percent = 6539;
+	public const int Pickup7Percent = 6540;
+	public const int Pickup8Percent = 6541;
+	public const int Pickup9Percent = 6542;
+	public const int Pickup10Percent = 6543;
+	public const int ToggleText1 = 6544;
+	public const int ToggleText2 = 6545;
 
 
 	public const int StartButtonText = 10000;

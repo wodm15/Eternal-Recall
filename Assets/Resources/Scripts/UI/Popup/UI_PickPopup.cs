@@ -168,6 +168,33 @@ public class UI_PickPopup : UI_Popup
                 index = Define.magic;
             }
 
+            else if(s_customManager.clothes == Define.Swimsuit2)
+            {
+                customManager.clothes = Random.Range(0,20); 
+                index = Define.Swimsuit2;
+            }
+
+            else if(s_customManager.clothes == Define.weddingDress)
+            {
+                customManager.clothes = Random.Range(0,20); 
+                index = Define.weddingDress;
+            }
+            else if(s_customManager.clothes == Define.Hanbok)
+            {
+                customManager.clothes = Random.Range(0,20); 
+                index = Define.Hanbok;
+            }
+            else if(s_customManager.clothes == Define.Yukata)
+            {
+                customManager.clothes = Random.Range(0,20); 
+                index = Define.Yukata;
+            }
+            else if(s_customManager.clothes == Define.Princess)
+            {
+                customManager.clothes = Random.Range(0,20); 
+                index = Define.Princess;
+            }
+
             numberCheck();
             Managers.Game.SaveGame();
 
