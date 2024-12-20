@@ -479,7 +479,12 @@ public class UI_GuessPopup : UI_Popup
         {
             Managers.Game.Money += 100000;
         }
-                
+
+        if(Managers.Game.Money > 1000000)
+        {
+            Managers.Game.Money = 999999;
+        } 
+
         Managers.UI.ClosePopupUI(this);
         UI_GameEndPopup gameEndPopup = Managers.UI.ShowPopupUI<UI_GameEndPopup>();
         gameEndPopup.transform.SetParent(null);

@@ -11,6 +11,7 @@ public class GameScene : BaseScene
 
         SceneType = Define.Scene.Game;
 		Application.runInBackground = true;
+		Screen.orientation = ScreenOrientation.LandscapeLeft;
 		
 		Managers.UI.ShowPopupUI<UI_TitlePopup>();
 		Debug.Log("Init");

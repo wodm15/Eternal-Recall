@@ -153,6 +153,7 @@ public class Define
 	public const int CollectionButtonText = 10002;
 	public const int QuitButtonText = 10003;
 	public const int PickupText = 10004;
+	public const int ShopButtonText = 10005;
 	public const int SkillChoseText = 100;
 	public const int Intro1 = 20019;
 	public const int Intro2 = 20020;
@@ -161,6 +162,14 @@ public class Define
 	public const int CollectionTitle = 20023;
 	public const int ConfirmButtonText = 20024;
 	public const int RemindButtonText = 20025;
+	public const int PurchaseText1 = 20026;
+	public const int PurchaseText2 = 20026;
+	public const int PurchaseText3 = 20026;
+	public const int PurchaseText4 = 20026;
+	public const int PurchaseText5 = 20026;
+	public const int PurchaseText6 = 20026;
+	public const int PurchaseText = 20027;
+
 
 	// public const int HairQuestion = 30000;
 	// public const int ClothesQuestion= 30001;
@@ -178,7 +187,11 @@ public class Define
 		30050
     };
 
-	public const int GameEndText = 50000;
+	
+	public const int NormalGameEndText = 40000;
+	public const int HardGameEndText = 40001;
+	public const int UnLimitedGameEndText = 40002;
+
 	public const int GoToTitleText = 50001;
 
 	public const int CollectionPageTitle = 50002;

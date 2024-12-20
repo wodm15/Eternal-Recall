@@ -72,7 +72,6 @@ public class UI_PickupPopup : UI_Popup
     enum Images
     {
         ExplainPowerImage,
-        GetPercentImage,
     }
 
     public override bool Init()
@@ -136,8 +135,8 @@ public class UI_PickupPopup : UI_Popup
 
         ExplainimageRect = GetImage((int)Images.ExplainPowerImage).GetComponent<RectTransform>();
         Explainsize = ExplainimageRect.sizeDelta;
-        PercentimageRect = GetImage((int)Images.GetPercentImage).GetComponent<RectTransform>();
-        Percentsize = PercentimageRect.sizeDelta;
+        // PercentimageRect = GetImage((int)Images.GetPercentImage).GetComponent<RectTransform>();
+        // Percentsize = PercentimageRect.sizeDelta;
 
         GetButton((int)Buttons.Toggle1Button).gameObject.BindEvent(() => 
         {
@@ -392,8 +391,8 @@ public class UI_PickupPopup : UI_Popup
         }
             if(Managers.Game.Collections[Define.Swimsuit2] == CollectionState.Done)
         {
-            GetText((int)Texts.IsGet9).text= Managers.GetText(Define.YesGet);
-            GetText((int)Texts.IsGet9).color = Color.green;
+            GetText((int)Texts.IsGet10).text= Managers.GetText(Define.YesGet);
+            GetText((int)Texts.IsGet10).color = Color.green;
         }
         else
         {

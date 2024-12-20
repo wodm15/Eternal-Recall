@@ -212,7 +212,7 @@ public class GameManagerEx
 
     public CollectionState[] Collections { get { return _gameData.Collections; } }
     public CollectionState[] Unlocked { get { return _gameData.Unlocked; } }
-    public int Money { get { return _gameData.Money; } set { _gameData.Money = value; } }
+    public int Money { get { return _gameData.Money; } set { _gameData.Money = value; CheckMoney(); }  }
     public Action<CollectionData> OnNewCollection;
 
     public StatData StatData 
@@ -221,6 +221,11 @@ public class GameManagerEx
          set { _gameData.StatData = value; }
     }
 
+    public void CheckMoney()
+    {
+        if(Money > 1000000)
+            Money = 999999;
+    }
 
     //실시간으로 업적 확인
     public void RefreshStatCollections()
@@ -311,19 +316,43 @@ public void Init()
             {
                 difficulty = 3;
             }
-            else if (Stage >= 20 && Stage <= 29)
+            else if (Stage >= 20 && Stage <= 24)
             {
                 difficulty = 4;
             }
-            else if (Stage >= 30 && Stage <= 39)
+            else if (Stage >= 25 && Stage <= 30)
+            {
+                difficulty = 4;
+            }
+
+            //하드
+            else if (Stage >= 31 && Stage <= 34)
+            {
+                difficulty = 3;
+            }
+            else if (Stage >= 35 && Stage <= 39)
+            {
+                difficulty = 4;
+            }
+            else if (Stage >= 40 && Stage <= 50)
             {
                 difficulty = 5;
             }
-            else if (Stage >= 40 && Stage <= 54)
+
+            //언리미티드
+            else if (Stage >= 50 && Stage <= 55)
+            {
+                difficulty = 4;
+            }
+            else if (Stage >= 55 && Stage <= 60)
+            {
+                difficulty = 5;
+            }
+            else if (Stage >= 55 && Stage <= 60)
             {
                 difficulty = 6;
             }
-            else if (Stage >= 55 && Stage <= 70)
+            else if (Stage >= 60 && Stage <= 70)
             {
                 difficulty = 7;
             }
@@ -355,7 +384,7 @@ public void Init()
             Stage = 1;
             Avoid = 30;
             DownSpeed = 0;
-            GuessTimer = 13;
+            GuessTimer = 15;
             HintKey = 5;
         }
         if(DifficultyLevel == "Hard")
@@ -363,7 +392,7 @@ public void Init()
             Stage = 30;
             Avoid = 10;
             DownSpeed = 0;
-            GuessTimer = 10;
+            GuessTimer = 15;
             HintKey = 3;
         }
         if(DifficultyLevel == "UnLimited")
@@ -371,7 +400,7 @@ public void Init()
             Stage = 50;
             Avoid = 0;
             DownSpeed = 0;
-            GuessTimer = 8;
+            GuessTimer = 15;
             HintKey = 0;
         }
 
@@ -379,9 +408,9 @@ public void Init()
     //배경 저장
     public void changeBG()
     {
-        int galaxyIndex = Managers.Game.Stage / 10 + 1;
-        galaxyIndex = Math.Min(galaxyIndex, 8); 
-        Managers.Game.BG = $"Galaxy{galaxyIndex}";
+        int BGIndex = Managers.Game.Stage / 10 + 1;
+        BGIndex = Math.Min(BGIndex, 8); 
+        Managers.Game.BG = $"{BGIndex}";
     }
 
 

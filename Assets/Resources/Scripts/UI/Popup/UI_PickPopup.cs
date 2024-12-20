@@ -86,7 +86,7 @@ public class UI_PickPopup : UI_Popup
 
         GetText((int)Texts.ExitText).text = Managers.GetText(Define.GoToTitleText);
         GetText((int)Texts.MoneyText).text = $"X{Managers.Game.Money}";
-        GetText((int)Texts.PickupText).text = "-500";
+        GetText((int)Texts.PickupText).text = "  -500";
         GetText((int)Texts.GetSkinText).text = "스킨 얻기";
         GetText((int)Texts.WhenGetText).text = "스킨을 얻었습니다!";
         GetText((int)Texts.ExplainText).text = "캐릭터를 매칭시켜주세요";

@@ -32,7 +32,19 @@ public class UI_GameEndPopup : UI_Popup
         Managers.Sound.Clear();
         Managers.Sound.Play(Sound.Effect, "Sound_GameEnd");
 
-        GetText((int)Texts.GameEndText).text =  Managers.GetText(Define.GameEndText);
+        if(Managers.Game.DifficultyLevel == "Normal")
+        {
+            GetText((int)Texts.GameEndText).text =  Managers.GetText(Define.NormalGameEndText);
+        }
+        else if(Managers.Game.DifficultyLevel == "Hard")
+        {
+            GetText((int)Texts.GameEndText).text =  Managers.GetText(Define.HardGameEndText);
+        }
+        else if(Managers.Game.DifficultyLevel == "UnLimited")
+        {
+            GetText((int)Texts.GameEndText).text =  Managers.GetText(Define.UnLimitedGameEndText);
+        }
+
         GetText((int)Texts.GoToTitleText).text =  Managers.GetText(Define.GoToTitleText);
 
         GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");

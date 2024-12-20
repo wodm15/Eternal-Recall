@@ -371,7 +371,6 @@ public class UI_GetItemPopup : UI_Popup
     //돈 업데이트
     public void EarnMoney(bool correct)
     {
-        Managers.Game.Money += 50000; //TODO test용
 
         if(correct && Managers.Game.DifficultyLevel == "Normal")
         {  

@@ -48,6 +48,7 @@
   <TextData ID="10002" kor="컬렉션" eng="" />
   <TextData ID="10003" kor="게임 종료" eng="" />
   <TextData ID="10004" kor="뽑기" eng="" />
+  <TextData ID="10005" kor="상점" eng="" />
 
   <TextData ID="20019" kor="안녕! 나는 영원 회상의 도움이 뽐뽐이야! &lt;br&gt;오늘 첫 회상을 해볼까?" eng="" />
   <TextData ID="20020" kor="가이드 2 &lt;br&gt; 가이드 2" eng="" />
@@ -56,6 +57,13 @@
   <TextData ID="20023" kor="컬렉션" eng="" />
   <TextData ID="20024" kor="확인" eng="" />
   <TextData ID="20025" kor="한번 더보기" eng="" />
+  <TextData ID="20026" kor="purchase1" eng="" />
+  <TextData ID="20027" kor="purchase2" eng="" />
+  <TextData ID="20028" kor="purchase3" eng="" />
+  <TextData ID="20029" kor="purchase4" eng="" />
+  <TextData ID="20030" kor="purchase5" eng="" />
+  <TextData ID="20031" kor="purchase6" eng="" />
+  <TextData ID="20032" kor="구매하기" eng="" />
 
   <TextData ID="100" kor="스킬을 선택하세요" eng="" />
 
@@ -116,7 +124,10 @@
 
 
 <!-- 게임 종료 TEXT-->
-  <TextData ID="50000" kor= "70단계 클리어! 축하합니다" eng="" />
+  <TextData ID="40000" kor= "노말모드 클리어!" eng="" />
+  <TextData ID="40001" kor= "하드모드 클리어!" eng="" />
+  <TextData ID="40002" kor= "언리미티드모드 클리어!" eng="" />
+
   <TextData ID="50001" kor= "돌아가기" eng="" />
   <TextData ID="50002" kor= "OLLECTION" eng="" />
   <TextData ID="50003" kor= "ARCHIVEMENTS" eng="" />

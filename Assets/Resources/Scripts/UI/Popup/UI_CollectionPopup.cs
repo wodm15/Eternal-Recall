@@ -102,6 +102,7 @@ public class UI_CollectionPopup : UI_Popup
         GetImage((int)Images.HowToImage).gameObject.SetActive(false);
         GetImage((int)Images.DesToImage).gameObject.SetActive(false);
 
+
 //    병아리 옷 1, 코트 2, 청바지 3,전투복 4,운동복 5, 수영복2 6,웨딩드레스 7,한복 8,유카타 9,공주옷 10,잠옷 11
 // ,마법소녀 12 ,비키니 13,메이드 14,세일러복 15,수영복 16,치파오 17,가터벨트 18,교복 19,간호사 20
 
