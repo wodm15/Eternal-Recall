@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ArrayOfStatData xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <StatData ID="0" type="clothes" nameID="15" icon="0_SailorUniform" name="선원복" description="바다를 누비는 &#10;선장이 된 기분!" power ="스테이지 5단계 건너시작" effectType="Stage" effectValue="4" />
+  <StatData ID="0" type="clothes" nameID="15" icon="0_SailorUniform" name="선원복" description="바다를 누비는 &#10;선장이 된 기분!" power ="스테이지 5단계 건너시작" effectType="Stage" effectValue="5" />
   <StatData ID="1" type="clothes" nameID="7" icon="1_WeddingDress" name="웨딩드레스" description="꿈꾸던 결혼식의 &#10;주인공이 되어보세요." power ="회피 +5%" effectType="Avoid" effectValue="5" />
   <StatData ID="2" type="clothes" nameID="1" icon="2_Basic" name="기본" description="귀엽고 깜찍한 &#10;병아리처럼!" power ="추측 시간 +1초" effectType="GuessTimer" effectValue="1" />
   <StatData ID="3" type="clothes" nameID="13" icon="3_Bikini" name="비키니" description="여름을 책임질 &#10;완벽한 해변 룩!" power ="100% 확률로 스킬 획득 효과 두배" effectType="Luck" effectValue="100" />
   <StatData ID="4" type="clothes" nameID="14" icon="4_Maid" name="메이드" description="청소는 물론, &#10;마음까지 깨끗하게!" power ="50% 확률로 스킬 효과가 두배" effectType="Luck" effectValue="50" />
   <StatData ID="5" type="clothes" nameID="2" icon="5_Coat" name="코트" description="어디서나 어울리는 &#10;기본 아이템!" power ="회피 +1%" effectType="Avoid" effectValue="1" />
-  <StatData ID="6" type="clothes" nameID="16" icon="6_Swimsuit" name="수영복" description="시원한 물놀이 &#10;준비 완료!" power ="스테이지 5단계 건너시작" effectType="Stage" effectValue="4" />
+  <StatData ID="6" type="clothes" nameID="16" icon="6_Swimsuit" name="수영복" description="시원한 물놀이 &#10;준비 완료!" power ="스테이지 5단계 건너시작" effectType="Stage" effectValue="5" />
   <StatData ID="7" type="clothes" nameID="8" icon="7_Yukata" name="유카타" description="여름 축제의 &#10;주인공은 바로 나!" power ="회피 +2%" effectType="Avoid" effectValue="2" />
   <StatData ID="8" type="clothes" nameID="17" icon="8_Cheongsam" name="치파오" description="우아함과 기품을 &#10;한껏 뽐내보세요." power ="회피 +5%" effectType="Avoid" effectValue="5" />
   <StatData ID="9" type="clothes" nameID="9" icon="9_Hanbok" name="한복" description="전통과 아름다움의 &#10;완벽한 조화!" power ="추측 시간 +4초" effectType="GuessTimer" effectValue="4" />

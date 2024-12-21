@@ -23,6 +23,7 @@ public class UI_NamePopup : UI_Popup
     [SerializeField] Toggle Normal;
     [SerializeField] Toggle Hard;
     [SerializeField] Toggle UnLimited;
+    [SerializeField] Toggle Nightmare;
     enum GameObjects
 	{
 		InputField
@@ -49,6 +50,7 @@ public class UI_NamePopup : UI_Popup
         GotoTitleButton,
         HardLock,
         UnlimtedLock,
+        NightmareLock,
 	}
 
 
@@ -102,6 +104,7 @@ public class UI_NamePopup : UI_Popup
         
         GetButton((int)Buttons.HardLock).gameObject.SetActive(false);
         GetButton((int)Buttons.UnlimtedLock).gameObject.SetActive(false);
+        GetButton((int)Buttons.NightmareLock).gameObject.SetActive(false);
         GetText((int)Texts.UnlockText).gameObject.SetActive(false);
 
 
@@ -115,6 +118,11 @@ public class UI_NamePopup : UI_Popup
         {
              GetButton((int)Buttons.UnlimtedLock).gameObject.SetActive(true);
              UnLimited.interactable = false;
+        }
+        if (Managers.Game.Unlocked[2] == CollectionState.None) //언리미티드 잠금 상태
+        {
+             GetButton((int)Buttons.NightmareLock).gameObject.SetActive(true);
+             Nightmare.interactable = false;
         }
 
 
@@ -189,6 +197,7 @@ public class UI_NamePopup : UI_Popup
         Normal.group = toggleGroup;
         Hard.group = toggleGroup;
         UnLimited.group = toggleGroup;
+        Nightmare.group = toggleGroup;
 
         string clothesEffect = $"\n 특수능력 :{Managers.Data.Stat[Managers.Game.ClothesIndex].EffectType} +{Managers.Data.Stat[Managers.Game.ClothesIndex].EffectValue}";
         // 토글 설정
@@ -227,6 +236,17 @@ public class UI_NamePopup : UI_Popup
                 Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
             }
         });
+
+        Nightmare.onValueChanged.AddListener((isOn) => 
+        {
+            if (isOn)
+            {
+                GetText((int)Texts.DifficultyExplainText).text = Managers.GetText(Define.DifficultyNightmare);
+                Managers.Game.DifficultyLevel = "Nightmare";
+                Managers.Sound.Play(Sound.Effect, "Sound_GuessButton");
+            }
+        });
+
         #endregion
 
         RefreshUI();
@@ -281,6 +301,7 @@ public class UI_NamePopup : UI_Popup
         if(Normal.isOn) Managers.Game.DifficultyLevel = "Normal";
         else if(Hard.isOn) Managers.Game.DifficultyLevel = "Hard";
         else if(UnLimited.isOn) Managers.Game.DifficultyLevel = "UnLimited";
+        else if(Nightmare.isOn) Managers.Game.DifficultyLevel = "Nightmare";
 
         //옷 능력치 추가
         ApplyInitialStats();

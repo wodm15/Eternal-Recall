@@ -60,6 +60,8 @@ public class UI_PlayPopup : UI_Popup
                 StartCoroutine(PauseMovement(2f));
             else if(Managers.Game.DifficultyLevel == "UnLimited")
                 StartCoroutine(PauseMovement(1f));
+            else if(Managers.Game.DifficultyLevel == "Nightmare")
+                StartCoroutine(PauseMovement(0f));
 
             hasPausedOnce = true;
         }

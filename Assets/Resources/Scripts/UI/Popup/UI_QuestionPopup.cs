@@ -41,7 +41,12 @@ public class UI_QuestionPopup : UI_Popup
 
         GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
         
-        GetText((int)Texts.Question).text = $"{Managers.Game.quizData.kor}";
+        if(Managers.Game.DifficultyLevel == "Nightmare")
+        {
+            GetText((int)Texts.Question).text = $"{Managers.Game.quizData.eng}";
+        }
+        else
+            GetText((int)Texts.Question).text = $"{Managers.Game.quizData.kor}";
         GetImage((int)Images.birdSoundImage).gameObject.SetActive(false);
 
         StartCoroutine(CloseAndShowPopupAfterDelay(5f));
@@ -124,7 +129,7 @@ public class UI_QuestionPopup : UI_Popup
             }
 
 
-            else if (Managers.Game.DifficultyLevel == "UnLimited")
+            else if (Managers.Game.DifficultyLevel == "UnLimited" || Managers.Game.DifficultyLevel == "Nightmare")
             {
             Managers.Game.StrangerIndex[0] = Random.Range(0, Define.UnlimitedIndex); //헤어
             Managers.Game.StrangerIndex[1] = Random.Range(0, Define.UnlimitedIndex); //옷
@@ -173,10 +178,14 @@ public class UI_QuestionPopup : UI_Popup
         {
             Managers.Game.BirdPercent +=10;
         }
+        else if (Managers.Game.DifficultyLevel == "Nightmare" && Managers.Game.Stage >= 1 && Managers.Game.Stage % 5 == 0)
+        {
+            Managers.Game.BirdPercent +=50;
+        }
 
         //70%를 최대로
-        if(Managers.Game.BirdPercent >= 70)
-                Managers.Game.BirdPercent =70;
+        if(Managers.Game.BirdPercent >= 80)
+                Managers.Game.BirdPercent =80;
 
 
         // 확률에 따라 Bird 생성 여부 결정

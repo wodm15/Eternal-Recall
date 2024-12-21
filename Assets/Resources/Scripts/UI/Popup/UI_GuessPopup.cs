@@ -219,6 +219,9 @@ public class UI_GuessPopup : UI_Popup
             HardBinding();
         else if (Managers.Game.DifficultyLevel == "UnLimited")
             UnLimitedBinding();
+        //인덱스는 언리미티드와 같음
+        else if (Managers.Game.DifficultyLevel == "Nightmare")
+            UnLimitedBinding();
         
         #endregion
 
@@ -422,6 +425,10 @@ public class UI_GuessPopup : UI_Popup
         {
             GameEnd();
         }
+        else if(Managers.Game.Stage >= Define.NightmareGameEnd && Managers.Game.DifficultyLevel == "Nightmare")
+        {
+            GameEnd();
+        }
         else
         {
             GameContinue();
@@ -476,6 +483,11 @@ public class UI_GuessPopup : UI_Popup
             Managers.Game.Money += 30000;
         }
         else if( Managers.Game.DifficultyLevel == "UnLimited")
+        {
+            Managers.Game.Unlocked[2] = CollectionState.Done;
+            Managers.Game.Money += 50000;
+        }
+        else if( Managers.Game.DifficultyLevel == "Nightmare")
         {
             Managers.Game.Money += 100000;
         }
@@ -1374,9 +1386,11 @@ public class UI_GuessPopup : UI_Popup
     public void GiveHint()
     {
         
-        if(Managers.Game.DifficultyLevel != "UnLimited")
+        if(Managers.Game.DifficultyLevel != "Nightmare")
         {
             int chanceTime = 0;
+            if(Managers.Game.DifficultyLevel == "Unlimited")
+                chanceTime = Define.GiveHintUnLimted;
             if(Managers.Game.DifficultyLevel == "Hard")
                 chanceTime = Define.GiveHintHard;
             else if(Managers.Game.DifficultyLevel == "Normal")

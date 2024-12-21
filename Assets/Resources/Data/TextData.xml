@@ -9,7 +9,7 @@
   <TextData ID="6505" kor=" 하지만 회피했지롱" eng="" />
   <TextData ID="6506" kor="풀어야할 범위가 적음&#10;회피 버튼 확률 25퍼센트&#10;이동 정지시간 3초&#10;1~30 스테이지 &#10;힌트키 기본제공 5개&#10;클리어 시 10000코인 지급"  eng="" />
   <TextData ID="6507" kor="풀어야할 범위가 많음&#10;회피 버튼 확률 10퍼센트&#10;이동 정지시간 2초&#10;31~50 스테이지 &#10;힌트키 기본제공 3개&#10;클리어 시 30000코인 지급" eng="" />
-  <TextData ID="6508" kor="풀어야할 범위가 매우 많음&#10;회피 버튼 확률 0퍼센트&#10;이동 정지시간 1초&#10;51~70 스테이지&#10;힌트키 기본제공 없음&#10;클리어 시 100000코인 지급" eng="" />
+  <TextData ID="6508" kor="풀어야할 범위가 매우 많음&#10;회피 버튼 확률 5퍼센트&#10;이동 정지시간 1초&#10;51~70 스테이지&#10;힌트키 기본제공 1개&#10;클리어 시 50000코인 지급" eng="" />
   <TextData ID="6509" kor="저장된 파일이 없어" eng="" />
   <TextData ID="6510" kor="새로운 게임을 시작하자" eng="" />
   <TextData ID="6511" kor="불필요한 값이 있어 파일을 삭제했어" eng="" />
@@ -42,6 +42,7 @@
   <TextData ID="6538" kor="공주옷" eng="" />
   <TextData ID="6544" kor="픽업 1로 이동" eng="" />
   <TextData ID="6545" kor="픽업 2로 이동" eng="" />
+  <TextData ID="6546" kor="풀어야할 범위가 매우 많음&#10;회피 버튼 확률 0퍼센트&#10;이동 정지시간 없음&#10;71~100 스테이지&#10;힌트키 기본제공 없음&#10;클리어 시 100000코인 지급" eng="" />
 
   <TextData ID="10000" kor="새로 시작하기" eng="" />
   <TextData ID="10001" kor="계속하기" eng="" />
@@ -57,12 +58,12 @@
   <TextData ID="20023" kor="컬렉션" eng="" />
   <TextData ID="20024" kor="확인" eng="" />
   <TextData ID="20025" kor="한번 더보기" eng="" />
-  <TextData ID="20026" kor="purchase1" eng="" />
-  <TextData ID="20027" kor="purchase2" eng="" />
-  <TextData ID="20028" kor="purchase3" eng="" />
-  <TextData ID="20029" kor="purchase4" eng="" />
-  <TextData ID="20030" kor="purchase5" eng="" />
-  <TextData ID="20031" kor="purchase6" eng="" />
+  <TextData ID="20026" kor="수영복 구매" eng="" />
+  <TextData ID="20027" kor="치파오 구매" eng="" />
+  <TextData ID="20028" kor="가터벨트 구매" eng="" />
+  <TextData ID="20029" kor="교복 구매" eng="" />
+  <TextData ID="20030" kor="간호복 구매" eng="" />
+  <TextData ID="20031" kor="코인 구매" eng="" />
   <TextData ID="20032" kor="구매하기" eng="" />
 
   <TextData ID="100" kor="스킬을 선택하세요" eng="" />
@@ -127,6 +128,7 @@
   <TextData ID="40000" kor= "노말모드 클리어!" eng="" />
   <TextData ID="40001" kor= "하드모드 클리어!" eng="" />
   <TextData ID="40002" kor= "언리미티드모드 클리어!" eng="" />
+  <TextData ID="40003" kor= "악몽난이도 클리어!" eng="" />
 
   <TextData ID="50001" kor= "돌아가기" eng="" />
   <TextData ID="50002" kor= "OLLECTION" eng="" />

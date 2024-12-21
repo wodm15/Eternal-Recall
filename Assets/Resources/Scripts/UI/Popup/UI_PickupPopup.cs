@@ -108,8 +108,8 @@ public class UI_PickupPopup : UI_Popup
         s_customManager = customManager2.GetComponent<CustomManager>();
         s_animationManager = customManager2.GetComponent<AnimationManager>();
 
-        GetObject((int)GameObjects.Pick1Item).SetActive(true);
-        GetObject((int)GameObjects.Pick2Item).SetActive(false);
+        GetObject((int)GameObjects.Pick1Item).SetActive(false);
+        GetObject((int)GameObjects.Pick2Item).SetActive(true);
 
         GetText((int)Texts.PickupText1).text = Managers.GetText(Define.Pickup1);
         GetText((int)Texts.PickupText2).text = Managers.GetText(Define.Pickup2);
@@ -140,13 +140,13 @@ public class UI_PickupPopup : UI_Popup
 
         GetButton((int)Buttons.Toggle1Button).gameObject.BindEvent(() => 
         {
-            GetObject((int)GameObjects.Pick1Item).SetActive(true);
-            GetObject((int)GameObjects.Pick2Item).SetActive(false);
+            GetObject((int)GameObjects.Pick1Item).SetActive(false);
+            GetObject((int)GameObjects.Pick2Item).SetActive(true);
         });
         GetButton((int)Buttons.Toggle2Button).gameObject.BindEvent(() => 
         {
-            GetObject((int)GameObjects.Pick1Item).SetActive(false);
-            GetObject((int)GameObjects.Pick2Item).SetActive(true);
+            GetObject((int)GameObjects.Pick1Item).SetActive(true);
+            GetObject((int)GameObjects.Pick2Item).SetActive(false);
         });
         
         GetButton((int)Buttons.Pickup1).gameObject.BindEvent(() => OnClickPickup1());

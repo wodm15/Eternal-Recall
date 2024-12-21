@@ -111,7 +111,7 @@ public class UI_GetItemPopup : UI_Popup
         if(incorrectCount == 0)
         {
             GetText((int)Texts.WrongCount).text = Managers.GetText(Define.CorrectText);
-            EarnMoney(true);
+            // EarnMoney(true);
         }
         else if (incorrectCount != 0 && isAvoid == false)
         {
@@ -320,6 +320,13 @@ public class UI_GetItemPopup : UI_Popup
             selectedItem.effectValues[0]= gameble; // countDown에 넘기기
             Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); 
         }
+        else if(selectedItem.productID == "gambleHealing2")
+        {
+            int gameble = Random.Range((int)selectedItem.effectValues[0], (int)selectedItem.effectValues[1]+1);
+            Managers.Game.Hp += gameble;
+            selectedItem.effectValues[0]= gameble; // countDown에 넘기기
+            Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); 
+        }
 
         playerScene.HPUp();
         return selectedItem;
@@ -349,6 +356,11 @@ public class UI_GetItemPopup : UI_Popup
             {
                 Managers.Game.HintKey += (int)selectedItem.effectValues[0];
             }
+        else if(selectedItem.productID == "GotoTop")
+            {
+                Managers.Game.Hp = 1;
+                Managers.Game.Stage = 97;
+            }
         else
             Debug.Log("NO SKILL FOUND");
         
@@ -369,35 +381,35 @@ public class UI_GetItemPopup : UI_Popup
     }
 
     //돈 업데이트
-    public void EarnMoney(bool correct)
-    {
+    // public void EarnMoney(bool correct)
+    // {
 
-        if(correct && Managers.Game.DifficultyLevel == "Normal")
-        {  
-            Managers.Game.Money += 1000;
-        }
-        else if(correct && Managers.Game.DifficultyLevel == "Hard")
-        {
-            Managers.Game.Money += 2000;
-        }
-        else if(correct && Managers.Game.DifficultyLevel == "UnLimited")
-        {
-            Managers.Game.Money += 3000;
-        }
+    //     if(correct && Managers.Game.DifficultyLevel == "Normal")
+    //     {  
+    //         Managers.Game.Money += 1000;
+    //     }
+    //     else if(correct && Managers.Game.DifficultyLevel == "Hard")
+    //     {
+    //         Managers.Game.Money += 2000;
+    //     }
+    //     else if(correct && Managers.Game.DifficultyLevel == "UnLimited")
+    //     {
+    //         Managers.Game.Money += 3000;
+    //     }
 
-        else if(!correct && Managers.Game.DifficultyLevel == "Normal")
-        {  
-            Managers.Game.Money += 50;
-        }
-        else if(!correct && Managers.Game.DifficultyLevel == "Hard")
-        {
-            Managers.Game.Money += 100;
-        }
-        else if(!correct && Managers.Game.DifficultyLevel == "UnLimited")
-        {
-            Managers.Game.Money += 150;
-        }
-    }
+    //     else if(!correct && Managers.Game.DifficultyLevel == "Normal")
+    //     {  
+    //         Managers.Game.Money += 50;
+    //     }
+    //     else if(!correct && Managers.Game.DifficultyLevel == "Hard")
+    //     {
+    //         Managers.Game.Money += 100;
+    //     }
+    //     else if(!correct && Managers.Game.DifficultyLevel == "UnLimited")
+    //     {
+    //         Managers.Game.Money += 150;
+    //     }
+    // }
 
     void GameOver()
     {

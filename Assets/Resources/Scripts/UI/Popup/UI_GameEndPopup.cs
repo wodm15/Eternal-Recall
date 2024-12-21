@@ -44,6 +44,10 @@ public class UI_GameEndPopup : UI_Popup
         {
             GetText((int)Texts.GameEndText).text =  Managers.GetText(Define.UnLimitedGameEndText);
         }
+        else if(Managers.Game.DifficultyLevel == "Nightmare")
+        {
+            GetText((int)Texts.GameEndText).text =  Managers.GetText(Define.NightmareGameEndText);
+        }
 
         GetText((int)Texts.GoToTitleText).text =  Managers.GetText(Define.GoToTitleText);
 

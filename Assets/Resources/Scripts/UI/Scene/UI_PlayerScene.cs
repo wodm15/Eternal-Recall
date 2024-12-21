@@ -97,13 +97,6 @@ public class UI_PlayerScene : UI_Scene
         Managers.Game.Stage++;
         Managers.Game.changeBG();
         
-        //스테이지 70층이면 clear 검증
-        if(Managers.Game.Stage >= 70)
-        {
-            Managers.UI.CloseAllPopupUI();
-            Managers.Sound.Clear();
-            Managers.UI.ShowPopupUI<UI_GameEndPopup>();
-        }
 
         RefreshUI();
     }

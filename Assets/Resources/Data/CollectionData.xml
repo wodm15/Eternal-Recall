@@ -11,7 +11,7 @@
   <CollectionData ID="8" nameID="17"  iconPath="Sprites/Collection/8_Cheongsam" type="Cody" name="치파오" reqHp="1" reqStage="50"  reqHintKey="0" reqLevel= "H" description="치파오" How = "치파오 구매" purchase = "1"/>
   <CollectionData ID="9" nameID="8"  iconPath="Sprites/Collection/9_Hanbok" type="Cody" name="한복" reqHp="1" reqStage="35" reqHintKey="0" reqLevel="U" description="한복" How="한복" purchase="1" />
   <CollectionData ID="10" nameID="11"  iconPath="Sprites/Collection/10_NightWear" type="Cody" name="잠옷" reqHp="80" reqStage="69" reqHintKey="0" reqLevel="H" description="잠옷" How="잠옷 뽑기" purchase="1" />
-  <CollectionData ID="11" nameID="5"  iconPath="Sprites/Collection/11_SweatSuit" type="Cody" name="운동복" reqHp="80" reqStage="70" reqHintKey="5" reqLevel="U" description="고인물" How="언리미티드모드에서 체력 80이상,&#10;힌트키 5개이상 가지고 클리어" purchase="0" />
+  <CollectionData ID="11" nameID="5"  iconPath="Sprites/Collection/11_SweatSuit" type="Cody" name="운동복" reqHp="1" reqStage="100" reqHintKey="0" reqLevel="N" description="고인물" How="나이트메어모드 클리어" purchase="0" />
   <CollectionData ID="12" nameID="18"  iconPath="Sprites/Collection/12_GarterBelt" type="Cody" name="가터벨트" reqHp="1" reqStage="2" reqHintKey="10" reqLevel= "U" description="가터벨트" How = "가터벨트 구매" purchase = "1"/>
   <CollectionData ID="13" nameID="10"  iconPath="Sprites/Collection/13_PrincessClothes" type="Cody" name="공주옷" reqHp="1" reqStage="70" reqHintKey="15" reqLevel="U" description="공주옷" How="공주옷" purchase="1" />
   <CollectionData ID="14" nameID="3"  iconPath="Sprites/Collection/14_Jean" type="Cody" name="청바지" reqHp="1" reqStage="50" reqHintKey="0" reqLevel="H" description="등반중" How="하드모드 클리어" purchase="0" />
