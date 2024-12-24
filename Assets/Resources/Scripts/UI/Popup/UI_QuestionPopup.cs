@@ -36,10 +36,17 @@ public class UI_QuestionPopup : UI_Popup
 
 
         //배경 변경
-        Managers.Game.changeBG();
+        if(Managers.Game.Stage == 1 )
+            Managers.Game.changeBG();
+
         GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
         
-        GetText((int)Texts.Question).text = $"{Managers.Game.quizData.kor}";
+        if(Managers.Game.DifficultyLevel == "Nightmare")
+        {
+            GetText((int)Texts.Question).text = $"{Managers.Game.quizData.eng}";
+        }
+        else
+            GetText((int)Texts.Question).text = $"{Managers.Game.quizData.kor}";
         GetImage((int)Images.birdSoundImage).gameObject.SetActive(false);
 
         StartCoroutine(CloseAndShowPopupAfterDelay(5f));
@@ -79,29 +86,51 @@ public class UI_QuestionPopup : UI_Popup
 
             if(Managers.Game.DifficultyLevel == "Normal")
             {
-            animationManager.ani = Random.Range(0, Define.NormalIndex); 
             Managers.Game.StrangerIndex[0] = Random.Range(0, Define.NormalIndex); //헤어
             Managers.Game.StrangerIndex[1] = Random.Range(0, Define.NormalIndex); //옷
             Managers.Game.StrangerIndex[2] = Random.Range(0, Define.NormalIndex);  //눈썹
             Managers.Game.StrangerIndex[3] = Random.Range(0, Define.NormalIndex); //눈
             Managers.Game.StrangerIndex[4] = Random.Range(0, Define.NormalIndex); //입
             Managers.Game.StrangerIndex[5] = Random.Range(0, Define.NormalIndex);  //감정
-            Managers.Game.StrangerIndex[6] = animationManager.ani; //애니메이션
+
+            // 옷이 1, 7 , 9 , 13 인덱스일 경우 다리꼬는게 안보이기 때문에 0과 1은 무조건 패스하도록 추가
+            int outfitIndex = Managers.Game.StrangerIndex[1];
+            do
+            {
+                animationManager.ani = Random.Range(0, Define.NormalIndex);
             }
+            while ((outfitIndex == 1 || outfitIndex == 7 || outfitIndex == 9 || outfitIndex == 13) 
+                && (animationManager.ani == 0 || animationManager.ani == 1));
+
+            Managers.Game.StrangerIndex[6] = animationManager.ani; // 애니메이션
+            }
+
+            
             else if (Managers.Game.DifficultyLevel == "Hard")
             {
-            animationManager.ani = Random.Range(0, Define.MaxAnimationIndex); 
+            
             Managers.Game.StrangerIndex[0] = Random.Range(0, Define.HardIndex); //헤어
             Managers.Game.StrangerIndex[1] = Random.Range(0, Define.HardIndex); //옷
             Managers.Game.StrangerIndex[2] = Random.Range(0, Define.MaxIndexEyebrow);  //눈썹 5개밖에 없음 
             Managers.Game.StrangerIndex[3] = Random.Range(0, Define.HardIndex); //눈
             Managers.Game.StrangerIndex[4] = Random.Range(0, Define.HardIndex); //입
             Managers.Game.StrangerIndex[5] = Random.Range(0, Define.MaxIndexEmotion);  //감정 6개밖에 없음
-            Managers.Game.StrangerIndex[6] = animationManager.ani; //애니메이션
-            }
-            else if (Managers.Game.DifficultyLevel == "UnLimited")
+
+            // 옷이 1, 7 , 9 , 13 인덱스일 경우 다리꼬는게 안보이기 때문에 0과 1은 무조건 패스하도록 추가
+            int outfitIndex = Managers.Game.StrangerIndex[1];
+            do
             {
-            animationManager.ani = Random.Range(0, Define.MaxAnimationIndex); 
+                animationManager.ani = Random.Range(0, Define.MaxAnimationIndex); 
+            }
+            while ((outfitIndex == 1 || outfitIndex == 7 || outfitIndex == 9 || outfitIndex == 13) 
+                && (animationManager.ani == 0 || animationManager.ani == 1));
+
+            Managers.Game.StrangerIndex[6] = animationManager.ani; // 애니메이션
+            }
+
+
+            else if (Managers.Game.DifficultyLevel == "UnLimited" || Managers.Game.DifficultyLevel == "Nightmare")
+            {
             Managers.Game.StrangerIndex[0] = Random.Range(0, Define.UnlimitedIndex); //헤어
             Managers.Game.StrangerIndex[1] = Random.Range(0, Define.UnlimitedIndex); //옷
             Managers.Game.StrangerIndex[2] = Random.Range(0, Define.MaxIndexEyebrow);  //눈썹
@@ -109,6 +138,17 @@ public class UI_QuestionPopup : UI_Popup
             Managers.Game.StrangerIndex[4] = Random.Range(0, Define.UnlimitedIndex); //입 24 -> 20개로
             Managers.Game.StrangerIndex[5] = Random.Range(0, Define.MaxIndexEmotion);  //감정
             Managers.Game.StrangerIndex[6] = animationManager.ani; //애니메이션
+
+            // 옷이 1, 7 , 9 , 13 인덱스일 경우 다리꼬는게 안보이기 때문에 0과 1은 무조건 패스하도록 추가
+            int outfitIndex = Managers.Game.StrangerIndex[1];
+            do
+            {
+                animationManager.ani = Random.Range(0, Define.MaxAnimationIndex); 
+            }
+            while ((outfitIndex == 1 || outfitIndex == 7 || outfitIndex == 9 || outfitIndex == 13) 
+                && (animationManager.ani == 0 || animationManager.ani == 1));
+
+            Managers.Game.StrangerIndex[6] = animationManager.ani; // 애니메이션
             }
 
             _customManager.hair = Managers.Game.StrangerIndex[0];
@@ -132,12 +172,20 @@ public class UI_QuestionPopup : UI_Popup
         }
         else if (Managers.Game.DifficultyLevel == "Hard" && Managers.Game.Stage >= 1 && Managers.Game.Stage % 5 == 0)
         {
-            Managers.Game.BirdPercent +=2;
+            Managers.Game.BirdPercent +=5;
         }
         else if (Managers.Game.DifficultyLevel == "UnLimited" && Managers.Game.Stage >= 1 && Managers.Game.Stage % 5 == 0)
         {
-            Managers.Game.BirdPercent +=5;
+            Managers.Game.BirdPercent +=10;
         }
+        else if (Managers.Game.DifficultyLevel == "Nightmare" && Managers.Game.Stage >= 1 && Managers.Game.Stage % 5 == 0)
+        {
+            Managers.Game.BirdPercent +=50;
+        }
+
+        //70%를 최대로
+        if(Managers.Game.BirdPercent >= 80)
+                Managers.Game.BirdPercent =80;
 
 
         // 확률에 따라 Bird 생성 여부 결정

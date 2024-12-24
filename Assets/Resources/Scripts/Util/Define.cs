@@ -58,7 +58,7 @@ public class Define
 
 	public const int GiveHintNormal = 5;
 	public const int GiveHintHard = 3;
-	public const int GiveHintUnLimted = 0;
+	public const int GiveHintUnLimted = 1;
 	//현재 코디 옷 (19개 이므로)
 	public const int MAX_STAT_COUNT = 50;
 	public const int MAX_ENDING_COUNT = 50;
@@ -69,6 +69,7 @@ public class Define
 	public const int NormalGameEnd = 30;
 	public const int HardGameEnd = 50;
 	public const int UnLimitedGameEnd = 70;
+	public const int NightmareGameEnd = 100;
 
 	//뽑기 가격
 	public const int PickupCost = 500;
@@ -79,6 +80,11 @@ public class Define
 	public const int Maid = 4;
 	public const int Bikini = 3;
 	public const int magic = 17;
+	public const int Swimsuit2 = 18;
+	public const int weddingDress = 1;
+	public const int Hanbok = 9;
+	public const int Yukata = 7;
+	public const int Princess = 13;
 
 	//난이도 별 인덱스 범위
 	public const int NormalIndex = 5;
@@ -129,6 +135,19 @@ public class Define
 	public const int Pickup5Percent = 6531;
 	public const int YesGet = 6532;
 	public const int NoGet = 6533;
+	public const int Pickup6 = 6534;
+	public const int Pickup7 = 6535;
+	public const int Pickup8 = 6536;
+	public const int Pickup9 = 6537;
+	public const int Pickup10 = 6538;
+	public const int Pickup6Percent = 6539;
+	public const int Pickup7Percent = 6540;
+	public const int Pickup8Percent = 6541;
+	public const int Pickup9Percent = 6542;
+	public const int Pickup10Percent = 6543;
+	public const int ToggleText1 = 6544;
+	public const int ToggleText2 = 6545;
+	public const int DifficultyNightmare = 6546;
 
 
 	public const int StartButtonText = 10000;
@@ -136,6 +155,7 @@ public class Define
 	public const int CollectionButtonText = 10002;
 	public const int QuitButtonText = 10003;
 	public const int PickupText = 10004;
+	public const int ShopButtonText = 10005;
 	public const int SkillChoseText = 100;
 	public const int Intro1 = 20019;
 	public const int Intro2 = 20020;
@@ -144,6 +164,14 @@ public class Define
 	public const int CollectionTitle = 20023;
 	public const int ConfirmButtonText = 20024;
 	public const int RemindButtonText = 20025;
+	public const int PurchaseText1 = 20026;
+	public const int PurchaseText2 = 20027;
+	public const int PurchaseText3 = 20028;
+	public const int PurchaseText4 = 20029;
+	public const int PurchaseText5 = 20030;
+	public const int PurchaseText6 = 20031;
+	public const int PurchaseText = 20032;
+
 
 	// public const int HairQuestion = 30000;
 	// public const int ClothesQuestion= 30001;
@@ -161,7 +189,12 @@ public class Define
 		30050
     };
 
-	public const int GameEndText = 50000;
+	
+	public const int NormalGameEndText = 40000;
+	public const int HardGameEndText = 40001;
+	public const int UnLimitedGameEndText = 40002;
+	public const int NightmareGameEndText = 40003;
+
 	public const int GoToTitleText = 50001;
 
 	public const int CollectionPageTitle = 50002;

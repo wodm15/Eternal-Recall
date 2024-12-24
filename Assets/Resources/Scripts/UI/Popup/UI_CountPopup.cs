@@ -56,7 +56,7 @@ public class UI_CountPopup : UI_Popup
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
     
     // 10단계씩마다 음악 변경 로직
-    if (_Stage >= 1 && _Stage <= 70)
+    if (_Stage >= 1 && _Stage <= 101)
     {
         string[] soundFiles = new string[]
         {
@@ -66,7 +66,11 @@ public class UI_CountPopup : UI_Popup
             "Sound_MainPlay30", // 30단계
             "Sound_MainPlay40", // 40단계
             "Sound_MainPlay50", // 50단계
-            "Sound_MainPlay60"  // 60단계
+            "Sound_MainPlay60", // 60단계
+            "Sound_MainPlay70",  // 70단계
+            "Sound_MainPlay80",  // 80단계
+            "Sound_MainPlay90",  // 90단계
+            "Sound_MainPlay100",  // 100단계
         };
 
 
@@ -89,6 +93,8 @@ public class UI_CountPopup : UI_Popup
             GetText((int)Texts.ShowStage).text = $" Final Hard Stage : {_Stage}";
         if(_Stage == Define.UnLimitedGameEnd -1 && Managers.Game.DifficultyLevel == "UnLimited")
             GetText((int)Texts.ShowStage).text = $" Final Unlimited Stage : {_Stage}";
+        if(_Stage == Define.NightmareGameEnd && Managers.Game.DifficultyLevel == "Nightmare")
+            GetText((int)Texts.ShowStage).text = $" Final Nightmare Stage : {_Stage}";
         
         else
             GetText((int)Texts.ShowStage).text = $" Stage : {_Stage}";

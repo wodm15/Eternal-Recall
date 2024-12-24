@@ -17,6 +17,7 @@ public class UI_TitlePopup : UI_Popup
 		QuitButtonText,
 		PickupText,
 		SayingText,
+		ShopButtonText,
 	}
 
     enum Buttons
@@ -26,6 +27,7 @@ public class UI_TitlePopup : UI_Popup
 		CollectionButton,
 		PickupButton,
 		QuitButton,
+		ShopButton,
 	}
 
     public override bool Init()
@@ -91,6 +93,10 @@ public class UI_TitlePopup : UI_Popup
 			Application.Quit();
 
         });
+		GetButton((int)Buttons.ShopButton).gameObject.BindEvent(() =>
+		{
+			OnClickShopButton();
+		});
 
 		
 		// GetButton((int)Buttons.CollectionButton).gameObject.BindEvent(OnClickCollectionButton);
@@ -99,6 +105,7 @@ public class UI_TitlePopup : UI_Popup
 		GetText((int)Texts.CollectionButtonText).text = Managers.GetText(Define.CollectionButtonText);
 		GetText((int)Texts.QuitButtonText).text = Managers.GetText(Define.QuitButtonText);
 		GetText((int)Texts.PickupText).text = Managers.GetText(Define.PickupText);
+		GetText((int)Texts.ShopButtonText).text = Managers.GetText(Define.ShopButtonText);
 
 		//노래 설정
 		Managers.Sound.Clear();
@@ -206,6 +213,15 @@ void OnClickStartButton()
 
 		Debug.Log("OnClickPickupButton");
 		Managers.UI.ShowPopupUI<UI_PickupPopup>();
+	}
+	void OnClickShopButton()
+	{
+		Managers.Game.LoadGame();
+		Player.transform.localPosition = new Vector3(0,0,0);
+		Player.transform.localScale = new Vector3(1,1,1);
+
+		Debug.Log("OnClickShopButton");
+		Managers.UI.ShowPopupUI<UI_ShopPopup>();
 	}
 
 	void CheckFirstVisit()

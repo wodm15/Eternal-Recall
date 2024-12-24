@@ -28,7 +28,6 @@ public class UI_PlayPopup : UI_Popup
         BindImage(typeof(Images));
 
         //배경 변경
-        Managers.Game.changeBG();
         GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
 
         Stranger = GameObject.Find("Stranger");
@@ -61,6 +60,8 @@ public class UI_PlayPopup : UI_Popup
                 StartCoroutine(PauseMovement(2f));
             else if(Managers.Game.DifficultyLevel == "UnLimited")
                 StartCoroutine(PauseMovement(1f));
+            else if(Managers.Game.DifficultyLevel == "Nightmare")
+                StartCoroutine(PauseMovement(0f));
 
             hasPausedOnce = true;
         }

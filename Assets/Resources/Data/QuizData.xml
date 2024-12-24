@@ -3,157 +3,154 @@
   <!-- 난이도 1 - 쉬운 질문 -->
   <!--헤어 복장 눈썹 눈동자 입모양 기분(감정) 포즈 -->
   <!-- 1   1   1   1    1    1       1 -->
-  <QuizData ID="1" kor="헤어스타일을 확인해주세요" Difficulty="1" quizType="1000000" eng="" />
-  <QuizData ID="2" kor="복장을 확인해주세요" Difficulty="1" quizType="0100000" eng="" />
-  <QuizData ID="3" kor="눈에 집중해주세요" Difficulty="1" quizType="0001000" eng="" />
-  <QuizData ID="4" kor="입모양을 자세히 봐주세요" Difficulty="1" quizType="0000100" eng="" />
-  <QuizData ID="5" kor="감정을 확인해주세요" Difficulty="1" quizType="0000010" eng="" />
-  <QuizData ID="6" kor="포즈에 집중해주세요" Difficulty="1" quizType="0000001" eng="" />
+  <QuizData ID="1" kor="헤어스타일을 확인해주세요" Difficulty="1" quizType="1000000" eng="gpdjtmxkdlfdmfghkrdlsgowntpdy" />
+  <QuizData ID="2" kor="복장을 확인해주세요" Difficulty="1" quizType="0100000" eng="qhrwkddmf ghkrdlsgowntpdy" />
+  <QuizData ID="3" kor="눈에 집중해주세요" Difficulty="1" quizType="0001000" eng="snsdpwlqwndgowntpdy" />
+  <QuizData ID="4" kor="입모양을 자세히 봐주세요" Difficulty="1" quizType="0000100" eng="dlqahdiddmf wktpgl qhkwntpdy" />
+  <QuizData ID="5" kor="감정을 확인해주세요" Difficulty="1" quizType="0000010" eng="rkawjddmf ghkrdlsgowntpdy" />
+  <QuizData ID="6" kor="포즈에 집중해주세요" Difficulty="1" quizType="0000001" eng="vhwmdp wlqwndgowntpdy" />
 
   <!-- 난이도 2 - 중간 난이도 질문 -->
-  <QuizData ID="100" kor="헤어스타일과 복장에 집중해주세요" Difficulty="2" quizType="1100000" eng="" />
-  <QuizData ID="101" kor="헤어스타일과 눈썹에 집중해주세요" Difficulty="2" quizType="1010000" eng="" />
-  <QuizData ID="102" kor="헤어스타일과 눈동자에 집중해주세요" Difficulty="2" quizType="1001000" eng="" />
-  <QuizData ID="103" kor="헤어스타일과 입모양에 집중해주세요" Difficulty="2" quizType="1000100" eng="" />
-  <QuizData ID="104" kor="헤어스타일과 감정에 집중해주세요" Difficulty="2" quizType="1000010" eng="" />
-  <QuizData ID="105" kor="헤어스타일과 포즈에 집중해주세요" Difficulty="2" quizType="1000001" eng="" />
-  <QuizData ID="106" kor="복장과 눈썹에 집중해주세요" Difficulty="2" quizType="0110000" eng="" />
-  <QuizData ID="107" kor="복장과 눈동자에 집중해주세요" Difficulty="2" quizType="0101000" eng="" />
-  <QuizData ID="108" kor="복장과 입모양에 집중해주세요" Difficulty="2" quizType="0100100" eng="" />
-  <QuizData ID="109" kor="복장과 감정에 집중해주세요" Difficulty="2" quizType="0100010" eng="" />
-  <QuizData ID="110" kor="복장과 포즈에 집중해주세요" Difficulty="2" quizType="0100001" eng="" />
-  <QuizData ID="111" kor="눈썹과 눈동자에 집중해주세요" Difficulty="2" quizType="0011000" eng="" />
-  <QuizData ID="112" kor="눈썹과 입모양에 집중해주세요" Difficulty="2" quizType="0010100" eng="" />
-  <QuizData ID="113" kor="눈썹과 감정에 집중해주세요" Difficulty="2" quizType="0010010" eng="" />
-  <QuizData ID="114" kor="눈썹과 포즈에 집중해주세요" Difficulty="2" quizType="0010001" eng="" />
-  <QuizData ID="115" kor="눈동자와 입모양에 집중해주세요" Difficulty="2" quizType="0001100" eng="" />
-  <QuizData ID="116" kor="눈동자와 감정에 집중해주세요" Difficulty="2" quizType="0001010" eng="" />
-  <QuizData ID="117" kor="눈동자와 포즈에 집중해주세요" Difficulty="2" quizType="0001001" eng="" />
-  <QuizData ID="118" kor="입모양과 감정에 집중해주세요" Difficulty="2" quizType="0000110" eng="" />
-  <QuizData ID="119" kor="입모양과 포즈에 집중해주세요" Difficulty="2" quizType="0000101" eng="" />
-  <QuizData ID="120" kor="감정과 포즈에 집중해주세요" Difficulty="2" quizType="0000011" eng="" />
+  <QuizData ID="100" kor="헤어스타일과 복장에 집중해주세요" Difficulty="2" quizType="1100000" eng="gpdjtmxkdlfrhk qhrwkddp" />
+<QuizData ID="101" kor="헤어스타일과 눈썹에 집중해주세요" Difficulty="2" quizType="1010000" eng="gpdjtmxkdlfrhk snsTjqdp" />
+<QuizData ID="102" kor="헤어스타일과 눈동자에 집중해주세요" Difficulty="2" quizType="1001000" eng="gpdjtmxkdlfrhk wlqwndgowntpdy" />
+<QuizData ID="103" kor="헤어스타일과 입모양에 집중해주세요" Difficulty="2" quizType="1000100" eng="gpdjtmxkdlfrhk xkqdyfqlr" />
+<QuizData ID="104" kor="헤어스타일과 감정에 집중해주세요" Difficulty="2" quizType="1000010" eng="gpdjtmxkdlfrhk tndtmdf" />
+<QuizData ID="105" kor="헤어스타일과 포즈에 집중해주세요" Difficulty="2" quizType="1000001" eng="gpdjtmxkdlfrhk wjtd" />
+<QuizData ID="106" kor="복장과 눈썹에 집중해주세요" Difficulty="2" quizType="0110000" eng="qhrwkddp snsTjqdp" />
+<QuizData ID="107" kor="복장과 눈동자에 집중해주세요" Difficulty="2" quizType="0101000" eng="qhrwkddp wlqwndgowntpdy" />
+<QuizData ID="108" kor="복장과 입모양에 집중해주세요" Difficulty="2" quizType="0100100" eng="qhrwkddp xkqdyfqlr" />
+<QuizData ID="109" kor="복장과 감정에 집중해주세요" Difficulty="2" quizType="0100010" eng="qhrwkddp tndtmdf" />
+<QuizData ID="110" kor="복장과 포즈에 집중해주세요" Difficulty="2" quizType="0100001" eng="qhrwkddp wjtd" />
+<QuizData ID="111" kor="눈썹과 눈동자에 집중해주세요" Difficulty="2" quizType="0011000" eng="snsTjqdp wlqwndgowntpdy" />
+<QuizData ID="112" kor="눈썹과 입모양에 집중해주세요" Difficulty="2" quizType="0010100" eng="snsTjqdp xkqdyfqlr" />
+<QuizData ID="113" kor="눈썹과 감정에 집중해주세요" Difficulty="2" quizType="0010010" eng="snsTjqdp tndtmdf" />
+<QuizData ID="114" kor="눈썹과 포즈에 집중해주세요" Difficulty="2" quizType="0010001" eng="snsTjqdp wjtd" />
+<QuizData ID="115" kor="눈동자와 입모양에 집중해주세요" Difficulty="2" quizType="0001100" eng="wlqwndgowntpdy xkqdyfqlr" />
+<QuizData ID="116" kor="눈동자와 감정에 집중해주세요" Difficulty="2" quizType="0001010" eng="wlqwndgowntpdy tndtmdf" />
+<QuizData ID="117" kor="눈동자와 포즈에 집중해주세요" Difficulty="2" quizType="0001001" eng="wlqwndgowntpdy wjtd" />
+<QuizData ID="118" kor="입모양과 감정에 집중해주세요" Difficulty="2" quizType="0000110" eng="xkqdyfqlr tndtmdf" />
+<QuizData ID="119" kor="입모양과 포즈에 집중해주세요" Difficulty="2" quizType="0000101" eng="xkqdyfqlr wjtd" />
+<QuizData ID="120" kor="감정과 포즈에 집중해주세요" Difficulty="2" quizType="0000011" eng="tndtmdf wjtd" />
 
  <!-- 난이도 3 - 어려운 질문 -->
-  <QuizData ID="200" kor="헤어스타일, 복장, 눈썹에 집중해주세요" Difficulty="3" quizType="1110000" eng="" />
-  <QuizData ID="201" kor="헤어스타일, 복장, 눈동자에 집중해주세요" Difficulty="3" quizType="1101000" eng="" />
-  <QuizData ID="202" kor="헤어스타일, 복장, 입모양에 집중해주세요" Difficulty="3" quizType="1100100" eng="" />
-  <QuizData ID="203" kor="헤어스타일, 복장, 감정에 집중해주세요" Difficulty="3" quizType="1100010" eng="" />
-  <QuizData ID="204" kor="헤어스타일, 복장, 포즈에 집중해주세요" Difficulty="3" quizType="1100001" eng="" />
-  <QuizData ID="205" kor="헤어스타일, 눈썹, 눈동자에 집중해주세요" Difficulty="3" quizType="1011000" eng="" />
-  <QuizData ID="206" kor="헤어스타일, 눈썹, 입모양에 집중해주세요" Difficulty="3" quizType="1010100" eng="" />
-  <QuizData ID="207" kor="헤어스타일, 눈썹, 감정에 집중해주세요" Difficulty="3" quizType="1010010" eng="" />
-  <QuizData ID="208" kor="헤어스타일, 눈썹, 포즈에 집중해주세요" Difficulty="3" quizType="1010001" eng="" />
-  <QuizData ID="209" kor="헤어스타일, 눈동자, 입모양에 집중해주세요" Difficulty="3" quizType="1001100" eng="" />
-  <QuizData ID="210" kor="헤어스타일, 눈동자, 감정에 집중해주세요" Difficulty="3" quizType="1001010" eng="" />
-  <QuizData ID="211" kor="헤어스타일, 눈동자, 포즈에 집중해주세요" Difficulty="3" quizType="1001001" eng="" />
-  <QuizData ID="212" kor="헤어스타일, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="1000110" eng="" />
-  <QuizData ID="213" kor="헤어스타일, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="1000101" eng="" />
-  <QuizData ID="214" kor="헤어스타일, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="1000011" eng="" />
-  <QuizData ID="215" kor="복장, 눈썹, 눈동자에 집중해주세요" Difficulty="3" quizType="0111000" eng="" />
-  <QuizData ID="216" kor="복장, 눈썹, 입모양에 집중해주세요" Difficulty="3" quizType="0110100" eng="" />
-  <QuizData ID="217" kor="복장, 눈썹, 감정에 집중해주세요" Difficulty="3" quizType="0110010" eng="" />
-  <QuizData ID="218" kor="복장, 눈썹, 포즈에 집중해주세요" Difficulty="3" quizType="0110001" eng="" />
-  <QuizData ID="219" kor="복장, 눈동자, 입모양에 집중해주세요" Difficulty="3" quizType="0101100" eng="" />
-  <QuizData ID="220" kor="복장, 눈동자, 감정에 집중해주세요" Difficulty="3" quizType="0101010" eng="" />
-  <QuizData ID="221" kor="복장, 눈동자, 포즈에 집중해주세요" Difficulty="3" quizType="0101001" eng="" />
-  <QuizData ID="222" kor="복장, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="0100110" eng="" />
-  <QuizData ID="223" kor="복장, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="0100101" eng="" />
-  <QuizData ID="224" kor="복장, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0100011" eng="" />
-  <QuizData ID="225" kor="눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="3" quizType="0011100" eng="" />
-  <QuizData ID="226" kor="눈썹, 눈동자, 감정에 집중해주세요" Difficulty="3" quizType="0011010" eng="" />
-  <QuizData ID="227" kor="눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="3" quizType="0011001" eng="" />
-  <QuizData ID="228" kor="눈썹, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="0010110" eng="" />
-  <QuizData ID="229" kor="눈썹, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="0010101" eng="" />
-  <QuizData ID="230" kor="눈썹, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0010011" eng="" />
-  <QuizData ID="231" kor="눈동자, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="0001110" eng="" />
-  <QuizData ID="232" kor="눈동자, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="0001101" eng="" />
-  <QuizData ID="233" kor="눈동자, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0001011" eng="" />
-  <QuizData ID="234" kor="입모양, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0000111" eng="" />
+ <QuizData ID="200" kor="헤어스타일, 복장, 눈썹에 집중해주세요" Difficulty="3" quizType="1110000" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp" />
+<QuizData ID="201" kor="헤어스타일, 복장, 눈동자에 집중해주세요" Difficulty="3" quizType="1101000" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy" />
+<QuizData ID="202" kor="헤어스타일, 복장, 입모양에 집중해주세요" Difficulty="3" quizType="1100100" eng="gpdjtmxkdlfrhk qhrwkddp xkqdyfqlr" />
+<QuizData ID="203" kor="헤어스타일, 복장, 감정에 집중해주세요" Difficulty="3" quizType="1100010" eng="gpdjtmxkdlfrhk qhrwkddp tndtmdf" />
+<QuizData ID="204" kor="헤어스타일, 복장, 포즈에 집중해주세요" Difficulty="3" quizType="1100001" eng="gpdjtmxkdlfrhk qhrwkddp wjtd" />
+<QuizData ID="205" kor="헤어스타일, 눈썹, 눈동자에 집중해주세요" Difficulty="3" quizType="1011000" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy" />
+<QuizData ID="206" kor="헤어스타일, 눈썹, 입모양에 집중해주세요" Difficulty="3" quizType="1010100" eng="gpdjtmxkdlfrhk snsTjqdp xkqdyfqlr" />
+<QuizData ID="207" kor="헤어스타일, 눈썹, 감정에 집중해주세요" Difficulty="3" quizType="1010010" eng="gpdjtmxkdlfrhk snsTjqdp tndtmdf" />
+<QuizData ID="208" kor="헤어스타일, 눈썹, 포즈에 집중해주세요" Difficulty="3" quizType="1010001" eng="gpdjtmxkdlfrhk snsTjqdp wjtd" />
+<QuizData ID="209" kor="헤어스타일, 눈동자, 입모양에 집중해주세요" Difficulty="3" quizType="1001100" eng="gpdjtmxkdlfrhk wlqwndgowntpdy xkqdyfqlr" />
+<QuizData ID="210" kor="헤어스타일, 눈동자, 감정에 집중해주세요" Difficulty="3" quizType="1001010" eng="gpdjtmxkdlfrhk wlqwndgowntpdy tndtmdf" />
+<QuizData ID="211" kor="헤어스타일, 눈동자, 포즈에 집중해주세요" Difficulty="3" quizType="1001001" eng="gpdjtmxkdlfrhk wlqwndgowntpdy wjtd" />
+<QuizData ID="212" kor="헤어스타일, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="1000110" eng="gpdjtmxkdlfrhk xkqdyfqlr tndtmdf" />
+<QuizData ID="213" kor="헤어스타일, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="1000101" eng="gpdjtmxkdlfrhk xkqdyfqlr wjtd" />
+<QuizData ID="214" kor="헤어스타일, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="1000011" eng="gpdjtmxkdlfrhk tndtmdf wjtd" />
+<QuizData ID="215" kor="복장, 눈썹, 눈동자에 집중해주세요" Difficulty="3" quizType="0111000" eng="qhrwkddp snsTjqdp wlqwndgowntpdy" />
+<QuizData ID="216" kor="복장, 눈썹, 입모양에 집중해주세요" Difficulty="3" quizType="0110100" eng="qhrwkddp snsTjqdp xkqdyfqlr" />
+<QuizData ID="217" kor="복장, 눈썹, 감정에 집중해주세요" Difficulty="3" quizType="0110010" eng="qhrwkddp snsTjqdp tndtmdf" />
+<QuizData ID="218" kor="복장, 눈썹, 포즈에 집중해주세요" Difficulty="3" quizType="0110001" eng="qhrwkddp snsTjqdp wjtd" />
+<QuizData ID="219" kor="복장, 눈동자, 입모양에 집중해주세요" Difficulty="3" quizType="0101100" eng="qhrwkddp wlqwndgowntpdy xkqdyfqlr" />
+<QuizData ID="220" kor="복장, 눈동자, 감정에 집중해주세요" Difficulty="3" quizType="0101010" eng="qhrwkddp wlqwndgowntpdy tndtmdf" />
+<QuizData ID="221" kor="복장, 눈동자, 포즈에 집중해주세요" Difficulty="3" quizType="0101001" eng="qhrwkddp wlqwndgowntpdy wjtd" />
+<QuizData ID="222" kor="복장, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="0100110" eng="qhrwkddp xkqdyfqlr tndtmdf" />
+<QuizData ID="223" kor="복장, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="0100101" eng="qhrwkddp xkqdyfqlr wjtd" />
+<QuizData ID="224" kor="복장, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0100011" eng="qhrwkddp tndtmdf wjtd" />
+<QuizData ID="225" kor="눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="3" quizType="0011100" eng="snsTjqdp wlqwndgowntpdy xkqdyfqlr" />
+<QuizData ID="226" kor="눈썹, 눈동자, 감정에 집중해주세요" Difficulty="3" quizType="0011010" eng="snsTjqdp wlqwndgowntpdy tndtmdf" />
+<QuizData ID="227" kor="눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="3" quizType="0011001" eng="snsTjqdp wlqwndgowntpdy wjtd" />
+<QuizData ID="228" kor="눈썹, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="0010110" eng="snsTjqdp xkqdyfqlr tndtmdf" />
+<QuizData ID="229" kor="눈썹, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="0010101" eng="snsTjqdp xkqdyfqlr wjtd" />
+<QuizData ID="230" kor="눈썹, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0010011" eng="snsTjqdp tndtmdf wjtd" />
+<QuizData ID="231" kor="눈동자, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="0001110" eng="wlqwndgowntpdy xkqdyfqlr tndtmdf" />
+<QuizData ID="232" kor="눈동자, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="0001101" eng="wlqwndgowntpdy xkqdyfqlr wjtd" />
+<QuizData ID="233" kor="눈동자, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0001011" eng="wlqwndgowntpdy tndtmdf wjtd" />
+<QuizData ID="234" kor="입모양, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0000111" eng="xkqdyfqlr tndtmdf wjtd" />
 
   <!-- 난이도 4 - 높은 난이도의 질문 -->
-  <QuizData ID="300" kor="헤어스타일, 복장, 눈썹, 눈동자에 집중해주세요" Difficulty="4" quizType="1111000" eng="" />
-  <QuizData ID="301" kor="헤어스타일, 복장, 눈썹, 입모양에 집중해주세요" Difficulty="4" quizType="1110100" eng="" />
-  <QuizData ID="302" kor="헤어스타일, 복장, 눈썹, 감정에 집중해주세요" Difficulty="4" quizType="1110010" eng="" />
-  <QuizData ID="303" kor="헤어스타일, 복장, 눈썹, 포즈에 집중해주세요" Difficulty="4" quizType="1110001" eng="" />
-  <QuizData ID="304" kor="헤어스타일, 복장, 눈동자, 입모양에 집중해주세요" Difficulty="4" quizType="1101100" eng="" />
-  <QuizData ID="305" kor="헤어스타일, 복장, 눈동자, 감정에 집중해주세요" Difficulty="4" quizType="1101010" eng="" />
-  <QuizData ID="306" kor="헤어스타일, 복장, 눈동자, 포즈에 집중해주세요" Difficulty="4" quizType="1101001" eng="" />
-  <QuizData ID="307" kor="헤어스타일, 복장, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="1100110" eng="" />
-  <QuizData ID="308" kor="헤어스타일, 복장, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="1100101" eng="" />
-  <QuizData ID="309" kor="헤어스타일, 복장, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1100011" eng="" />
-  <QuizData ID="310" kor="헤어스타일, 눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="4" quizType="1011100" eng="" />
-  <QuizData ID="311" kor="헤어스타일, 눈썹, 눈동자, 감정에 집중해주세요" Difficulty="4" quizType="1011010" eng="" />
-  <QuizData ID="312" kor="헤어스타일, 눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="4" quizType="1011001" eng="" />
-  <QuizData ID="313" kor="헤어스타일, 눈썹, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="1010110" eng="" />
-  <QuizData ID="314" kor="헤어스타일, 눈썹, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="1010101" eng="" />
-  <QuizData ID="315" kor="헤어스타일, 눈썹, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1010011" eng="" />
-  <QuizData ID="316" kor="헤어스타일, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="1001110" eng="" />
-  <QuizData ID="317" kor="헤어스타일, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="1001101" eng="" />
-  <QuizData ID="318" kor="헤어스타일, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1001011" eng="" />
-  <QuizData ID="319" kor="헤어스타일, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1000111" eng="" />
-  <QuizData ID="320" kor="복장, 눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="4" quizType="0111100" eng="" />
-  <QuizData ID="321" kor="복장, 눈썹, 눈동자, 감정에 집중해주세요" Difficulty="4" quizType="0111010" eng="" />
-  <QuizData ID="322" kor="복장, 눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="4" quizType="0111001" eng="" />
-  <QuizData ID="323" kor="복장, 눈썹, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="0110110" eng="" />
-  <QuizData ID="324" kor="복장, 눈썹, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="0110101" eng="" />
-  <QuizData ID="325" kor="복장, 눈썹, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0110011" eng="" />
-  <QuizData ID="326" kor="복장, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="0101110" eng="" />
-  <QuizData ID="327" kor="복장, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="0101101" eng="" />
-  <QuizData ID="328" kor="복장, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0101011" eng="" />
-  <QuizData ID="329" kor="복장, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0100111" eng="" />
-  <QuizData ID="330" kor="눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="0011110" eng="" />
-  <QuizData ID="331" kor="눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="0011101" eng="" />
-  <QuizData ID="332" kor="눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0011011" eng="" />
-  <QuizData ID="333" kor="눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0010111" eng="" />
-  <QuizData ID="334" kor="눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0001111" eng="" />
-
+<QuizData ID="300" kor="헤어스타일, 복장, 눈썹, 눈동자에 집중해주세요" Difficulty="4" quizType="1111000" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wlqwndgowntpdy" />
+<QuizData ID="301" kor="헤어스타일, 복장, 눈썹, 입모양에 집중해주세요" Difficulty="4" quizType="1110100" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp xkqdyfqlr" />
+<QuizData ID="302" kor="헤어스타일, 복장, 눈썹, 감정에 집중해주세요" Difficulty="4" quizType="1110010" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp tndtmdf" />
+<QuizData ID="303" kor="헤어스타일, 복장, 눈썹, 포즈에 집중해주세요" Difficulty="4" quizType="1110001" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wjtd" />
+<QuizData ID="304" kor="헤어스타일, 복장, 눈동자, 입모양에 집중해주세요" Difficulty="4" quizType="1101100" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy xkqdyfqlr" />
+<QuizData ID="305" kor="헤어스타일, 복장, 눈동자, 감정에 집중해주세요" Difficulty="4" quizType="1101010" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy tndtmdf" />
+<QuizData ID="306" kor="헤어스타일, 복장, 눈동자, 포즈에 집중해주세요" Difficulty="4" quizType="1101001" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy wjtd" />
+<QuizData ID="307" kor="헤어스타일, 복장, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="1100110" eng="gpdjtmxkdlfrhk qhrwkddp xkqdyfqlr tndtmdf" />
+<QuizData ID="308" kor="헤어스타일, 복장, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="1100101" eng="gpdjtmxkdlfrhk qhrwkddp xkqdyfqlr wjtd" />
+<QuizData ID="309" kor="헤어스타일, 복장, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1100011" eng="gpdjtmxkdlfrhk qhrwkddp tndtmdf wjtd" />
+<QuizData ID="310" kor="헤어스타일, 눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="4" quizType="1011100" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy xkqdyfqlr" />
+<QuizData ID="311" kor="헤어스타일, 눈썹, 눈동자, 감정에 집중해주세요" Difficulty="4" quizType="1011010" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy tndtmdf" />
+<QuizData ID="312" kor="헤어스타일, 눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="4" quizType="1011001" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy wjtd" />
+<QuizData ID="313" kor="헤어스타일, 눈썹, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="1010110" eng="gpdjtmxkdlfrhk snsTjqdp xkqdyfqlr tndtmdf" />
+<QuizData ID="314" kor="헤어스타일, 눈썹, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="1010101" eng="gpdjtmxkdlfrhk snsTjqdp xkqdyfqlr wjtd" />
+<QuizData ID="315" kor="헤어스타일, 눈썹, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1010011" eng="gpdjtmxkdlfrhk snsTjqdp tndtmdf wjtd" />
+<QuizData ID="316" kor="헤어스타일, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="1001110" eng="gpdjtmxkdlfrhk wlqwndgowntpdy xkqdyfqlr tndtmdf" />
+<QuizData ID="317" kor="헤어스타일, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="1001101" eng="gpdjtmxkdlfrhk wlqwndgowntpdy xkqdyfqlr wjtd" />
+<QuizData ID="318" kor="헤어스타일, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1001011" eng="gpdjtmxkdlfrhk wlqwndgowntpdy tndtmdf wjtd" />
+<QuizData ID="319" kor="헤어스타일, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1000111" eng="gpdjtmxkdlfrhk xkqdyfqlr tndtmdf wjtd" />
+<QuizData ID="320" kor="복장, 눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="4" quizType="0111100" eng="qhrwkddp snsTjqdp wlqwndgowntpdy xkqdyfqlr" />
+<QuizData ID="321" kor="복장, 눈썹, 눈동자, 감정에 집중해주세요" Difficulty="4" quizType="0111010" eng="qhrwkddp snsTjqdp wlqwndgowntpdy tndtmdf" />
+<QuizData ID="322" kor="복장, 눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="4" quizType="0111001" eng="qhrwkddp snsTjqdp wlqwndgowntpdy wjtd" />
+<QuizData ID="323" kor="복장, 눈썹, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="0110110" eng="qhrwkddp snsTjqdp xkqdyfqlr tndtmdf" />
+<QuizData ID="324" kor="복장, 눈썹, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="0110101" eng="qhrwkddp snsTjqdp xkqdyfqlr wjtd" />
+<QuizData ID="325" kor="복장, 눈썹, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0110011" eng="qhrwkddp snsTjqdp tndtmdf wjtd" />
+<QuizData ID="326" kor="복장, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="0101110" eng="qhrwkddp wlqwndgowntpdy xkqdyfqlr tndtmdf" />
+<QuizData ID="327" kor="복장, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="0101101" eng="qhrwkddp wlqwndgowntpdy xkqdyfqlr wjtd" />
+<QuizData ID="328" kor="복장, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0101011" eng="qhrwkddp wlqwndgowntpdy tndtmdf wjtd" />
+<QuizData ID="329" kor="복장, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0100111" eng="qhrwkddp xkqdyfqlr tndtmdf wjtd" />
+<QuizData ID="330" kor="눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="0011110" eng="snsTjqdp wlqwndgowntpdy xkqdyfqlr tndtmdf" />
+<QuizData ID="331" kor="눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="0011101" eng="snsTjqdp wlqwndgowntpdy xkqdyfqlr wjtd" />
+<QuizData ID="332" kor="눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0011011" eng="snsTjqdp wlqwndgowntpdy tndtmdf wjtd" />
+<QuizData ID="333" kor="눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0010111" eng="snsTjqdp xkqdyfqlr tndtmdf wjtd" />
+<QuizData ID="334" kor="눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0001111" eng="wlqwndgowntpdy xkqdyfqlr tndtmdf wjtd" />
 
   <!-- 난이도 5 - 매우 높은 난이도의 질문 -->
-  <QuizData ID="400" kor="헤어스타일, 복장, 눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="5" quizType="1111100" eng="" />
-  <QuizData ID="401" kor="헤어스타일, 복장, 눈썹, 눈동자, 감정에 집중해주세요" Difficulty="5" quizType="1111010" eng="" />
-  <QuizData ID="402" kor="헤어스타일, 복장, 눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="5" quizType="1111001" eng="" />
-  <QuizData ID="403" kor="헤어스타일, 복장, 눈썹, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="1110110" eng="" />
-  <QuizData ID="404" kor="헤어스타일, 복장, 눈썹, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="1110101" eng="" />
-  <QuizData ID="405" kor="헤어스타일, 복장, 눈썹, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1110011" eng="" />
-  <QuizData ID="406" kor="헤어스타일, 복장, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="1101110" eng="" />
-  <QuizData ID="407" kor="헤어스타일, 복장, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="1101101" eng="" />
-  <QuizData ID="408" kor="헤어스타일, 복장, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1101011" eng="" />
-  <QuizData ID="409" kor="헤어스타일, 복장, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1100111" eng="" />
-  <QuizData ID="410" kor="헤어스타일, 눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="1011110" eng="" />
-  <QuizData ID="411" kor="헤어스타일, 눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="1011101" eng="" />
-  <QuizData ID="412" kor="헤어스타일, 눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1011011" eng="" />
-  <QuizData ID="413" kor="헤어스타일, 눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1010111" eng="" />
-  <QuizData ID="414" kor="헤어스타일, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1001111" eng="" />
-  <QuizData ID="415" kor="복장, 눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="0111110" eng="" />
-  <QuizData ID="416" kor="복장, 눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="0111101" eng="" />
-  <QuizData ID="417" kor="복장, 눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0111011" eng="" />
-  <QuizData ID="418" kor="복장, 눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0110111" eng="" />
-  <QuizData ID="419" kor="복장, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0101111" eng="" />
-  <QuizData ID="420" kor="눈썹, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0011111" eng="" />
-
+ <QuizData ID="400" kor="헤어스타일, 복장, 눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="5" quizType="1111100" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wlqwndgowntpdy xkqdyfqlr" />
+<QuizData ID="401" kor="헤어스타일, 복장, 눈썹, 눈동자, 감정에 집중해주세요" Difficulty="5" quizType="1111010" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wlqwndgowntpdy tndtmdf" />
+<QuizData ID="402" kor="헤어스타일, 복장, 눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="5" quizType="1111001" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wlqwndgowntpdy wjtd" />
+<QuizData ID="403" kor="헤어스타일, 복장, 눈썹, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="1110110" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp xkqdyfqlr tndtmdf" />
+<QuizData ID="404" kor="헤어스타일, 복장, 눈썹, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="1110101" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp xkqdyfqlr wjtd" />
+<QuizData ID="405" kor="헤어스타일, 복장, 눈썹, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1110011" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp tndtmdf wjtd" />
+<QuizData ID="406" kor="헤어스타일, 복장, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="1101110" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy xkqdyfqlr tndtmdf" />
+<QuizData ID="407" kor="헤어스타일, 복장, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="1101101" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy xkqdyfqlr wjtd" />
+<QuizData ID="408" kor="헤어스타일, 복장, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1101011" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy tndtmdf wjtd" />
+<QuizData ID="409" kor="헤어스타일, 복장, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1100111" eng="gpdjtmxkdlfrhk qhrwkddp xkqdyfqlr tndtmdf wjtd" />
+<QuizData ID="410" kor="헤어스타일, 눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="1011110" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy xkqdyfqlr tndtmdf" />
+<QuizData ID="411" kor="헤어스타일, 눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="1011101" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy xkqdyfqlr wjtd" />
+<QuizData ID="412" kor="헤어스타일, 눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1011011" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy tndtmdf wjtd" />
+<QuizData ID="413" kor="헤어스타일, 눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1010111" eng="gpdjtmxkdlfrhk snsTjqdp xkqdyfqlr tndtmdf wjtd" />
+<QuizData ID="414" kor="헤어스타일, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1001111" eng="gpdjtmxkdlfrhk wlqwndgowntpdy xkqdyfqlr tndtmdf wjtd" />
+<QuizData ID="415" kor="복장, 눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="0111110" eng="qhrwkddp snsTjqdp wlqwndgowntpdy xkqdyfqlr tndtmdf" />
+<QuizData ID="416" kor="복장, 눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="0111101" eng="qhrwkddp snsTjqdp wlqwndgowntpdy xkqdyfqlr wjtd" />
+<QuizData ID="417" kor="복장, 눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0111011" eng="qhrwkddp snsTjqdp wlqwndgowntpdy tndtmdf wjtd" />
+<QuizData ID="418" kor="복장, 눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0110111" eng="qhrwkddp snsTjqdp xkqdyfqlr tndtmdf wjtd" />
+<QuizData ID="419" kor="복장, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0101111" eng="qhrwkddp wlqwndgowntpdy xkqdyfqlr tndtmdf wjtd" />
+<QuizData ID="420" kor="눈썹, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0011111" eng="snsTjqdp wlqwndgowntpdy xkqdyfqlr tndtmdf wjtd" />
 
   <!-- 난이도 6 - 매우 높은 난이도의 질문 -->
-  <QuizData ID="500" kor="헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="6" quizType="1111110" eng="" />
-  <QuizData ID="501" kor="헤어스타일, 복장, 눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="6" quizType="1111101" eng="" />
-  <QuizData ID="502" kor="헤어스타일, 복장, 눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1111011" eng="" />
-  <QuizData ID="503" kor="헤어스타일, 복장, 눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1110111" eng="" />
-  <QuizData ID="504" kor="헤어스타일, 복장, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1101111" eng="" />
-  <QuizData ID="505" kor="헤어스타일, 눈썹, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1011111" eng="" />
-  <QuizData ID="506" kor="복장, 눈썹, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="0111111" eng="" />
-
+<QuizData ID="500" kor="헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="6" quizType="1111110" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wlqwndgowntpdy xkqdyfqlr tndtmdf" />
+<QuizData ID="501" kor="헤어스타일, 복장, 눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="6" quizType="1111101" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wlqwndgowntpdy xkqdyfqlr wjtd" />
+<QuizData ID="502" kor="헤어스타일, 복장, 눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1111011" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wlqwndgowntpdy tndtmdf wjtd" />
+<QuizData ID="503" kor="헤어스타일, 복장, 눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1110111" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp xkqdyfqlr tndtmdf wjtd" />
+<QuizData ID="504" kor="헤어스타일, 복장, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1101111" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy xkqdyfqlr tndtmdf wjtd" />
+<QuizData ID="505" kor="헤어스타일, 눈썹, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1011111" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy xkqdyfqlr tndtmdf wjtd" />
+<QuizData ID="506" kor="복장, 눈썹, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="0111111" eng="qhrwkddp snsTjqdp wlqwndgowntpdy xkqdyfqlr tndtmdf wjtd" />
 
   <!-- 난이도 7 - 재미있고 창의적인 묘사 -->
-  <QuizData ID="600" kor="상상해보세요. 한 사람이 멋진 헤어스타일, 세련된 복장, 즐거운 기분,&#10;반짝이는 눈동자, 입꼬리가 살짝 올라간 모습으로 포즈를 취하고 있어요. &#10;이 사람을 어떻게 묘사할 수 있을까요?" Difficulty="7" quizType="1111111" eng="" />
-  <QuizData ID="601" kor="어떤 사람이 마법처럼 변화하는 중이에요. &#10;그 사람이 갖고 있는 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈는 어떻게 바뀔까요? &#10;상상력을 발휘해 설명해 주세요!" Difficulty="7" quizType="1111111" eng="" />
-  <QuizData ID="602" kor="어떤 인물의 완벽한 모습이 있어요. &#10;그 인물의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 묘사하고, &#10;그 인물이 어떻게 자신감을 드러내는지 설명해주세요." Difficulty="7" quizType="1111111" eng="" />
-  <QuizData ID="603" kor="어떤 사람이 거울을 보며 완전히 새로운 모습을 발견했어요. &#10;그 사람의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈가 어떻게 달라졌는지 상상해보세요." Difficulty="7" quizType="1111111" eng="" />
-  <QuizData ID="604" kor="영화 속 주인공이 된 당신! &#10;헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 바꿔서 멋진 장면을 만들어 보세요. &#10;이 장면을 어떻게 묘사할 수 있을까요?" Difficulty="7" quizType="1111111" eng="" />
-  <QuizData ID="605" kor="어떤 이가 완벽하게 자신의 스타일을 찾았어요. &#10;그 사람의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 묘사하고, &#10;그 스타일이 어떻게 완성되었는지 설명해 주세요." Difficulty="7" quizType="1111111" eng="" />
-  <QuizData ID="606" kor="당신이 지금 상상하는 가장 멋진 인물은 어떤 모습인가요? &#10;헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 모두 묘사하고, &#10;그 인물의 매력을 설명해 보세요." Difficulty="7" quizType="1111111" eng="" />
-  <QuizData ID="607" kor="우주에서 온 외계인이 지구에 왔어요.&#10; 그 외계인의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈는 어떻게 되나요? &#10;그 모습이 지구인들에게 어떻게 보일까요?" Difficulty="7" quizType="1111111" eng="" />
-  <QuizData ID="608" kor="가장 멋진 히어로가 되었다고 상상해 보세요. &#10;당신의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈는 어떤 모습일까요? &#10;이 모습을 설명해 보세요!" Difficulty="7" quizType="1111111" eng="" />
-  <QuizData ID="609" kor="꿈속에서 만난 상상 속 인물. &#10;그 인물의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 묘사하고, &#10;그 인물이 당신에게 어떤 메시지를 전달하는지 설명해 보세요." Difficulty="7" quizType="1111111" eng="" />
-  <QuizData ID="610" kor="슈퍼스타가 된 당신! &#10;이제 어떤 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈로 팬들에게 인사를 할까요? &#10;그 모습을 묘사하고, 당신의 팬들에게 전달되는 메시지를 설명해주세요." Difficulty="7" quizType="1111111" eng="" />
+<QuizData ID="600" kor="상상해보세요. 한 사람이 멋진 헤어스타일, 세련된 복장, 즐거운 기분,&#10;반짝이는 눈동자, 입꼬리가 살짝 올라간 모습으로 포즈를 취하고 있어요. &#10;이 사람을 어떻게 묘사할 수 있을까요?" Difficulty="7" quizType="1111111" eng="ghksqtkdgdqk. hks qkfgkddk chdwo wnqtlrk, wkqjqn dkwptp, fhdnlrns xkqdyfqlr, skrdhtnq tmfxtnq slrn gdgoqns" />
+<QuizData ID="601" kor="어떤 사람이 마법처럼 변화하는 중이에요. &#10;그 사람이 갖고 있는 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈는 어떻게 바뀔까요? &#10;상상력을 발휘해 설명해 주세요!" Difficulty="7" quizType="1111111" eng="qkrmfl xkekdka hksqtlq kfrmsfqufkr xhkdgoq dnwkdwl wldhdyfqlr, tmfxtnq tqdxld" />
+<QuizData ID="602" kor="어떤 인물의 완벽한 모습이 있어요. &#10;그 인물의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 묘사하고, &#10;그 인물이 어떻게 자신감을 드러내는지 설명해주세요." Difficulty="7" quizType="1111111" eng="qkrmfl nqkdlrk xkgkfkwjd bqlqh wnqtlrk gnqn tmfxtnq tndtmdf xkqdyfqlr, qkrmfl rhrkqlf dlrwlelsr" />
+<QuizData ID="603" kor="어떤 사람이 거울을 보며 완전히 새로운 모습을 발견했어요. &#10;그 사람의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈가 어떻게 달라졌는지 상상해보세요." Difficulty="7" quizType="1111111" eng="qkrmfl xkekdka gkqdls dnwlqpd gkfptnwpqhdptkr bqlqh wnqtlrk xkqdyfqlr tndtmdf" />
+<QuizData ID="604" kor="영화 속 주인공이 된 당신! &#10;헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 바꿔서 멋진 장면을 만들어 보세요. &#10;이 장면을 어떻게 묘사할 수 있을까요?" Difficulty="7" quizType="1111111" eng="yhdpt qkdy rhrkqlf xjchf qldmrpt ndgkr xkqdyfqlr tndtmdf wjtdkr ksdnlxk qkdy ghfd" />
+<QuizData ID="605" kor="어떤 이가 완벽하게 자신의 스타일을 찾았어요. &#10;그 사람의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 묘사하고, &#10;그 스타일이 어떻게 완성되었는지 설명해 주세요." Difficulty="7" quizType="1111111" eng="qkrmfl qkekdka xksdltqd gkqkqnxlq, bqlqh wnqtlrk xkqdyfqlr tndtmdf wjtdk xldka chckrdlqs" />
+<QuizData ID="606" kor="당신이 지금 상상하는 가장 멋진 인물은 어떤 모습인가요? &#10;헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 모두 묘사하고, &#10;그 인물의 매력을 설명해 보세요." Difficulty="7" quizType="1111111" eng="tndmfl qkqmf wlrhdgkq xkqdyfqlr tlqtlrd, gkfmlrtql cjsl xkqdyfqlr qkqmf qjwdgkrj" />
+<QuizData ID="607" kor="우주에서 온 외계인이 지구에 왔어요.&#10; 그 외계인의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈는 어떻게 되나요? &#10;그 모습이 지구인들에게 어떻게 보일까요?" Difficulty="7" quizType="1111111" eng="qkrmfl fkdtnr qkfrkxlr qtkd qkfxgk. &#10; fkqtdk tk qkqmf gkqkfn xkd qkrmfl ghkq xkqdyfqlr?" />
+<QuizData ID="608" kor="가장 멋진 히어로가 되었다고 상상해 보세요. &#10;당신의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈는 어떤 모습일까요? &#10;이 모습을 설명해 보세요!" Difficulty="7" quizType="1111111" eng="gks qkfgxhf xhksktjdmf tf ldhqgo wjtdmr zckrnjkr? &#10; tndmfl wkdy xkqdyfqlr qkrmfl xjqvhdq qkfgsd" />
+<QuizData ID="609" kor="꿈속에서 만난 상상 속 인물. &#10;그 인물의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 묘사하고, &#10;그 인물이 당신에게 어떤 메시지를 전달하는지 설명해 보세요." Difficulty="7" quizType="1111111" eng="qkrmfl tjxltmswfwgo xkekdka, bqlqh, wnqtlrk xkqdyfqlr tnqwlfr tndtmdf, xkqdyfqlr tmfxtnsfl" />
+<QuizData ID="610" kor="슈퍼스타가 된 당신! &#10;이제 어떤 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈로 팬들에게 인사를 할까요? &#10;그 모습을 묘사하고, 당신의 팬들에게 전달되는 메시지를 설명해주세요." Difficulty="7" quizType="1111111" eng="sudpnwk qkdy rhrkqlf xjchf, qkxd qkrmdqkr dlfwlgqrdn qgdrfgl qjwdwkd. &#10; qkrmfl rhrkqldf tqkwlr xkqdyfqlr" />
 
 
 </ArrayOfQuizData>

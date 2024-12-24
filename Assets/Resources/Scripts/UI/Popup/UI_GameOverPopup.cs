@@ -19,6 +19,10 @@ public class UI_GameOverPopup : UI_Popup
         GoToTitleButton,
         ReviveButton,
     }
+    enum Images
+    {
+        BG,
+    }
 
     public override bool Init()
     {
@@ -27,9 +31,12 @@ public class UI_GameOverPopup : UI_Popup
         
 		BindText(typeof(Texts));
 		BindButton(typeof(Buttons));
-        // BindImage(typeof(Images));
+        BindImage(typeof(Images));
 
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
+
+        GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
+        
         // GameObject button = playerScene.transform.Find("Button").gameObject;
         // if(button == null)
         //     Debug.Log("PlayerScnene Button not found");

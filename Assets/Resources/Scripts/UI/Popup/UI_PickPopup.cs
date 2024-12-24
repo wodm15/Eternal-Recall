@@ -86,7 +86,7 @@ public class UI_PickPopup : UI_Popup
 
         GetText((int)Texts.ExitText).text = Managers.GetText(Define.GoToTitleText);
         GetText((int)Texts.MoneyText).text = $"X{Managers.Game.Money}";
-        GetText((int)Texts.PickupText).text = "-500";
+        GetText((int)Texts.PickupText).text = "  -500";
         GetText((int)Texts.GetSkinText).text = "스킨 얻기";
         GetText((int)Texts.WhenGetText).text = "스킨을 얻었습니다!";
         GetText((int)Texts.ExplainText).text = "캐릭터를 매칭시켜주세요";
@@ -166,6 +166,33 @@ public class UI_PickPopup : UI_Popup
             {
                 customManager.clothes = Random.Range(0,20); 
                 index = Define.magic;
+            }
+
+            else if(s_customManager.clothes == Define.Swimsuit2)
+            {
+                customManager.clothes = Random.Range(0,20); 
+                index = Define.Swimsuit2;
+            }
+
+            else if(s_customManager.clothes == Define.weddingDress)
+            {
+                customManager.clothes = Random.Range(0,20); 
+                index = Define.weddingDress;
+            }
+            else if(s_customManager.clothes == Define.Hanbok)
+            {
+                customManager.clothes = Random.Range(0,20); 
+                index = Define.Hanbok;
+            }
+            else if(s_customManager.clothes == Define.Yukata)
+            {
+                customManager.clothes = Random.Range(0,20); 
+                index = Define.Yukata;
+            }
+            else if(s_customManager.clothes == Define.Princess)
+            {
+                customManager.clothes = Random.Range(0,20); 
+                index = Define.Princess;
             }
 
             numberCheck();

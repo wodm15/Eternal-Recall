@@ -56,7 +56,7 @@ public class UI_GetItemPopup : UI_Popup
         BindImage(typeof(Images));
 
         //배경 변경
-        Managers.Game.changeBG();
+        // Managers.Game.changeBG();
         GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
 
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
@@ -115,6 +115,7 @@ public class UI_GetItemPopup : UI_Popup
         }
         else if (incorrectCount != 0 && isAvoid == false)
         {
+            EarnMoney(false);
             string[] parts = { "헤어", "복장", "눈썹", "눈동자", "입모양", "감정", "포즈" };
             string resultText = "";
 
@@ -320,6 +321,13 @@ public class UI_GetItemPopup : UI_Popup
             selectedItem.effectValues[0]= gameble; // countDown에 넘기기
             Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); 
         }
+        else if(selectedItem.productID == "gambleHealing2")
+        {
+            int gameble = Random.Range((int)selectedItem.effectValues[0], (int)selectedItem.effectValues[1]+1);
+            Managers.Game.Hp += gameble;
+            selectedItem.effectValues[0]= gameble; // countDown에 넘기기
+            Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); 
+        }
 
         playerScene.HPUp();
         return selectedItem;
@@ -341,13 +349,33 @@ public class UI_GetItemPopup : UI_Popup
                 //HP, 스테이지 순서
                 Managers.Game.Hp += (int)selectedItem.effectValues[0];
                 Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
-                Managers.Game.Stage += (int)selectedItem.effectValues[1];
+
+                if(Managers.Game.DifficultyLevel == "Normal" && Define.NormalGameEnd < Managers.Game.Stage + (int)selectedItem.effectValues[1])
+                    Managers.Game.Stage = Define.NormalGameEnd -2;
+                        
+                else if(Managers.Game.DifficultyLevel == "Hard" && Define.HardGameEnd < Managers.Game.Stage + (int)selectedItem.effectValues[1])
+                    Managers.Game.Stage = Define.HardGameEnd -2;
+
+
+                else if(Managers.Game.DifficultyLevel == "UnLimited" && Define.UnLimitedGameEnd < Managers.Game.Stage + (int)selectedItem.effectValues[1])
+                    Managers.Game.Stage = Define.UnLimitedGameEnd -2;
+
+                else if(Managers.Game.DifficultyLevel == "Nightmare" && Define.NightmareGameEnd < Managers.Game.Stage + (int)selectedItem.effectValues[1])
+                    Managers.Game.Stage = Define.NightmareGameEnd -2;
+
+                else
+                    Managers.Game.Stage += (int)selectedItem.effectValues[1];
 
                 playerScene.HPUp();
             }
         else if(selectedItem.productID == "HintKey")
             {
                 Managers.Game.HintKey += (int)selectedItem.effectValues[0];
+            }
+        else if(selectedItem.productID == "GotoTop")
+            {
+                Managers.Game.Hp = 1;
+                Managers.Game.Stage = 97;
             }
         else
             Debug.Log("NO SKILL FOUND");
@@ -371,32 +399,31 @@ public class UI_GetItemPopup : UI_Popup
     //돈 업데이트
     public void EarnMoney(bool correct)
     {
-        Managers.Game.Money += 50000; //TODO test용
 
         if(correct && Managers.Game.DifficultyLevel == "Normal")
         {  
-            Managers.Game.Money += 1000;
+            Managers.Game.Money += 100;
         }
         else if(correct && Managers.Game.DifficultyLevel == "Hard")
         {
-            Managers.Game.Money += 2000;
+            Managers.Game.Money += 200;
         }
         else if(correct && Managers.Game.DifficultyLevel == "UnLimited")
         {
-            Managers.Game.Money += 3000;
+            Managers.Game.Money += 300;
         }
 
         else if(!correct && Managers.Game.DifficultyLevel == "Normal")
         {  
-            Managers.Game.Money += 50;
+            Managers.Game.Money += 0;
         }
         else if(!correct && Managers.Game.DifficultyLevel == "Hard")
         {
-            Managers.Game.Money += 100;
+            Managers.Game.Money += 0;
         }
         else if(!correct && Managers.Game.DifficultyLevel == "UnLimited")
         {
-            Managers.Game.Money += 150;
+            Managers.Game.Money += 0;
         }
     }
 

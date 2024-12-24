@@ -102,7 +102,7 @@ public class UI_GuessPopup : UI_Popup
         BindImage(typeof(Images));
 
         //배경 변경
-        Managers.Game.changeBG();
+        // Managers.Game.changeBG();
         GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
         
 
@@ -218,6 +218,9 @@ public class UI_GuessPopup : UI_Popup
         else if(Managers.Game.DifficultyLevel == "Hard")
             HardBinding();
         else if (Managers.Game.DifficultyLevel == "UnLimited")
+            UnLimitedBinding();
+        //인덱스는 언리미티드와 같음
+        else if (Managers.Game.DifficultyLevel == "Nightmare")
             UnLimitedBinding();
         
         #endregion
@@ -422,6 +425,10 @@ public class UI_GuessPopup : UI_Popup
         {
             GameEnd();
         }
+        else if(Managers.Game.Stage >= Define.NightmareGameEnd && Managers.Game.DifficultyLevel == "Nightmare")
+        {
+            GameEnd();
+        }
         else
         {
             GameContinue();
@@ -468,18 +475,28 @@ public class UI_GuessPopup : UI_Popup
         if(Managers.Game.DifficultyLevel == "Normal")
         {
             Managers.Game.Unlocked[0] = CollectionState.Done;
-            Managers.Game.Money += 10000;
+            Managers.Game.Money += 1000;
         }
         else if( Managers.Game.DifficultyLevel == "Hard")
         {
             Managers.Game.Unlocked[1] = CollectionState.Done;
-            Managers.Game.Money += 30000;
+            Managers.Game.Money += 3000;
         }
         else if( Managers.Game.DifficultyLevel == "UnLimited")
         {
-            Managers.Game.Money += 100000;
+            Managers.Game.Unlocked[2] = CollectionState.Done;
+            Managers.Game.Money += 5000;
         }
-                
+        else if( Managers.Game.DifficultyLevel == "Nightmare")
+        {
+            Managers.Game.Money += 10000;
+        }
+
+        if(Managers.Game.Money > 1000000)
+        {
+            Managers.Game.Money = 999999;
+        } 
+
         Managers.UI.ClosePopupUI(this);
         UI_GameEndPopup gameEndPopup = Managers.UI.ShowPopupUI<UI_GameEndPopup>();
         gameEndPopup.transform.SetParent(null);
@@ -1369,9 +1386,11 @@ public class UI_GuessPopup : UI_Popup
     public void GiveHint()
     {
         
-        if(Managers.Game.DifficultyLevel != "UnLimited")
+        if(Managers.Game.DifficultyLevel != "Nightmare")
         {
             int chanceTime = 0;
+            if(Managers.Game.DifficultyLevel == "Unlimited")
+                chanceTime = Define.GiveHintUnLimted;
             if(Managers.Game.DifficultyLevel == "Hard")
                 chanceTime = Define.GiveHintHard;
             else if(Managers.Game.DifficultyLevel == "Normal")
