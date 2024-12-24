@@ -33,7 +33,6 @@ public class UI_PickupPopup : UI_Popup
         Pickup8,
         Pickup9,
         Pickup10,
-        Pickup11,
         PickPick,
         Toggle1Button,
         Toggle2Button,

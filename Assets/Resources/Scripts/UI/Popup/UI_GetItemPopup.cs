@@ -111,10 +111,11 @@ public class UI_GetItemPopup : UI_Popup
         if(incorrectCount == 0)
         {
             GetText((int)Texts.WrongCount).text = Managers.GetText(Define.CorrectText);
-            // EarnMoney(true);
+            EarnMoney(true);
         }
         else if (incorrectCount != 0 && isAvoid == false)
         {
+            EarnMoney(false);
             string[] parts = { "헤어", "복장", "눈썹", "눈동자", "입모양", "감정", "포즈" };
             string resultText = "";
 
@@ -348,7 +349,22 @@ public class UI_GetItemPopup : UI_Popup
                 //HP, 스테이지 순서
                 Managers.Game.Hp += (int)selectedItem.effectValues[0];
                 Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
-                Managers.Game.Stage += (int)selectedItem.effectValues[1];
+
+                if(Managers.Game.DifficultyLevel == "Normal" && Define.NormalGameEnd < Managers.Game.Stage + (int)selectedItem.effectValues[1])
+                    Managers.Game.Stage = Define.NormalGameEnd -2;
+                        
+                else if(Managers.Game.DifficultyLevel == "Hard" && Define.HardGameEnd < Managers.Game.Stage + (int)selectedItem.effectValues[1])
+                    Managers.Game.Stage = Define.HardGameEnd -2;
+
+
+                else if(Managers.Game.DifficultyLevel == "UnLimited" && Define.UnLimitedGameEnd < Managers.Game.Stage + (int)selectedItem.effectValues[1])
+                    Managers.Game.Stage = Define.UnLimitedGameEnd -2;
+
+                else if(Managers.Game.DifficultyLevel == "Nightmare" && Define.NightmareGameEnd < Managers.Game.Stage + (int)selectedItem.effectValues[1])
+                    Managers.Game.Stage = Define.NightmareGameEnd -2;
+
+                else
+                    Managers.Game.Stage += (int)selectedItem.effectValues[1];
 
                 playerScene.HPUp();
             }
@@ -381,35 +397,35 @@ public class UI_GetItemPopup : UI_Popup
     }
 
     //돈 업데이트
-    // public void EarnMoney(bool correct)
-    // {
+    public void EarnMoney(bool correct)
+    {
 
-    //     if(correct && Managers.Game.DifficultyLevel == "Normal")
-    //     {  
-    //         Managers.Game.Money += 1000;
-    //     }
-    //     else if(correct && Managers.Game.DifficultyLevel == "Hard")
-    //     {
-    //         Managers.Game.Money += 2000;
-    //     }
-    //     else if(correct && Managers.Game.DifficultyLevel == "UnLimited")
-    //     {
-    //         Managers.Game.Money += 3000;
-    //     }
+        if(correct && Managers.Game.DifficultyLevel == "Normal")
+        {  
+            Managers.Game.Money += 100;
+        }
+        else if(correct && Managers.Game.DifficultyLevel == "Hard")
+        {
+            Managers.Game.Money += 200;
+        }
+        else if(correct && Managers.Game.DifficultyLevel == "UnLimited")
+        {
+            Managers.Game.Money += 300;
+        }
 
-    //     else if(!correct && Managers.Game.DifficultyLevel == "Normal")
-    //     {  
-    //         Managers.Game.Money += 50;
-    //     }
-    //     else if(!correct && Managers.Game.DifficultyLevel == "Hard")
-    //     {
-    //         Managers.Game.Money += 100;
-    //     }
-    //     else if(!correct && Managers.Game.DifficultyLevel == "UnLimited")
-    //     {
-    //         Managers.Game.Money += 150;
-    //     }
-    // }
+        else if(!correct && Managers.Game.DifficultyLevel == "Normal")
+        {  
+            Managers.Game.Money += 0;
+        }
+        else if(!correct && Managers.Game.DifficultyLevel == "Hard")
+        {
+            Managers.Game.Money += 0;
+        }
+        else if(!correct && Managers.Game.DifficultyLevel == "UnLimited")
+        {
+            Managers.Game.Money += 0;
+        }
+    }
 
     void GameOver()
     {

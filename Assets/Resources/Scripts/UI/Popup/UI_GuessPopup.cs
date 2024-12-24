@@ -475,21 +475,21 @@ public class UI_GuessPopup : UI_Popup
         if(Managers.Game.DifficultyLevel == "Normal")
         {
             Managers.Game.Unlocked[0] = CollectionState.Done;
-            Managers.Game.Money += 10000;
+            Managers.Game.Money += 1000;
         }
         else if( Managers.Game.DifficultyLevel == "Hard")
         {
             Managers.Game.Unlocked[1] = CollectionState.Done;
-            Managers.Game.Money += 30000;
+            Managers.Game.Money += 3000;
         }
         else if( Managers.Game.DifficultyLevel == "UnLimited")
         {
             Managers.Game.Unlocked[2] = CollectionState.Done;
-            Managers.Game.Money += 50000;
+            Managers.Game.Money += 5000;
         }
         else if( Managers.Game.DifficultyLevel == "Nightmare")
         {
-            Managers.Game.Money += 100000;
+            Managers.Game.Money += 10000;
         }
 
         if(Managers.Game.Money > 1000000)

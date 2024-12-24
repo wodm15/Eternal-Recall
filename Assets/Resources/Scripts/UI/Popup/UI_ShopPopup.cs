@@ -115,7 +115,7 @@ Dictionary<int, Texts> textMapping= new Dictionary<int, Texts>
                 PurchaseClick(20 , 5);
             });
 
-            GetButton((int)Buttons.Button20).gameObject.BindEvent(() =>
+            GetButton((int)Buttons.Button21).gameObject.BindEvent(() =>
             {
                 GetGold();
             });
@@ -165,6 +165,44 @@ Dictionary<int, Texts> textMapping= new Dictionary<int, Texts>
             });
 
     }
+
+    public void GetGold()
+    {
+        //이미 산 경우 return
+        if(Managers.Game.Money > 990000)
+            return;
+        
+        string productID = "purchase6";
+
+       Managers.IAP.Purchase(productID, (product, failureReason) =>
+        {
+            // 구매 완료 로그
+                Debug.Log($"Purchase Done: {product.transactionID} | Failure Reason: {failureReason}");
+                // 구매가 완료되면 CollectionState를 변경
+                Managers.Game.Money += 100000;
+
+                // 구매가 실패한 경우에 대한 처리
+                if (failureReason == PurchaseFailureReason.Unknown)
+                {
+                    Debug.LogError("Purchase failed due to an unknown reason.");
+                }
+                else if (failureReason == PurchaseFailureReason.DuplicateTransaction)
+                {
+                    Debug.LogWarning("Duplicate transaction detected.");
+
+                }
+                else if (failureReason == PurchaseFailureReason.UserCancelled)
+                {
+                    Debug.Log("User cancelled the purchase.");
+                }
+                else
+                {
+
+                    Debug.LogError($"Purchase failed with reason: {failureReason}");
+                }
+            });
+    }
+
     public void OnImageClick(int nameID)
     {
         CollectionData selectedCollectionData = CollectionData.Find(data => data.nameID == nameID);
@@ -213,43 +251,7 @@ Dictionary<int, Texts> textMapping= new Dictionary<int, Texts>
                 CollectionData.Add(data);        
             }
         }
-    public void GetGold()
-    {
-        //이미 산 경우 return
-        if(Managers.Game.Money > 990000)
-            return;
-        
-        string productID = "purchase6";
 
-        Managers.IAP.Purchase(productID, (product, failureReason) =>
-        {
-            // 구매 완료 로그
-                Debug.Log($"Purchase Done: {product.transactionID} | Failure Reason: {failureReason}");
-
-                // 구매가 완료되면 CollectionState를 변경
-                Managers.Game.Money += 10000;
-
-                // 구매가 실패한 경우에 대한 처리
-                if (failureReason == PurchaseFailureReason.Unknown)
-                {
-                    Debug.LogError("Purchase failed due to an unknown reason.");
-                }
-                else if (failureReason == PurchaseFailureReason.DuplicateTransaction)
-                {
-                    Debug.LogWarning("Duplicate transaction detected.");
-
-                }
-                else if (failureReason == PurchaseFailureReason.UserCancelled)
-                {
-                    Debug.Log("User cancelled the purchase.");
-                }
-                else
-                {
-
-                    Debug.LogError($"Purchase failed with reason: {failureReason}");
-                }
-            });
-    }
 
 public void GetFilter()
     {
