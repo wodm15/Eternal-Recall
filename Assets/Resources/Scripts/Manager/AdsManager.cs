@@ -7,31 +7,26 @@ public class AdsManager
     InterstitialAd _interstitialAd;
     RewardedAd _rewardedAd;
 
-
-	// #if UNITY_ANDROID
-	private string _adUnitId = "ca-app-pub-3940256099942544/1033173712";
-
-    
-    
-	// 	#elif UNITY_IPHONE
-	// private string _adUnitId = "ca-app-pub-3940256099942544/4411468910";
-	// 	#else
-	// // private string _adUnitId = "unused";
-	// 	#endif
+    // 광고 유닛 ID 설정 (보상형 광고, 인터스티셜 광고 각각의 ID 사용)
+    private string _adUnitId = "ca-app-pub-1071815426479027/5104078510"; // Rewarded Ad
+    private string _interstitialAdUnitId = "ca-app-pub-1071815426479027/6170410886";  // 인터스티얼 광고 ID
 
     // 광고 초기화 메서드
     public void Init()
     {
+        #if UNITY_ANDROID
         MobileAds.Initialize(initStatus =>
         {
             Debug.Log("Google Mobile Ads SDK Initialized.");
-            LoadInterstitialAd(); // 초기화 후 인터스티셜 광고 로드
-            LoadRewardedAd();
+            LoadInterstitialAd(); // 인터스티얼 광고 로드
+            LoadRewardedAd(); // 보상형 광고 로드
         });
-    
+        #else
+        Debug.Log("Google Mobile Ads SDK is only initialized on Android.");
+        #endif
     }
 
-    // 인터스티셜 광고 로드 메서드
+    // 인터스티얼 광고 로드 메서드
     public void LoadInterstitialAd()
     {
         // 이전에 로드된 광고 정리
@@ -43,10 +38,10 @@ public class AdsManager
 
         Debug.Log("Loading the interstitial ad.");
 
-		AdRequest adRequest = new AdRequest();
+        AdRequest adRequest = new AdRequest();
 
         // 광고 로드 요청
-        InterstitialAd.Load(_adUnitId, adRequest,
+        InterstitialAd.Load(_interstitialAdUnitId, adRequest,
             (InterstitialAd ad, LoadAdError error) =>
             {
                 if (error != null || ad == null)
@@ -64,7 +59,7 @@ public class AdsManager
             });
     }
 
-    // 인터스티셜 광고 이벤트 핸들러 등록 메서드
+    // 인터스티얼 광고 이벤트 핸들러 등록 메서드
     private void RegisterEventHandlers(InterstitialAd interstitialAd)
     {
         interstitialAd.OnAdPaid += (AdValue adValue) =>
@@ -100,7 +95,7 @@ public class AdsManager
         };
     }
 
-    // 인터스티셜 광고 표시 메서드
+    // 인터스티얼 광고 표시 메서드
     public void ShowInterstitialAd()
     {
         if (_interstitialAd != null && _interstitialAd.CanShowAd())
@@ -114,88 +109,77 @@ public class AdsManager
         }
     }
 
-
-    
+    // 보상형 광고 이벤트 핸들러 등록 메서드
     private void RegisterEventHandlers(RewardedAd ad)
-{
-    // Raised when the ad is estimated to have earned money.
-    ad.OnAdPaid += (AdValue adValue) =>
     {
-        Debug.Log(String.Format("Rewarded ad paid {0} {1}.",
-            adValue.Value,
-            adValue.CurrencyCode));
-    };
-    // Raised when an impression is recorded for an ad.
-    ad.OnAdImpressionRecorded += () =>
-    {
-        Debug.Log("Rewarded ad recorded an impression.");
-    };
-    // Raised when a click is recorded for an ad.
-    ad.OnAdClicked += () =>
-    {
-        Debug.Log("Rewarded ad was clicked.");
-    };
-    // Raised when an ad opened full screen content.
-    ad.OnAdFullScreenContentOpened += () =>
-    {
-        Debug.Log("Rewarded ad full screen content opened.");
-    };
-    // Raised when the ad closed full screen content.
-    ad.OnAdFullScreenContentClosed += () =>
-    {
-        Debug.Log("Rewarded ad full screen content closed.");
-    };
-    // Raised when the ad failed to open full screen content.
-    ad.OnAdFullScreenContentFailed += (AdError error) =>
-    {
-        Debug.LogError("Rewarded ad failed to open full screen content " +
-                       "with error : " + error);
-    };
-}
+        // 광고 수익 기록
+        ad.OnAdPaid += (AdValue adValue) =>
+        {
+            Debug.Log(String.Format("Rewarded ad paid {0} {1}.", adValue.Value, adValue.CurrencyCode));
+        };
+        // 광고 인상 기록
+        ad.OnAdImpressionRecorded += () =>
+        {
+            Debug.Log("Rewarded ad recorded an impression.");
+        };
+        // 광고 클릭 기록
+        ad.OnAdClicked += () =>
+        {
+            Debug.Log("Rewarded ad was clicked.");
+        };
+        // 광고가 전체 화면을 연 경우
+        ad.OnAdFullScreenContentOpened += () =>
+        {
+            Debug.Log("Rewarded ad full screen content opened.");
+        };
+        // 광고가 닫혔을 때
+        ad.OnAdFullScreenContentClosed += () =>
+        {
+            Debug.Log("Rewarded ad full screen content closed.");
+        };
+        // 광고 실패
+        ad.OnAdFullScreenContentFailed += (AdError error) =>
+        {
+            Debug.LogError("Rewarded ad failed to open full screen content with error: " + error);
+        };
+    }
+
+    // 보상형 광고 로드 메서드
     public void LoadRewardedAd()
-  {
-      // Clean up the old ad before loading a new one.
-      if (_rewardedAd != null)
-      {
+    {
+        // 이전 광고 정리
+        if (_rewardedAd != null)
+        {
             _rewardedAd.Destroy();
             _rewardedAd = null;
-      }
+        }
 
-      Debug.Log("Loading the rewarded ad.");
+        Debug.Log("Loading the rewarded ad.");
 
-      // create our request used to load the ad.
-      var adRequest = new AdRequest();
+        AdRequest adRequest = new AdRequest();
 
-      // send the request to load the ad.
-      RewardedAd.Load(_adUnitId, adRequest,
-          (RewardedAd ad, LoadAdError error) =>
-          {
-              // if error is not null, the load request failed.
-              if (error != null || ad == null)
-              {
-                  Debug.LogError("Rewarded ad failed to load an ad " +
-                                 "with error : " + error);
-                  return;
-              }
+        RewardedAd.Load(_adUnitId, adRequest,
+            (RewardedAd ad, LoadAdError error) =>
+            {
+                if (error != null || ad == null)
+                {
+                    Debug.LogError("Rewarded ad failed to load with error: " + error);
+                    return;
+                }
 
-              Debug.Log("Rewarded ad loaded with response : "
-                        + ad.GetResponseInfo());
+                Debug.Log("Rewarded ad loaded.");
+                _rewardedAd = ad;
+            });
+    }
 
-              _rewardedAd = ad;
-          });
-  }
-
+    // 보상형 광고 표시 메서드
     public void ShowRewardedAd()
     {
-        const string rewardMsg =
-            "Rewarded ad rewarded the user. Type: {0}, amount: {1}.";
-
         if (_rewardedAd != null && _rewardedAd.CanShowAd())
         {
             _rewardedAd.Show((Reward reward) =>
             {
-                // TODO: Reward the user.
-                Debug.Log(String.Format(rewardMsg, reward.Type, reward.Amount));
+                Debug.Log(string.Format("Rewarded ad rewarded the user. Type: {0}, amount: {1}.", reward.Type, reward.Amount));
             });
         }
     }

@@ -24,7 +24,6 @@ public class UI_ShopPopup : UI_Popup
         Button20, //간호복
         Button21, //돈 교환
         ExitButton,
-        PurchaseButton,
     }
     enum Texts
     {
@@ -35,7 +34,7 @@ public class UI_ShopPopup : UI_Popup
         Text20,
         Text21,
         ExitButtonText,
-        PurchaseText,
+
     }
     public override bool Init()
         {
@@ -89,30 +88,27 @@ Dictionary<int, Texts> textMapping= new Dictionary<int, Texts>
             GetText((int)Texts.Text19).text = Managers.GetText(Define.PurchaseText4);
             GetText((int)Texts.Text20).text = Managers.GetText(Define.PurchaseText5);
             GetText((int)Texts.Text21).text = Managers.GetText(Define.PurchaseText6);
-            GetText((int)Texts.PurchaseText).text = Managers.GetText(Define.PurchaseText);
             GetButton((int)Buttons.ExitButton).gameObject.BindEvent(OnClickGoBack); 
-            // GetButton((int)Buttons.PurchaseButton).gameObject.BindEvent( () => {PurchaseByIndex(clickindex);} );
-            GetButton((int)Buttons.PurchaseButton).gameObject.SetActive(false);
 
             GetButton((int)Buttons.Button16).gameObject.BindEvent(() =>
             {
-                PurchaseClick(16 , 1);
+                PurchaseByIndex(16,1);
             });
             GetButton((int)Buttons.Button17).gameObject.BindEvent(() =>
             {
-                PurchaseClick(17 ,2 );
+                PurchaseByIndex(17,2);
             });
             GetButton((int)Buttons.Button18).gameObject.BindEvent(() =>
             {
-                PurchaseClick(18 , 3);
+                PurchaseByIndex(18,3);
             });
             GetButton((int)Buttons.Button19).gameObject.BindEvent(() =>
             {
-                PurchaseClick(19 , 4);
+                PurchaseByIndex(19,4);
             });
             GetButton((int)Buttons.Button20).gameObject.BindEvent(() =>
             {
-                PurchaseClick(20 , 5);
+                PurchaseByIndex(20,5);
             });
 
             GetButton((int)Buttons.Button21).gameObject.BindEvent(() =>
@@ -122,11 +118,6 @@ Dictionary<int, Texts> textMapping= new Dictionary<int, Texts>
 
             return true;
         }
-    public void PurchaseClick(int index , int purchaseID)
-    {
-        GetButton((int)Buttons.PurchaseButton).gameObject.SetActive(true);
-        GetButton((int)Buttons.PurchaseButton).gameObject.BindEvent( () => {PurchaseByIndex(index , purchaseID);} );
-    }
 
     public void PurchaseByIndex(int index , int purchaseID)
     {

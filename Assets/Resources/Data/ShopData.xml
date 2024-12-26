@@ -21,9 +21,9 @@
 
   <!-- 난이도 3 SHOP -->
   <ShopData ID="200" name="6200" productID="Healing" icon="Healing" description="HP를 2 회복합니다." effectType="Health" effectValue="2"/>
-  <ShopData ID="201" name="6201" productID="gambleHealing" icon="gambleHealing" description="HP를 1~4 확률&#10;회복합니다." effectType="Health" effectValue="4"/>
+  <!-- <ShopData ID="201" name="6201" productID="gambleHealing" icon="gambleHealing" description="HP를 1~4 확률&#10;회복합니다." effectType="Health" effectValue="4"/>
   <ShopData ID="202" name="6202" productID="GetExpendTime" icon="GetExpendTime" description="추측할 수 있는&#10;시간이 늘어납니다. +3초" effectType="Skill" effectValue="3"/>
-  <ShopData ID="203" name="6203" productID="GetTheWorld" icon="GetTheWorld" description="한번 더 보기 1개 획득 (소모성)" effectType="Skill" effectValue="1"/>
+  <ShopData ID="203" name="6203" productID="GetTheWorld" icon="GetTheWorld" description="한번 더 보기 1개 획득 (소모성)" effectType="Skill" effectValue="1"/> -->
   <ShopData ID="205" name="6205" productID="FreePass" icon="FreePass" description="HP를 -5를 깎는 대신&#10;스테이지를 3턴 넘깁니다.&#10;(또는 클리어 전 스테이지로)" effectType="Skill" effectValue="{-5,3}"/>
   <ShopData ID="208" name="6208" productID="HintKey" icon="HintKey" description="힌트 2개를 획득합니다 " effectType="Skill" effectValue="2"/>
   <!-- 난이도 4 SHOP -->

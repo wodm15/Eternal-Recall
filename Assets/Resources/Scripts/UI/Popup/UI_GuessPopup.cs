@@ -105,10 +105,13 @@ public class UI_GuessPopup : UI_Popup
         // Managers.Game.changeBG();
         GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
         
+            
 
         Stranger = GameObject.Find("Stranger");
         playerScene = Managers.UI.GetSceneUI<UI_PlayerScene>();
 
+        DeleteBirds();
+        
         //타이머 관리
         RemainTime = Managers.Game.GuessTimer;
         //추측 틀린 개수 (hp 깎기용)
@@ -415,18 +418,22 @@ public class UI_GuessPopup : UI_Popup
         }
         else if(Managers.Game.Stage >= Define.NormalGameEnd -1 && Managers.Game.DifficultyLevel == "Normal")
         {
+            Managers.Game.Stage++;
             GameEnd();
         }
         else if(Managers.Game.Stage >= Define.HardGameEnd -1 && Managers.Game.DifficultyLevel == "Hard")
         {
+            Managers.Game.Stage++;
             GameEnd();
         }
         else if(Managers.Game.Stage >= Define.UnLimitedGameEnd -1 && Managers.Game.DifficultyLevel == "UnLimited")
         {
+            Managers.Game.Stage++;
             GameEnd();
         }
         else if(Managers.Game.Stage >= Define.NightmareGameEnd && Managers.Game.DifficultyLevel == "Nightmare")
         {
+            Managers.Game.Stage++;
             GameEnd();
         }
         else
@@ -1382,6 +1389,25 @@ public class UI_GuessPopup : UI_Popup
         });
     }
 
+    void DeleteBirds()
+    {
+        // 배열에 찾으려는 오브젝트 이름들을 저장
+        string[] birdNames = { "Bird1", "Bird2", "Bird3" };
+
+        foreach (string birdName in birdNames)
+        {
+            // GameObject.Find로 해당 이름의 오브젝트를 검색
+            GameObject bird = GameObject.Find(birdName);
+            
+            // 검색된 오브젝트가 있다면 삭제
+            if (bird != null)
+            {
+                Destroy(bird);
+            }
+        }
+    }
+
+
 
     public void GiveHint()
     {
@@ -1413,6 +1439,7 @@ public class UI_GuessPopup : UI_Popup
                 // playerScene.StaticPlayerEx("Initial");
             }
         }
+
     }
 
 }
