@@ -1,6 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.google.unity.ads" android:versionName="2.0" android:versionCode="2">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" package="com.google.unity.ads" android:versionName="6.0" android:versionCode="6">
   <uses-sdk android:minSdkVersion="21" />
+  <!-- 필요한 권한 추가 -->
+  <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
   <application>
     <uses-library android:required="false" android:name="org.apache.http.legacy" />
     <meta-data android:name="com.google.android.gms.ads.APPLICATION_ID" android:value="ca-app-pub-1071815426479027~6149566876" />

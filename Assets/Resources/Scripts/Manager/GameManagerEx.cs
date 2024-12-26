@@ -320,13 +320,13 @@ public void Init()
             {
                 difficulty = 4;
             }
-            else if (Stage >= 29 && Stage <= 30)
+            else if (Stage >= 29 && Stage <= 29)
             {
                 difficulty = 5;
             }
 
             //하드
-            else if (Stage >= 31 && Stage <= 34)
+            else if (Stage >= 30 && Stage <= 34)
             {
                 difficulty = 2;
             }
@@ -334,9 +334,13 @@ public void Init()
             {
                 difficulty = 3;
             }
-            else if (Stage >= 40 && Stage <= 50)
+            else if (Stage >= 40 && Stage <= 45)
             {
                 difficulty = 4;
+            }
+            else if (Stage >= 45 && Stage <= 49)
+            {
+                difficulty = 5;
             }
 
             //언리미티드
@@ -356,7 +360,7 @@ public void Init()
             {
                 difficulty = 5;
             }
-            else if (Stage >= 67 && Stage <= 70)
+            else if (Stage >= 67 && Stage <= 69)
             {
                 difficulty = 6;
             }
@@ -427,7 +431,7 @@ public void Init()
             Avoid = 10;
             DownSpeed = 0;
             GuessTimer = 15;
-            HintKey = 3;
+            HintKey = 5;
         }
         if(DifficultyLevel == "UnLimited")
         {
@@ -435,7 +439,7 @@ public void Init()
             Avoid = 5;
             DownSpeed = 0;
             GuessTimer = 20;
-            HintKey = 1;
+            HintKey = 3;
         }
         if(DifficultyLevel == "Nightmare")
         {

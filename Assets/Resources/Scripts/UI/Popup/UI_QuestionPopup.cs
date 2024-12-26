@@ -30,7 +30,7 @@ public class UI_QuestionPopup : UI_Popup
 
         Stranger = Managers.Resource.Instantiate("Stranger");
         RandomStranger();
-        Stranger.transform.position = new Vector3(-12,2,0);
+        Stranger.transform.position = new Vector3(-15,2,0);
 
         Managers.Game.quizData = Managers.Game.LoadRandomQuiz();
 
