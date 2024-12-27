@@ -35,7 +35,10 @@ public class UI_TitlePopup : UI_Popup
 		if (base.Init() == false)
 			return false;
 		if(!Managers.Game.LoadGame())
+		{
 			Managers.Game.Init();
+			Managers.Game.SaveGame();
+		}
 
 		//일단 확인 후 false로 초기화
 		bool isRevive = Managers.Game.ReviveLife;
@@ -166,6 +169,10 @@ void OnClickStartButton()
 		else if(isGameLoaded && Managers.Game.Hp <=0)
 		{
 			GetText((int)Texts.SayingText).text = Managers.GetText(Define.SaveButEnd);
+		}
+		else if(Managers.Game.Name == "")
+		{
+			GetText((int)Texts.SayingText).text = Managers.GetText(Define.SaveNothing);
 		}
 		
 		else if(isGameLoaded && Managers.Game.Hp > 0)
