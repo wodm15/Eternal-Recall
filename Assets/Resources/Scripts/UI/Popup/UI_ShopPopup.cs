@@ -17,11 +17,11 @@ public class UI_ShopPopup : UI_Popup
     private int idIndex = 0;
     enum Buttons
     {
-        Button16, //수영복
-        Button17, //치파오
-        Button18, //가터벨트
-        Button19, //교복
-        Button20, //간호복
+        Button16, //수영복 id = 6
+        Button17, //치파오 id = 8
+        Button18, //가터벨트 id = 12
+        Button19, //교복 id = 19
+        Button20, //간호복 id = 16
         Button21, //돈 교환
         ExitButton,
     }
@@ -34,6 +34,7 @@ public class UI_ShopPopup : UI_Popup
         Text20,
         Text21,
         ExitButtonText,
+        AlreadyGet,
 
     }
     public override bool Init()
@@ -49,7 +50,10 @@ public class UI_ShopPopup : UI_Popup
             customManager = _customManager.GetComponent<CustomManager>();
 
             GetData();
-Dictionary<int, Texts> textMapping= new Dictionary<int, Texts>
+            GetText((int)Texts.AlreadyGet).text = Managers.GetText(Define.AlreadyGet);
+            GetText((int)Texts.AlreadyGet).gameObject.SetActive(false);
+
+        Dictionary<int, Texts> textMapping= new Dictionary<int, Texts>
         {
             { 16, Texts.Text16 },
             { 17, Texts.Text17 },
@@ -92,23 +96,23 @@ Dictionary<int, Texts> textMapping= new Dictionary<int, Texts>
 
             GetButton((int)Buttons.Button16).gameObject.BindEvent(() =>
             {
-                PurchaseByIndex(16,1);
+                PurchaseByIndex(16,1 ,6);
             });
             GetButton((int)Buttons.Button17).gameObject.BindEvent(() =>
             {
-                PurchaseByIndex(17,2);
+                PurchaseByIndex(17,2 , 8);
             });
             GetButton((int)Buttons.Button18).gameObject.BindEvent(() =>
             {
-                PurchaseByIndex(18,3);
+                PurchaseByIndex(18,3 , 12);
             });
             GetButton((int)Buttons.Button19).gameObject.BindEvent(() =>
             {
-                PurchaseByIndex(19,4);
+                PurchaseByIndex(19,4 , 19);
             });
             GetButton((int)Buttons.Button20).gameObject.BindEvent(() =>
             {
-                PurchaseByIndex(20,5);
+                PurchaseByIndex(20,5 , 16);
             });
 
             GetButton((int)Buttons.Button21).gameObject.BindEvent(() =>
@@ -119,13 +123,18 @@ Dictionary<int, Texts> textMapping= new Dictionary<int, Texts>
             return true;
         }
 
-    public void PurchaseByIndex(int index , int purchaseID)
+    public void PurchaseByIndex(int index , int purchaseID , int id)
     {
         string productID = "purchase" +$"{purchaseID}";  // 또는 필요한 데이터 형식으로 변환
         //이미 산 경우 return
-        if(Managers.Game.Collections[index] == CollectionState.Done)
+        if(Managers.Game.Collections[id] == CollectionState.Done)
+        {
+            GetText((int)Texts.AlreadyGet).gameObject.SetActive(true);
             return;
+        }
 
+        GetText((int)Texts.AlreadyGet).gameObject.SetActive(false);
+        
         Managers.IAP.Purchase(productID, (product, failureReason) =>
         {
             // 구매 완료 로그
