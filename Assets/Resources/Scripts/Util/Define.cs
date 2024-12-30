@@ -72,7 +72,7 @@ public class Define
 	public const int NightmareGameEnd = 100;
 
 	//뽑기 가격
-	public const int PickupCost = 500;
+	public const int PickupCost = 100;
 
 	//픽업 옷 번호
 	public const int sailer = 0;
@@ -171,6 +171,7 @@ public class Define
 	public const int PurchaseText5 = 20030;
 	public const int PurchaseText6 = 20031;
 	public const int PurchaseText = 20032;
+	public const int NoNetworkText = 20033;
 
 
 	// public const int HairQuestion = 30000;

@@ -235,7 +235,7 @@ public class GameManagerEx
             {
                 
                 if (Collections[data.ID ] != CollectionState.None)
-				continue;
+				    continue;
 
                 if(data.purchase == 1)
                     continue;

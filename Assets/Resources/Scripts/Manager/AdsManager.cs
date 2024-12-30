@@ -14,7 +14,16 @@ public class AdsManager
     // 광고 초기화 메서드
     public void Init()
     {
-        #if UNITY_ANDROID
+        #if UNITY_EDITOR
+        {
+            _adUnitId = "ca-app-pub-3940256099942544/5224354917"; // Google의 기본 테스트 ID (Rewarded Ad)
+            _interstitialAdUnitId = "ca-app-pub-3940256099942544/1033173712";  // Google의 기본 테스트 ID (Interstitial Ad)
+            LoadInterstitialAd(); // 인터스티얼 광고 로드
+            LoadRewardedAd(); // 보상형 광고 로드
+            Debug.Log("Unity Editor Ads: Using test ad units.");
+        }
+
+        #elif UNITY_ANDROID
         MobileAds.Initialize(initStatus =>
         {
             Debug.Log("Google Mobile Ads SDK Initialized.");

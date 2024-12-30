@@ -216,13 +216,21 @@ void OnClickStartButton()
 	void OnClickPickupButton()
 	{
 		Managers.Game.LoadGame();
-		Player.transform.localPosition = new Vector3(12,0,0);
+		Player.transform.localPosition = new Vector3(15,0,0);
 
 		Debug.Log("OnClickPickupButton");
 		Managers.UI.ShowPopupUI<UI_PickupPopup>();
 	}
 	void OnClickShopButton()
 	{
+		// 네트워크 상태 확인
+		if (Application.internetReachability == NetworkReachability.NotReachable)
+		{
+			GetText((int)Texts.SayingText).text = Managers.GetText(Define.NoNetworkText);
+			Debug.Log("네트워크 연결이 필요합니다.");
+			return;
+		}
+
 		Managers.Game.LoadGame();
 		Player.transform.localPosition = new Vector3(0,0,0);
 		Player.transform.localScale = new Vector3(1,1,1);

@@ -754,7 +754,7 @@ public class UI_GuessPopup : UI_Popup
     private IEnumerator HideStrangerAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay); // 지정된 시간 동안 대기
-        Stranger.transform.position = new Vector3(-12, 2.2f, 0);
+        Stranger.transform.position = new Vector3(-15, 2.2f, 0);
         GetImage((int)Images.RemindImage).gameObject.SetActive(false);
         playerScene.StaticPlayerEx("Initial");
     }
