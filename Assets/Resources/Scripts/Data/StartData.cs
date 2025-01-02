@@ -56,6 +56,9 @@ public class StartData
 	public bool ReviveLife;
 	[XmlAttribute]
 	public string BG;
-
+	[XmlAttribute]
+	public int PreviousStage;
+	[XmlAttribute]
+	public int Money;
 
 }

@@ -78,7 +78,9 @@ Spine Examples
 TextMesh Pro
 referSound
 referSprite
-AdsManagers.cs
 Soundrefer
 generated
 ICONSETTING
+/Assets/Resources/Scripts/Manager/AdsManagers.cs
+/Assets/Resources/Scripts/Manager/IAPManagers.cs
+

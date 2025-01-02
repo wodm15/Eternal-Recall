@@ -43,7 +43,16 @@ public class UI_CountPopup : UI_Popup
         Managers.Game.changeBG();
         GetImage((int)Images.BG).sprite = Managers.Resource.Load<Sprite>($"Sprites/Background/{Managers.Game.BG}");
 
-       
+        //스테이지 검증
+        if(Managers.Game.Stage == Define.NormalGameEnd)
+            Managers.Game.PreviousStage = Define.NormalGameEnd;
+        if(Managers.Game.Stage == Define.HardGameEnd)
+            Managers.Game.PreviousStage = Define.HardGameEnd;
+        if(Managers.Game.Stage == Define.UnLimitedGameEnd)
+            Managers.Game.PreviousStage = Define.UnLimitedGameEnd;
+        if(Managers.Game.Stage == Define.NightmareGameEnd)
+            Managers.Game.PreviousStage = Define.NightmareGameEnd;
+
 
         Managers.Game.ReviveLife = false;
 
@@ -86,7 +95,7 @@ public class UI_CountPopup : UI_Popup
         if(Managers.Game.BGM == null)
             Managers.Sound.Play(Sound.Bgm,"Sound_MainPlay10");
 
-        GetText((int)Texts.PreviousStage).text = $" Stage : {_Stage -1}";
+        GetText((int)Texts.PreviousStage).text = $" Stage : {Managers.Game.PreviousStage}";
         if(_Stage == Define.NormalGameEnd -1 && Managers.Game.DifficultyLevel == "Normal")
             GetText((int)Texts.ShowStage).text = $" Final Normal Stage : {_Stage}";
         if(_Stage == Define.HardGameEnd -1 && Managers.Game.DifficultyLevel == "Hard")
