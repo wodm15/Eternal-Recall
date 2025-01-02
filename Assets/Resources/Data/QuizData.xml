@@ -3,154 +3,160 @@
   <!-- 난이도 1 - 쉬운 질문 -->
   <!--헤어 복장 눈썹 눈동자 입모양 기분(감정) 포즈 -->
   <!-- 1   1   1   1    1    1       1 -->
-  <QuizData ID="1" kor="헤어스타일을 확인해주세요" Difficulty="1" quizType="1000000" eng="gpdjtmxkdlfdmfghkrdlsgowntpdy" />
-  <QuizData ID="2" kor="복장을 확인해주세요" Difficulty="1" quizType="0100000" eng="qhrwkddmf ghkrdlsgowntpdy" />
-  <QuizData ID="3" kor="눈에 집중해주세요" Difficulty="1" quizType="0001000" eng="snsdpwlqwndgowntpdy" />
-  <QuizData ID="4" kor="입모양을 자세히 봐주세요" Difficulty="1" quizType="0000100" eng="dlqahdiddmf wktpgl qhkwntpdy" />
-  <QuizData ID="5" kor="감정을 확인해주세요" Difficulty="1" quizType="0000010" eng="rkawjddmf ghkrdlsgowntpdy" />
-  <QuizData ID="6" kor="포즈에 집중해주세요" Difficulty="1" quizType="0000001" eng="vhwmdp wlqwndgowntpdy" />
+<QuizData ID="1" kor="헤어스타일을 확인해주세요" Difficulty="1" quizType="1000000" eng="부드러운 선과 미묘한 흐름 속에서 단서를 찾아보세요." />
+<QuizData ID="2" kor="복장을 확인해주세요" Difficulty="1" quizType="0100000" eng="레이어드된 구조와 그 겹 속의 의도를 알아채보세요." />
+<QuizData ID="3" kor="눈에 집중해주세요" Difficulty="1" quizType="0001000" eng="섬세한 빛과 그림자의 경계선에 숨은 메시지를 감지하세요." />
+<QuizData ID="4" kor="입모양을 자세히 봐주세요" Difficulty="1" quizType="0000100" eng="형태의 흔들림과 움직임 속에서 핵심을 포착하세요." />
+<QuizData ID="5" kor="감정을 확인해주세요" Difficulty="1" quizType="0000010" eng="감정의 파동이 드러나는 작은 단서를 유추해보세요." />
+<QuizData ID="6" kor="포즈에 집중해주세요" Difficulty="1" quizType="0000001" eng="움직임이 멈춘 순간, 조형미의 비밀을 파악하세요." />
+
 
   <!-- 난이도 2 - 중간 난이도 질문 -->
-  <QuizData ID="100" kor="헤어스타일과 복장에 집중해주세요" Difficulty="2" quizType="1100000" eng="gpdjtmxkdlfrhk qhrwkddp" />
-<QuizData ID="101" kor="헤어스타일과 눈썹에 집중해주세요" Difficulty="2" quizType="1010000" eng="gpdjtmxkdlfrhk snsTjqdp" />
-<QuizData ID="102" kor="헤어스타일과 눈동자에 집중해주세요" Difficulty="2" quizType="1001000" eng="gpdjtmxkdlfrhk wlqwndgowntpdy" />
-<QuizData ID="103" kor="헤어스타일과 입모양에 집중해주세요" Difficulty="2" quizType="1000100" eng="gpdjtmxkdlfrhk xkqdyfqlr" />
-<QuizData ID="104" kor="헤어스타일과 감정에 집중해주세요" Difficulty="2" quizType="1000010" eng="gpdjtmxkdlfrhk tndtmdf" />
-<QuizData ID="105" kor="헤어스타일과 포즈에 집중해주세요" Difficulty="2" quizType="1000001" eng="gpdjtmxkdlfrhk wjtd" />
-<QuizData ID="106" kor="복장과 눈썹에 집중해주세요" Difficulty="2" quizType="0110000" eng="qhrwkddp snsTjqdp" />
-<QuizData ID="107" kor="복장과 눈동자에 집중해주세요" Difficulty="2" quizType="0101000" eng="qhrwkddp wlqwndgowntpdy" />
-<QuizData ID="108" kor="복장과 입모양에 집중해주세요" Difficulty="2" quizType="0100100" eng="qhrwkddp xkqdyfqlr" />
-<QuizData ID="109" kor="복장과 감정에 집중해주세요" Difficulty="2" quizType="0100010" eng="qhrwkddp tndtmdf" />
-<QuizData ID="110" kor="복장과 포즈에 집중해주세요" Difficulty="2" quizType="0100001" eng="qhrwkddp wjtd" />
-<QuizData ID="111" kor="눈썹과 눈동자에 집중해주세요" Difficulty="2" quizType="0011000" eng="snsTjqdp wlqwndgowntpdy" />
-<QuizData ID="112" kor="눈썹과 입모양에 집중해주세요" Difficulty="2" quizType="0010100" eng="snsTjqdp xkqdyfqlr" />
-<QuizData ID="113" kor="눈썹과 감정에 집중해주세요" Difficulty="2" quizType="0010010" eng="snsTjqdp tndtmdf" />
-<QuizData ID="114" kor="눈썹과 포즈에 집중해주세요" Difficulty="2" quizType="0010001" eng="snsTjqdp wjtd" />
-<QuizData ID="115" kor="눈동자와 입모양에 집중해주세요" Difficulty="2" quizType="0001100" eng="wlqwndgowntpdy xkqdyfqlr" />
-<QuizData ID="116" kor="눈동자와 감정에 집중해주세요" Difficulty="2" quizType="0001010" eng="wlqwndgowntpdy tndtmdf" />
-<QuizData ID="117" kor="눈동자와 포즈에 집중해주세요" Difficulty="2" quizType="0001001" eng="wlqwndgowntpdy wjtd" />
-<QuizData ID="118" kor="입모양과 감정에 집중해주세요" Difficulty="2" quizType="0000110" eng="xkqdyfqlr tndtmdf" />
-<QuizData ID="119" kor="입모양과 포즈에 집중해주세요" Difficulty="2" quizType="0000101" eng="xkqdyfqlr wjtd" />
-<QuizData ID="120" kor="감정과 포즈에 집중해주세요" Difficulty="2" quizType="0000011" eng="tndtmdf wjtd" />
+<QuizData ID="100" kor="헤어스타일과 복장에 집중해주세요" Difficulty="2" quizType="1100000" eng="섬세한 흐름과 다층적 질감을 느껴보세요." />
+<QuizData ID="101" kor="헤어스타일과 눈썹에 집중해주세요" Difficulty="2" quizType="1010000" eng="유연함과 날카로운 곡선의 변화를 찾아보세요." />
+<QuizData ID="102" kor="헤어스타일과 눈동자에 집중해주세요" Difficulty="2" quizType="1001000" eng="움직임과 고요함 사이에서 반짝이는 순간을 포착하세요." />
+<QuizData ID="103" kor="헤어스타일과 입모양에 집중해주세요" Difficulty="2" quizType="1000100" eng="부드러운 흐름 속에서 대비를 관찰해보세요." />
+<QuizData ID="104" kor="헤어스타일과 감정에 집중해주세요" Difficulty="2" quizType="1000010" eng="파동처럼 드러나는 흔적을 느껴보세요." />
+<QuizData ID="105" kor="헤어스타일과 포즈에 집중해주세요" Difficulty="2" quizType="1000001" eng="균형과 흐름의 경계를 탐색하세요." />
+<QuizData ID="106" kor="복장과 눈썹에 집중해주세요" Difficulty="2" quizType="0110000" eng="구조와 패턴 속 작은 차이를 포착해보세요." />
+<QuizData ID="107" kor="복장과 눈동자에 집중해주세요" Difficulty="2" quizType="0101000" eng="세밀함과 시선의 흐름을 느껴보세요." />
+<QuizData ID="108" kor="복장과 입모양에 집중해주세요" Difficulty="2" quizType="0100100" eng="질감과 형태의 이질감을 감지하세요." />
+<QuizData ID="109" kor="복장과 감정에 집중해주세요" Difficulty="2" quizType="0100010" eng="겹쳐진 의도 속에서 감춰진 이야기를 상상해보세요." />
+<QuizData ID="110" kor="복장과 포즈에 집중해주세요" Difficulty="2" quizType="0100001" eng="유기적으로 얽힌 구조를 탐험하세요." />
+<QuizData ID="111" kor="눈썹과 눈동자에 집중해주세요" Difficulty="2" quizType="0011000" eng="미세한 선과 깊이감의 교차를 추적하세요." />
+<QuizData ID="112" kor="눈썹과 입모양에 집중해주세요" Difficulty="2" quizType="0010100" eng="표면에서 드러나는 작은 움직임에 집중하세요." />
+<QuizData ID="113" kor="눈썹과 감정에 집중해주세요" Difficulty="2" quizType="0010010" eng="미묘한 흔들림 속에서 정체를 알아내세요." />
+<QuizData ID="114" kor="눈썹과 포즈에 집중해주세요" Difficulty="2" quizType="0010001" eng="균형과 왜곡 사이에 감춰진 신호를 찾아보세요." />
+<QuizData ID="115" kor="눈동자와 입모양에 집중해주세요" Difficulty="2" quizType="0001100" eng="빛의 방향과 움직임의 흔적에 주목하세요." />
+<QuizData ID="116" kor="눈동자와 감정에 집중해주세요" Difficulty="2" quizType="0001010" eng="깊숙한 곳에 스치는 변화를 인지하세요." />
+<QuizData ID="117" kor="눈동자와 포즈에 집중해주세요" Difficulty="2" quizType="0001001" eng="멈춤 속에서 드러나는 긴장감을 찾아내세요." />
+<QuizData ID="118" kor="입모양과 감정에 집중해주세요" Difficulty="2" quizType="0000110" eng="말없는 표정 속에 깃든 의도를 느껴보세요." />
+<QuizData ID="119" kor="입모양과 포즈에 집중해주세요" Difficulty="2" quizType="0000101" eng="움직임과 정지의 중간점에 주목하세요." />
+<QuizData ID="120" kor="감정과 포즈에 집중해주세요" Difficulty="2" quizType="0000011" eng="표정과 자세 속에 숨은 복잡함을 감지하세요." />
+
 
  <!-- 난이도 3 - 어려운 질문 -->
- <QuizData ID="200" kor="헤어스타일, 복장, 눈썹에 집중해주세요" Difficulty="3" quizType="1110000" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp" />
-<QuizData ID="201" kor="헤어스타일, 복장, 눈동자에 집중해주세요" Difficulty="3" quizType="1101000" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy" />
-<QuizData ID="202" kor="헤어스타일, 복장, 입모양에 집중해주세요" Difficulty="3" quizType="1100100" eng="gpdjtmxkdlfrhk qhrwkddp xkqdyfqlr" />
-<QuizData ID="203" kor="헤어스타일, 복장, 감정에 집중해주세요" Difficulty="3" quizType="1100010" eng="gpdjtmxkdlfrhk qhrwkddp tndtmdf" />
-<QuizData ID="204" kor="헤어스타일, 복장, 포즈에 집중해주세요" Difficulty="3" quizType="1100001" eng="gpdjtmxkdlfrhk qhrwkddp wjtd" />
-<QuizData ID="205" kor="헤어스타일, 눈썹, 눈동자에 집중해주세요" Difficulty="3" quizType="1011000" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy" />
-<QuizData ID="206" kor="헤어스타일, 눈썹, 입모양에 집중해주세요" Difficulty="3" quizType="1010100" eng="gpdjtmxkdlfrhk snsTjqdp xkqdyfqlr" />
-<QuizData ID="207" kor="헤어스타일, 눈썹, 감정에 집중해주세요" Difficulty="3" quizType="1010010" eng="gpdjtmxkdlfrhk snsTjqdp tndtmdf" />
-<QuizData ID="208" kor="헤어스타일, 눈썹, 포즈에 집중해주세요" Difficulty="3" quizType="1010001" eng="gpdjtmxkdlfrhk snsTjqdp wjtd" />
-<QuizData ID="209" kor="헤어스타일, 눈동자, 입모양에 집중해주세요" Difficulty="3" quizType="1001100" eng="gpdjtmxkdlfrhk wlqwndgowntpdy xkqdyfqlr" />
-<QuizData ID="210" kor="헤어스타일, 눈동자, 감정에 집중해주세요" Difficulty="3" quizType="1001010" eng="gpdjtmxkdlfrhk wlqwndgowntpdy tndtmdf" />
-<QuizData ID="211" kor="헤어스타일, 눈동자, 포즈에 집중해주세요" Difficulty="3" quizType="1001001" eng="gpdjtmxkdlfrhk wlqwndgowntpdy wjtd" />
-<QuizData ID="212" kor="헤어스타일, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="1000110" eng="gpdjtmxkdlfrhk xkqdyfqlr tndtmdf" />
-<QuizData ID="213" kor="헤어스타일, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="1000101" eng="gpdjtmxkdlfrhk xkqdyfqlr wjtd" />
-<QuizData ID="214" kor="헤어스타일, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="1000011" eng="gpdjtmxkdlfrhk tndtmdf wjtd" />
-<QuizData ID="215" kor="복장, 눈썹, 눈동자에 집중해주세요" Difficulty="3" quizType="0111000" eng="qhrwkddp snsTjqdp wlqwndgowntpdy" />
-<QuizData ID="216" kor="복장, 눈썹, 입모양에 집중해주세요" Difficulty="3" quizType="0110100" eng="qhrwkddp snsTjqdp xkqdyfqlr" />
-<QuizData ID="217" kor="복장, 눈썹, 감정에 집중해주세요" Difficulty="3" quizType="0110010" eng="qhrwkddp snsTjqdp tndtmdf" />
-<QuizData ID="218" kor="복장, 눈썹, 포즈에 집중해주세요" Difficulty="3" quizType="0110001" eng="qhrwkddp snsTjqdp wjtd" />
-<QuizData ID="219" kor="복장, 눈동자, 입모양에 집중해주세요" Difficulty="3" quizType="0101100" eng="qhrwkddp wlqwndgowntpdy xkqdyfqlr" />
-<QuizData ID="220" kor="복장, 눈동자, 감정에 집중해주세요" Difficulty="3" quizType="0101010" eng="qhrwkddp wlqwndgowntpdy tndtmdf" />
-<QuizData ID="221" kor="복장, 눈동자, 포즈에 집중해주세요" Difficulty="3" quizType="0101001" eng="qhrwkddp wlqwndgowntpdy wjtd" />
-<QuizData ID="222" kor="복장, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="0100110" eng="qhrwkddp xkqdyfqlr tndtmdf" />
-<QuizData ID="223" kor="복장, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="0100101" eng="qhrwkddp xkqdyfqlr wjtd" />
-<QuizData ID="224" kor="복장, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0100011" eng="qhrwkddp tndtmdf wjtd" />
-<QuizData ID="225" kor="눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="3" quizType="0011100" eng="snsTjqdp wlqwndgowntpdy xkqdyfqlr" />
-<QuizData ID="226" kor="눈썹, 눈동자, 감정에 집중해주세요" Difficulty="3" quizType="0011010" eng="snsTjqdp wlqwndgowntpdy tndtmdf" />
-<QuizData ID="227" kor="눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="3" quizType="0011001" eng="snsTjqdp wlqwndgowntpdy wjtd" />
-<QuizData ID="228" kor="눈썹, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="0010110" eng="snsTjqdp xkqdyfqlr tndtmdf" />
-<QuizData ID="229" kor="눈썹, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="0010101" eng="snsTjqdp xkqdyfqlr wjtd" />
-<QuizData ID="230" kor="눈썹, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0010011" eng="snsTjqdp tndtmdf wjtd" />
-<QuizData ID="231" kor="눈동자, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="0001110" eng="wlqwndgowntpdy xkqdyfqlr tndtmdf" />
-<QuizData ID="232" kor="눈동자, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="0001101" eng="wlqwndgowntpdy xkqdyfqlr wjtd" />
-<QuizData ID="233" kor="눈동자, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0001011" eng="wlqwndgowntpdy tndtmdf wjtd" />
-<QuizData ID="234" kor="입모양, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0000111" eng="xkqdyfqlr tndtmdf wjtd" />
+<QuizData ID="200" kor="헤어스타일, 복장, 눈썹에 집중해주세요" Difficulty="3" quizType="1110000" eng="형태의 흐름과 교차점에서 나타나는 세부적인 변화를 포착해 보세요." />
+<QuizData ID="201" kor="헤어스타일, 복장, 눈동자에 집중해주세요" Difficulty="3" quizType="1101000" eng="시각적인 균형 속에서 더 깊은 변화를 감지하세요." />
+<QuizData ID="202" kor="헤어스타일, 복장, 입모양에 집중해주세요" Difficulty="3" quizType="1100100" eng="연결된 선들이 형성하는 변형된 패턴을 찾아보세요." />
+<QuizData ID="203" kor="헤어스타일, 복장, 감정에 집중해주세요" Difficulty="3" quizType="1100010" eng="형태의 변화 속에 숨어 있는 감정의 흐름을 파악하세요." />
+<QuizData ID="204" kor="헤어스타일, 복장, 포즈에 집중해주세요" Difficulty="3" quizType="1100001" eng="정지된 상태에서도 흐르는 형태를 분석하세요." />
+<QuizData ID="205" kor="헤어스타일, 눈썹, 눈동자에 집중해주세요" Difficulty="3" quizType="1011000" eng="변화하는 실루엣 속에서 감정의 미세한 변화를 추적하세요." />
+<QuizData ID="206" kor="헤어스타일, 눈썹, 입모양에 집중해주세요" Difficulty="3" quizType="1010100" eng="부드럽게 이어지는 선들 속에서 발생하는 변화를 감지해 보세요." />
+<QuizData ID="207" kor="헤어스타일, 눈썹, 감정에 집중해주세요" Difficulty="3" quizType="1010010" eng="형태의 변화와 감정의 흐름이 엮이는 방식을 찾아보세요." />
+<QuizData ID="208" kor="헤어스타일, 눈썹, 포즈에 집중해주세요" Difficulty="3" quizType="1010001" eng="불완전한 형태 속에서 숨겨진 비대칭을 인지해 보세요." />
+<QuizData ID="209" kor="헤어스타일, 눈동자, 입모양에 집중해주세요" Difficulty="3" quizType="1001100" eng="다양한 변형들 사이에서 발생하는 결합을 감지해 보세요." />
+<QuizData ID="210" kor="헤어스타일, 눈동자, 감정에 집중해주세요" Difficulty="3" quizType="1001010" eng="시각적 흐름과 그에 따라 나타나는 감정을 연관 지어 보세요." />
+<QuizData ID="211" kor="헤어스타일, 눈동자, 포즈에 집중해주세요" Difficulty="3" quizType="1001001" eng="시각적 변화를 따라가며 비대칭성과 그 흐름을 파악하세요." />
+<QuizData ID="212" kor="헤어스타일, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="1000110" eng="형태와 감정의 변화를 교차하여 파악하세요." />
+<QuizData ID="213" kor="헤어스타일, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="1000101" eng="입체적인 변화를 따라가며 흐름을 파악하세요." />
+<QuizData ID="214" kor="헤어스타일, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="1000011" eng="변화하는 형태와 감정의 연계를 찾아보세요." />
+<QuizData ID="215" kor="복장, 눈썹, 눈동자에 집중해주세요" Difficulty="3" quizType="0111000" eng="형태의 연속성과 그 안에서 나타나는 시각적 변화를 감지해 보세요." />
+<QuizData ID="216" kor="복장, 눈썹, 입모양에 집중해주세요" Difficulty="3" quizType="0110100" eng="교차되는 요소들 속에서 미세한 형태의 변화를 추적해 보세요." />
+<QuizData ID="217" kor="복장, 눈썹, 감정에 집중해주세요" Difficulty="3" quizType="0110010" eng="형태 변화 속 감정의 흔적을 찾아보세요." />
+<QuizData ID="218" kor="복장, 눈썹, 포즈에 집중해주세요" Difficulty="3" quizType="0110001" eng="교차되는 형태를 따라 변화를 분석해 보세요." />
+<QuizData ID="219" kor="복장, 눈동자, 입모양에 집중해주세요" Difficulty="3" quizType="0101100" eng="형태와 입체적인 변화를 통해 시각적 연계를 찾아보세요." />
+<QuizData ID="220" kor="복장, 눈동자, 감정에 집중해주세요" Difficulty="3" quizType="0101010" eng="표면을 넘어선 실루엣, 내면의 비밀을 담은 시선, 감정을 담은 심연을 들여다보세요." />
+<QuizData ID="221" kor="복장, 눈동자, 포즈에 집중해주세요" Difficulty="3" quizType="0101001" eng="외적인 언어의 외피, 시선의 중심, 감추어진 몸짓 속 말을 파악해보세요." />
+<QuizData ID="222" kor="복장, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="0100110" eng="겉모습으로 포장된 이야기, 말 없는 입술에서 흘러나오는 감정의 흔적을 추적해보세요." />
+<QuizData ID="223" kor="복장, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="0100101" eng="외형 속에 숨겨진 내러티브, 입술과 손끝의 언어로 만들어지는 몸의 메시지를 읽어내세요." />
+<QuizData ID="224" kor="복장, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0100011" eng="의미를 드러내는 의상, 감정의 미세한 파동, 균형 잡힌 자세의 깊이를 들여다보세요." />
+<QuizData ID="225" kor="눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="3" quizType="0011100" eng="섬세하게 그려진 눈썹, 잠잠한 시선의 깊이, 묵묵히 말하는 입술 속 숨결을 관찰하세요." />
+<QuizData ID="226" kor="눈썹, 눈동자, 감정에 집중해주세요" Difficulty="3" quizType="0011010" eng="날카로운 눈썹의 기울기, 내면의 감정에 스며든 시선, 감추어진 진실을 파고드는 느낌에 집중해보세요." />
+<QuizData ID="227" kor="눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="3" quizType="0011001" eng="눈썹이 그려낸 흐름, 시선 속의 고요한 변화를, 자세에서 흘러나오는 암시를 포착해보세요." />
+<QuizData ID="228" kor="눈썹, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="0010110" eng="이마의 섬세한 곡선, 입술로 되뇌어지는 얘기 없이 전해지는 감정의 미묘한 무게에 주목해보세요." />
+<QuizData ID="229" kor="눈썹, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="0010101" eng="그윽한 눈썹의 길, 입술이 보이지 않게 말하는 이야기, 움직임 속에 숨겨진 말들에 귀 기울여보세요." />
+<QuizData ID="230" kor="눈썹, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0010011" eng="눈썹의 윤곽이 전하는 의미, 감정의 흐름 속에서, 그늘을 드리운 자세에서 바람을 느껴보세요." />
+<QuizData ID="231" kor="눈동자, 입모양, 감정에 집중해주세요" Difficulty="3" quizType="0001110" eng="눈빛 속에 담긴 심연, 조용히 열리는 입술, 진동하는 감정의 소리 없는 목소리를 찾아보세요." />
+<QuizData ID="232" kor="눈동자, 입모양, 포즈에 집중해주세요" Difficulty="3" quizType="0001101" eng="시선 속 감춰진 이야기, 입술과 함께 흐르는 말없는 제스처, 순간을 교감하는 자세를 분석해보세요." />
+<QuizData ID="233" kor="눈동자, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0001011" eng="눈빛에 실린 이야기, 감정의 경계선, 그리기 위한 몸의 조용한 신호를 읽어내세요." />
+<QuizData ID="234" kor="입모양, 감정, 포즈에 집중해주세요" Difficulty="3" quizType="0000111" eng="무언의 언어를 풀어내는 입술, 감정의 터널 속을 헤매는 몸짓, 몸에 새겨진 발자국을 찾아보세요." />
+
 
   <!-- 난이도 4 - 높은 난이도의 질문 -->
-<QuizData ID="300" kor="헤어스타일, 복장, 눈썹, 눈동자에 집중해주세요" Difficulty="4" quizType="1111000" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wlqwndgowntpdy" />
-<QuizData ID="301" kor="헤어스타일, 복장, 눈썹, 입모양에 집중해주세요" Difficulty="4" quizType="1110100" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp xkqdyfqlr" />
-<QuizData ID="302" kor="헤어스타일, 복장, 눈썹, 감정에 집중해주세요" Difficulty="4" quizType="1110010" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp tndtmdf" />
-<QuizData ID="303" kor="헤어스타일, 복장, 눈썹, 포즈에 집중해주세요" Difficulty="4" quizType="1110001" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wjtd" />
-<QuizData ID="304" kor="헤어스타일, 복장, 눈동자, 입모양에 집중해주세요" Difficulty="4" quizType="1101100" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy xkqdyfqlr" />
-<QuizData ID="305" kor="헤어스타일, 복장, 눈동자, 감정에 집중해주세요" Difficulty="4" quizType="1101010" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy tndtmdf" />
-<QuizData ID="306" kor="헤어스타일, 복장, 눈동자, 포즈에 집중해주세요" Difficulty="4" quizType="1101001" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy wjtd" />
-<QuizData ID="307" kor="헤어스타일, 복장, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="1100110" eng="gpdjtmxkdlfrhk qhrwkddp xkqdyfqlr tndtmdf" />
-<QuizData ID="308" kor="헤어스타일, 복장, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="1100101" eng="gpdjtmxkdlfrhk qhrwkddp xkqdyfqlr wjtd" />
-<QuizData ID="309" kor="헤어스타일, 복장, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1100011" eng="gpdjtmxkdlfrhk qhrwkddp tndtmdf wjtd" />
-<QuizData ID="310" kor="헤어스타일, 눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="4" quizType="1011100" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy xkqdyfqlr" />
-<QuizData ID="311" kor="헤어스타일, 눈썹, 눈동자, 감정에 집중해주세요" Difficulty="4" quizType="1011010" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy tndtmdf" />
-<QuizData ID="312" kor="헤어스타일, 눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="4" quizType="1011001" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy wjtd" />
-<QuizData ID="313" kor="헤어스타일, 눈썹, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="1010110" eng="gpdjtmxkdlfrhk snsTjqdp xkqdyfqlr tndtmdf" />
-<QuizData ID="314" kor="헤어스타일, 눈썹, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="1010101" eng="gpdjtmxkdlfrhk snsTjqdp xkqdyfqlr wjtd" />
-<QuizData ID="315" kor="헤어스타일, 눈썹, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1010011" eng="gpdjtmxkdlfrhk snsTjqdp tndtmdf wjtd" />
-<QuizData ID="316" kor="헤어스타일, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="1001110" eng="gpdjtmxkdlfrhk wlqwndgowntpdy xkqdyfqlr tndtmdf" />
-<QuizData ID="317" kor="헤어스타일, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="1001101" eng="gpdjtmxkdlfrhk wlqwndgowntpdy xkqdyfqlr wjtd" />
-<QuizData ID="318" kor="헤어스타일, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1001011" eng="gpdjtmxkdlfrhk wlqwndgowntpdy tndtmdf wjtd" />
-<QuizData ID="319" kor="헤어스타일, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1000111" eng="gpdjtmxkdlfrhk xkqdyfqlr tndtmdf wjtd" />
-<QuizData ID="320" kor="복장, 눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="4" quizType="0111100" eng="qhrwkddp snsTjqdp wlqwndgowntpdy xkqdyfqlr" />
-<QuizData ID="321" kor="복장, 눈썹, 눈동자, 감정에 집중해주세요" Difficulty="4" quizType="0111010" eng="qhrwkddp snsTjqdp wlqwndgowntpdy tndtmdf" />
-<QuizData ID="322" kor="복장, 눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="4" quizType="0111001" eng="qhrwkddp snsTjqdp wlqwndgowntpdy wjtd" />
-<QuizData ID="323" kor="복장, 눈썹, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="0110110" eng="qhrwkddp snsTjqdp xkqdyfqlr tndtmdf" />
-<QuizData ID="324" kor="복장, 눈썹, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="0110101" eng="qhrwkddp snsTjqdp xkqdyfqlr wjtd" />
-<QuizData ID="325" kor="복장, 눈썹, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0110011" eng="qhrwkddp snsTjqdp tndtmdf wjtd" />
-<QuizData ID="326" kor="복장, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="0101110" eng="qhrwkddp wlqwndgowntpdy xkqdyfqlr tndtmdf" />
-<QuizData ID="327" kor="복장, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="0101101" eng="qhrwkddp wlqwndgowntpdy xkqdyfqlr wjtd" />
-<QuizData ID="328" kor="복장, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0101011" eng="qhrwkddp wlqwndgowntpdy tndtmdf wjtd" />
-<QuizData ID="329" kor="복장, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0100111" eng="qhrwkddp xkqdyfqlr tndtmdf wjtd" />
-<QuizData ID="330" kor="눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="0011110" eng="snsTjqdp wlqwndgowntpdy xkqdyfqlr tndtmdf" />
-<QuizData ID="331" kor="눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="0011101" eng="snsTjqdp wlqwndgowntpdy xkqdyfqlr wjtd" />
-<QuizData ID="332" kor="눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0011011" eng="snsTjqdp wlqwndgowntpdy tndtmdf wjtd" />
-<QuizData ID="333" kor="눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0010111" eng="snsTjqdp xkqdyfqlr tndtmdf wjtd" />
-<QuizData ID="334" kor="눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0001111" eng="wlqwndgowntpdy xkqdyfqlr tndtmdf wjtd" />
+<QuizData ID="300" kor="헤어스타일, 복장, 눈썹, 눈동자에 집중해주세요" Difficulty="4" quizType="1111000" eng="풍성한 머리카락과 세련된 의상, 그 아래 비밀을 숨긴 시선들이 얽힌 속삭임" />
+<QuizData ID="301" kor="헤어스타일, 복장, 눈썹, 입모양에 집중해주세요" Difficulty="4" quizType="1110100" eng="선의 흐름처럼 매혹적인 모습, 말없이 전하는 감정이 물들어가는 표정" />
+<QuizData ID="302" kor="헤어스타일, 복장, 눈썹, 감정에 집중해주세요" Difficulty="4" quizType="1110010" eng="갈라진 어둠 속, 눈빛으로 표현된 감정의 미로를 걸어가는 길" />
+<QuizData ID="303" kor="헤어스타일, 복장, 눈썹, 포즈에 집중해주세요" Difficulty="4" quizType="1110001" eng="불멸의 고요 속에서, 뜻밖의 물결처럼 퍼지는 서사의 순간" />
+<QuizData ID="304" kor="헤어스타일, 복장, 눈동자, 입모양에 집중해주세요" Difficulty="4" quizType="1101100" eng="이끄는 눈길, 이야기를 품은 소리, 하늘의 모든 색을 닮은 입술" />
+<QuizData ID="305" kor="헤어스타일, 복장, 눈동자, 감정에 집중해주세요" Difficulty="4" quizType="1101010" eng="누구도 알지 못한 심연의 그 깊은 곳, 그림자 속에서 스며드는 마음의 소리" />
+<QuizData ID="306" kor="헤어스타일, 복장, 눈동자, 포즈에 집중해주세요" Difficulty="4" quizType="1101001" eng="고요히 펼쳐진 시선의 조화, 하늘을 향해 뻗은 손길 속 맥락을 잇는 순간" />
+<QuizData ID="307" kor="헤어스타일, 복장, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="1100110" eng="소리 없는 언어, 숨길 수 없는 떨림, 감정의 결이 지나가는 흔적들" />
+<QuizData ID="308" kor="헤어스타일, 복장, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="1100101" eng="우아한 미소, 세상의 리듬을 따라 걷는 한 발자국, 시선을 빼앗는 순간" />
+<QuizData ID="309" kor="헤어스타일, 복장, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1100011" eng="그 무엇도 표현할 수 없는 감정을 숨긴 몸짓, 마음의 흔적을 좇는 발자국" />
+<QuizData ID="310" kor="헤어스타일, 눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="4" quizType="1011100" eng="붉은 초승달 아래 서서 말없이 전해지는 표정, 눈동자에 숨어 있는 비밀" />
+<QuizData ID="311" kor="헤어스타일, 눈썹, 눈동자, 감정에 집중해주세요" Difficulty="4" quizType="1011010" eng="다채로운 감정의 향연, 짧은 순간 속에 마법처럼 녹아든 눈빛과 그 표정" />
+<QuizData ID="312" kor="헤어스타일, 눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="4" quizType="1011001" eng="자유로이 펼쳐지는 무대 위, 표현할 수 없는 이야기를 한 번에 품고 있는 표정" />
+<QuizData ID="313" kor="헤어스타일, 눈썹, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="1010110" eng="희미하게 그려진 입술과 함께하는 시선, 온 몸으로 전해지는 내면의 폭풍" />
+<QuizData ID="314" kor="헤어스타일, 눈썹, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="1010101" eng="숨 막히는 순간, 몸짓 하나로 전해지는 깊은 이야기 속 반향" />
+<QuizData ID="315" kor="헤어스타일, 눈썹, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1010011" eng="곁에서 흐르는 바람 속으로 스며드는 마음의 움직임, 갈라진 감정" />
+<QuizData ID="316" kor="헤어스타일, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="1001110" eng="슬며시 열린 눈동자 속, 닫힌 비밀을 숨겨둔 입술과 감정이 엮여진 그림" />
+<QuizData ID="317" kor="헤어스타일, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="1001101" eng="우린 서로 다른 표정을 가진 채 함께 숨 쉬며, 순간마다 깊이를 달리한다" />
+<QuizData ID="318" kor="헤어스타일, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1001011" eng="잉여의 순간을 뚫고 나오는 진실, 연기처럼 흐르는 시선" />
+<QuizData ID="319" kor="헤어스타일, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="1000111" eng="미소 속, 깊고 짙은 그늘을 형성하는 감정의 선율, 영원의 흔적을 남기는 몸짓" />
+<QuizData ID="320" kor="복장, 눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="4" quizType="0111100" eng="조용한 몸짓, 상반된 감정을 얹은 눈빛과 입술에서 피어나는 불확실한 이야기" />
+<QuizData ID="321" kor="복장, 눈썹, 눈동자, 감정에 집중해주세요" Difficulty="4" quizType="0111010" eng="표정 깊이 숨겨진 감정의 틈새 속, 각각의 흔적이 이끌어가는 혼란" />
+<QuizData ID="322" kor="복장, 눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="4" quizType="0111001" eng="소리 없이 흐르는 선율처럼, 무수한 요소가 짧은 동작을 완성해가는 조화" />
+<QuizData ID="323" kor="복장, 눈썹, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="0110110" eng="서로 맞물려 돌아가는 패턴 속, 흐름과 파동이 우연의 결과로 드러나는 순간" />
+<QuizData ID="324" kor="복장, 눈썹, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="0110101" eng="상징하는 손짓과 각도 사이에서 숨겨진 감각들을 헤아려보세요." />
+<QuizData ID="325" kor="복장, 눈썹, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0110011" eng="움직임 속에 담긴 마음을 따라가며 미세한 변화를 캐치해보세요." />
+<QuizData ID="326" kor="복장, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="0101110" eng="빛의 속삭임처럼 감정의 흐름을 따라 눈빛이 마주치는 순간을 엿보세요." />
+<QuizData ID="327" kor="복장, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="0101101" eng="눈의 무게와 말없는 표정 속에 숨겨진 이야기를 풀어보세요." />
+<QuizData ID="328" kor="복장, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0101011" eng="입술에 묻은 감정의 징후를 따라 포즈를 넘어선 무언의 대화를 찾으세요." />
+<QuizData ID="329" kor="복장, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0100111" eng="조용한 표정 뒤에서 감춰진 이야기들을 한 자락의 움직임으로 그려보세요." />
+<QuizData ID="330" kor="눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="4" quizType="0011110" eng="눈빛에 담긴 감정의 깊이를 따라가며 섬세한 감각의 흔적을 느껴보세요." />
+<QuizData ID="331" kor="눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="4" quizType="0011101" eng="눈꺼풀 사이로 피어나는 미세한 감정의 변화를 포착해보세요." />
+<QuizData ID="332" kor="눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0011011" eng="하나의 미소로 펼쳐지는 감정의 흐름을 손끝으로 그려보세요." />
+<QuizData ID="333" kor="눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0010111" eng="표정으로 말하지 않는 감정의 깊이를 읽으며 그 마음을 알아차려 보세요." />
+<QuizData ID="334" kor="눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="4" quizType="0001111" eng="차가운 눈빛 속에서 녹아내리는 감정의 물줄기를 흘러보세요." />
 
   <!-- 난이도 5 - 매우 높은 난이도의 질문 -->
- <QuizData ID="400" kor="헤어스타일, 복장, 눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="5" quizType="1111100" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wlqwndgowntpdy xkqdyfqlr" />
-<QuizData ID="401" kor="헤어스타일, 복장, 눈썹, 눈동자, 감정에 집중해주세요" Difficulty="5" quizType="1111010" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wlqwndgowntpdy tndtmdf" />
-<QuizData ID="402" kor="헤어스타일, 복장, 눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="5" quizType="1111001" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wlqwndgowntpdy wjtd" />
-<QuizData ID="403" kor="헤어스타일, 복장, 눈썹, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="1110110" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp xkqdyfqlr tndtmdf" />
-<QuizData ID="404" kor="헤어스타일, 복장, 눈썹, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="1110101" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp xkqdyfqlr wjtd" />
-<QuizData ID="405" kor="헤어스타일, 복장, 눈썹, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1110011" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp tndtmdf wjtd" />
-<QuizData ID="406" kor="헤어스타일, 복장, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="1101110" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy xkqdyfqlr tndtmdf" />
-<QuizData ID="407" kor="헤어스타일, 복장, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="1101101" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy xkqdyfqlr wjtd" />
-<QuizData ID="408" kor="헤어스타일, 복장, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1101011" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy tndtmdf wjtd" />
-<QuizData ID="409" kor="헤어스타일, 복장, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1100111" eng="gpdjtmxkdlfrhk qhrwkddp xkqdyfqlr tndtmdf wjtd" />
-<QuizData ID="410" kor="헤어스타일, 눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="1011110" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy xkqdyfqlr tndtmdf" />
-<QuizData ID="411" kor="헤어스타일, 눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="1011101" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy xkqdyfqlr wjtd" />
-<QuizData ID="412" kor="헤어스타일, 눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1011011" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy tndtmdf wjtd" />
-<QuizData ID="413" kor="헤어스타일, 눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1010111" eng="gpdjtmxkdlfrhk snsTjqdp xkqdyfqlr tndtmdf wjtd" />
-<QuizData ID="414" kor="헤어스타일, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1001111" eng="gpdjtmxkdlfrhk wlqwndgowntpdy xkqdyfqlr tndtmdf wjtd" />
-<QuizData ID="415" kor="복장, 눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="0111110" eng="qhrwkddp snsTjqdp wlqwndgowntpdy xkqdyfqlr tndtmdf" />
-<QuizData ID="416" kor="복장, 눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="0111101" eng="qhrwkddp snsTjqdp wlqwndgowntpdy xkqdyfqlr wjtd" />
-<QuizData ID="417" kor="복장, 눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0111011" eng="qhrwkddp snsTjqdp wlqwndgowntpdy tndtmdf wjtd" />
-<QuizData ID="418" kor="복장, 눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0110111" eng="qhrwkddp snsTjqdp xkqdyfqlr tndtmdf wjtd" />
-<QuizData ID="419" kor="복장, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0101111" eng="qhrwkddp wlqwndgowntpdy xkqdyfqlr tndtmdf wjtd" />
-<QuizData ID="420" kor="눈썹, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0011111" eng="snsTjqdp wlqwndgowntpdy xkqdyfqlr tndtmdf wjtd" />
+<QuizData ID="400" kor="헤어스타일, 복장, 눈썹, 눈동자, 입모양에 집중해주세요" Difficulty="5" quizType="1111100" eng="세부적인 특징을 포착하여 서로 다른 차원의 조화를 이해하세요." />
+<QuizData ID="401" kor="헤어스타일, 복장, 눈썹, 눈동자, 감정에 집중해주세요" Difficulty="5" quizType="1111010" eng="조금 더 세밀한 변화 속에 숨겨진 감정의 물결을 알아차려 보세요." />
+<QuizData ID="402" kor="헤어스타일, 복장, 눈썹, 눈동자, 포즈에 집중해주세요" Difficulty="5" quizType="1111001" eng="단순한 표정이나 자세에서 나타나는 미세한 변화를 눈여겨보세요." />
+<QuizData ID="403" kor="헤어스타일, 복장, 눈썹, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="1110110" eng="음미되는 미소 속에서 감정의 흐름을 읽어 보세요." />
+<QuizData ID="404" kor="헤어스타일, 복장, 눈썹, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="1110101" eng="서로 얽힌 요소들이 만들어내는 숨은 패턴을 찾아보세요." />
+<QuizData ID="405" kor="헤어스타일, 복장, 눈썹, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1110011" eng="격렬한 변화 속에서 드러나는 내면의 이야기를 느껴보세요." />
+<QuizData ID="406" kor="헤어스타일, 복장, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="1101110" eng="변화하는 표정에서 감춰진 감정을 찾아내는 미세한 감각을 기르세요." />
+<QuizData ID="407" kor="헤어스타일, 복장, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="1101101" eng="적절한 포즈로 감정의 무게를 전달하려는 미묘한 균형을 맞추세요." />
+<QuizData ID="408" kor="헤어스타일, 복장, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1101011" eng="말없이 드러나는 감정의 흔적을 확인하고 깊이를 파악하세요." />
+<QuizData ID="409" kor="헤어스타일, 복장, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1100111" eng="섬세하게 그려지는 감정의 윤곽을 읽으며 전해지는 의미를 발견하세요." />
+<QuizData ID="410" kor="헤어스타일, 눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="1011110" eng="외적인 변화가 감정과 어떻게 연결되는지 유심히 관찰하세요." />
+<QuizData ID="411" kor="헤어스타일, 눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="1011101" eng="포즈와 외적 표현을 조화시켜 내면의 감정을 외부로 전하는 방법을 발견하세요." />
+<QuizData ID="412" kor="헤어스타일, 눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1011011" eng="비언어적 표현을 통해 감정을 드러내는 예술적인 접근법을 찾아보세요." />
+<QuizData ID="413" kor="헤어스타일, 눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1010111" eng="각각의 요소들이 어떻게 감정을 묘사하는지 깊이 살펴보세요." />
+<QuizData ID="414" kor="헤어스타일, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="1001111" eng="눈빛과 표정이 감정의 깊이를 전달하는 중요한 역할을 한다는 것을 인식하세요." />
+<QuizData ID="415" kor="복장, 눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="5" quizType="0111110" eng="상세한 외적 변화를 통해 감정이 어떻게 드러나는지 탐색해 보세요." />
+<QuizData ID="416" kor="복장, 눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="5" quizType="0111101" eng="복장과 자세가 어떻게 서로 조화를 이루는지에 주의 깊게 관찰하세요." />
+<QuizData ID="417" kor="복장, 눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0111011" eng="변화하는 표정과 자세가 감정적 반응을 어떻게 나타내는지 알아보세요." />
+<QuizData ID="418" kor="복장, 눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0110111" eng="세심한 표정과 자세를 통해 감정의 세밀한 변화를 감지해 보세요." />
+<QuizData ID="419" kor="복장, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0101111" eng="눈동자와 입모양으로 표현되는 감정의 흐름을 읽어내는 능력을 기르세요." />
+<QuizData ID="420" kor="눈썹, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="5" quizType="0011111" eng="눈빛과 표정을 조합하여 감정의 복잡한 내면을 드러내 보세요." />
+
 
   <!-- 난이도 6 - 매우 높은 난이도의 질문 -->
-<QuizData ID="500" kor="헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="6" quizType="1111110" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wlqwndgowntpdy xkqdyfqlr tndtmdf" />
-<QuizData ID="501" kor="헤어스타일, 복장, 눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="6" quizType="1111101" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wlqwndgowntpdy xkqdyfqlr wjtd" />
-<QuizData ID="502" kor="헤어스타일, 복장, 눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1111011" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp wlqwndgowntpdy tndtmdf wjtd" />
-<QuizData ID="503" kor="헤어스타일, 복장, 눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1110111" eng="gpdjtmxkdlfrhk qhrwkddp snsTjqdp xkqdyfqlr tndtmdf wjtd" />
-<QuizData ID="504" kor="헤어스타일, 복장, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1101111" eng="gpdjtmxkdlfrhk qhrwkddp wlqwndgowntpdy xkqdyfqlr tndtmdf wjtd" />
-<QuizData ID="505" kor="헤어스타일, 눈썹, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1011111" eng="gpdjtmxkdlfrhk snsTjqdp wlqwndgowntpdy xkqdyfqlr tndtmdf wjtd" />
-<QuizData ID="506" kor="복장, 눈썹, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="0111111" eng="qhrwkddp snsTjqdp wlqwndgowntpdy xkqdyfqlr tndtmdf wjtd" />
+<QuizData ID="500" kor="헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정에 집중해주세요" Difficulty="6" quizType="1111110" eng="각각의 외적 요소들이 감정을 어떻게 형성하는지 더 깊이 파악해 보세요." />
+<QuizData ID="501" kor="헤어스타일, 복장, 눈썹, 눈동자, 입모양, 포즈에 집중해주세요" Difficulty="6" quizType="1111101" eng="복장과 외적 표현이 서로 상호작용하여 더욱 강렬한 감정을 전달하는지 확인하세요." />
+<QuizData ID="502" kor="헤어스타일, 복장, 눈썹, 눈동자, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1111011" eng="눈동자와 감정 표현을 조합하여 감정의 깊이를 효과적으로 나타내는 방법을 탐구하세요." />
+<QuizData ID="503" kor="헤어스타일, 복장, 눈썹, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1110111" eng="눈빛과 표정으로 표현되는 감정을 어떻게 잘 전달할 수 있는지 실험해 보세요." />
+<QuizData ID="504" kor="헤어스타일, 복장, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1101111" eng="세부적인 요소들이 조화롭게 결합되어 감정의 전달을 극대화하는 방식에 집중하세요." />
+<QuizData ID="505" kor="헤어스타일, 눈썹, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="1011111" eng="외적 요소들이 감정을 자연스럽게 표현하는 데 어떻게 상호작용하는지 분석해 보세요." />
+<QuizData ID="506" kor="복장, 눈썹, 눈동자, 입모양, 감정, 포즈에 집중해주세요" Difficulty="6" quizType="0111111" eng="복장, 표정, 감정, 포즈 등이 함께 어우러져 감정을 잘 나타낼 수 있는 방식을 찾아보세요." />
+
 
   <!-- 난이도 7 - 재미있고 창의적인 묘사 -->
-<QuizData ID="600" kor="상상해보세요. 한 사람이 멋진 헤어스타일, 세련된 복장, 즐거운 기분,&#10;반짝이는 눈동자, 입꼬리가 살짝 올라간 모습으로 포즈를 취하고 있어요. &#10;이 사람을 어떻게 묘사할 수 있을까요?" Difficulty="7" quizType="1111111" eng="ghksqtkdgdqk. hks qkfgkddk chdwo wnqtlrk, wkqjqn dkwptp, fhdnlrns xkqdyfqlr, skrdhtnq tmfxtnq slrn gdgoqns" />
-<QuizData ID="601" kor="어떤 사람이 마법처럼 변화하는 중이에요. &#10;그 사람이 갖고 있는 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈는 어떻게 바뀔까요? &#10;상상력을 발휘해 설명해 주세요!" Difficulty="7" quizType="1111111" eng="qkrmfl xkekdka hksqtlq kfrmsfqufkr xhkdgoq dnwkdwl wldhdyfqlr, tmfxtnq tqdxld" />
-<QuizData ID="602" kor="어떤 인물의 완벽한 모습이 있어요. &#10;그 인물의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 묘사하고, &#10;그 인물이 어떻게 자신감을 드러내는지 설명해주세요." Difficulty="7" quizType="1111111" eng="qkrmfl nqkdlrk xkgkfkwjd bqlqh wnqtlrk gnqn tmfxtnq tndtmdf xkqdyfqlr, qkrmfl rhrkqlf dlrwlelsr" />
-<QuizData ID="603" kor="어떤 사람이 거울을 보며 완전히 새로운 모습을 발견했어요. &#10;그 사람의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈가 어떻게 달라졌는지 상상해보세요." Difficulty="7" quizType="1111111" eng="qkrmfl xkekdka gkqdls dnwlqpd gkfptnwpqhdptkr bqlqh wnqtlrk xkqdyfqlr tndtmdf" />
-<QuizData ID="604" kor="영화 속 주인공이 된 당신! &#10;헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 바꿔서 멋진 장면을 만들어 보세요. &#10;이 장면을 어떻게 묘사할 수 있을까요?" Difficulty="7" quizType="1111111" eng="yhdpt qkdy rhrkqlf xjchf qldmrpt ndgkr xkqdyfqlr tndtmdf wjtdkr ksdnlxk qkdy ghfd" />
-<QuizData ID="605" kor="어떤 이가 완벽하게 자신의 스타일을 찾았어요. &#10;그 사람의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 묘사하고, &#10;그 스타일이 어떻게 완성되었는지 설명해 주세요." Difficulty="7" quizType="1111111" eng="qkrmfl qkekdka xksdltqd gkqkqnxlq, bqlqh wnqtlrk xkqdyfqlr tndtmdf wjtdk xldka chckrdlqs" />
-<QuizData ID="606" kor="당신이 지금 상상하는 가장 멋진 인물은 어떤 모습인가요? &#10;헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 모두 묘사하고, &#10;그 인물의 매력을 설명해 보세요." Difficulty="7" quizType="1111111" eng="tndmfl qkqmf wlrhdgkq xkqdyfqlr tlqtlrd, gkfmlrtql cjsl xkqdyfqlr qkqmf qjwdgkrj" />
-<QuizData ID="607" kor="우주에서 온 외계인이 지구에 왔어요.&#10; 그 외계인의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈는 어떻게 되나요? &#10;그 모습이 지구인들에게 어떻게 보일까요?" Difficulty="7" quizType="1111111" eng="qkrmfl fkdtnr qkfrkxlr qtkd qkfxgk. &#10; fkqtdk tk qkqmf gkqkfn xkd qkrmfl ghkq xkqdyfqlr?" />
-<QuizData ID="608" kor="가장 멋진 히어로가 되었다고 상상해 보세요. &#10;당신의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈는 어떤 모습일까요? &#10;이 모습을 설명해 보세요!" Difficulty="7" quizType="1111111" eng="gks qkfgxhf xhksktjdmf tf ldhqgo wjtdmr zckrnjkr? &#10; tndmfl wkdy xkqdyfqlr qkrmfl xjqvhdq qkfgsd" />
-<QuizData ID="609" kor="꿈속에서 만난 상상 속 인물. &#10;그 인물의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 묘사하고, &#10;그 인물이 당신에게 어떤 메시지를 전달하는지 설명해 보세요." Difficulty="7" quizType="1111111" eng="qkrmfl tjxltmswfwgo xkekdka, bqlqh, wnqtlrk xkqdyfqlr tnqwlfr tndtmdf, xkqdyfqlr tmfxtnsfl" />
-<QuizData ID="610" kor="슈퍼스타가 된 당신! &#10;이제 어떤 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈로 팬들에게 인사를 할까요? &#10;그 모습을 묘사하고, 당신의 팬들에게 전달되는 메시지를 설명해주세요." Difficulty="7" quizType="1111111" eng="sudpnwk qkdy rhrkqlf xjchf, qkxd qkrmdqkr dlfwlgqrdn qgdrfgl qjwdwkd. &#10; qkrmfl rhrkqldf tqkwlr xkqdyfqlr" />
+<QuizData ID="600" kor="상상해보세요. 한 사람이 멋진 헤어스타일, 세련된 복장, 즐거운 기분, 반짝이는 눈동자, 입꼬리가 살짝 올라간 모습으로 포즈를 취하고 있어요. 이 사람을 어떻게 묘사할 수 있을까요?" Difficulty="7" quizType="1111111" eng="상상해보세요. 한 사람이 멋진 헤어스타일, 세련된 복장, 즐거운 기분, 반짝이는 눈동자, 입꼬리가 살짝 올라간 모습으로 포즈를 취하고 있어요. 이 사람을 어떻게 묘사할 수 있을까요?" />
+<QuizData ID="601" kor="어떤 사람이 마법처럼 변화하는 중이에요. 그 사람이 갖고 있는 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈는 어떻게 바뀔까요? 상상력을 발휘해 설명해 주세요!" Difficulty="7" quizType="1111111" eng="어떤 사람이 마법처럼 변화하는 중이에요. 그 사람이 갖고 있는 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈는 어떻게 바뀔까요? 상상력을 발휘해 설명해 주세요!" />
+<QuizData ID="602" kor="어떤 인물의 완벽한 모습이 있어요. 그 인물의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 묘사하고, 그 인물이 어떻게 자신감을 드러내는지 설명해주세요." Difficulty="7" quizType="1111111" eng="어떤 인물의 완벽한 모습이 있어요. 그 인물의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 묘사하고, 그 인물이 어떻게 자신감을 드러내는지 설명해주세요." />
+<QuizData ID="603" kor="어떤 사람이 거울을 보며 완전히 새로운 모습을 발견했어요. 그 사람의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈가 어떻게 달라졌는지 상상해보세요." Difficulty="7" quizType="1111111" eng="어떤 사람이 거울을 보며 완전히 새로운 모습을 발견했어요. 그 사람의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈가 어떻게 달라졌는지 상상해보세요." />
+<QuizData ID="604" kor="영화 속 주인공이 된 당신! 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 바꿔서 멋진 장면을 만들어 보세요. 이 장면을 어떻게 묘사할 수 있을까요?" Difficulty="7" quizType="1111111" eng="영화 속 주인공이 된 당신! 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 바꿔서 멋진 장면을 만들어 보세요. 이 장면을 어떻게 묘사할 수 있을까요?" />
+<QuizData ID="605" kor="어떤 이가 완벽하게 자신의 스타일을 찾았어요. 그 사람의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 묘사하고, 그 스타일이 어떻게 완성되었는지 설명해 주세요." Difficulty="7" quizType="1111111" eng="어떤 이가 완벽하게 자신의 스타일을 찾았어요. 그 사람의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 묘사하고, 그 스타일이 어떻게 완성되었는지 설명해 주세요." />
+<QuizData ID="606" kor="당신이 지금 상상하는 가장 멋진 인물은 어떤 모습인가요? 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 모두 묘사하고, 그 인물의 매력을 설명해 보세요." Difficulty="7" quizType="1111111" eng="당신이 지금 상상하는 가장 멋진 인물은 어떤 모습인가요? 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 모두 묘사하고, 그 인물의 매력을 설명해 보세요." />
+<QuizData ID="607" kor="우주에서 온 외계인이 지구에 왔어요. 그 외계인의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈는 어떻게 되나요? 그 모습이 지구인들에게 어떻게 보일까요?" Difficulty="7" quizType="1111111" eng="우주에서 온 외계인이 지구에 왔어요. 그 외계인의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈는 어떻게 되나요? 그 모습이 지구인들에게 어떻게 보일까요?" />
+<QuizData ID="608" kor="가장 멋진 히어로가 되었다고 상상해 보세요. 당신의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈는 어떤 모습일까요? 이 모습을 설명해 보세요!" Difficulty="7" quizType="1111111" eng="가장 멋진 히어로가 되었다고 상상해 보세요. 당신의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈는 어떤 모습일까요? 이 모습을 설명해 보세요!" />
+<QuizData ID="609" kor="꿈속에서 만난 상상 속 인물. 그 인물의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 묘사하고, 그 인물이 당신에게 어떤 메시지를 전달하는지 설명해 보세요." Difficulty="7" quizType="1111111" eng="꿈속에서 만난 상상 속 인물. 그 인물의 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈를 묘사하고, 그 인물이 당신에게 어떤 메시지를 전달하는지 설명해 보세요." />
+<QuizData ID="610" kor="슈퍼스타가 된 당신! 이제 어떤 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈로 팬들에게 인사를 할까요? 그 모습을 묘사하고, 당신의 팬들에게 전달되는 메시지를 설명해주세요." Difficulty="7" quizType="1111111" eng="슈퍼스타가 된 당신! 이제 어떤 헤어스타일, 복장, 눈썹, 눈동자, 입모양, 감정 , 포즈로 팬들에게 인사를 할까요? 그 모습을 묘사하고, 당신의 팬들에게 전달되는 메시지를 설명해주세요." />
+
 
 
 </ArrayOfQuizData>

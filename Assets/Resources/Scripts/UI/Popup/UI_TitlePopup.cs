@@ -35,7 +35,10 @@ public class UI_TitlePopup : UI_Popup
 		if (base.Init() == false)
 			return false;
 		if(!Managers.Game.LoadGame())
+		{
 			Managers.Game.Init();
+			Managers.Game.SaveGame();
+		}
 
 		//일단 확인 후 false로 초기화
 		bool isRevive = Managers.Game.ReviveLife;
@@ -167,6 +170,10 @@ void OnClickStartButton()
 		{
 			GetText((int)Texts.SayingText).text = Managers.GetText(Define.SaveButEnd);
 		}
+		else if(Managers.Game.Name == "")
+		{
+			GetText((int)Texts.SayingText).text = Managers.GetText(Define.SaveNothing);
+		}
 		
 		else if(isGameLoaded && Managers.Game.Hp > 0)
 		{
@@ -209,13 +216,21 @@ void OnClickStartButton()
 	void OnClickPickupButton()
 	{
 		Managers.Game.LoadGame();
-		Player.transform.localPosition = new Vector3(12,0,0);
+		Player.transform.localPosition = new Vector3(15,0,0);
 
 		Debug.Log("OnClickPickupButton");
 		Managers.UI.ShowPopupUI<UI_PickupPopup>();
 	}
 	void OnClickShopButton()
 	{
+		// 네트워크 상태 확인
+		if (Application.internetReachability == NetworkReachability.NotReachable)
+		{
+			GetText((int)Texts.SayingText).text = Managers.GetText(Define.NoNetworkText);
+			Debug.Log("네트워크 연결이 필요합니다.");
+			return;
+		}
+
 		Managers.Game.LoadGame();
 		Player.transform.localPosition = new Vector3(0,0,0);
 		Player.transform.localScale = new Vector3(1,1,1);

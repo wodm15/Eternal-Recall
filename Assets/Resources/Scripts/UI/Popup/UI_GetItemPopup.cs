@@ -199,6 +199,7 @@ public class UI_GetItemPopup : UI_Popup
     {
         int index = _selectedIndexes[0];
         ShopData selectedItem = _shopData[index];
+        Managers.Game.PreviousStage = Managers.Game.Stage;
 
         ShopData _selectedItem = ApplyItemEffect(selectedItem);
         PassLuck( _selectedItem);
@@ -210,6 +211,7 @@ public class UI_GetItemPopup : UI_Popup
     {
         int index = _selectedIndexes[1];
         ShopData selectedItem = _shopData[index];
+        Managers.Game.PreviousStage = Managers.Game.Stage;
 
         ShopData _selectedItem = ApplyItemEffect(selectedItem);
         PassLuck( _selectedItem);
@@ -221,6 +223,7 @@ public class UI_GetItemPopup : UI_Popup
     {
         int index = _selectedIndexes[2];
         ShopData selectedItem = _shopData[index];
+        Managers.Game.PreviousStage = Managers.Game.Stage;
 
         ShopData _selectedItem = ApplyItemEffect(selectedItem);
         PassLuck( _selectedItem);
@@ -350,17 +353,17 @@ public class UI_GetItemPopup : UI_Popup
                 Managers.Game.Hp += (int)selectedItem.effectValues[0];
                 Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
 
-                if(Managers.Game.DifficultyLevel == "Normal" && Define.NormalGameEnd < Managers.Game.Stage + (int)selectedItem.effectValues[1])
+                if(Managers.Game.DifficultyLevel == "Normal" && Define.NormalGameEnd <= Managers.Game.Stage + (int)selectedItem.effectValues[1])
                     Managers.Game.Stage = Define.NormalGameEnd -2;
                         
-                else if(Managers.Game.DifficultyLevel == "Hard" && Define.HardGameEnd < Managers.Game.Stage + (int)selectedItem.effectValues[1])
+                else if(Managers.Game.DifficultyLevel == "Hard" && Define.HardGameEnd <= Managers.Game.Stage + (int)selectedItem.effectValues[1])
                     Managers.Game.Stage = Define.HardGameEnd -2;
 
 
-                else if(Managers.Game.DifficultyLevel == "UnLimited" && Define.UnLimitedGameEnd < Managers.Game.Stage + (int)selectedItem.effectValues[1])
+                else if(Managers.Game.DifficultyLevel == "UnLimited" && Define.UnLimitedGameEnd <= Managers.Game.Stage + (int)selectedItem.effectValues[1])
                     Managers.Game.Stage = Define.UnLimitedGameEnd -2;
 
-                else if(Managers.Game.DifficultyLevel == "Nightmare" && Define.NightmareGameEnd < Managers.Game.Stage + (int)selectedItem.effectValues[1])
+                else if(Managers.Game.DifficultyLevel == "Nightmare" && Define.NightmareGameEnd <= Managers.Game.Stage + (int)selectedItem.effectValues[1])
                     Managers.Game.Stage = Define.NightmareGameEnd -2;
 
                 else
@@ -412,6 +415,10 @@ public class UI_GetItemPopup : UI_Popup
         {
             Managers.Game.Money += 300;
         }
+        else if(correct && Managers.Game.DifficultyLevel == "Nightmare")
+        {
+            Managers.Game.Money += 500;
+        }
 
         else if(!correct && Managers.Game.DifficultyLevel == "Normal")
         {  
@@ -422,6 +429,10 @@ public class UI_GetItemPopup : UI_Popup
             Managers.Game.Money += 0;
         }
         else if(!correct && Managers.Game.DifficultyLevel == "UnLimited")
+        {
+            Managers.Game.Money += 0;
+        }
+        else if(!correct && Managers.Game.DifficultyLevel == "Nightmare")
         {
             Managers.Game.Money += 0;
         }

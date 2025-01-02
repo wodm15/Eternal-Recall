@@ -65,6 +65,7 @@
   <TextData ID="20030" kor="간호복 구매" eng="" />
   <TextData ID="20031" kor="100000코인구매" eng="" />
   <TextData ID="20032" kor="구매하기" eng="" />
+  <TextData ID="20033" kor="네트워크를 연결하고 시도해줘" eng="" />
 
   <TextData ID="100" kor="스킬을 선택하세요" eng="" />
 
@@ -141,6 +142,7 @@
   <TextData ID="50009" kor= "추측한 캐릭터" eng="" />
   <TextData ID="50010" kor= "1자 이상 7자 이내로 닉네임을 입력하세요" eng="" />
   <TextData ID="50011" kor= "스킬의 효과를 2배 획득합니다!" eng="" />
+  <TextData ID="50012" kor= "이미 가지고 있는 스킨입니다!" eng="" />
 
 <!-- Normal 모드 : 기다림 : 3초 , 퀴즈 범위 5개 ,                                             -->
 <!-- Hard 모드 : 기다림 : 2초   , 퀴즈 범위 10개,                                                -->

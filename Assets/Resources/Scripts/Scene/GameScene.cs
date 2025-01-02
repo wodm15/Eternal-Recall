@@ -6,16 +6,17 @@ public class GameScene : BaseScene
 {
     protected override bool Init()
     {
-		if (base.Init() == false)
-			return false;
+        if (base.Init() == false)
+            return false;
 
-        SceneType = Define.Scene.Game;
-		Application.runInBackground = true;
-		Screen.orientation = ScreenOrientation.LandscapeLeft;
-		
-		Managers.UI.ShowPopupUI<UI_TitlePopup>();
-		Debug.Log("Init");
-		return true;
-	}
+        // 화면이 자동으로 회전하도록 설정
+        Screen.orientation = ScreenOrientation.AutoRotation;
+
+        Managers.UI.ShowPopupUI<UI_TitlePopup>();
+        Debug.Log("Init");
+
+        return true;
+    }
 }
+
 

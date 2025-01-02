@@ -78,6 +78,8 @@ public class GameData
         //배경화면
         public string BG;
 
+        public int PreviousStage;
+
     }
 
 public class GameManagerEx
@@ -207,6 +209,11 @@ public class GameManagerEx
         get { return _gameData.BG;}
         set { _gameData.BG=value;}
     }
+    public int PreviousStage
+    {
+        get { return _gameData.PreviousStage;}
+        set {_gameData.PreviousStage=value;}
+    }
 
     #region 컬렉션 & 프로젝트
 
@@ -235,7 +242,7 @@ public class GameManagerEx
             {
                 
                 if (Collections[data.ID ] != CollectionState.None)
-				continue;
+				    continue;
 
                 if(data.purchase == 1)
                     continue;
@@ -285,6 +292,8 @@ public void Init()
     Revive = data.Revive;
     ReviveLife = false;
     BG = data.BG;
+    PreviousStage = data.PreviousStage;
+    Money = data.Money;
 
     // 기본 옷 상시 활성화
     if (Collections[Define.DefaultCollectionIndex] == CollectionState.None)

@@ -78,7 +78,7 @@ public class UI_PickupPopup : UI_Popup
 		if (base.Init() == false)
 			return false;
 
-        Managers.Game.InterstitialAd();
+        // Managers.Game.InterstitialAd();
         
         //구독
         UI_PickPopup.OnRefreshUI -= RefreshUI;

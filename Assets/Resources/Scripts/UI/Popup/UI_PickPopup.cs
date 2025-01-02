@@ -36,6 +36,7 @@ public class UI_PickPopup : UI_Popup
     enum Images
     {
         WhenGetImage,
+        PickIndex,
     }
     enum Buttons
     {
@@ -51,6 +52,11 @@ public class UI_PickPopup : UI_Popup
         GetSkinText,
         WhenGetText,
         ExplainText,
+        PickIndexText1,
+        PickIndexText2,
+        PickIndexText3,
+        PickIndexText4,
+        PickIndexText5,
     }
     public override bool Init()
 	{
@@ -86,7 +92,7 @@ public class UI_PickPopup : UI_Popup
 
         GetText((int)Texts.ExitText).text = Managers.GetText(Define.GoToTitleText);
         GetText((int)Texts.MoneyText).text = $"X{Managers.Game.Money}";
-        GetText((int)Texts.PickupText).text = "  -500";
+        GetText((int)Texts.PickupText).text = "  -100";
         GetText((int)Texts.GetSkinText).text = "스킨 얻기";
         GetText((int)Texts.WhenGetText).text = "스킨을 얻었습니다!";
         GetText((int)Texts.ExplainText).text = "캐릭터를 매칭시켜주세요";
@@ -94,6 +100,7 @@ public class UI_PickPopup : UI_Popup
 
         GetButton((int)Buttons.GetSkinButton).gameObject.SetActive(false);
         GetImage((int)Images.WhenGetImage).gameObject.SetActive(false);
+        GetImage((int)Images.PickIndex).gameObject.SetActive(false);
         GetText((int)Texts.WhenGetText).gameObject.SetActive(false);
 
         return true;
@@ -126,6 +133,9 @@ public class UI_PickPopup : UI_Popup
             }
             
             Managers.Game.Money -= Define.PickupCost;
+
+            GetImage((int)Images.PickIndex).gameObject.SetActive(true);
+
             RefreshUI();
             // s_customManager.eyebrow = 3;
             // s_customManager.mouth = 11;
@@ -198,6 +208,35 @@ public class UI_PickPopup : UI_Popup
             numberCheck();
             Managers.Game.SaveGame();
 
+            //인덱스 확인해주기
+            GetText((int)Texts.PickIndexText1).text = $"옷: {customManager.clothes} : {s_customManager.clothes} 매칭 옷 숫자";
+            GetText((int)Texts.PickIndexText2).text = $"헤어: {customManager.hair} : {s_customManager.hair} 매칭 헤어 숫자";
+            GetText((int)Texts.PickIndexText3).text = $"눈썹: {customManager.eyebrow} : {s_customManager.eyebrow} 매칭 눈썹 숫자";
+            GetText((int)Texts.PickIndexText4).text = $"눈: {customManager.eye} : {s_customManager.eye} 매칭 눈 숫자";
+            GetText((int)Texts.PickIndexText5).text = $"감정: {customManager.emotion} : {s_customManager.emotion} 매칭 감정 숫자";
+
+            if(customManager.clothes == s_customManager.clothes)
+                GetText((int)Texts.PickIndexText1).color = Color.blue;
+            if(customManager.hair == s_customManager.hair)
+                GetText((int)Texts.PickIndexText2).color = Color.blue;
+            if(customManager.eyebrow == s_customManager.eyebrow)
+                GetText((int)Texts.PickIndexText3).color = Color.blue;
+            if(customManager.eye == s_customManager.eye)
+                GetText((int)Texts.PickIndexText4).color = Color.blue;
+            if(customManager.emotion == s_customManager.emotion)
+                GetText((int)Texts.PickIndexText5).color = Color.blue;
+            
+            if(customManager.clothes != s_customManager.clothes)
+                GetText((int)Texts.PickIndexText1).color = Color.red;
+            if(customManager.hair != s_customManager.hair)
+                GetText((int)Texts.PickIndexText2).color = Color.red;
+            if(customManager.eyebrow != s_customManager.eyebrow)
+                GetText((int)Texts.PickIndexText3).color = Color.red;
+            if(customManager.eye != s_customManager.eye)
+                GetText((int)Texts.PickIndexText4).color = Color.red;
+            if(customManager.emotion != s_customManager.emotion)
+                GetText((int)Texts.PickIndexText5).color = Color.red;
+
             //실행 결과가 맞으면
             if (customManager.clothes == s_customManager.clothes 
                 && customManager.hair == s_customManager.hair
@@ -208,6 +247,7 @@ public class UI_PickPopup : UI_Popup
                 Managers.Sound.Play(Define.Sound.Effect, "Sound_GetSkin");
                 GetButton((int)Buttons.GetSkinButton).gameObject.SetActive(true);
                 GetButton((int)Buttons.PickupButton).gameObject.SetActive(false);
+                GetButton((int)Buttons.Exit).gameObject.SetActive(false);
 
                 Managers.Game.Collections[index] = CollectionState.Done;
                 Managers.Game.SaveGame();
@@ -248,6 +288,7 @@ public class UI_PickPopup : UI_Popup
     public void RefreshUI()
     {
         GetText((int)Texts.MoneyText).text = $"X{Managers.Game.Money}";
+        // GetText((int)Texts.PickIndexText).text = 
     }
     private void OnClickGetSkin(int index)
     {
