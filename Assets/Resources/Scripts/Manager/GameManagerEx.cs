@@ -247,15 +247,15 @@ public class GameManagerEx
                 if(data.purchase == 1)
                     continue;
 
-                if(data.reqLevel != DifficultyLevel[..1])
-                    continue;
+                // if(data.reqLevel != DifficultyLevel[..1])
+                //     continue;
 
                 if (data.reqHp > Hp)
                     continue;
                 if(data.reqStage > Stage)
                     continue;
-                if(data.reqHintKey > HintKey)
-                    continue;
+                // if(data.reqHintKey > HintKey)
+                //     continue;
     
                 //옷얻는거 기록
                 Collections[data.ID] = CollectionState.Done;
@@ -452,7 +452,7 @@ public void Init()
         }
         if(DifficultyLevel == "Nightmare")
         {
-            Stage = 71;
+            Stage = 70;
             Avoid = 0;
             DownSpeed = 0;
             GuessTimer = 20;

@@ -183,7 +183,7 @@ public class UI_QuestionPopup : UI_Popup
             Managers.Game.BirdPercent +=50;
         }
 
-        //70%를 최대로
+        //80%를 최대로
         if(Managers.Game.BirdPercent >= 80)
                 Managers.Game.BirdPercent =80;
 
@@ -200,7 +200,7 @@ public class UI_QuestionPopup : UI_Popup
 
             // 무작위로 선택된 새 생성
             Bird = Managers.Resource.Instantiate(_birdName);
-            Bird.transform.position = new Vector3(12, 2.5f, 0);
+            Bird.transform.position = new Vector3(15, 2.5f, 0);
             return true;
         }
         else

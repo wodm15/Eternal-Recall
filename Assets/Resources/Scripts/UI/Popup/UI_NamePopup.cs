@@ -249,6 +249,7 @@ public class UI_NamePopup : UI_Popup
 
         #endregion
 
+
         RefreshUI();
     	_inputField = GetObject((int)GameObjects.InputField).gameObject.GetComponent<TMP_InputField>();
 		_inputField.text = "";
@@ -298,10 +299,26 @@ public class UI_NamePopup : UI_Popup
         Managers.Data.Start.ClothesIndex = Managers.Game.ClothesIndex;
 
         //순서 중요 (난이도로 스탯 변경 후 -> 옷 능력치 추가)
-        if(Normal.isOn) Managers.Game.DifficultyLevel = "Normal";
-        else if(Hard.isOn) Managers.Game.DifficultyLevel = "Hard";
-        else if(UnLimited.isOn) Managers.Game.DifficultyLevel = "UnLimited";
-        else if(Nightmare.isOn) Managers.Game.DifficultyLevel = "Nightmare";
+        if(Normal.isOn) 
+        {
+            Managers.Game.DifficultyLevel = "Normal";
+            Managers.Game.PreviousStage = 0;
+        }
+        else if(Hard.isOn) 
+        {
+            Managers.Game.DifficultyLevel = "Hard";
+            Managers.Game.PreviousStage = Define.NormalGameEnd;
+        }
+        else if(UnLimited.isOn) 
+        {
+            Managers.Game.DifficultyLevel = "UnLimited";
+            Managers.Game.PreviousStage = Define.HardGameEnd;
+        }
+        else if(Nightmare.isOn) 
+        {
+            Managers.Game.DifficultyLevel = "Nightmare";
+            Managers.Game.PreviousStage = Define.UnLimitedGameEnd;
+        }
 
         //옷 능력치 추가
         ApplyInitialStats();

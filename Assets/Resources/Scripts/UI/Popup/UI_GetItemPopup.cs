@@ -352,13 +352,15 @@ public class UI_GetItemPopup : UI_Popup
                 //HP, 스테이지 순서
                 Managers.Game.Hp += (int)selectedItem.effectValues[0];
                 Managers.Game.Hp = Mathf.Clamp(Managers.Game.Hp, 0, 100); //회복 100까지만 제한
+                Debug.Log($"Define.HardGameEnd: {Define.HardGameEnd} Managers.Game.Stage + (int)selectedItem.effectValues[1]: {Managers.Game.Stage + (int)selectedItem.effectValues[1]}");
 
                 if(Managers.Game.DifficultyLevel == "Normal" && Define.NormalGameEnd <= Managers.Game.Stage + (int)selectedItem.effectValues[1])
                     Managers.Game.Stage = Define.NormalGameEnd -2;
                         
                 else if(Managers.Game.DifficultyLevel == "Hard" && Define.HardGameEnd <= Managers.Game.Stage + (int)selectedItem.effectValues[1])
+                {
                     Managers.Game.Stage = Define.HardGameEnd -2;
-
+                }
 
                 else if(Managers.Game.DifficultyLevel == "UnLimited" && Define.UnLimitedGameEnd <= Managers.Game.Stage + (int)selectedItem.effectValues[1])
                     Managers.Game.Stage = Define.UnLimitedGameEnd -2;
