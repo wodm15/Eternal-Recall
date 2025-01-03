@@ -19,7 +19,7 @@
   <CollectionData ID="16" nameID="20"  iconPath="Sprites/Collection/16_NurseUniform" type="Cody" name="간호복" reqHp="1" reqStage="70"  reqHintKey="0" reqLevel= "N" description="간호복" How = "간호복 구매" purchase = "1"/>
   <CollectionData ID="17" nameID="12"  iconPath="Sprites/Collection/17_Magical" type="Cody" name="마법소녀" reqHp="80" reqStage="70" reqHintKey="0" reqLevel="U" description="마법소녀" How="마법 소녀 뽑기" purchase="1" />
   <CollectionData ID="18" nameID="6"  iconPath="Sprites/Collection/18_Swimsuit2" type="Cody" name="수영복2" reqHp="1" reqStage="60" reqHintKey="0" reqLevel="H" description="수영복2" How="수영복2" purchase="1" />
-  <CollectionData ID="19" nameID="4"  iconPath="Sprites/Collection/19_Warrior" type="Cody" name="전투복" reqHp="1" reqStage="70" reqHintKey="0" reqLevel="U" description="등반완료" How="언리미티드모드 클리어" purchase="0" />
+  <CollectionData ID="19" nameID="4"  iconPath="Sprites/Collection/19_Warrior" type="Cody" name="전투복" reqHp="1" reqStage="70" reqHintKey="0" reqLevel="U" description="전투복" How="언리미티드모드 클리어" purchase="0" />
 </ArrayOfCollectionData>
 
 <!-- <?xml version="1.0" encoding="utf-8"?>

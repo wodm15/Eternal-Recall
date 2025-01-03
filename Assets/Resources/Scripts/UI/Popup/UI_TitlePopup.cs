@@ -50,8 +50,12 @@ public class UI_TitlePopup : UI_Popup
 		Player = GameObject.Find("StaticPlayer");
 		if(Player == null)
 			Player = Managers.Resource.Instantiate("StaticPlayer");
-			
+
 		
+		
+		CheckBird();
+
+			
 		Player.transform.position = new Vector3(0,-1,-0);
         Player.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
         GameObject _customManager = GameObject.FindGameObjectWithTag("StaticManager");
@@ -245,6 +249,21 @@ void OnClickStartButton()
 		if (Managers.Game.Collections[2] == CollectionState.None)
 		{
         	Managers.Game.Collections[2] = CollectionState.Done;
+		}
+	}
+
+	void CheckBird()
+	{
+		string[] birdNames = { "Bird1", "Bird2", "Bird3" };
+		GameObject bird = null;
+
+		foreach (string name in birdNames)
+		{
+			bird = GameObject.Find(name);
+			if (bird != null)
+			{
+				Managers.Resource.Destroy(bird);
+			}
 		}
 	}
 }
