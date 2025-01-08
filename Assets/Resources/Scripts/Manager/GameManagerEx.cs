@@ -293,7 +293,6 @@ public void Init()
     ReviveLife = false;
     BG = data.BG;
     PreviousStage = data.PreviousStage;
-    Money = data.Money;
 
     // 기본 옷 상시 활성화
     if (Collections[Define.DefaultCollectionIndex] == CollectionState.None)
