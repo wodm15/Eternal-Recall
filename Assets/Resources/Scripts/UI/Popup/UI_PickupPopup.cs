@@ -134,8 +134,6 @@ public class UI_PickupPopup : UI_Popup
 
         ExplainimageRect = GetImage((int)Images.ExplainPowerImage).GetComponent<RectTransform>();
         Explainsize = ExplainimageRect.sizeDelta;
-        // PercentimageRect = GetImage((int)Images.GetPercentImage).GetComponent<RectTransform>();
-        // Percentsize = PercentimageRect.sizeDelta;
 
         GetButton((int)Buttons.Toggle1Button).gameObject.BindEvent(() => 
         {

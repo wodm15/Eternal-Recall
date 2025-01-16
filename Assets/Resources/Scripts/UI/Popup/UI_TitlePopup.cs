@@ -124,10 +124,6 @@ public class UI_TitlePopup : UI_Popup
 		int randomIndex = Random.Range(0, bgmTracks.Count);
 		Managers.Sound.Play(Sound.Bgm, bgmTracks[randomIndex]);
 
-		//잘못된 값이 있어 삭제
-		if(Managers.CheckJson.CheckJson() == -1)
-			GetText((int)Texts.SayingText).text = Managers.GetText(Define.DeleteFile);
-
 		
 		return true;
 	}
