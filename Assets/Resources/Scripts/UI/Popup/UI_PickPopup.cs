@@ -62,7 +62,7 @@ public class UI_PickPopup : UI_Popup
 	{
 		if (base.Init() == false)
 			return false;
-        
+
         Player = GameObject.Find("StaticPlayer");
         Player.transform.position = new Vector3(-3,-1,0);
         Player.transform.localScale = new Vector3(1,1,1);
