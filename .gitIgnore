@@ -72,15 +72,15 @@ crashlytics-build.properties
 /[Aa]ssets/[Ss]treamingAssets/aa/*
 
 # My setting
-SD
-Spine
-Spine Examples
-TextMesh Pro
-referSound
-referSprite
-Soundrefer
-generated
-ICONSETTING
-/Assets/Resources/Scripts/Manager/AdsManagers.cs
-/Assets/Resources/Scripts/Manager/IAPManagers.cs
+# SD
+# Spine
+# Spine Examples
+# TextMesh Pro
+# referSound
+# referSprite
+# Soundrefer
+# generated
+# ICONSETTING
+# /Assets/Resources/Scripts/Manager/AdsManagers.cs
+# /Assets/Resources/Scripts/Manager/IAPManagers.cs
 
